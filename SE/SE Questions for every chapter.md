@@ -870,6 +870,7 @@
 # Software Quality 
 ## Summary i
 + Why is software quality more important than it was a decade ago?
+	+ Software is meer in de dagelijks leven dan vroeger. Niet alleen in algemene toepassingen maar ook in
 + Can a correctly functioning piece of software still have poor quality? Why?
 + If quality control can’t guarantee results, why do we bother?
 + What’s the difference between an external and an internal quality attribute? And between a product and a process attribute?
