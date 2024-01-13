@@ -923,12 +923,35 @@
 		+ Provisionally accepted, er zijn nog aanpassingen nodig (geen extra review meer nodig)
 		+ Rejected, er zijn aanpassingen nodig en het moet daarna terug herbekeken worden.
 + Explain briefly the three items that should be included in a quality plan.
-	+ 
+	+ Geef de gewenste productkwaliteiten weer en hoe deze worden beoordeeld.
+		+ Definieer de belangrijkste kwaliteitskenmerken.
+	+ Bepalen welke organisatorische normen moeten worden toegepast.
+		+ Meestal door middel van checklists en standaarden.
+	+ Het kwaliteitsbeoordelingsproces definiëren.
+		+ Meestal gedaan via kwaliteitsbeoordelingen na interne vrijgave.
 + What’s the relationship between ISO9001, CMMI standards and an organization’s quality system? How do you get certified?
+	+ De kwaliteitsnormen (ISO9001 en CMMI) beïnvloeden het kwaliteitssysteem van de organisatie. Zo’n kwaliteitsorganisatie moet u vragen zich te laten certificeren, zij zullen dan het kwaliteitssysteem auditeren.
 + Can you name and define the 5 levels of CMMI?
-+ Where would “use-cases” as defined in chapter 3 fit in the table of core process areas (p. 32)? Motivate your answer shortly.
+	+ Level 1 Initial
+		+ "*No effective Quality Assurance procedures, quality is luck*"
+	+ Level 2 Managed
+		+ "*Formal Quality Assurance procedures in place (reactive*"
+	+ Level 3 Defined
+		+ "*Quality Assurance process defined and institutionalized*"
+	+ Level 4 Quantitatively managed
+		+ "*Quality Assurance Process + quantitative data collection*"
+	+ Level 5 Optimized
+		+ "*Improvement is fed back into Quality Assurance process*"
++ Where would “use-cases” as defined in chapter 3 fit in the table of core process areas (p. 38)? Motivate your answer shortly.
+	+ Requirements management
+		+ De requirements bepalen welke use cases worden bepaald.
 ## Summary ii
 + Given the Quality Attributes Overview table, argue why the crosses and blanks occur at the given positions.
+	+ Er zijn vier elementen dat we bespreken:
+		+ Product: Wat geleverd wordt aan de klant
+		+ Process: Wat de software product oplevert.
+		+ External: Is wat we afleiden van de omgeving en systeem/process
+		+ Internal: Is wat we kun
 + Why do quality standards focus on process and internal attributes instead of the desired external product attributes?
 + Why do you need a quality plan? Which topics should be covered in such a plan?
 + How should you organize and run a review meeting?
