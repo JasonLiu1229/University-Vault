@@ -950,16 +950,50 @@
 	+ Er zijn vier elementen dat we bespreken:
 		+ Product: Wat geleverd wordt aan de klant
 		+ Process: Wat de software product oplevert.
-		+ External: Is wat we afleiden van de omgeving en systeem/process
-		+ Internal: Is wat we kun
+		+ External: Is wat we afleiden van de omgeving en systeem/process.
+		+ Internal: Is wat we direct kunnen afleiden van de product- of process beschrijving.
+	+ Indien er een kruis staat onder 1 van deze elementen dan weten we dat die een correlatie hebben hiermee.
+	+ Bijvoorbeeld maintainability: Het heeft een correlatie met het product, want deze attribute wordt pas toegepast na dat het de product geleverd is aan de klant. Daarnaast is het ook external, want we kunnen dit enkel afleiden van het systeem/process. Het is daarnaast niet internal want we kunnen niks afleiden van de beschrijvingen om te weten of er een variant van maintenance toegepast wordt. Het kan daarnaast wel process, indien we spreken over adaptability, want er kan integratie zijn in de software dat hier voor zorgt.
 + Why do quality standards focus on process and internal attributes instead of the desired external product attributes?
+	+ "*a quality process leads to a quality product*"
+	+ "*internal quality leads to external quality*"
 + Why do you need a quality plan? Which topics should be covered in such a plan?
+	+ Een quality plan is belangrijk omdat we zo ons product op tijd en binnen budget kunnen houden.
+	+ Topics
+		+ Geef de gewenste productkwaliteiten weer en hoe deze worden beoordeeld.
+			+ Definieer de belangrijkste kwaliteitskenmerken.
+		+ Bepalen welke organisatorische normen moeten worden toegepast.
+			+ Meestal door middel van checklists en standaarden.
+		+ Definieer kwaliteitsbeoordelingsproces.
+			+ Meestal gedaan via kwaliteitsbeoordelingen na interne vrijgave.
 + How should you organize and run a review meeting?
+	+ Organize
+		+ 3 - 5 mensen
+		+ 2 uur voorbereiding van te voren
+			+ Reviewers bereiden hun checklist voor
+		+ meeting duurt max 2 uur
+	+ How?
+		+ Who is the reviewer?
+		+ What is reviewed
+		+ What were the findings and conclusion
+		+ Decision
+			+ Accepted -> no further review
+			+ Provisionally accepted, correct defects (no further review)
+			+ Rejected, correct defects and follow-up review
 + Why are coding standards important?
+	+ Coding standaarden helpen met leesbaarheid van code --> meer kwaliteit.
 + What would you include in a documentation review checklist?
-+ How often should reviews by scheduled?
+	+ Project plan, Design, Testing, Requirements specification, code, ...
++ How often should reviews be scheduled?
+	+ minstens 1 per week
 + Could you create a review check-list for ATAM?
+	+ Ja we creëren onze vragen op basis van de volgende onderwerpen
+		![[Pasted image 20240113225328.png]]
+		+ Is there high coupling?
+		+ Is there low cohesion?
+		+ ...
 + Would you trust software from an ISO 9000 certified company? And if it were CMMI?
+	+ 
 + You are supposed to develop a quality system for your organization. What would you include?
 + Where would “testing” fit in the table of core process areas (p. 32). Does it cover a single row or not? Argue why (not)?
 # Metrics
