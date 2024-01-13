@@ -1041,13 +1041,37 @@
 		+ Module Defect Density = Number of defects discovered / Length of source
 		+ Temperature is usually derived from the length of a liquid or metal
 + What kind of measurement scale would you need to say “A specification error is worse than a design error”? And what if we want to say “A specification error is twice as bad as a design error?”
-	+ 
+	+ Ordinaal
+	+ Ratio
 + Explain the need for a calibration factor in Putnam’s model.
+		![[Pasted image 20240114003319.png]]
+	+ De calibratie getal β is ongeveer gelijk aan 1
+		+ Indien we grote complexe projecten met een grote team hebben dan "> 1".
+		+ Indien we kleine simpele projecten met een kleine team hebben dan "< 1".
 + Fill in the blanks in the following sentence. Explain briefly, based on the Putnam’s model. \+ If you want to finish earlier (= decrease scheduled time), you should ... the effort ... .
+	+ Increase
+	+ a lot
 + Give three metrics for measuring size of a software product.
+	+ Lines of code
+	+ Function point
+	+ Use case points
 + Discuss the main advantages and disadvantages of Function Points.
+	+ Advantages
+		+ Kan gemeten worden na de design
+		+ Is onafhankelijk van de implementation language
+		+ Meet functionaliteit
+		+ Werkt goed voor data processing 
+	+ Disadvantages
+		+ Vereist subjectief experts oordeel
+		+ Kan niet automatisch berekent worden
 + What does it mean for a coupling metric not to satisfy the representation condition?
+	+ Coupling is niet accuraat om een representatie te geven of er high coupling is.
 + Can you give 3 examples of impreciseness in Lines of Code measurements?
+	+ "*Ignores software reuse, code duplication, benefits of redesign*"
+	+ "*The lower level the language, the more productive the programmer*" 
+		+ Dan heeft LOC niet direct een indicatie want lower level language kan vaak veel lijnen of code hebben.
+	+ "*The more verbose the programmer, the higher the productivity*"
+		+ Duidelijker code, documentatie in de code
 ## Summary ii
 + During which phases in a software project would you use metrics?
 + Why is it so important to have “good” product size metrics?
