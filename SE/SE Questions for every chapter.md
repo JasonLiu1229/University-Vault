@@ -993,12 +993,25 @@
 		+ Is there low cohesion?
 		+ ...
 + Would you trust software from an ISO 9000 certified company? And if it were CMMI?
-	+ 
+	+ Nee, we verwachten minstens een standaard van ISO 9001.
+	+ Voor CMMI willen we minsten een level 3 maturity level. 
+		+ "***Proactive, rather than reactive.** Organization-wide standards provide guidance across projects, programs, and portfolios.*"
+		+ https://cmmiinstitute.com/learning/appraisals/levels
 + You are supposed to develop a quality system for your organization. What would you include?
-+ Where would “testing” fit in the table of core process areas (p. 32). Does it cover a single row or not? Argue why (not)?
+	+ Indien we systeem willen bouwen kunnen we best volgens de normen werken. Is dat ISO 9001 of CMMI (minstens level 3), maakt niet zo veel uit. 
+	+ Daarnaast voegen we code conventies toe, zodat de code leesbaar blijft en de kwaliteit verbetert.
+	+ Daarnaast hebben we quality plan nodig:
+		+ We definiëren hier dan onze set van kwaliteiten die we wensen en hoe we ze beoordelen. 
+		+ Organisatie normen.
+		+ Kwaliteitsbeoordelingsproces.
+			+ Dit kan dan gedaan worden vie quality reviews. (Formal technical reviews, process reviews)
++ Where would “testing” fit in the table of core process areas (p. 38). Does it cover a single row or not? Argue why (not)?
+	+ Process and Product Quality Assurance
+	+ Het hoort in deze "area", we willen na gaan of alles nog werkt (regression test en unit tests), dit hoort bij het "process" want we willen na gaan of het geleverde software nog werkt. Daarnaast maken we gebruik van tests om na te kijken of onze product die we afleveren aan de klant, werkt volgens de specificaties die geëist werden. Natuurlijk is dit geen perfecte manier en moeten we nog gebruik maken van andere technieken om dit verder te verifiëren. 
 # Metrics
 ## Summary i
 + Can you give three possible problems of metrics usage in software engineering? How does the measurement theory address them?
+	+ 
 + What’s the distinction between a measure and a metric?
 + Can you give an example of a direct and an indirect measure?
 + What kind of measurement scale would you need to say “A specification error is worse than a design error”? And what if we want to say “A specification error is twice as bad as a design error?”
