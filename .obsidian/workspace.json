@@ -64,6 +64,14 @@
               "type": "bookmarks",
               "state": {}
             }
+          },
+          {
+            "id": "9ba2cc70e6a1d832",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
           }
         ]
       }
@@ -136,17 +144,9 @@
               "type": "calendar",
               "state": {}
             }
-          },
-          {
-            "id": "9ba2cc70e6a1d832",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {}
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
@@ -165,7 +165,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "59529c133f5c1b0c",
+  "active": "9898f7a660c3126c",
   "lastOpenFiles": [
     "README.md",
     "SE/SE Questions for every chapter.md",

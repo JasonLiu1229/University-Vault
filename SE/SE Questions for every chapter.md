@@ -870,14 +870,46 @@
 # Software Quality 
 ## Summary i
 + Why is software quality more important than it was a decade ago?
-	+ Software is meer in de dagelijks leven dan vroeger. Niet alleen in algemene toepassingen maar ook in
+	+ Software is meer in de dagelijks leven dan vroeger. Niet alleen in algemene toepassingen maar ook in toepassingen waar leven op het spel staat of producten waar veel geld in geïnvesteerd wordt. Dit zorgt ervoor dat fouten grote problemen kunnen resulteren.
 + Can a correctly functioning piece of software still have poor quality? Why?
+	+ Ja, ook al werkt het systeem, er kunnen verschillende functionele of non-functional requirements zijn dat niet kwalitatief zijn.
 + If quality control can’t guarantee results, why do we bother?
+	+ "*A quality process leads to a quality product*"
+	+ Daarnaast hoe meer we doen om fouten te vermijden, hoe hoger de kans is dat we wel resultaat krijgen.
 + What’s the difference between an external and an internal quality attribute? And between a product and a process attribute?
+	+ Internal vs External 
+		+ External 
+			+ Afgeleid van de relatie tussen omgeving en systeem/proces.
+		+ Internal 
+			+ Direct afgeleid van de product- of procesbeschrijving.
+	+ Product vs Process
+		+ Product
+			+ Is wat geleverd wordt aan de klant.
+		+ Process
+			+ Process is wat de software product levert.
 + What’s the distinction between correctness, reliability and robustness?
+	+ Correctness
+		+ Een systeem is correct als het zich gedraagt ​​volgens zijn specificaties.
+	+ Reliability
+		+ Indien een klant gebruik maakt van het systeem dan zou het de meeste keren werken zoals het moet werken.
+		+ De klant kan zonder enige concern gebruik maken van het systeem.
+	+ Robustness
+		+ Een systeem is robuust als het zich redelijk gedraagt, zelfs onder niet-gespecificeerde omstandigheden.
 + How can you express the “user friendliness” of a system?
+	+ De mate waarin de menselijke gebruikers het systeem (proces) gemakkelijk te gebruiken vinden.
 + Can you name three distinct refinements of “maintainability”? What do each of these names mean?
+	+ Repairability
+		+ Hoeveelheid werk dat nodig is om fouten te corrigeren. 
+	+ Adaptability
+		+ Hoeveelheid werk dat nodig is om aanpassingen te maken volgens nieuwe requirements.
+	+ Portability
+		+ Hoeveelheid werk dat nodig is om naar een nieuwe environment of platform te gaan. 
 + What is meant with “short time to market”? Can you name 3 related quality attributes and provide definitions for each of them?
+	+ Time to market = de tijd tussen de overeenkomstige requirements en wanneer het deployed wordt.
+	+ => Short time to market = dit wilt zeggen dat we de gevraagde functies snel kunnen vrijgeven
+	+ 3 related quality attributes
+		+ Productivity
+			+ De hoeb
 + Name four things which should be recorded in the review minutes.
 + Explain briefly the three items that should be included in a quality plan.
 + What’s the relationship between ISO9001, CMMI standards and an organization’s quality system? How do you get certified?
