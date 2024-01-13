@@ -1011,10 +1011,37 @@
 # Metrics
 ## Summary i
 + Can you give three possible problems of metrics usage in software engineering? How does the measurement theory address them?
-	+ 
+	+ Preciseness
+		+ Do we use the same units to compare?
+		+ Is the context the same?
+			+ familiar with language?
+	+ Representation Condition
+		+ Is “code size” really what we want to have?
+			+ What about code quality?
+	+ Scale and Scale Type
+		+ How do we want to interpret results?
+	+ GQM-paradigm
+		+ What do we want to do with the results?
 + What’s the distinction between a measure and a metric?
+	+ Measure
+		+ is een functie mapping
+			+ attribute van de echte wereld
+		+ op een symbool in een verzameling met bekende wiskundige relaties (= range)
+	+ Metric
+		+ is een measure met als range de reële getallen en die voldoet
+			+ m(x,x) = 0
+			+ m(x,y) = m(y,x)
+			+ m(x,z) <= m(x,y) + m(y,z)
 + Can you give an example of a direct and an indirect measure?
+	+ Direct
+		+ Length of code
+		+ Duration of process
+		+ Number of defects discovered
+	+ Indirect
+		+ Module Defect Density = Number of defects discovered / Length of source
+		+ Temperature is usually derived from the length of a liquid or metal
 + What kind of measurement scale would you need to say “A specification error is worse than a design error”? And what if we want to say “A specification error is twice as bad as a design error?”
+	+ 
 + Explain the need for a calibration factor in Putnam’s model.
 + Fill in the blanks in the following sentence. Explain briefly, based on the Putnam’s model. \+ If you want to finish earlier (= decrease scheduled time), you should ... the effort ... .
 + Give three metrics for measuring size of a software product.
