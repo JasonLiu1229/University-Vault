@@ -909,9 +909,21 @@
 	+ => Short time to market = dit wilt zeggen dat we de gevraagde functies snel kunnen vrijgeven
 	+ 3 related quality attributes
 		+ Productivity
-			+ De hoeb
+			+ De hoeveelheid producten die we produceren tijdens een process met de gegeven recourses.
+		+ Timeliness
+			+ De mogelijkheid om het product op tijd vrij te geven.
+		+ Visibility
+			+ Huidige processtappen en projectstatus zijn toegankelijk.
 + Name four things which should be recorded in the review minutes.
+	+ What was reviewed?
+	+ Who reviewed it?
+	+ What were the findings and what was the conclusion.
+	+ Decision
+		+ Accepted zonder enige nood aan aanpassingen
+		+ Provisionally accepted, er zijn nog aanpassingen nodig (geen extra review meer nodig)
+		+ Rejected, er zijn aanpassingen nodig en het moet daarna terug herbekeken worden.
 + Explain briefly the three items that should be included in a quality plan.
+	+ 
 + What’s the relationship between ISO9001, CMMI standards and an organization’s quality system? How do you get certified?
 + Can you name and define the 5 levels of CMMI?
 + Where would “use-cases” as defined in chapter 3 fit in the table of core process areas (p. 32)? Motivate your answer shortly.
