@@ -1091,12 +1091,37 @@
 	+ En om de kost te verminderen, hebben we VEEL meer tijd nodig.
 	+ Indien we minder tijd hebben, is er meer onzekerheid
 + Can you explain the cone of uncertainty? And why is it so relevant to cost estimation in software projects?
-	+ In het begin is er weinig informatie.
+	+ In het begin is er weinig informatie. Nadat we meer gedaan hebben en meer weten over product, wordt de cone kleiner. Dit is omdat er meer zekerheid is van hoeveel resources we nog moeten alloceren.
+	+ Het is belangrijk omdat we de juiste hoeveelheid resources dan kunnen alloceren zodat we de best mogelijk situatie hebben.
+	 ![[Pasted image 20240114012917.png]]
 + How can you decrease the uncertainty of a project bid using Putnam’s model?
+	+ Meer tijd geven.
+	+ Meer effort.
+	+ We maken ook gebruik van de calibratie factor β om dit te calibreren.
 + Why do we prefer measuring Internal Product Attributes instead of External Product Attributes during Quality Control? What is the main disadvantage of doing that?
+	+ External heeft een finished product nodig om, daarnaast is de nauwkeurigheid niet goed.
+	+ Internal is goedkoop en goed focus
+		+ Maar het is niet betrouwbaar
+			+ "*false positives: “bad” measurements, yet good quality*"
+			+ "*false negatives: “good” measurements, yet poor quality*"
+		+ Heavy weight approach
+			+ "*Requires team to develop/customize a quantitative quality model*"
+			+ "*Requires definition of thresholds (trial and error)*"
+		+ Moeilijk om het te interpreteren
+			+ "*Requires complex combinations of simple metrics*"
 + You are a project manager and you want to convince your project team to apply algorithmic cost modelling. How would you explain the technique?
+	+ Choose system model
+		+ Formula consisting of product and process attributes + parameters
+	+ Calibrate system model
+		+ Choose values for parameters based on historical costing data
+	+ Measure (or estimate) attributes
+		+ Some attributes are fixed, others may vary
+	+ Calculate Effort
+		+ Iterate until satisfied
 + Where would you fit coupling/cohesion metrics in a hierarchical quality model like ISO 9126?
+	+ Maintainability - Simplicity/modularity 
 + Why are coupling/cohesion metrics important? Why then are they so rarely used?
+	+ 
 + Do you believe that “defect density” says something about the correctness of a program? Motivate your answer?
 # Refactoring (Java)
 ## Summary i
