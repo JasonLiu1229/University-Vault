@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/SE Questions for every chapter.md"
+                "file": "README.md"
               }
             }
           },
@@ -165,12 +165,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "59529c133f5c1b0c",
   "lastOpenFiles": [
+    "SE/SE Questions for every chapter.md",
     "SE/Pasted image 20240114021353.png",
     "SE/Pasted image 20240114012917.png",
     "SE/Pasted image 20240114003319.png",
-    "SE/SE Questions for every chapter.md",
     "README.md",
     "SE/Pasted image 20240113225328.png",
     "README.md.txt",
@@ -185,7 +185,6 @@
     "SE/Pasted image 20240113014226.png",
     "SE/Pasted image 20240113005111.png",
     "SE/Pasted image 20240112145126.png",
-    "SE/Pasted image 20240111152659.png",
     "Excalidraw/Drawing 2024-01-13 13.18.49.excalidraw.md",
     "Excalidraw",
     "Untitled.canvas",
