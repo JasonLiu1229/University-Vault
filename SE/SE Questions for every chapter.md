@@ -1071,13 +1071,27 @@
 	+ "*The lower level the language, the more productive the programmer*" 
 		+ Dan heeft LOC niet direct een indicatie want lower level language kan vaak veel lijnen of code hebben.
 	+ "*The more verbose the programmer, the higher the productivity*"
-		+ Duidelijker code, documentatie in de code
+		+ Duidelijker code, documentatie in de code.
 ## Summary ii
 + During which phases in a software project would you use metrics?
+	+ process, system, documentation, effort estimation, quality assurance
 + Why is it so important to have “good” product size metrics?
+	+ Om de modellen goed te kalibreren (om een ​​goede schatting te krijgen) zijn deze nodig voor algorithmic cost modelling.
 + Can you explain the two levels of calibration in COCOMO (i.e. C & S vs. M)? How can you derive actual values for these parameters?
+	+ C & S: $C \cdot PM^S$
+		+ C is de complexity factor en S is de exponent dat bijna 1 is. Indien we complexere groter projecten hebben, dan is S groter.
+		+ C en S worden bepaald via regressie analyse met een database van 60 andere projecten.
+	+ M: 
+		+ Met M zijn er meerdere formules
+		+ M is de calibratie factor dat tussen 0.7 en 1.66 zit.
+			+ houd rekening met quality attributes (reliability, performance)
+			+ en project constraints (tool usage, fast to market)
 + Can you motivate why in software engineering, productivity depends on the scheduled time? Do you have an explanation for it?
+	+ Indien we eerder willen klaar zijn, dan kunnen we via Putnam's model zien dat we VEEL meer man maanden (een persoon die werkt voor een maand) nodig hebben.
+	+ En om de kost te verminderen, hebben we VEEL meer tijd nodig.
+	+ Indien we minder tijd hebben, is er meer onzekerheid
 + Can you explain the cone of uncertainty? And why is it so relevant to cost estimation in software projects?
+	+ In het begin is er weinig informatie.
 + How can you decrease the uncertainty of a project bid using Putnam’s model?
 + Why do we prefer measuring Internal Product Attributes instead of External Product Attributes during Quality Control? What is the main disadvantage of doing that?
 + You are a project manager and you want to convince your project team to apply algorithmic cost modelling. How would you explain the technique?
