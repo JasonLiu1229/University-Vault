@@ -25,11 +25,12 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "SE/12Conclusion2023.pdf"
+                "file": "SE/01Intro2023.pdf"
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "SE/01Intro2023.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "SE/01Intro2023.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/SE Questions for every chapter.md"
+                "file": "SE/01Intro2023.pdf"
               }
             }
           },
@@ -155,8 +156,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -175,16 +175,18 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "7bb2f60979a0b6b4",
   "lastOpenFiles": [
-    "SE/12Conclusion2023.pdf",
     "SE/SE Questions for every chapter.md",
+    "SE/01Intro2023.pdf",
+    "SE/Pasted image 20240114152645.png",
+    "SE/12Conclusion2023.pdf",
+    "SE/Pasted image 20240110200248.png",
     "SE/p12_3_nosilverbullet.pdf",
     "SE/p12_2_KillerRobotCase 1.zip",
     "SE/p12_3_nosilverbullet (1).pdf",
     "SE/p12_2_KillerRobotCase.zip",
     "SE/Pasted image 20240114142824.png",
-    "SE/01Intro2023.pdf",
     "SE/02Requirements2023.pdf",
     "README.md",
     "SE/03Architecture2023.pdf",
@@ -199,8 +201,6 @@
     "SE/Pasted image 20240113133925.png",
     "SE/Pasted image 20240113134613.png",
     "SE/Pasted image 20240113015557.png",
-    "SE/Pasted image 20240113014226.png",
-    "SE/Pasted image 20240113005111.png",
     "Excalidraw/Drawing 2024-01-13 13.18.49.excalidraw.md",
     "Untitled.canvas",
     "Requirements Engineering.md",

@@ -1,5 +1,6 @@
 > Questions of Software Engineering course, also answered in Dutch
 # Intro
+![[Pasted image 20240114152645.png]]
 ## Summary i
 + How does Software Engineering differ from programming?
 	+ Programmeren is de taak dat we uitvoeren om een product te kunnen verkrijgen. Terwijl Software Engineering het gehele process is om tot aan het product te komen.
@@ -1233,9 +1234,12 @@ Case: https://gelzaragoza.medium.com/comprehensive-analysis-of-the-case-of-the-k
 + Which regression tests would you have written to prevent the “killer robot”?
 	+ Tests dat de robot nog steeds passive blijft tegen de mens. Dus dat het niet mensen dood.
 + Was code reviewing applied as part of the QA process? Why (not)?
-	+ Ja, maar testen waren gemanipuleerd. 
+	+ Ja, maar was niet afgemaakt. "*One co-worker told of an incident in which Samuels stormed out of a quality-assurance meeting.*".
 + Why was the waterfall process disastrous in this particular case?
+	+ Hierdoor waren er fouten niet op tijd opgemerkt, waardoor er formule fouten waren die uiteindelijk resulteerde in iemands leven.
 + Why was the user-interface design flawed?
+	+ "*Because it violated every Shneiderman's rule, not to mention the console and the comfort for the operator.*"
+	+ Waar Shneiderman's rule zegt: "***For every user action, there should be an interface feedback**. For frequent and minor actions, the response can be modest, whereas for infrequent and major actions, the response should be more substantial.*"
 ## Summary ii
 + You are an experienced designer and you heard that the sales people earn more money than you do. You want to ask your boss for a salary-increase; how would you argue your case?
 	+ Omdat het een goed product is, dat het makkelijker te verkopen is.
