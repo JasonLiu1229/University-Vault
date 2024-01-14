@@ -197,7 +197,7 @@
 	+ Should have end-user commitment
 		+ end-user wordt betrokken in het beschrijven van het product.
 + Why should there be at least one actor who benefits from a use case?
-	+ De correspondeerde stakeholder zal dan eisen om deze use-case in de requirements houden.
+	+ De correspondeerde stakeholder (actor) zal dan eisen om deze use-case in de requirements houden.
 + Can you supply 3 questions that may help you identifying actors? And use cases?
 	+ Actors
 		+ Who uses the system?
