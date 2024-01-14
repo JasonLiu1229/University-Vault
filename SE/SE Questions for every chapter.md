@@ -1205,10 +1205,23 @@
 	+ Colleagues
 		+ Software engineers zullen eerlijk en ondersteunend zijn tegen hun collega's
 	+ Self
-		+ Software engineers zullen 
+		+ Software engineers nemen deel aan een leven lang leren over de uitoefening van hun beroep en bevorderen een ethische benadering van de beroepsuitoefening.
 + If you are an independent consultant, how can you ensure that you will not have to act against the code of ethics?
+	+ Voeg een extra clause toe in de contract, indien het tegen de "*code of ethics*" gaat, dat je de recht hebt om het contract te beëindigen. 
 + What would be a possible metric for measuring the amount of innovation of a manufacturing company?
+	+ Algemeen
+		+ Technologie evolueert om de 20 jaar.
+		+ Business model blijft hetzelfde
+	+ ICT
+		+ Technologie evolueert om de 5 jaar
+		+ Business model veranderd vaak
 + Explain the 2 main steps of test amplification: input amplification and assertion amplification
+	+ Assert amplificatie
+		+ Extra testen toevoegen om de staat van het object na te kijken tijdens de run van de code. 
+		![[Pasted image 20240114142824.png]]
+	+ Input amplificatie
+		+ Extra input testen toevoegen om edge cases te testen. We veranderen of voegen extra testen toe, om paden die we ervoor nog niet afgelopen hebben nog eens te testen.
+			+ Brute force maar optimaliseert door code coverage te vergroten.
 ### When you chose the “No Silver Bullet” paper
 + What’s the distinction between essential and accidental complexity?
 + Name 3 reasons why the building of software is essentially a hard task? Provide a one-line explanation.
@@ -1222,7 +1235,10 @@
 + Why was the user-interface design flawed?
 ## Summary ii
 + You are an experienced designer and you heard that the sales people earn more money than you do. You want to ask your boss for a salary-increase; how would you argue your case?
+	+ Omdat het een goed product is, dat het makkelijker te verkopen is.
+	+ Omdat iedereen gelijkwaardig moet behandeld worden, jij hebt evenveel moeite gedaan in het product als iemand die het verkoopt. Code of ethics: Colleagues
 + Software products are usually released with a disclaimer like “Company X is not responsible for errors resulting from the use of this program”. Does this mean that you shouldn’t test your software? Motivate your answer.
+	+ 
 + Your are a QA manager and are requested to produce a monthly report about the quality of the test process. How would you do that?
 + Why is “explainable Artificial Intelligence” so important when creating bots for software engineering tasks?
 ### When you chose the “No Silver Bullet” paper
