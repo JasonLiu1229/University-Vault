@@ -876,6 +876,7 @@
 	+ Ja, omdat scrum werkt op basis van iteratief en incrementeel productie. Dit betekent dat we constant kunnen aanpassen indien nodig.
 	+ Daarnaast is scrum een goed techniek voor communicatie tussen leden.
 # Software Quality 
+![[Pasted image 20240114225629.png]]
 ## Summary i
 + Why is software quality more important than it was a decade ago?
 	+ Software is meer in de dagelijks leven dan vroeger. Niet alleen in algemene toepassingen maar ook in toepassingen waar leven op het spel staat of producten waar veel geld in geïnvesteerd wordt. Dit zorgt ervoor dat fouten grote problemen kunnen resulteren.
