@@ -251,7 +251,7 @@
 + What is a minimum viable product?
 	+ Is een minimum bruikbaar versie van het product met het juiste aantal features, zodat users het kunnen gebruiken om feedback te geven voor future development.
 + Define a misuse case.
-	+ A use-case waarbij de actor hostile is tegen de systeem.
+	+ Een use-case waarbij de actor hostile is tegen de systeem.
 		+ Bijvoorbeeld in de context van een auto hebben, zou een andere actor als use case hebben "auto stelen".
 + Define a safety story.
 	+ Indien het satisfied is, zou het een probleem vermijden of de impact van het probleem verminderen indien dit te voorschijn komt. 

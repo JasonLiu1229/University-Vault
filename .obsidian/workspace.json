@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "SE/SE Questions for every chapter.md",
                 "mode": "source",
                 "source": false
               }
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "SE/SE Questions for every chapter.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "SE/SE Questions for every chapter.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "SE/SE Questions for every chapter.md"
               }
             }
           },
@@ -167,11 +167,11 @@
   },
   "active": "59529c133f5c1b0c",
   "lastOpenFiles": [
+    "README.md",
     "SE/SE Questions for every chapter.md",
     "SE/Pasted image 20240114021353.png",
     "SE/Pasted image 20240114012917.png",
     "SE/Pasted image 20240114003319.png",
-    "README.md",
     "SE/Pasted image 20240113225328.png",
     "README.md.txt",
     "New Text Document.txt",
