@@ -527,6 +527,7 @@
 			+ Hier heeft iedereen toegang op de code maar omdat we feature werken, is dit veel trager dan per component. 
 		![[Pasted image 20240112145126.png]]
 # Design Contract
+![[Pasted image 20240114183812.png]]
 ## Summary i
 + What is the distinction between Testing and Design by Contract? Why are they complementary techniques?
 	+ Testen probeert defecten na de feiten te diagnosticeren (en te genezen).
