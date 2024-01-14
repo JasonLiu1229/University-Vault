@@ -180,6 +180,7 @@
 		+ Complete lifecycle process
 		+ adaptable: je kan de notatie uitbreiden, je kan zelf je process kiezen
 # Requirements
+![[Pasted image 20240114154416.png]]
 ## Summary i
 + Why should the requirements specification be understandable, precise and open?
 	+ Understandable: Zodat we weten wat in en uit de scope zit van ons product.
