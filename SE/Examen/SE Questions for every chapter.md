@@ -700,6 +700,7 @@
 + Explain the subtle difference between code coverage and test coverage.
 	+ Hoewel zowel code coverage als test coverage gericht zijn op het verbeteren van de code-effectiviteit, verschillen ze qua focus: code coverage richt zich op code-uitvoering, terwijl test coverage zich richt op functionele prestaties.
 # Formal Specifications 
+![[Pasted image 20240114210553.png]]
 ## Summary i
 + Why is an UML class diagram a semi-formal specification?
 	+ **Informaliteit:** hoewel UML-klassediagrammen bepaalde regels en conventies volgen, zijn ze niet zo strikt gedefinieerd als formele specificaties. Dit betekent dat verschillende mensen hetzelfde diagram op enigszins verschillende manieren kunnen interpreteren.
