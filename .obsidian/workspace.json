@@ -25,7 +25,7 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "SE/Leerstof/10Metrics2023.pdf"
+                "file": "SE/Leerstof/11RefactoringJava2023.pdf"
               }
             }
           }
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/Leerstof/10Metrics2023.pdf",
+                "file": "SE/Leerstof/11RefactoringJava2023.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/Leerstof/10Metrics2023.pdf",
+                "file": "SE/Leerstof/11RefactoringJava2023.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/Leerstof/10Metrics2023.pdf"
+                "file": "SE/Leerstof/11RefactoringJava2023.pdf"
               }
             }
           },
@@ -178,6 +178,7 @@
   },
   "active": "7bb2f60979a0b6b4",
   "lastOpenFiles": [
+    "SE/Leerstof/10Metrics2023.pdf",
     "SE/Leerstof/09SoftwareQuality2023.pdf",
     "SE/Examen/SE Questions for every chapter.md",
     "Pasted image 20240114225629.png",
