@@ -601,6 +601,7 @@
 		+ Schrijf tests die controleren of aan de pre-condities, postcondities en invarianten wordt voldaan.
 	+ **Verfijn en check of de condities snel zijn**
 # Testing 
+![[Pasted image 20240114202602.png]]
 ## Summary i
 + What is (a) Testing, (b) a Testing Technique, (c) a Testing Strategy?
 	+ Testing

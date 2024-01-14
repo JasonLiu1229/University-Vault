@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "SE/Examen/SE Questions for every chapter.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "SE/05DesignContract2023.pdf"
+                "file": "SE/Leerstof/06Testing2023.pdf"
               }
             }
           }
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/05DesignContract2023.pdf",
+                "file": "SE/Leerstof/06Testing2023.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/05DesignContract2023.pdf",
+                "file": "SE/Leerstof/06Testing2023.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/05DesignContract2023.pdf"
+                "file": "SE/Leerstof/06Testing2023.pdf"
               }
             }
           },
@@ -178,33 +178,33 @@
   },
   "active": "7bb2f60979a0b6b4",
   "lastOpenFiles": [
-    "SE/SE Questions for every chapter.md",
-    "Pasted image 20240114183812.png",
-    "SE/05DesignContract2023.pdf",
-    "SE/04ProjectManagement2023.pdf",
-    "SE/03Architecture2023.pdf",
-    "SE/SE Questions for every chapter.pdf",
-    "SE/Pasted image 20240114180316.png",
-    "SE/Pasted image 20240114180253.png",
-    "SE/01Intro2023.pdf",
-    "SE/02Requirements2023.pdf",
-    "SE/06Testing2023.pdf",
-    "SE/07FormalSpec2023.pdf",
-    "SE/08DomainModeling2023.pdf",
-    "SE/09SoftwareQuality2023.pdf",
-    "SE/Pasted image 20240114154416.png",
-    "SE/Pasted image 20240114152645.png",
-    "SE/Pasted image 20240110200248.png",
-    "SE/Pasted image 20240114142824.png",
+    "SE/Leerstof/05DesignContract2023.pdf",
+    "SE/Leerstof/06Testing2023.pdf",
+    "SE/Examen/SE Questions for every chapter.md",
+    "SE/Examen/Images/Pasted image 20240114202602.png",
+    "SE/Examen/Images/Pasted image 20240111151018.png",
+    "SE/Examen/Images/Pasted image 20240114183812.png",
+    "SE/Examen/Images/Pasted image 20240114180316.png",
+    "SE/Examen/Images/Pasted image 20240114180253.png",
+    "SE/Examen/Images/Pasted image 20240114154416.png",
+    "SE/Examen/Images/Pasted image 20240114152645.png",
+    "SE/Examen/Images/Pasted image 20240114142824.png",
+    "SE/Examen/Images/Pasted image 20240114021353.png",
+    "SE/Examen/Images/Pasted image 20240114012917.png",
+    "SE/Examen/Images",
+    "SE/Leerstof/04ProjectManagement2023.pdf",
+    "SE/Leerstof/01Intro2023.pdf",
+    "SE/Leerstof/12Conclusion2023.pdf",
+    "SE/Examen",
+    "SE/Leerstof",
+    "SE/Taken",
+    "SE/Leerstof/03Architecture2023.pdf",
     "README.md",
-    "SE/Pasted image 20240114021353.png",
-    "SE/Pasted image 20240114012917.png",
-    "SE/Pasted image 20240114003319.png",
     "Vault/README.md",
     "SE/Vault/README.md",
     "Excalidraw/Drawing 2024-01-13 13.18.49.excalidraw.md",
     "Untitled.canvas",
-    "Requirements Engineering.md",
+    "SE/Taken/Requirements Engineering.md",
     "AI assignment 1.md"
   ]
 }
