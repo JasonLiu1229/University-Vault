@@ -1190,6 +1190,22 @@
 # Conclusion
 ## Summary i
 + Name 3 items from the code of ethics and provide a one-line explanation.
+	+ Public
+		+ Software developers onderhandelen met als doel van de publieke interesse. 
+	+ Client and employer
+		+ Software engineers zullen onderhandelen in de beste interesse van de client en de werkgever onderhandelt in de doel van de publieke interesse
+	+ Product
+		+ Software engineers zullen ervoor zorgen dat hun product en de modificaties die ze maken aan de hoogste standaarden voldoet.
+	+ Judgment
+		+ Software engineers behouden hun integrity en independence in hun professionele beoordeling.
+	+ Management
+		+ Managers en leiders op het gebied van software-engineering moeten een ethische benadering van het beheer van de ontwikkeling en het onderhoud van software onderschrijven en bevorderen.
+	+ Profession 
+		+ Software engineers moeten de integriteit en reputatie van het beroep bevorderen in overeenstemming met als belang de publieke interesse.
+	+ Colleagues
+		+ Software engineers zullen eerlijk en ondersteunend zijn tegen hun collega's
+	+ Self
+		+ Software engineers zullen 
 + If you are an independent consultant, how can you ensure that you will not have to act against the code of ethics?
 + What would be a possible metric for measuring the amount of innovation of a manufacturing company?
 + Explain the 2 main steps of test amplification: input amplification and assertion amplification

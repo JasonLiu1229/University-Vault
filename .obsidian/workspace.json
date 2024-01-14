@@ -18,8 +18,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "7bb2f60979a0b6b4",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "SE/12Conclusion2023.pdf"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -93,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "SE/12Conclusion2023.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/SE Questions for every chapter.md",
+                "file": "SE/12Conclusion2023.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/SE Questions for every chapter.md"
+                "file": "SE/12Conclusion2023.pdf"
               }
             }
           },
@@ -165,21 +176,20 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "7bb2f60979a0b6b4",
   "lastOpenFiles": [
+    "SE/SE Questions for every chapter.md",
+    "SE/12Conclusion2023.pdf",
+    "README.md",
     "SE/03Architecture2023.pdf",
     "SE/02Requirements2023.pdf",
     "SE/01Intro2023.pdf",
-    "SE/12Conclusion2023.pdf",
     "SE/11RefactoringJava2023.pdf",
     "SE/10Metrics2023.pdf",
     "SE/09SoftwareQuality2023.pdf",
     "SE/08DomainModeling2023.pdf",
     "SE/07FormalSpec2023.pdf",
     "SE/06Testing2023.pdf",
-    "SE/05DesignContract2023.pdf",
-    "README.md",
-    "SE/SE Questions for every chapter.md",
     "SE/Pasted image 20240114021353.png",
     "SE/Pasted image 20240114012917.png",
     "SE/Pasted image 20240114003319.png",
