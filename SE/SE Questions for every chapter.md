@@ -303,6 +303,7 @@
 + Elaborate on the relationship between an FMEA analysis and the variants of safety stories.
 	+ Safety stories zijn de oplossingen die we kunnen toepassen bij een failure mode.
 # Architecture
+![[Pasted image 20240114180316.png]]
 ## Summary i
 + What’s the role of a software architecture?
 	+ Een beschrijving van components en hun verbindingen tussen elkaar.
@@ -385,6 +386,7 @@
 + How would you organize an architecture assessment in your team?
 	+ Architecture assessment omvat het identificeren van de behoefte, het definiëren van de scope, het selecteren van het team, het kiezen van de methode, het uitvoeren van de beoordeling en het beoordelen van de uitkomst.
 # Project Management
+![[Pasted image 20240114180253.png]]
 ## Summary i
 + Name the five activities covered by project management.
 	+ Planning
