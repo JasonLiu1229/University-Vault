@@ -29,8 +29,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -104,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/12Conclusion2023.pdf",
+                "file": "SE/SE Questions for every chapter.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/12Conclusion2023.pdf",
+                "file": "SE/SE Questions for every chapter.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/12Conclusion2023.pdf"
+                "file": "SE/SE Questions for every chapter.md"
               }
             }
           },
@@ -176,15 +175,15 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "7bb2f60979a0b6b4",
+  "active": "1d52581d742ef906",
   "lastOpenFiles": [
-    "SE/p12_3_nosilverbullet.pdf",
-    "SE/SE Questions for every chapter.md",
     "SE/12Conclusion2023.pdf",
+    "SE/SE Questions for every chapter.md",
+    "SE/p12_3_nosilverbullet.pdf",
     "SE/p12_2_KillerRobotCase 1.zip",
     "SE/p12_3_nosilverbullet (1).pdf",
     "SE/p12_2_KillerRobotCase.zip",
-    "Pasted image 20240114142824.png",
+    "SE/Pasted image 20240114142824.png",
     "SE/01Intro2023.pdf",
     "SE/02Requirements2023.pdf",
     "README.md",

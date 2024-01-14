@@ -1229,8 +1229,11 @@
 + Why is “program verification” no silver bullet?
 + Why are “components” a potential silver bullet?
 ### When you chose the “Killer Robot” paper
+Case: https://gelzaragoza.medium.com/comprehensive-analysis-of-the-case-of-the-killer-robot-b4f2146aeb21
 + Which regression tests would you have written to prevent the “killer robot”?
+	+ Tests dat de robot nog steeds passive blijft tegen de mens. Dus dat het niet mensen dood.
 + Was code reviewing applied as part of the QA process? Why (not)?
+	+ Ja, maar testen waren gemanipuleerd. 
 + Why was the waterfall process disastrous in this particular case?
 + Why was the user-interface design flawed?
 ## Summary ii
@@ -1238,11 +1241,21 @@
 	+ Omdat het een goed product is, dat het makkelijker te verkopen is.
 	+ Omdat iedereen gelijkwaardig moet behandeld worden, jij hebt evenveel moeite gedaan in het product als iemand die het verkoopt. Code of ethics: Colleagues
 + Software products are usually released with a disclaimer like “Company X is not responsible for errors resulting from the use of this program”. Does this mean that you shouldn’t test your software? Motivate your answer.
-	+ 
+	+ Indien we 100% zeker weten dat het niet de standaarden overschrijft, dan weten we dat alles volgens de publieke interesse werd gedaan.
+	+ Algemeen is het altijd noodzakelijk om testen uit te voeren, uiteindelijk is de software gemaakt door iemand anders en het kan altijd zijn dat er defecten zijn dat overlooked zijn. Zelfs als het software gemaakt is door jezelf, zijn testen noodzakelijk, er kunnen altijd verbetering zijn (refactoring).
+	+ De disclaimer dient enkel om niet liable te zijn indien je voor de rechter komt.
 + Your are a QA manager and are requested to produce a monthly report about the quality of the test process. How would you do that?
+	+ We willen uiteindelijk nakijken of de kwaliteit gegarandeerd is of dat er aanpassingen nodig zijn. 
+	+ We kunnen simpel, en goedkoop nakijken of software voldoet aan kwaliteit door gebruik te maken van FTR (formal technical reviews). 
+	+ We kunnen daarnaast ook gebruik maken van standaarden, om na te gaan of het gecertificeerd kan worden. 
+	+ Daarnaast maken we ook gebruik van testen, om na te gaan of de systeem zo juist was als ervoor, om na te gaan of de kwaliteit niet gedaald is vergeleken vorige maanden.
+	+ Daarnaast kunnen we gebruik maken van metrics, om verschillende aspecten in maatwaardes uit te drukken, bijvoorbeeld defect density. 
 + Why is “explainable Artificial Intelligence” so important when creating bots for software engineering tasks?
+	+ Dit heeft deels te maken met de ethische waardes van software. Indien AI niet explainable, kan het zijn dat het onverwachte resultaten vertoont, dat ethisch en niet ethisch kan zijn. 
+	+ Indien het explainable is, is er een hogere kans dat het moet werken zoals verwacht. Dit verhoogt het vertrouwen en zekerheid dat de AI niks verkeerd doet.
 ### When you chose the “No Silver Bullet” paper
 + Explain why incremental development is a promising attack on conceptual essence. Give examples from the different topics addressed in the course.
 + “Software components” are said to be a promising attack on conceptual essence. Which techniques in the course are applicable? Which techniques aren’t?
 ### When you chose the “Killer Robot” paper
 + Recount the story of the Killer Robot case. List the three most important causes for the failure and argue why you think these are the most important.
+	+ "*Bad interface design (because of the death), the waterfall model (because of the approach) and faked tests (because of prevention).*"
