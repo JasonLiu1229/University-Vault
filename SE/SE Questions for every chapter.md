@@ -1121,16 +1121,46 @@
 + Where would you fit coupling/cohesion metrics in a hierarchical quality model like ISO 9126?
 	+ Maintainability - Simplicity/modularity 
 + Why are coupling/cohesion metrics important? Why then are they so rarely used?
-	+ 
+	+ Omdat lage coupling en hoge cohesion willen, dit resulteert in veel voordelen.
+	+ Helaas is dit heel lastig om te bepalen omdat ze een slechte representatie weergeven.
+		+ Bijvoorbeeld: het kan zijn dat we lage coupling hebben maar dat we een hoge coupling waarde hebben.
 + Do you believe that “defect density” says something about the correctness of a program? Motivate your answer?
+	+ Defect density
+		+ Is de hoeveelheid defects vergeleken de hoeveelheid lijnen code, meestal berekent om de 1000 lijnen code.
+	+ Indien we hoge defect density hebben, dan hebben we meer fouten per 1000 lijnen code. Dus correctness verlaagd. 
 # Refactoring (Java)
 ## Summary i
 + Can you explain how refactoring differs from plain coding?
+	+ We veranderen onze originele code niet qua werking maar alleen qua interne structuur.
 + Can you tell the difference between Corrective, Adaptive and Perfective maintenance? And how about preventive maintenance?
+	+ Corrective
+		+ De defecten oplossen.
+	+ Adaptive
+		+ Aanpassen tot nieuwe environments
+	+ Perfective
+		+ Extra features toevoegen, en onnodige features weg doen.
+	+ Preventive
+		+ Aanpassen zodat we defecten vermijden in de toekomst.
 + Can you name the three phases of the iterative development life-cycle? Which of the three does refactoring support the best? Why do you say so?
+	+ Prototyping
+	+ Expansion
+	+ Consolidation
+	![[Pasted image 20240114021353.png]]
 + Can you give 4 symptoms for code that can be “cured” via refactoring?
+	+ Duplicate code
+	+ Nested conditionals
+	+ Large classes/methods
+	+ abusive inheritance 
 + Can you explain why add class/add method/add attribute are behaviour preserving?
+	+ Add class
+		+ Zolang de andere classes geen coupling hebben met deze nieuwe class, is er geen verandering aan behaviour.
+	+ Add method
+		+ Een methode toevoegen zal enkel extra functionaliteit toevoegen. 
+	+ Add attribute
+		+ Zelfde met attributen, we geven enkel extra informatie. 
+	+ Dus de main reason is dat de originele code hetzelfde blijft omdat we geen aanpassingen brengen in de originele code. We voegen enkel extra functionaliteiten toe.
 + Can you give the pre-conditions for a “rename method” refactoring?
+	+ Does the name already exist?
 + Which 4 activities should be supported by tools when refactoring?
 + Why can’t we apply a “push up” to a method “x()” which accesses an attribute in the class the method is defined upon (see Refactoring Sequence on page 27–31)?
 ## Summary ii
