@@ -1162,12 +1162,31 @@
 + Can you give the pre-conditions for a “rename method” refactoring?
 	+ Does the name already exist?
 + Which 4 activities should be supported by tools when refactoring?
-+ Why can’t we apply a “push up” to a method “x()” which accesses an attribute in the class the method is defined upon (see Refactoring Sequence on page 27–31)?
+	+ rapid edit-compile-run cycles
+	+ reverse engineering facilities
+	+ regression testing
+	+ version & configuration management
++ Why can’t we apply a “push up” to a method “x()” which accesses an attribute in the class the method is defined upon (see Refactoring Sequence on page 24)?
+	+ omdat we de attribute niet kunnen accessen in de andere class. Dus we moeten de attribute ook "push up" refactorren. 
 ## Summary ii
 + Why would you use refactoring in combination with Design by Contract and Regression Testing?
+	+ Design by contract zorgt er voor dat de aanpassingen defect loos zijn en regression testing zorgt er voor dat er geen verandering is van functionaliteiten, dus alles werkt nog als vroeger.
 + Can you give an example of a sequence of refactorings that would improve a piece of code with deeply nested conditionals?
+	+ Extract method, indien de condities types zijn, kunnen we eventueel nog polymorphism gebruiken.
 + How would you refactor a large method? And a large class?
+	+ Large method
+		+ Opsplitsen in kleinere methodes.
+	+ Large class
+		+ Indien we veel functionaliteiten hebben met gerelateerde doelen, omzetten naar eigen klasse. 
 + Consider an inheritance relationship between a superclass “Square” and a subclass “Rectangle”. How would you refactor these classes to end up with a true “is-a” relationship? Can you generalise this procedure to any abusive inheritance relationship?
+	+ Als we kijken naar beide klassen, dan zien we dat beide niet echt een correlatie hebben met elkaar om een "is-a" relatie te creëren. Daarom maken we een extra klassen hier, dat hun gemeenschappelijk maakt, bijvoorbeeld klasse "Shape".
+	+ Identify the Inappropriate Inheritance: Determine if the subclass is not a more specific form of the superclass.
+	+ Procedure
+		1. ==**Find a Common Superclass:**== Identify a more general concept that both the current superclass and subclass can fall under.
+		2. ==**Create the New Superclass:**== Create a new superclass based on the more general concept identified in step 2.
+		3. ==**Move Common Attributes and Methods:**== Move any attributes or methods that are common to both the original superclass and subclass to the new superclass.
+		4. ==**Refactor the Original Classes:**== Refactor the original superclass and subclass to inherit from the new superclass.
+		5. ==**Test the Refactored Classes:**== Ensure that the refactored classes work as expected and that the system behaviour is preserved.
 # Conclusion
 ## Summary i
 + Name 3 items from the code of ethics and provide a one-line explanation.
