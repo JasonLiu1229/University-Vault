@@ -748,6 +748,7 @@
 + You are part of a team, build a fleet management system for drones transporting medical goods between hospitals. You must secure the system against cyber-attacks. Your boss asks you to look into formal specs; which ones would you advise and why?
 	+ High risk systems: human lives depend on the system.
 # Domain Modelling 
+![[Pasted image 20240114222830.png]]
 ## Summary i
 + Why is it necessary to validate and analyse the requirements?
 	+ Validate:
