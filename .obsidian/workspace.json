@@ -23,9 +23,11 @@
             "id": "7bb2f60979a0b6b4",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "SE/Leerstof/11RefactoringJava2023.pdf"
+                "file": "SE/Examen/SE Questions for every chapter.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -104,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/Leerstof/11RefactoringJava2023.pdf",
+                "file": "SE/Examen/SE Questions for every chapter.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/Leerstof/11RefactoringJava2023.pdf",
+                "file": "SE/Examen/SE Questions for every chapter.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "SE/Leerstof/11RefactoringJava2023.pdf"
+                "file": "SE/Examen/SE Questions for every chapter.md"
               }
             }
           },
@@ -178,6 +180,8 @@
   },
   "active": "7bb2f60979a0b6b4",
   "lastOpenFiles": [
+    "SE/Examen/SE Questions for every chapter.pdf",
+    "SE/Leerstof/11RefactoringJava2023.pdf",
     "SE/Leerstof/10Metrics2023.pdf",
     "SE/Leerstof/09SoftwareQuality2023.pdf",
     "SE/Examen/SE Questions for every chapter.md",
@@ -198,8 +202,6 @@
     "SE/Examen/Images",
     "SE/Leerstof/04ProjectManagement2023.pdf",
     "SE/Leerstof/01Intro2023.pdf",
-    "SE/Leerstof/12Conclusion2023.pdf",
-    "SE/Examen",
     "README.md",
     "Vault/README.md",
     "SE/Vault/README.md",
