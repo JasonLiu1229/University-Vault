@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "59529c133f5c1b0c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "SE/Examen/SE Questions for every chapter.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "7bb2f60979a0b6b4",
             "type": "leaf",
             "state": {
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"

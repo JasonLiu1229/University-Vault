@@ -122,7 +122,7 @@
 	+ De tweede definitie gaat dan meer over team verband, dat ook belangrijk is maar niet de essentie toont van software engineering.
 	+ De derde definitie zegt enkel dat het anders is dan andere engineering praktijken, vertelt niks over wat het is en klinkt ook negatief tegen over de andere praktijken.
 + Why do we choose “Correctness” & “Traceability” as evaluation criteria? Can you imagine some others?
-	+ _Correctness: Validation / Verification. Dit zorgt voor de kwaliteit van het product
+	+ *Correctness: Validation / Verification.* Dit zorgt voor de kwaliteit van het product
 		+ Zijn we het juiste aan het maken?
 		+ Maken we het juist?
 	+ _Traceability: Deduce what things will be affected by change._ Dit zorgt ervoor dat we kwaliteit behouden van het product indien er aanpassingen zijn.
