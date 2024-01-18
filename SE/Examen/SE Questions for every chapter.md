@@ -596,6 +596,7 @@
 	+ Make ze redelijk en duidelijk.
 + Why is (consumer-driven) contract testing so relevant in the context of microservices?
 	+ Contract testing is een cruciaal onderdeel om ervoor te zorgen dat microservices correct kunnen samenwerken, waardoor het een onmisbare strategie is voor applicaties met een microservices-architectuur.
+	![[Pasted image 20240118131226.png]]
 + Assume you have an existing software system and you are a software quality engineer assigned to apply design by contract. How would you start? What would you do?
 	+ **Identificeer Contracten**
 	+ **Definieer Pre-condities en Post-condities**
