@@ -379,6 +379,8 @@
 + Explain the key steps of the ATAM method?
 	+ Analyse architecture + scenarios, check their risks, sensitivity points and trade-offs, and reanalyse/reform.
 + How can you balance emergent design with intentional architecture?
+	+ **Intentional architecture** – Defines a set of purposeful, planned architectural strategies and initiatives that enhance solution design, performance, and usability, guiding cross-team design and synchronized implementation.
+	+ **Emergent design** – Provides the technical basis for a fully evolutionary and incremental implementation approach. This helps developers and designers respond to immediate user needs, allowing the structure to evolve as the system is built and deployed.  
 	+ Het balanceren van opkomend ontwerp met opzettelijke architectuur impliceert het begrijpen van hun rollen, het gebruiken van architecturale start- en landingsbanen, balanceren met enablers, samenwerken tussen teams, evolueren met Agile Architecture en investeren in legacy-modernisering.
 	+ link: https://scaledagileframework.com/agile-architecture/#:~:text=capabilities%20of%20teams.-,Balancing%20Intentional%20and%20Emergent%20Design,-Traditional%20architecture%20approaches
 + What happens when your team goes outside the boundaries of the guardrail?
