@@ -4,15 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "6f590c900cc71bac",
+        "id": "00dd5f3715220203",
         "type": "tabs",
         "children": [
           {
-            "id": "7bb2f60979a0b6b4",
+            "id": "b37eb81d6a899b2b",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -89,6 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,6 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +132,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "README.md"
+              }
             }
           },
           {
@@ -157,7 +165,7 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "b37eb81d6a899b2b",
   "lastOpenFiles": [
     "AI/Examen/dummy.txt",
     "AI/Examen/New Text Document.txt",
