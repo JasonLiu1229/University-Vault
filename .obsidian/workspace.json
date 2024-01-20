@@ -11,12 +11,8 @@
             "id": "7bb2f60979a0b6b4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "SE/Examen/SE Questions for every chapter.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
         ]
@@ -93,7 +89,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "SE/Examen/SE Questions for every chapter.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +105,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "SE/Examen/SE Questions for every chapter.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -132,9 +126,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "SE/Examen/SE Questions for every chapter.md"
-              }
+              "state": {}
             }
           },
           {
@@ -167,28 +159,28 @@
   },
   "active": "1d52581d742ef906",
   "lastOpenFiles": [
-    "SE/Examen/Images/Pasted image 20240118131226.png",
-    "SE/Examen/SE Questions for every chapter.pdf",
-    "SE/Leerstof/05DesignContract2023.pdf",
+    "AI/Examen/dummy.txt",
+    "AI/Examen/New Text Document.txt",
+    "AI/Examen",
+    "AI/New folder",
+    "AI/Leerstof/Slides 10-2.pdf",
+    "AI/Leerstof/Slides 10-1.pdf",
+    "AI/Leerstof/Slides 9-2.pdf",
+    "AI/Leerstof/Slides 9-1.pdf",
+    "AI/Leerstof/Slides 8.pdf",
+    "AI/Leerstof/Slides 7-2.pdf",
+    "AI/Leerstof/Slides 7-1.pdf",
     "SE/Examen/SE Questions for every chapter.md",
-    "SE/Leerstof/10Metrics2023.pdf",
-    "SE/Leerstof/11RefactoringJava2023.pdf",
-    "SE/Leerstof/09SoftwareQuality2023.pdf",
+    "SE/Examen/Images/Pasted image 20240118131226.png",
     "SE/Examen/Images/Pasted image 20240114225629.png",
-    "SE/Leerstof/08DomainModeling2023.pdf",
     "SE/Examen/Images/Pasted image 20240114222830.png",
-    "SE/Leerstof/07FormalSpec2023.pdf",
     "SE/Examen/Images/Pasted image 20240114210553.png",
-    "SE/Leerstof/06Testing2023.pdf",
     "SE/Examen/Images/Pasted image 20240114202602.png",
     "SE/Examen/Images/Pasted image 20240111151018.png",
     "SE/Examen/Images/Pasted image 20240114183812.png",
     "SE/Examen/Images/Pasted image 20240114180316.png",
     "SE/Examen/Images/Pasted image 20240114180253.png",
     "SE/Examen/Images/Pasted image 20240114154416.png",
-    "SE/Examen/Images/Pasted image 20240114152645.png",
-    "SE/Examen/Images",
-    "SE/Leerstof/04ProjectManagement2023.pdf",
     "README.md",
     "Vault/README.md",
     "SE/Vault/README.md",
