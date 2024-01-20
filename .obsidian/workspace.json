@@ -39,7 +39,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -113,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Leerstof/Slides 1-1.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +131,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Leerstof/Slides 1-1.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -153,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md"
+                "file": "AI/Leerstof/Slides 1-1.pdf"
               }
             }
           },
@@ -185,10 +186,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "b37eb81d6a899b2b",
+  "active": "a17cdc916b02ea4e",
   "lastOpenFiles": [
-    "AI/Leerstof/Slides 1-1.pdf",
     "AI/Examen/Examen samenvatting.md",
+    "AI/Leerstof/Slides 1-1.pdf",
     "AI/Examen/Images/Pasted image 20240120191630.png",
     "AI/Examen/download (1).png",
     "AI/Examen/download (1).png.crdownload",
