@@ -3,6 +3,10 @@
 ![[Pasted image 20240120181210.png]]
 ## Intro
 ### Agent that plan ahead
+![[Pasted image 20240120191630.png]]
+#### Reflex agents
+	
+#### Planning agents
 ### Search problems
 ## Uninformed search
 ## Informed search
