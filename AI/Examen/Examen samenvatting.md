@@ -97,7 +97,35 @@ Is het compleet?
 Is het optimaal?
 + Enkel als de kost 1 zijn tussen de paden.
 ### DFS vs BFS
-DFS zou beter resultaten opleveren indien onze goal state diep links in de boom plaats vindt. BFS resulteert algemeen betere resultaten indien s
+DFS zou beter resultaten opleveren indien onze goal state diep links in de boom plaats vindt. BFS resulteert algemeen betere resultaten indien s > m, dus de diepte van goal state is hoger dan diepte van de boom.
+### Iterative deepening
+Idee: Combineer voordelen van beide, dus we incrementen de diepte dat we DFS runnen hele tijd met 1.
++ DFS op diepte 1, check of er oplossingen zijn, indien niet dan ...
++ DFS op diepte 2, ...
++ ...
+Het is een goed idee maar nog niet perfect.
+### Uniform Cost Search
+> Wat als onze paden geen kost hebben van 1, maar een willekeurige kost. DFS zou misschien ons resulteren in de kortste pad maar niet de meest kost vriendelijke pad.\
+> Onze fringe is een priority queue.
+![[Pasted image 20240121003933.png]]
+#### Properties
+![[Pasted image 20240121004504.png]]
+Op welke nodes breidt UCS uit?
++ Kijkt naar alle nodes met een kost minder dan de momentele goedkoopste kost.
++ Als de oplossing een kost heeft van C* en de bogen een kost van minstens $\epsilon$, dan is de "effective depth" ongeveer C*/$\epsilon$.
++ Heeft een tijdscomplexiteit van $O(b^{C*/\epsilon})$.
+
+Hoeveel ruimte neemt de fringe op?
++ $O(b^{C*/\epsilon})$ ongeveer.
+
+Is het compleet?
++ Indien de best oplossing een finite set is en de minimum arc cost is positief, dan ja.
+
+Is het optimaal?
++ Ja, zie bewijs in A*.
+#### Issues
++ Kijkt naar elke mogelijke "richting".
++ Heeft geen informatie in verband met de goal state zijn locatie.
 ## Informed search
 # Lecture 2
 # Lecture 3
