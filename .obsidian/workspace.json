@@ -13,9 +13,29 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "AI/Examen/Examen samenvatting.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "a17cdc916b02ea4e",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "AI/Leerstof/Slides 1-1.pdf"
+              }
+            }
+          },
+          {
+            "id": "fbee8a7cab072e4b",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "AI/Examen/online_samenvatting.pdf"
               }
             }
           }
@@ -93,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "AI/Examen/Examen samenvatting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "AI/Examen/Examen samenvatting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "AI/Examen/Examen samenvatting.md"
               }
             }
           },
@@ -167,17 +187,20 @@
   },
   "active": "b37eb81d6a899b2b",
   "lastOpenFiles": [
+    "AI/Examen/online_samenvatting.pdf",
+    "AI/Leerstof/Slides 1-1.pdf",
+    "AI/Examen/Examen samenvatting.md",
+    "AI/Leerstof/Slides 1-2.pdf",
+    "AI/Examen/Images",
+    "AI/Examen/Untitled.md",
+    "AI/Examen/Images/Pasted image 20240120181210.png",
+    "AI/Examen/online_samenvatting.pdf.crdownload",
+    "AI/Samenvattingen",
+    "README.md",
     "AI/Examen/dummy.txt",
     "AI/Examen/New Text Document.txt",
     "AI/Examen",
     "AI/New folder",
-    "AI/Leerstof/Slides 10-2.pdf",
-    "AI/Leerstof/Slides 10-1.pdf",
-    "AI/Leerstof/Slides 9-2.pdf",
-    "AI/Leerstof/Slides 9-1.pdf",
-    "AI/Leerstof/Slides 8.pdf",
-    "AI/Leerstof/Slides 7-2.pdf",
-    "AI/Leerstof/Slides 7-1.pdf",
     "SE/Examen/SE Questions for every chapter.md",
     "SE/Examen/Images/Pasted image 20240118131226.png",
     "SE/Examen/Images/Pasted image 20240114225629.png",
@@ -188,8 +211,6 @@
     "SE/Examen/Images/Pasted image 20240114183812.png",
     "SE/Examen/Images/Pasted image 20240114180316.png",
     "SE/Examen/Images/Pasted image 20240114180253.png",
-    "SE/Examen/Images/Pasted image 20240114154416.png",
-    "README.md",
     "Vault/README.md",
     "SE/Vault/README.md",
     "Excalidraw/Drawing 2024-01-13 13.18.49.excalidraw.md",
