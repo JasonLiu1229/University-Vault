@@ -59,7 +59,45 @@ Enkele properties dat het moet nagaan.
 + Time complexity? 
 + Space complexity?
 ### DFS (Depth-First-Search)
+> Bekijk wat de bodem ons eerst resulteert en kijk daarna zijn naasten.
+> Onze fringe is een LIFO stack.
 ![[Pasted image 20240121000025.png]]
+#### Properties
+![[Pasted image 20240121001440.png]]
+Op welke nodes breidt DFS uit?
++ Neemt een linkse noden.
++ Kan de hele boom aflopen.
++ Indien de hoogte van de boom finite is, dan duurt het $O(b^m)$. 
+
+Hoeveel ruimte neemt de fringe op?
++ Heeft enkel siblings op zijn pad naar de root, dus $O(bm)$.
+
+Is het compleet?
++ Indien m = infinite, dan kan de boom cyclussen hebben. Dit resulteert in geen oplossing omdat het infinite kan blijven runnen.
+
+Is het optimaal?
++ Nee, want het kiest de "Links mogelijk oplossing", zonder enige gedachten aan de diepte of de kost.
+### BFS (Breath-First-Search)
+> Kijk wat elke laag ons resulteert.
+> Onze fringe is een FIFO queue.
+![[Pasted image 20240121001858.png]]
+#### Properties
+![[Pasted image 20240121002808.png]]
+Op welke nodes breidt BFS uit?
++ Kijk naar alle nodes boven de hoogste oplossing in de boom.
++ Laat de diepte van de hoogste oplossing s zijn.
++ Dan duurt de search $O(b^s)$.
+
+Hoeveel ruimte neemt de fringe op?
++ Indien we heel de laatste laag mee tellen (laag van de hoogste oplossing), dan $O(b^s)$.
+
+Is het compleet?
++ s moet finite zijn als een oplossing bestaat, dus ja.
+
+Is het optimaal?
++ Enkel als de kost 1 zijn tussen de paden.
+### DFS vs BFS
+DFS zou beter resultaten opleveren indien onze goal state diep links in de boom plaats vindt. BFS resulteert algemeen betere resultaten indien s
 ## Informed search
 # Lecture 2
 # Lecture 3
