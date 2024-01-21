@@ -314,10 +314,21 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 ### CSPs
 - Discrete variables
 	- Finite domains
-		- 
-	- Infinite domains
+		- Indien we size d mogelijkheden hebben in het domein, dan hebben we $O(d^n)$ mogelijke complete assignments.
+		- E.g., Boolean CSPs, including Boolean satisfiability (NP- complete)
+	- Infinite domains (integers, strings, etc.)
+		- E.g., job scheduling, variables are start/end times for each job
+		- Linear constraints solvable, nonlinear undecidable
+	![[Pasted image 20240121170549.png]]
+
 - Continuous variables
+	- E.g., start/end times for Hubble Telescope observations
+	- Linear constraints solvable in polynomial time by LP methods
+	![[Pasted image 20240121170622.png]]
 ### Constraints
+- Varieties of Constraints
+	- 
+- Preferences
 ## Standard Search Formulation
 ## Backtracking Search
 ### Pseudocode
