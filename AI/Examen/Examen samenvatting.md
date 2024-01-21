@@ -859,8 +859,148 @@ In this case we want that number to return the actual minimax value of that posi
     - Value at a min-node will only keep going down
     - Once value of min-node lower than better option for max along path to root, can prune
     - Hence: If evaluation function provides upper-bound on value at min-node, and upper-bound already lower than better option for max along path to root THEN can prune.
+## Uncertain Outcomes
+	![[Pasted image 20240121235641.png]]
+### Worst Case vs Average Case
+	![[Pasted image 20240121235725.png]]
+- Idea for today:
+    - Uncertain outcomes controlled by chance, not an adversary!
+## Expectimax Search
+- Why wouldn’t we know what the result of an action will be?
+    - Explicit randomness: rolling dice
+    - Unpredictable opponents: the ghosts respond randomly
+    - Actions can fail: when moving a robot, wheels might slip
+- Values should now reflect average-case (expectimax) outcomes, not worst-case (minimax) outcomes
+- Expectimax search: compute the average score under optimal play
+    - Max nodes as in minimax search
+    - Chance nodes are like min nodes but the outcome is uncertain
+    - Calculate their expected utilities
+    - I.e. take weighted average (expectation) of children
+- Later, we’ll learn how to formalize the underlying uncertain-result problems as **Markov Decision Processes**
+	![[Pasted image 20240121235824.png]]
+### Pseudocode
+```python
+def value(state):
+    if the state is a terminal state: return the state’s utility
+    if the next agent is MAX: 
+        return max-value(state)
+    if the next agent is EXP: 
+        return exp-value(state)
+```
+
+```python
+def max-value(state):
+    initialize v = -∞
+    for each successor of state:
+        v = max(v, value(successor))
+    return v
+```
+
+```python
+def exp-value(state):
+    initialize v = 0
+    for each successor of state:
+        p = probability(successor)
+        v += p * value(successor)
+    return v
+```
+	![[Pasted image 20240122000017.png]]
+	v = (1/2) (8) + (1/3) (24) + (1/6) (-12) = 10
+### Expectimax Pruning?
+Expectimax can not apply pruning. This is because we make use of the weighted average of every node, so every node is involved.
+### Depth-Limited Expectimax
+![[Pasted image 20240122000234.png]]
+Computing the full expectimax is computationally heavy, so we can limit it on the amount of layers we compute it on.
+## Probabilities
+### Reminder: Probabilities
+	![[Pasted image 20240122000418.png]]
+- A **random variable** represents an event whose outcome is unknown
+- A **probability distribution** is an assignment of weights to outcomes
+
+- Example: Traffic on freeway 
+	- Random variable: T = whether there’s traffic 
+	- Outcomes: T in {none, light, heavy} 
+	- Distribution: P(T=none) = 0.25, P(T=light) = 0.50, P(T=heavy) = 0.25
+	![[Pasted image 20240122000525.png]]
+
+- Some laws of probability (more later): 
+	- Probabilities are always non-negative 
+	- Probabilities over all possible outcomes sum to one
+
+- As we get more evidence, probabilities may change: 
+	- P(T=heavy) = 0.25, P(T=heavy | Hour=8am) = 0.60 
+	- We’ll talk about methods for reasoning and updating probabilities later
+### Reminder: Expectations
+- The expected value of a function of a random variable is the average, weighted by the probability distribution over outcomes.
+	![[Pasted image 20240122000757.png]]
+- Example: How long to get to an airport?
+	![[Pasted image 20240122000842.png]]
+### What probabilities to use?
+- In expectimax search, we have a probabilistic model of how the opponent (or environment) will behave in any state
+    - Model could be a simple uniform distribution (roll a die)
+    - Model could be sophisticated and require a great deal of computation
+    - We have a chance node for any outcome out of our control: opponent or environment
+    - The model might say that adversarial actions are likely!
+- For now, assume each chance node magically comes along with probabilities that specify the distribution over its outcomes
+	![[Pasted image 20240122001000.png]]
+One important thing to remember is that just because we assign probabilities that reflect our believes to the outcome, that does not mean that the thing on the other side of flipping a coin.
+
+If I think there is a 20% chance that the ghost go to left , it doesn't mean that the ghost has a random number generator. It just means that given my model which may be a simplification that's the best I can say given my evidence.
+### Quiz: Informed Probabilities
+- Let’s say you know that your opponent is actually running a depth 2 minimax, using the result 80% of the time, and moving randomly otherwise
+- Question: What tree search should you use?
+- Answer: Expectimax!
+    - To figure out EACH chance node’s probabilities, you have to run a simulation of your opponent
+    - This kind of thing gets very slow very quickly
+    - Even worse if you have to simulate your opponent simulating you…
+    - … except for minimax, which has the nice property that it all collapses into one game tree
+
+In general expectimax is the more general search procedures. You should always in principle use expectimax
+## Modelling Assumptions
+	![[Pasted image 20240122001500.png]]
+### The Dangers of Optimism and Pessimism
+|Dangerous Optimism|Dangerous Pessimism|
+|:--|--:|
+|Assuming chance when the world is adversarial.  |Assuming the worst case when it’s not likely.|
+|![[Pasted image 20240122001540.png]] |![[Pasted image 20240122001608.png]] |
+### Assumptions vs. Reality
+	![[Pasted image 20240122001718.png]]
+- Pacman used depth 4 search with an eval function that avoids trouble
+- Ghost used depth 2 search with an eval function that seeks Pacman
+## Other Game Types
+	![[Pasted image 20240122001826.png]]
+### Mixed Layer Types
+- E.g. Backgammon
+- Expectiminimax
+    - Environment is an extra “random agent” player that moves after each min/max agent
+    - Each node computes the appropriate combination of its children
+	![[Pasted image 20240122001857.png]]
+### Multi-Agent Utilities
+- What if the game is not zero-sum, or has multiple players?
+- Generalization of minimax:
+    - Terminals have utility tuples
+    - Node values are also utility tuples
+    - Each player maximizes its own component
+    - Can give rise to cooperation and competition dynamically…
+	![[Pasted image 20240122002039.png]]
+Each player has its own value of terminal node, and will optimize for their own outcome. Minimax , we kind of have that too. The maximizer had the number that we were showing, and the minimizer had the negative of that number. So there were actually 2 numbers sitting there, but it was the negative of each other, so we only showed one. Minimax is a special case of this where we just collapse those 2 opposite numbers into one number that we display.
+
+The leaf utilities are now written as pairs (UA , UB, UC ). In this generalized setting, A seeks to maximize UA, the first component, while B seeks to maximize UB , the second component.
+
+In above example, the leftmost green node should be: _**(1,6,6)**_
+
+Different things can emerge here, though these numbers are not just complementary to each other. In the left sub tree, blue prefer to 6, can they make that happen? What will green do ? Green will choose the (1,6,6), which will happen that blue also gets 6 and gets what they want. So what we have here is actually a collaboration between blue and green.
+
 ---
-# Lecture 4
+# Lecture 4 Bayes' Nets
+> Bayes' Nets, also known as graphical models, which are a technique for building probabilistic models over large numbers of random variables, in a way that is efficient to specify and efficient to reason over.
+>
+>The development of AI stop in 80s because the difficulty of uncertainty. You can not compute such a large joint probability table with thousands variable.
+>
+>Bayes' Nets wil give us a way to deal with distributions of our large sets of random variable in a meaningful way
+	![[Pasted image 20240122002334.png]]
+## Probabilistic Models
+
 ---
 # Lecture 5
 ---
