@@ -269,7 +269,7 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 - Consistency implies admissibility
 - In general, most natural admissible heuristics tend to be consistent, especially if from relaxed problem.
 ---
-# Lecture 2
+# Lecture 2 CSP
 ![[Pasted image 20240121160255.png]]
 > Start part one.
 ## What is search for?
@@ -652,7 +652,103 @@ Why does this make sense ?
 This is an example of not just nudging your thing locally, but just taking entirely different ways of traversing the space.
 
 ---
-# Lecture 3
+# Lecture 3 Adversarial Search
+## Types of games
+- Many different kinds of games
+
+- Axes
+    - Deterministic or stochastic?
+    - One, two, or more players?
+    - Zero sum?
+    - Perfect information (can you see the state)?
+
+We will talk about zero sum and deterministic games. They are games of perfect information.
+
+Think about how this is different from search.
+
+In search I gave you the search problem, and what you gave me back is a plan or path it is a sequences of actions that executed and it was guaranteed to succeed.
+
+That's not going to work here because we don't control our opponent. So we can't just give a plan that guarantes to succeed. What we need to do is we need a function which tells us in any given state what to do. That is the **policy** in the game case it's often called strategy.
+### Deterministic Games
+- Many possible formalizations, one is:
+    - States: S (start at s₀)
+    - Players: P={1...N} (usually take turns)
+        - Defines which player has the move in a state.
+    - Actions: A (may depend on player / state)
+        - Returns the set of legal moves in a state.
+    - Transition Function: SxA → S
+        - The result of a move depending on the given state.
+    - Terminal Test: S →{t,f}
+        - Which is true when the game is over and false otherwise.
+        - States where the game has ended are called _**terminal states**_ .
+    - Terminal Utilities: SxP → R
+        - Every outcome of the game will be scored.
+        - Defines the final numeric value for a game that ends in terminal state _**s**_ for a player _**p**_
+        - This tell us for an end-state how much it is worth to each of the players.
+        - In chess, the outcome is a win, draw, or loss, with values +1, 0, or -1
+- Solution for a player is a **policy**: S → A
+    - the solution to a game like this is a policy which map states to actions.
+### Zero-Sum Games
+|Zero-Sum Games|General Games|
+|---|---|
+|Agents have opposite utilities (values on outcomes)|Agents have independent utilities (values on outcomes)|
+|Lets us think of a single value that one maximizes and the other minimizes|Cooperation, indifference, competition, and more are all possible|
+|Adversarial, pure competition|More later on non-zero-sum games|
+## Adversarial Search
+	![[Pasted image 20240121230436.png]]
+So instead of just taking actions with no consideration to the opponent, we will now make decisions based on what our opponent might or might not do.
+
+So for instance, if we look at the example of Pacman, we might need to consider what the ghost will do in case we take this direction of movement.
+### Single-Agent Trees
+	![[Pasted image 20240121230814.png]]
+So when we look at a single agent, we can see that different movement leads to different outcomes of values. 
+
+What we want is the value 8, so for our agent we want the best possible outcome, and in this case it is the maximum.
+	![[Pasted image 20240121231055.png]]
+### Adversarial Game trees
+	![[Pasted image 20240121231123.png]]
+But what if we have more than one agent, this we will be a tad bit complexer, because now we can't just move to our pellet just recklessly. 
+
+And how do we decide on how the opponent should move. So if our values are based on our movement, than the best possible move for the opponent is when the value of the state for us is the worst. So in other words the minimum of the states.
+#### Minimax values
+	![[Pasted image 20240121231454.png]]
+Here we can see a combination of us making a move and then the opponent making a move.
+### Example Tic-Tac-Toe Game
+	![[Pasted image 20240121231603.png]]
+### Adversarial Search (Minimax)
+- Deterministic, zero-sum games:
+    - Tic-tac-toe, chess, checkers
+    - One player maximizes result
+    - The other minimizes result
+
+- Minimax search:
+    - A state-space search tree
+    - Players alternate turns
+    - Compute each node’s minimax value: the best achievable utility against a rational (optimal) adversary
+
+	![[Pasted image 20240121231656.png]]
+#### Pseudocode
+```python
+def value(state):
+    if the state is a terminal state: return the state’s utility
+    if the next agent is MAX: return max-value(state)
+    if the next agent is MIN: return min-value(state)
+```
+	![[Pasted image 20240121231739.png]]
+#### Properties
+	![[Pasted image 20240121232214.png]]
+If you play against a perfect player you want to use minimax but if you are not playing against a player move random then minimax is going to be overly pessimistic. And so, if just periodically they were to make a mistake, it's worth going the right way ( 9-100 ). So now we're doing some probability calculation really. It's like what's the chances that they might make a mistake.
+#### Efficiency
+- How efficient is minimax?
+    - Just like (exhaustive) DFS
+    - Time: O(bᵐ)
+    - Space: O(bm)
+
+- Example: For chess, b≈35, m≈100
+    - Exact solution is completely infeasible
+    - But, do we need to explore the whole tree?
+## Resource Limits
+	![[Pasted image 20240121232515.png]]
 
 ---
 # Lecture 4
