@@ -127,6 +127,10 @@ Is het optimaal?
 + Kijkt naar elke mogelijke "richting".
 + Heeft geen informatie in verband met de goal state zijn locatie.
 ## Informed search
+### Heuristics
+Heuristics dienen om een 
+### Greedy Search
+### A* Search
 # Lecture 2
 # Lecture 3
 # Lecture 4
