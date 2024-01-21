@@ -388,7 +388,11 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 > Keep track of domains for unassigned variables and cross off bad options
 ![[Pasted image 20240121184602.png]]
 ### Forward checking
-> Cross off values that violate a constraint when added to the existing assignment
+-  Cross off values that violate a constraint when added to the existing assignment.
+	![[Pasted image 20240121185434.png]]
+- If we assigned red to WA , we should remove red choice from NT , SA.
+- So that basic idea when I assigned something I look at its _**neighbors**_ in the graph and cross things off, that's called forward checking. So the neighbors of WA would lose red.
+- Forward checking doesn't check interactions between unassigned variables just checks interactions between assigned variables and their neighbors. Anything further is thinking too hard for forward checking.
 ### Constraint Propagation
 - Forward checking propagates information from assigned to unassigned variables, but doesn't provide early detection for all failures:
 	![[Pasted image 20240121184915.png]]
@@ -396,14 +400,75 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 - Constraint propagation: reason from constraint to constraint,
 	- Constraint propagation is the process of communicating the domain reduction of a decision variable to all of the constraints that are stated over this variable.
 ## Consistency of A single arc
+- So far we talked about checking an assignment against its neighbors, here we were talking out checking between two unassigned variables.
  - An arc X → Y is consistent iff for every x in the tail there is some y in the head which could be assigned without violating a constraint
+ - Example:
+	 ![[Pasted image 20240121185628.png]]
+	 - Here WA is assigned. The NT is not assigned, but I can still look at the 2 of them and check if this arc is consistent. So let's do it, we check everything in the tail. So we look at the NT and we say, is there anything in you remaining domain which would have no continuation into the head? 
+	 - So we say, well, if I assigned you blue, it would be ok. Green ? it would be ok. Red ? not ok. So red is something in the tail for which there is no assignments in the head which doesn't cause a constraint violation. So this arc is not constraint.
+	- We can however, make it consistent. We can remove things from the tail, the red in NT.
+	- So now we can check other consistencies, let's try Q->WA. These two are not actually connected by a constraint, so it should be easy to check. This is arc is already consistent.
+- How can you remember this?
+	- Remember, the constraints are like rules, and these algorithms are like police. They're going to go and enforce the rules. And you can imagine this arc is going to get pulled over by your algorithm, which is the CSP police. And what do they do when they pull the arc over? Right they pop open the trunk and they look for anything that's illegal. They are going to take anything bad out.
+	- All these algorithms have the same shape. You pull over an arc, you fish around in its trunk and cross the bad thing off. That's enforcing the consistency of a single arc.
+		![[Pasted image 20240121190306.png]]
+- Forward checking: Enforcing consistency of arcs pointing to each new assignment
 ### Arc Consistency of an Entire CSP
+- A simple form of propagation makes sure **all** arcs are consistent:
+- Example:
+	![[Pasted image 20240121190442.png]]
+	- WA and Q have been assigned , red and green. NT, NSW, SA had their domain reduced by some previous pruning.
+	- I can go visit arcs. First we check V->NSW. We notice they are neighbors. All right, this is the first time we're checking the consistency of an arc that doesn't point to an assignment. So I go through and I check the tail V, blue is find, red is fine, green is fine too.
+	- Let's look SA->NSW. SA and NSW are adjacent, so I'm going to look at SA. What is in the tail? Blue, it is fine.
+	- BUT, let's check the arc in the other direction. So now I look at NSW, is red ok? Yes. Is blue ok? NO. So we erase blue from NSW. Not it's consistent.
+	- There's a tricky case. We just check V->NSW. We just declared it consistent, but that was on the basis of having blue and red available in the head at NSW. And one of those is gone, so the consistency may no longer hold. 
+	- So I have to go back to V, and I have to check V->NSW again. Red now is no longer ok. Erasing red from V. 
+	- So any time you do a delete of a value from a domain, every arc pointing into it needs to be rechecked.
+	- So I keep doing this. The whole reason to do this is actually a completely different arc, SA->NT, neither of which is assigned. You noticed that you have to delete the blue from SA, which results in an empty domain, and an empty domain means a detected failure, which means backtracking.
+- _**Remember: Delete from the tail!**_
+- Important: If X loses a value, neighbors of X need to be rechecked!
+- Arc consistency **detects failure earlier** than forward checking
+- Can be run as a preprocessor, or more commonly after each assignment
+- What's the downside of enforceing arc consistency ?
+    - Runtime is bad.
+    - So there's a trade-off between doing more filtering and just making the core search run faster.
+    - In general, this is a very powerful method.
+#### Pseudocode
+![[Pasted image 20240121191154.png]]
+- Runtime: O(n 2d 3), can be reduced to O(n 2d 2)\
+- … but detecting all possible future problems is NP-hard – why?
+	- The reason is that it essentially requires checking all possible assignments of values to variables to ensure they do not violate any constraints. This is computationally expensive as the number of possible assignments is exponential in the number of variables and the size of their domains.
 ### Limitations of Arc Consistency
+- After enforcing arc consistency:
+    - Can have one solution left
+    - Can have multiple solutions left
+    - Can have no solutions left
+- Arc consistency still runs inside a backtracking search!
+- The reason why our consistency in this bottom case wasn't sufficient to discover the inevitable failures because it's only checked in pairs. While it could be consistent in pairs, it's not consistent if we look in groups of 3.
+	![[Pasted image 20240121191801.png]]
 ## Ordering
 ![[Pasted image 20240121161305.png]]
 ### Minimum remaining values (MRV)
+- Variable Ordering: Minimum remaining values (MRV):
+    - Choose the variable with the fewest legal left values in its domain
+- Why min rather than max?
+    - "Fail-fast" ordering
+    - Also called "most constrained variable"
+- **Hardest variable**
+	- Variable that has the least amount of options left to choose from. 
 ### Least constraining value (LCV)
-
+- Value Ordering: Least Constraining Value
+    - Given a choice of variable, choose the least constraining value
+    - I.e., the one that rules out the fewest values in the remaining variables
+    - Note that it may take some computation to determine this! (E.g., rerunning filtering)
+- To choose which value is the least-constraining value, enforce arc consistency for each value (on a scratch piece of paper).
+    - For each value, count the total number of values remaining over all variables.
+- **easiest value**
+    - We want the one that has the least impact on the rest of the graph
+- Why least rather than most?
+    - Because it's a CSP, and in CSP, you have to do every variable. Sooner or later, you have to do it. You don't have to do every value.
+    - So you might as well do the hard variables first, but if you're picking values, you want to pick the ones that are likely to work out, and maybe you don't even have to try the hard ones.
+- Combining these ordering ideas makes 1000 queens feasible
 # Lecture 3
 # Lecture 4
 # Lecture 5
