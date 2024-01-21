@@ -133,10 +133,39 @@ Is het optimaal?
 + Voorbeelden: Manhatten distance, Euclidean distance.
 ![[Pasted image 20240121141900.png]]
 ### Greedy Search
-> Kijk naar de nodes die het dicht
+> Kijk naar de node die het dicht bij de goal state is.
 ![[Pasted image 20240121141921.png]]
 
+Algemene gevallen:
++ Best-first, brengt rechtstreeks naar de goal. 
+![[Pasted image 20240121142723.png]]
+Worst case:
++ Dit kan resulteren in een "badly-guided DFS". Ofwel lange paden met grote kost.
+![[Pasted image 20240121142733.png]]
 ### A* Search
+> Een combinatie van UCS en Greedy, waarbij we de paden sorteren op kost en gebruik maken van heuristics om de kortste pad te nemen.
+![[Pasted image 20240121142826.png]]
+#### Combining UCS en Greedy
+We maken gebruik van twee functies:
++ Uniform-cost orders by path cost, ofwel *backward cost g(n)*.
++ greedy orders by goal proximity, ofwel *forward cost h(n)*.
+
+A* search orders by the sum:
++ f(n) = g(n) + h(n)
+![[Pasted image 20240121143547.png]] ![[Pasted image 20240121143626.png]]
+
+Wanneer moet A* eindigen?
++ We eindigen A* search indien we de goal state dequeue van de priority queue. Dit is omdat indien we een goal state enqueue, kunnen er nog andere paden zijn die leiden tot een betere pad.
+
+Is A* optimaal?
++ Nee, indien we een slechte heuristics hebben.
++ Actual bad goal cost < estimated good goal cost.
++ We willen dat de estimatie kleiner is dan de werkelijke waardes.
+#### Admissible Heuristics
+![[Pasted image 20240121144424.png]]
+Een heuristic h is admissible als:
++ $0 \le h(n) \le h^*(n)$. Waarbij $h^*(n)$ is de true cost van de dicht bij zijnde goal.
+Een admissible heuristic bedenken is de belangrijkste stap om A* te implementeren.
 # Lecture 2
 # Lecture 3
 # Lecture 4
