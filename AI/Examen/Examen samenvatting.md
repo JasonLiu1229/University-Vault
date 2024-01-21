@@ -132,6 +132,8 @@ Is het optimaal?
 + Ze zijn gemaakt voor specifieke zoek problemen.
 + Voorbeelden: Manhatten distance, Euclidean distance.
 ![[Pasted image 20240121141900.png]]
+
+Onze estimatie van heuristic moet kleiner zijn dan onze werkelijke kost. Indien onze heuristic dichter naar onze werkelijke kost komt, hoe beter onze estimatie. Dit komt meestal met nadeel, dat onze heuristic complexer wordt om te berekenen.
 ### Greedy Search
 > Kijk naar de node die het dicht bij de goal state is.
 ![[Pasted image 20240121141921.png]]
@@ -190,7 +192,52 @@ Bewijs:
 			+ $f(A) \lt f(B)$
 	+ n expands before B
 		+ $f(n) \le f(A) \lt f(B)$
-+ Alle voogangers v
++ Alle voorgangers van A zullen eerder expanden dan B
++ A zou dan uiteindelijk eerder expanden dan B
++ A* search is dan optimaal
+#### Properties
+![[Pasted image 20240121152213.png]]
+UCS zou uniform expanden, terwijl A* meer zou expanden richting de goal.
+![[Pasted image 20240121152312.png]]
+### Semi-Lattice of heuristics
+#### Trivial heuristics, Dominance
++ **Dominance: $h_a \ge h_c$ if**
+	+ $\forall n : h_a(n) \ge h_c(n)$
+	+ Dus voor alle waardes n, is heuristic a beter dan heuristic c.
++ **Heuristic vormen een Semi-Lattice:**
+	+ Max van de admissible heuristics is admissible
+		+ $h(n) = max(h_a(n), h_b(n))$
+			![[Pasted image 20240121153348.png]]
++ **Triviale heuristics**
+	+ Bodem van de lattice is de zero heuristic
+	+ Top of lattice is de exact heuristic
+### A* Graph search
+Indien we loops hebben on onze state graph, dit kan leiden in infinite search.
+- Idea: never expand a state twice
+- How to implement:
+	- Tree search + set of expanded states (“closed set”)
+	- Expand the search tree node-by-node, but…
+	    - Before expanding a node, check to make sure its state has never been expanded before
+	    - If you have, skip it, if you haven't, call the successor function and then add it to closed set.
+- Important: **store the closed set as a set**, not a list
+- Can graph search wreck completeness? Why/why not?
+	- No. It's parts of the Search Tree.
+- How about optimality?
+	- Unfortunately close list will introduce another problem
+	- Admissible heuristic with tree search is optimal but graph search no guarantees.
+
+Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken, 
+#### Consistency of heuristics
+![[Pasted image 20240121154210.png]]
+**Main idea: estimated heuristic costs ≤ actual costs**
++ Admissibility: heuristic cost $\le$ actual cost to goal
+	+ h(A) ≤ actual cost from A to G
++ Consistency: heuristic “arc” cost ≤ actual cost for each arc
+	+ h(A) – h(C) ≤ cost(A to C)
+**Consequences van consistency**
++ The f value along a path never decreases
+	+ h(A) ≤ cost(A to C) + h(C)
++ A* graph search is optima
 # Lecture 2
 # Lecture 3
 # Lecture 4
