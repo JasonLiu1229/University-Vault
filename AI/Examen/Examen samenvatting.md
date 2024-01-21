@@ -128,8 +128,14 @@ Is het optimaal?
 + Heeft geen informatie in verband met de goal state zijn locatie.
 ## Informed search
 ### Heuristics
-Heuristics dienen om een 
++ Heuristics dienen om een estimatie te maken, hoe dicht de goal state is vergeleken zijn huidige locatie.
++ Ze zijn gemaakt voor specifieke zoek problemen.
++ Voorbeelden: Manhatten distance, Euclidean distance.
+![[Pasted image 20240121141900.png]]
 ### Greedy Search
+> Kijk naar de nodes die het dicht
+![[Pasted image 20240121141921.png]]
+
 ### A* Search
 # Lecture 2
 # Lecture 3
