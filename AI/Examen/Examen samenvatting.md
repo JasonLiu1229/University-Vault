@@ -601,13 +601,59 @@ Tree Decomposition is another approach :
     - though, you have almost no guarantees.
 ## Local search
 	![[Pasted image 20240121205239.png]]]
+- Tree search keeps unexplored alternatives on the fringe (ensures completeness)
 - Local search: improve a single option until you can’t make it better (no fringe!)
     - In local search you don't have the safety net. You got one position that you are currently at and you're trying to hill climb in some way.
+- New successor function: local changes
+	- You have a new idea of a successor function. The successor function now does not take a plan and extend the plan, instead it takes a complete assignment of some kind and modifies it. Your successor function is more about modification than about extension.
+	![[Pasted image 20240121205521.png]]
+- Generally much faster and more memory efficient (but incomplete and suboptimal)
 ### Hill climbing
+- Simple, general idea:
+    - Start wherever
+    - Repeat: move to the best neighboring state
+    - If no neighbors better than current, quit
+- What’s bad about this approach?
+    - Complete ? No.
+    - Optimal ? No.
+    - may reach local maximum.
+- What’s good about it?
+    - you can start anywhere you can do the best you can and there are a wide range of problems in the real world where kind of any solution will work, and you'd like to make it as good as possible and you know you can't get to the optimal solution.
+	![[Pasted image 20240121210004.png]]
 ### Simulated Annealing
-### Genetic Algorithms
+- Idea: Escape local maxima by allowing downhill moves  But make them rarer as time goes on
+	![[Pasted image 20240121210046.png]]
+- Theoretical guarantee: 
+	- Stationary distribution: ![[Pasted image 20240121210256.png]]
+	- If T decreased slowly enough, will converge to optimal state!
+- Is this an interesting guarantee?
+	- So, while SA increases the likelihood of finding the global maximum compared to hill climbing, it does not provide an absolute guarantee. It does, however, offer a good balance between exploration and exploitation, making it a valuable tool in optimization problems.
+- Sounds like magic, but reality is reality: 
+	- The more downhill steps you need to escape a local optimum, the less likely you are to ever make them all in a row.
+	- People think hard about ridge operators which let you jump around the space in better way.
+## Genetic Algorithms
+Genetic algorithms are kind of local search in this case not one hypothesis but a bunch of hypothesis and rather than just locally improving all of them, it is just mutation.
+
+You keep the best hypotheses at each step. In addition to just keeping the best one, you find pairs and you do cross-over, you made them (2 robots -> big robot )
+	![[Pasted image 20240121210817.png]]
+	![[Pasted image 20240121210830.png]]
+- Genetic algorithms use a natural selection metaphor
+    - Keep best N hypotheses at each step (selection) based on a fitness function
+    - Also have pairwise crossover operators, with optional mutation to give variety
+- Possibly the most misunderstood, misapplied (and even maligned) technique around
+### Example
+![[Pasted image 20240121210942.png]]
+I have 2 pretty good n-queen solutions. Neither is actually a solution. They both have a small number of conflicts.
+
+So I'm going to slice my board down the middle, and I'm going to take part of a and part of b, and slam them together.
+
+Why does this make sense ?
+
+This is an example of not just nudging your thing locally, but just taking entirely different ways of traversing the space.
+
 ---
 # Lecture 3
+
 ---
 # Lecture 4
 ---
