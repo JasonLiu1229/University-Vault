@@ -327,16 +327,76 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 	![[Pasted image 20240121170622.png]]
 ### Constraints
 - Varieties of Constraints
-	- 
+	- Unary constraints
+		- Involve a single variable (equivalent met reducing domains)
+		- SA ≠ green
+	- Binary constraint
+		- Involves pairs of variables
+		- SA ≠ WA
+	- Higher-order constraints
+		- Involves 3 or more variables
+			- e.g., cryptarithmetic column constraints
+
 - Preferences
+	- E.g., red is better than green
+	- Often representable by a cost for each variable assignment
+	- Gives constrained optimization problems
+	- (We’ll ignore these until we get to Bayes’ nets
 ## Standard Search Formulation
+- Standard search formulation of CSPs
+- States defined by the values assigned so far (partial assignments)
+    - Initial state:
+        - The empty assignment, {}
+    - Successor function:
+        - Assign a value to an _**unassigned**_ variable
+    - Goal test:
+        - The current assignment is complete and satisfies all constraints
+- We’ll start with the straightforward, naïve approach, then improve it
+
+- What would BFS do ?
+    - Will expand all levels
+- What would DFS do ?
+    - Going to look everywhere where they aren't first.
+- What problems does naïve search have?
+	- It is inefficient. 
 ## Backtracking Search
+- Backtracking search is the basic _**uninformed**_ algorithm for solving CSPs
+- Idea 1: One variable at a time
+    - Variable assignments are commutative, so fix ordering
+    - I.e., \[WA = red then NT = green] same as \[NT = green then WA = red]
+    - Only need to consider assignments to a single variable at each step
+- Idea 2: Check constraints as you go
+    - I.e. consider only values which do not conflict previous assignments
+    - Might have to do some computation to check the constraints
+    - “Incremental goal test”
+- Depth-first search with these two improvements is called backtracking search (not the best name)
 ### Pseudocode
+![[Pasted image 20240121184302.png]]
+- Backtracking = DFS + variable-ordering + fail-on-violation
+- What are the choice points?
+	- Het kiest zijn variables op basis wat hij nog niet geprobeerd heeft.
 ### Improving backtracking
+- General-purpose ideas give huge gains in speed
+- Ordering:
+    - Which variable should be assigned next? 
+    - In what order should its values be tried? 
+- Filtering:
+    - Can we detect inevitable failure early?
+- Structure:
+    - Can we exploit the problem structure?
 ## Filtering
+> Keep track of domains for unassigned variables and cross off bad options
+![[Pasted image 20240121184602.png]]
 ### Forward checking
+> Cross off values that violate a constraint when added to the existing assignment
 ### Constraint Propagation
+- Forward checking propagates information from assigned to unassigned variables, but doesn't provide early detection for all failures:
+	![[Pasted image 20240121184915.png]]
+	- Hier zien we duidelijk dat SA en NT alleen als opties blauw hebben, dit zal leiden tot een fout oplossing.
+- Constraint propagation: reason from constraint to constraint,
+	- Constraint propagation is the process of communicating the domain reduction of a decision variable to all of the constraints that are stated over this variable.
 ## Consistency of A single arc
+ - An arc X → Y is consistent iff for every x in the tail there is some y in the head which could be assigned without violating a constraint
 ### Arc Consistency of an Entire CSP
 ### Limitations of Arc Consistency
 ## Ordering
