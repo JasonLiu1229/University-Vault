@@ -270,12 +270,53 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 # Lecture 2
 ![[Pasted image 20240121160255.png]]
 ## What is search for?
+- Assumptions about the world:
+    - a single agent
+    - deterministic actions
+    - fully observed state
+        - you KNOW the configuration that you start in
+        - and then you plan about exactly how the world will evolve
+    - discrete state space
 
+- Planning: sequences of actions
+    - The path to the goal is the important thing
+    - Paths have various costs, depths
+    - Heuristics give problem-specific guidance
+
+- Identification: assignments to variables
+    - The goal itself is important, **not the path**
+    - All paths at the same depth (for some formulations)
+    - CSPs are specialized for identification problems
 ## CSP (Constraint Satisfaction Problems)
 ## Constraint Graphs
+![[Pasted image 20240121163739.png]]
+- Standard search problems
+	- State is een "Black box": arbitraire data structuur.
+	- Goal test kan ener welke functie zijn over states.
+	- Successor functie kan ook ener welke functie zijn.
+
+- CSP:
+	- Het is een speciale subset van zoekproblemen
+	- Een state is gedefinieerd door **variabelen X**, met waardes van **een domein D**.
+	- Goal test is een **set van constraints**, die specificeren welke combinaties toegelaten zijn voor een subset van de variabelen.
+
+- Allows useful general-purpose algorithms with more power than standard search algorithms.
+## Constraint graph
+![[Pasted image 20240121164434.png]]
+- Binary CSP:
+    - Each constraint relates (at most) two variables
+- Binary constraint graph:
+    - Nodes are variables, arcs show constraints
+- General-purpose CSP algorithms use the graph structure to speed up search.
+    - E.g., Tasmania is an independent subproblem!
 ## Varieties of CSPs and Constraints
 ![[Pasted image 20240121160708.png]]
 ### CSPs
+- Discrete variables
+	- Finite domains
+		- 
+	- Infinite domains
+- Continuous variables
 ### Constraints
 ## Standard Search Formulation
 ## Backtracking Search
