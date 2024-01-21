@@ -747,9 +747,118 @@ If you play against a perfect player you want to use minimax but if you are not 
 - Example: For chess, b≈35, m≈100
     - Exact solution is completely infeasible
     - But, do we need to explore the whole tree?
+## Game Tree Pruning
+	![[Pasted image 20240121232650.png]]
+We will do some pruning because not all values are relevant in case we already found the minimum or maximum of the layer. So calculating different branches is not needed anymore.
+### Example
+	![[Pasted image 20240121232840.png]]
+For the second branch (2-4-6), we need to look at the minimum of these values. We can already see that 2 is the minimum and branch 4 and 6, don't need to be explored further.
+	![[Pasted image 20240121232953.png]]
+### Alpha-Beta Pruning
+- General configuration (MIN version)
+	- We’re computing the MIN-VALUE at some node n
+	- We’re looping over n’s children
+	- n’s estimate of the children's min is dropping
+	- Who cares about n’s value? MAX
+	- Let 'a' be the best value that MAX can get at any choice point along the current path from the root
+	- If n becomes worse than a, MAX will avoid it, so we can stop considering n’s other children (it’s already bad enough that it won’t be played)
+	![[Pasted image 20240121233227.png]]
+
+- MAX version is symmetric
+#### Pseudocode
+- α: MAX’s best option on path to root
+- β: MIN’s best option on path to root
+
+```python
+def max-value(state, α, β):
+    initialize v = -∞
+    for each successor of state:
+        v = max(v, value(successor, α, β))
+        # top min-value not care what remains, if v > β
+        if v > β return v  # must not prune on equality
+        # update global max value
+        α = max(α, v)
+    return v
+```
+
+```python
+def min-value(state , α, β):
+    initialize v = +∞
+    for each successor of state:
+        v = min(v, value(successor, α, β))
+        # top max-value not care what remains, if v < α
+        if v < α return v # must not prune on equality
+        # update global min value
+        β = min(β, v)
+    return v
+```
+#### Properties
+- This pruning has no effect on minimax value computed for the root!
+
+- Values of intermediate nodes might be wrong
+	- Important: children of the root may have the wrong value
+	- So the most naïve version won’t let you do action selection
+
+- Good child ordering improves effectiveness of pruning
+
+- With “perfect ordering”:
+	- Time complexity drops to O(bm/2)
+	- Doubles solvable depth!
+	- Full search of, e.g. chess, is still hopeless…
+
+- This is a simple example of **metareasoning** (computing about what to compute)
+
+	![[Pasted image 20240121233443.png]]
 ## Resource Limits
 	![[Pasted image 20240121232515.png]]
+- Problem: In realistic games, cannot search to leaves!
+- Solution: Depth-limited search
+    - Instead, search only to a limited depth in the tree
+    - Replace terminal utilities with an evaluation function for non-terminal positions
+- Example:
+    - Suppose we have 100 seconds, can explore 10K nodes / sec
+    - So can check 1M nodes per move
+    - α-β reaches about depth 8 – decent chess program
+- Guarantee of optimal play is _**gone**_
+- More plies makes a BIG difference
+- Use iterative deepening for an anytime algorithm
+	![[Pasted image 20240121234253.png]]
+For a chess game, we can't possibly search the whole game tree. Essentially we've got resource limits in this case time. That tell us we can only look forward so far into the tree before the exponential growth of the tree gets this.
 
+So we can only search just some limited depth from the tree. Now the problem is we get to the end of our search we don't have terminal utilities because we are not actually at the end of the game.
+
+So we need to replace the terminal utilities in the minimax algorithm with what's called evaluation function, which takes a non-terminal position and gives us some estimate of what the terminal utility under that tree would be under minimax plan.
+## Why Pacman Starves
+	![[Pasted image 20240121234443.png]]
+- A danger of replanning agents! 
+	- He knows his score will go up by eating the dot now (west, east) 
+	- He knows his score will go up just as much by eating the dot later (east, west) 
+	- There are no point-scoring opportunities after eating the dot (within the horizon, two here) 
+	- Therefore, waiting seems just as good as eating: he may go east, then back west in the next round of replanning!
+## Evaluation Functions 
+	![[Pasted image 20240121234613.png]]
+A function takes a non-terminal state and return some number, just like the heuristic value in A* search.
+
+In this case we want that number to return the actual minimax value of that position. That is not going to happen. In practice what people do is, they try to come up with some function which on average is positive when the minimax value is positive, is negative when the minimax value is negative. 
+- Evaluation functions score non-terminals in depth-limited search
+	![[Pasted image 20240121234952.png]]
+- Ideal function: returns the actual minimax value of the position
+- In practice: typically weighted linear sum of features:
+    - $Eval(s) = w_1f_1(s) + w_2f_2(s) + \cdots + w_nf_n(s)$
+    - eg. f₁(s)=(number white queens – number black queens), etc.
+## Depth Matters
+	![[Pasted image 20240121235240.png]]
+- Evaluation functions are always imperfect
+- The deeper in the tree the evaluation function is buried, the less the quality of the evaluation function matters
+- An important example of the trade-off between complexity of features and complexity of computation
+## Synergies between Evaluation Function and Alpha-Beta?
+- Alpha-Beta: amount of pruning depends on expansion ordering
+    - Evaluation function can provide guidance to expand most promising nodes first ( which later makes it more likely there is already a good alternative on the path to the root )
+	    - somewhat similar to role of A* heuristic , CSPs filtering
+- Alpha-Beta: (similar for roles of min-max swapped)
+    - Value at a min-node will only keep going down
+    - Once value of min-node lower than better option for max along path to root, can prune
+    - Hence: If evaluation function provides upper-bound on value at min-node, and upper-bound already lower than better option for max along path to root THEN can prune.
 ---
 # Lecture 4
 ---
