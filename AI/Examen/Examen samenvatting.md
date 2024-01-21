@@ -1,5 +1,6 @@
 > Samenvatting van AI van lecture 1 - 10
 > https://github.com/mebusy/notes/tree/master/dev_notes voor extra info van andere student
+> In het begin nederlands vanaf lecture heb ik opgegeven en is het gwn engels.
 # Lecture 1 Search
 ![[Pasted image 20240120181210.png]]
 ## Intro
@@ -267,8 +268,10 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
     - UCS optimal (h = 0 is consistent)
 - Consistency implies admissibility
 - In general, most natural admissible heuristics tend to be consistent, especially if from relaxed problem.
+---
 # Lecture 2
 ![[Pasted image 20240121160255.png]]
+> Start part one.
 ## What is search for?
 - Assumptions about the world:
     - a single agent
@@ -455,7 +458,6 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
     - "Fail-fast" ordering
     - Also called "most constrained variable"
 - **Hardest variable**
-	- Variable that has the least amount of options left to choose from. 
 ### Least constraining value (LCV)
 - Value Ordering: Least Constraining Value
     - Given a choice of variable, choose the least constraining value
@@ -463,17 +465,54 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
     - Note that it may take some computation to determine this! (E.g., rerunning filtering)
 - To choose which value is the least-constraining value, enforce arc consistency for each value (on a scratch piece of paper).
     - For each value, count the total number of values remaining over all variables.
-- **easiest value**
+- **Easiest value**
     - We want the one that has the least impact on the rest of the graph
 - Why least rather than most?
     - Because it's a CSP, and in CSP, you have to do every variable. Sooner or later, you have to do it. You don't have to do every value.
     - So you might as well do the hard variables first, but if you're picking values, you want to pick the ones that are likely to work out, and maybe you don't even have to try the hard ones.
 - Combining these ordering ideas makes 1000 queens feasible
+
+> Start part 2
+## K-Consistency
+- Increasing degrees of consistency
+    - 1-Consistency (Node Consistency): Each single node’s domain has a value which meets that node’s unary constraints
+        - Every node's domain has at least one value that meets that node's consitraints
+        - basically just means you enfore unary constraints
+    - 2-Consistency (Arc Consistency): For each pair of nodes, any consistent assignment to one can be extended to the other
+    - K-Consistency: For each k nodes, any consistent assignment to k-1 can be extended to the kth node.
+        - Arc-consistency says, if you can get one assigned, you can get 2 assigned
+        - K-consistency says , if you can get k-1 assigned, then you can get k assigned. It's sort of mathematically a little weird, because it assumes that you can get to k-1, but who says you actually can? There is a stronger notion called strong k-consistency.
+- Higher k more expensive to compute
+- (You need to know the k=2 case: arc consistency)
+### Strong K-Consistency
+## Structure
+### Problem
+### Tree-structured CSPs
+### Improving Structure
+### Nearly Tree-Structured CSPs
+## Cutset Conditioning
+## Tree Decomposition*
+## Iterative Improvement
+![[Pasted image 20240121192947.png]]
+## Performance of Min-Conflicts
+## Local search
+### Hill climbing
+### Simulated Annealing
+### Genetic Algorithms
+---
 # Lecture 3
+---
 # Lecture 4
+---
 # Lecture 5
+---
 # Lecture 6
+---
 # Lecture 7
+---
 # Lecture 8
+---
 # Lecture 9
+---
 # Lecture 10
+---
