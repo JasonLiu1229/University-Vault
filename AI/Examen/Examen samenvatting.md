@@ -546,12 +546,63 @@ So we can use this great algorithm on tree-structured CSP, but CSP is probably n
 	![[Pasted image 20240121202153.png]]
 - We are going to assign a value to it . Once we've assigned a value to it and we imagine that that value we assigned to SA is fixed. The rest of the arcs connected to SA can now be "forgotten". (Conditioning)
 - Conditioning: instantiate a variable, prune its neighbors' domains
+- Cutset conditioning: instantiate (in all ways) a set of variables such that the remaining constraint graph is a tree.
+- Cutset size c gives runtime O( (dc ) (n-c) d2 ), very fast for small c
 #### Cutset Conditioning
+	![[Pasted image 20240121202506.png]]
+- Finding smallest cut-set is np-hard !
 #### Tree Decomposition*
+Tree Decomposition is another approach :
+- Idea: create a tree-structured graph of mega-variables
+- Each mega-variable encodes part of the original CSP
+- Subproblems overlap to ensure consistent solutions
+	![[Pasted image 20240121202644.png]]
 ## Iterative Improvement
 ![[Pasted image 20240121192947.png]]
-## Performance of Min-Conflicts
+### For CSPs
+- Iterative Algorithms for CSPs is our first example of a local search.
+- Local search methods typically work with **“complete”** states, i.e., all variables assigned
+- To apply to CSPs:
+    1. Algorithm starts by assigning some value to each of the variables
+        - Ignoring the constraints when doing so
+    2. Take an assignment with unsatisfied constraints
+    3. Operators reassign variable values
+		![[Pasted image 20240121202952.png]]
+    - No fringe! Live on the edge.
+        - There is no backup plan, like the queue in search problem.
+- Algorithm: While not solved, while at least one constraint is violated, repeat:
+    - Variable selection:
+        - randomly select any conflicted variable
+    - Value selection: min-conflicts heuristic:
+        - Choose a value that violates the fewest constraints (among all possible selections of values in its domain)
+        - I.e., hill climb with h(n) = total number of violated constraints
+- Questions
+    - Do you risk introducing a new conflict? Yes
+    - Can this thing run forever? Yes
+    - Will it give you an optimal solution if there are waits? No.
+    - Do you have any guarantee whatever? No
+    - **BUT** it's very fast very often.
+### Performance of Min-Conflicts
+- Given random initial state, can solve n-queens in almost constant time for arbitrary n with high probability (e.g., n = 10,000,000)!
+- The same appears to be true for any randomly-generated CSP except in a narrow range of the ratio.
+	![[Pasted image 20240121204807.png]]
+- Looking at the graph, having allot of constraints and minimum constraints are both great. This is because having allot of constraints will make it easier to find the solution, while having as little as possible gives us more freedom.
+- As u can see, there is a critical ratio, where the amount of constraints / amount of variables result in a high CPU time.
+## Summary: CSPs
+- CSPs are a special kind of search problem:
+    - States are partial assignments
+    - Goal test defined by constraints
+- Basic solution: backtracking search
+- Speed-ups:
+    - Ordering
+    - Filtering
+    - Structure
+- _**Iterative min-conflicts is often effective in practice**_
+    - though, you have almost no guarantees.
 ## Local search
+	![[Pasted image 20240121205239.png]]]
+- Local search: improve a single option until you can’t make it better (no fringe!)
+    - In local search you don't have the safety net. You got one position that you are currently at and you're trying to hill climb in some way.
 ### Hill climbing
 ### Simulated Annealing
 ### Genetic Algorithms
