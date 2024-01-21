@@ -1,4 +1,5 @@
 > Samenvatting van AI van lecture 1 - 10
+> https://github.com/mebusy/notes/tree/master/dev_notes voor extra info van andere student
 # Lecture 1 Search
 ![[Pasted image 20240120181210.png]]
 ## Intro
@@ -226,7 +227,7 @@ Indien we loops hebben on onze state graph, dit kan leiden in infinite search.
 	- Unfortunately close list will introduce another problem
 	- Admissible heuristic with tree search is optimal but graph search no guarantees.
 
-Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken, 
+Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken, zullen we de altijd fouten keuzes maken daarna. Dit is omdat we werken met een closed set, en indien een slechte heuristic ons de foute pad leidt, dan kan het zijn dat een node al doorlopen is die leidt tot een betere pad.
 #### Consistency of heuristics
 ![[Pasted image 20240121154210.png]]
 **Main idea: estimated heuristic costs ≤ actual costs**
@@ -237,8 +238,60 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 **Consequences van consistency**
 + The f value along a path never decreases
 	+ h(A) ≤ cost(A to C) + h(C)
-+ A* graph search is optima
++ A* graph search is optimal
+#### Optimality graph search
+- **Sketch: consider what A* does with a consistent heuristic:**
+    - Fact 1: In tree search, A* expands nodes in increasing total f value (f-contours)
+    - Fact 2: For every state s, nodes that reach _**s**_ optimally are expanded before nodes that reach _**s**_ suboptimally
+    - Result: A* graph search is optimal
+	![[Pasted image 20240121155400.png]]
+- **Consider what A* does:**
+    - Expands nodes in increasing total f value (f-contours)
+    - Reminder: f(n) = g(n) + h(n) = cost to n + heuristic
+    - Proof idea: the optimal goal(s) have the lowest f value, so it must get expanded first
+- **Bewijs via contradictie:**
+    - New possible problem: some n on path to G* isn’t in queue when we need it, because some worse n’ for the same state dequeued and expanded first (disaster!)
+    - Take the highest such n in tree
+    - Let p be the ancestor of n that was on the queue when n’ was popped
+    - f(p) < f(n) because of consistency
+    - f(n) < f(n’) because n’ is suboptimal
+    - p would have been expanded before n’
+    - Contradiction!
+    ![[Pasted image 20240121155920.png]]
+### Optimality
+- Tree search:
+    - A* is optimal if heuristic is admissible
+    - UCS is a special case (h = 0)
+- Graph search:
+    - A* optimal if heuristic is consistent
+    - UCS optimal (h = 0 is consistent)
+- Consistency implies admissibility
+- In general, most natural admissible heuristics tend to be consistent, especially if from relaxed problem.
 # Lecture 2
+![[Pasted image 20240121160255.png]]
+## What is search for?
+
+## CSP (Constraint Satisfaction Problems)
+## Constraint Graphs
+## Varieties of CSPs and Constraints
+![[Pasted image 20240121160708.png]]
+### CSPs
+### Constraints
+## Standard Search Formulation
+## Backtracking Search
+### Pseudocode
+### Improving backtracking
+## Filtering
+### Forward checking
+### Constraint Propagation
+## Consistency of A single arc
+### Arc Consistency of an Entire CSP
+### Limitations of Arc Consistency
+## Ordering
+![[Pasted image 20240121161305.png]]
+### Minimum remaining values (MRV)
+### Least constraining value (LCV)
+
 # Lecture 3
 # Lecture 4
 # Lecture 5
