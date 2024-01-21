@@ -476,8 +476,8 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 ## K-Consistency
 - Increasing degrees of consistency
     - 1-Consistency (Node Consistency): Each single node’s domain has a value which meets that node’s unary constraints
-        - Every node's domain has at least one value that meets that node's consitraints
-        - basically just means you enfore unary constraints
+        - Every node's domain has at least one value that meets that node's constraints
+        - basically just means you enforce unary constraints
     - 2-Consistency (Arc Consistency): For each pair of nodes, any consistent assignment to one can be extended to the other
     - K-Consistency: For each k nodes, any consistent assignment to k-1 can be extended to the kth node.
         - Arc-consistency says, if you can get one assigned, you can get 2 assigned
@@ -485,13 +485,69 @@ Er kunnen fouten lopen, indien we in de eerste iteratie een slechte keuzen maken
 - Higher k more expensive to compute
 - (You need to know the k=2 case: arc consistency)
 ### Strong K-Consistency
+- Strong k-consistency: also k-1, k-2, … 1 consistent
+- Claim: **strong n-consistency means we can solve without backtracking**!
+- Why?
+    - Choose any assignment to any variable
+    - Choose a new variable
+    - By 2-consistency, there is a choice consistent with the first
+    - Choose a new variable
+    - By 3-consistency, there is a choice consistent with the first 2
+    - …
+- Lots of middle ground between arc consistency and n-consistency! (e.g. k=3, called path consistency)
 ## Structure
+![[Pasted image 20240121195559.png]]
+Sometimes you look at a CSP that you're trying to solve and you see it has some special graph structure and based on that graph structure there will be some technique available to you that allows you to solve it in a particularly efficient way and we're going to see a couple examples.
+
+So for example if your CSP involved this giant criminal robot network you might think you should go after that guy in the center. That would be an example of exploiting a structure.
 ### Problem
+	![[Pasted image 20240121195903.png]]
+- Extreme case: independent subproblems
+    - Example: Tasmania (T) and mainland do not interact (see figure)
+- Independent subproblems are identifiable as connected components of constraint graph
+- Suppose a graph of n variables can be broken into subproblems of only c variables:
+    - Worst-case solution cost is $O((n/c)(d^c))$, linear in n
+    - E.g., n = 80, d = 2, c =20
+    - 2⁸⁰ = 4 billion years at 10 million nodes/sec
+    - (4)(2²⁰) = 0.4 seconds at 10 million nodes/sec
 ### Tree-structured CSPs
+	![[Pasted image 20240121200237.png]]
+- It is a theorem that if the constraint graph has no loops then the CSP can be solved in time that is linear in the size of graph and quadratic in the size of domains. That's so much better than general CSPs worst exponential.
+
+- Theorem: if the constraint graph has no loops, the CSP can be solved in O(n·d²) time
+    - Compare to general CSPs, where worst-case time is O(dⁿ)
+- This property also applies to probabilistic reasoning (later):
+    - An example of the relation between syntactic restrictions and the complexity of reasoning
+
+- Algorithm for solving a tree-structured CSPs:
+	- Order: Choose a root variable, order variables so that parents precede children.
+	![[Pasted image 20240121200539.png]]
+	- Remove backward: For i := n to 2, apply RemoveInconsistent(Parent(Xᵢ),Xᵢ)
+		- Once you've ordered it, we do a backwards path.
+		- We start at F, and we go leftward. And for each node in this pass, we are going to make the arc which pointing to that node consistent.
+	- Assign forward: For i = 1 : n, assign X i consistently with Parent(Xᵢ)
+
+- Runtime O(n·d²)
+	- The “Remove backward” step takes O(d²) time for each of the n nodes in the tree (since each arc can be made consistent in O(d²) time), and the “Assign forward” step takes O(d) time for each node. 
+	- Since we have n nodes, this n(d² + d), so O(n·d²)
+
+- **Claim 1:** After backward pass, all root-to-leaf arcs are consistent
+- **Proof:** Each X→Y was made consistent at one point and Y’s domain could not have been reduced thereafter (because Y’s children were processed before Y)
+	![[Pasted image 20240121201209.png]]
+- **Claim 2:** If root-to-leaf arcs are consistent, forward assignment will not backtrack 
+- **Proof:** Induction on position
+- Why doesn’t this algorithm work with cycles in the constraint graph?
+	- The tree-structured CSP algorithm assumes a tree-like structure with no cycles. It orders variables so parents precede children and enforces arc consistency in one pass. If there are cycles, these assumptions fail, making the algorithm ineffective. For graphs with cycles, other algorithms like backtracking or local search are used.
+- Note: we’ll see this basic idea again with Bayes’ nets
 ### Improving Structure
-### Nearly Tree-Structured CSPs
-## Cutset Conditioning
-## Tree Decomposition*
+	![[Pasted image 20240121201845.png]]
+So we can use this great algorithm on tree-structured CSP, but CSP is probably not tree-structured either. So we need some way of taking graphs which are not in these wonderful configurations, but or maybe closer.
+#### Nearly Tree-Structured CSPs
+	![[Pasted image 20240121202153.png]]
+- We are going to assign a value to it . Once we've assigned a value to it and we imagine that that value we assigned to SA is fixed. The rest of the arcs connected to SA can now be "forgotten". (Conditioning)
+- Conditioning: instantiate a variable, prune its neighbors' domains
+#### Cutset Conditioning
+#### Tree Decomposition*
 ## Iterative Improvement
 ![[Pasted image 20240121192947.png]]
 ## Performance of Min-Conflicts
