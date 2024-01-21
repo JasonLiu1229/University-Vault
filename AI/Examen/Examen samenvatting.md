@@ -166,6 +166,31 @@ Is A* optimaal?
 Een heuristic h is admissible als:
 + $0 \le h(n) \le h^*(n)$. Waarbij $h^*(n)$ is de true cost van de dicht bij zijnde goal.
 Een admissible heuristic bedenken is de belangrijkste stap om A* te implementeren.
+#### Optimality 
+![[Pasted image 20240121145519.png]]
+Stel:
++ A is een optimale node
++ B is een suboptimale node
++ h is admissible
+Dan:
++ A zou de fringe exiten voor B
+Bewijs:
+![[Pasted image 20240121145704.png]]
++ Stel B is op de fringe.
++ Stel de voorganger van A is n, die ook op de fringe zit.
++ Dan: n zal eerder uitbreiden dan B
+	+ f(n) is less or equal to f(A)
+		+ Definitie van f-cost admissibility van h, h = 0 als we kijken naar een goal state.
+			+ $f(n) = g(n) + h(n)$
+			+ $f(n) \le g(n)$
+			+ $g(A) = f(A)$
+	+ f(A) is less than f(B)
+		+ B is suboptimal, h = 0 at a goal.
+			+ $g(A) \lt g(B)$
+			+ $f(A) \lt f(B)$
+	+ n expands before B
+		+ $f(n) \le f(A) \lt f(B)$
++ Alle voogangers v
 # Lecture 2
 # Lecture 3
 # Lecture 4
