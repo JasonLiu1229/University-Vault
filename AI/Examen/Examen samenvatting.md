@@ -1045,7 +1045,6 @@ Different things can emerge here, though these numbers are not just complementar
 		- $\forall x, y, z : P(x,y|z) = P(x|z) P(y|z)$
 	- or, equivalent, if and only if:
 		- $\forall x, y, z : P(x|z, y) = P(x|z)$
-
 #### Examples
 - What about this domain:
 	- Traffic 
@@ -1060,10 +1059,92 @@ We can see clearly from the graphic that rain causes both traffic and umbrellas.
 	- Alarm
 	![[Pasted image 20240122125602.png]]
 In this, we see that fire causes smoke which triggers the alarm. We can say that the alarm going off is conditionally independent of the fire given that there is smoke. In other words, if we know that there is smoke, whether or not that the smoke came from the fire does not affect the probability that the alarm will go off.
-
 #### Chain rule
-- Chain rule: $P(X_1, X_2, \cdots , X_n) = P(X_1)P(X_)
+- Chain rule: $P(X_1, X_2, \cdots , X_n) = P(X_1)P(X_2 | X_1)P(X_3|X_2, X_1) \cdots$
+- Trivial decomposition:
+	- $P(Traffic, Rain, Umbrella) = P(Rain)P(Traffic|Rain)P(Umbrella|Rain,Traffic)$
+- With assumption of conditional independence:
+	- $P(Traffic, Rain, Umbrella) = P(Rain)P(Traffic|Rain)P(Umbrella|Rain)$
+- Bayes’nets / graphical models help us express conditional independence assumptions
+##### Example
+	![[Pasted image 20240122130223.png]]![[Pasted image 20240122130304.png]]
+In this case ,there are just 2 locations for the ghost , top or bottom.
+So you could have a measurement on each of these squares so each of them could give you a red measurement or not a red measurement, so those are 2 random variables. The ghost's location is another random variable , whether it is being in the top .
+- Each sensor depends only on where the ghost is
+- That means, the two sensors are conditionally independent, given the ghost position
+	- T: Top square is red:
+    - B: Bottom square is red:
+    - G: Ghost is in the top
+- Givens:
+    - P(+g) = 0.5
+    - P(-g) = 0.5
+    - P(+t | +g) = 0.8
+    - P(+t | -g) = 0.4
+    - P(+b | +g) = 0.4
+    - P(+b | -g) = 0.8
+- In general it is not enough to specify a full joint distribution
+- But if we're willing to assume the 2 sensor are independent given where the ghost is , then this is enough.
+    - P(G,B,T) = P(G)P(T|G)P(B|G)
+	![[Pasted image 20240122130624.png]]
+## Bayes' Nets: Big Picture
+	![[Pasted image 20240122130653.png]]
+It's a new way of representing joint distributions. It's very closely related to the chain rule.
 
+We've always talked about discrete random variables, and then a distribution can be a table. If you have continuous random variables then the way to represent the distribution is commonly done using a probability density function, which effectively encodes how much probability mass is associated with each interval if it's a 1D distribution, or each volume in space was probability of landing in a certain volume of space. It turns out if you had continuous random variables you can still use Bayes Nets, and the conditional distributions that you'd be working with would then be conditional distributions that are densities rather than the discrete distributions.
+
+- Two problems with using full joint distribution tables as our probabilistic models:
+    - Unless there are only a few variables, the joint is WAY too big to represent explicitly
+    - Hard to learn (estimate) anything empirically about more than a few variables at a time
+- **Bayes’ nets:** a technique for describing complex joint distributions (models) using simple, local distributions (conditional probabilities)
+    - More properly called **graphical models**
+    - We describe how variables locally interact
+    - Local interactions chain together to give global, indirect interactions
+    - For about 10 min, we’ll be vague about how these interactions are specified
+    ![[Pasted image 20240122130957.png]]
+### Examples
+#### Insurance
+	![[Pasted image 20240122131026.png]]
+- 27 variables
+    - assuming they are binary
+- 2²⁷ ≈ 134M entries
+- Difficult to estimate the relationships between all variables
+#### Car
+	![[Pasted image 20240122131035.png]]
+### Graphical Model Notation
+- Nodes: variables (with domains)
+	- Can be assigned (observed) or unassigned (unobserved)
+    - Often the ones that are assigned we shade in with gray
+- Arcs: interactions
+    - Similar to CSP constraints
+    - Indicate “direct influence” between variables
+    - Formally: encode conditional independence (more later)
+- For now: imagine that arrows mean direct causation (in general, they don’t!)
+    - it's often true, but it doesn't have to be true.
+	![[Pasted image 20240122132228.png]]
+#### Examples
+##### Coin flips
+- N independent coin flips
+	![[Pasted image 20240122132353.png]]![[Pasted image 20240122132359.png]]
+- No interactions between variables: **absolute independence**
+##### Traffic
+- Variables:
+    - R: It rains
+    - T: There is traffic
+- Model 1: independence 
+	![[Pasted image 20240122132523.png]]
+- Model 2: rain causes traffic
+    ![[Pasted image 20240122132533.png]]
+- In general model 2 is better, because we have an relationship. Relationships help with knowing what impact a certain variable has on an other variable.
+##### Traffic 2
+- Variables
+    - T: Traffic
+    - R: It rains
+    - L: Low pressure
+    - D: Roof drips
+    - B: Ballgame
+    - C: Cavity
+	![[Pasted image 20240122132720.png]]
+	
 ---
 # Lecture 5
 ---
