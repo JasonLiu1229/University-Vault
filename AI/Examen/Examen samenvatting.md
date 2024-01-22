@@ -1226,6 +1226,38 @@ This network here, which does not match the causal process, encodes the exact sa
 - BNs: Huge space savings!
 - Also easier to elicit local CPTs
 - Also faster to answer queries (coming)
+## D-separation: Outline
+- Study independence properties for triples
+- Analyse complex cases in terms of member triples
+- D-separation: a condition / algorithm for answering such queries
+### Causal Chains
+- This configuration is a "causal chain"
+	![[Pasted image 20240122153611.png]]
+- $P(x, y, z) = P(x)P(y|x)P(z|y)$
+
+- Guaranteed X independent of Z ? **NO**
+	- One example set of CPTs for which X is not independent of Z is sufficient to show this independence is not guaranteed.
+	- Example:
+		- Low pressure causes rain causes traffic, high pressure causes no rain causes no traffic.
+		- In numbers:
+			- $P( +y | +x ) = 1, P( -y | - x ) = 1$
+			- $P( +z | +y ) = 1, P( -z | -y ) = 1$
+
+- Guaranteed X independent of Z given Y?
+	- $P(z|x,y) = \dfrac{P(x,y,z)}{P(x,y)}$
+	- $= \dfrac{P(x)P(y|x)P(z|y)}{P(x)P(y|x)}$
+	- $= P(z|y)$
+	- So **YES**
+- **Evidence along the chain "blocks" the influence**
+### Common Cause
+- This configuration is a "common cause"
+	![[Pasted image 20240122155932.png]]
+- $P(x, y, z) = P(y)P(x|y)P(z|y)$
+- Guaranteed X independent of Z ? **NO**
+	- One example set of CPTs for which X is not independent of Z is sufficient to show this independence is not guaranteed.
+	- Example:
+		- Project due causes both forums busy and lab full
+		- 
 ---
 # Lecture 5
 ---
