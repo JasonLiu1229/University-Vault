@@ -1248,16 +1248,85 @@ This network here, which does not match the causal process, encodes the exact sa
 	- $= \dfrac{P(x)P(y|x)P(z|y)}{P(x)P(y|x)}$
 	- $= P(z|y)$
 	- So **YES**
+
 - **Evidence along the chain "blocks" the influence**
 ### Common Cause
 - This configuration is a "common cause"
 	![[Pasted image 20240122155932.png]]
 - $P(x, y, z) = P(y)P(x|y)P(z|y)$
+
 - Guaranteed X independent of Z ? **NO**
 	- One example set of CPTs for which X is not independent of Z is sufficient to show this independence is not guaranteed.
 	- Example:
 		- Project due causes both forums busy and lab full
-		- 
+		- In numbers:
+			- $P( +x | +y ) = 1, P( -x | -y ) = 1$,
+			- $P( +z | +y ) = 1, P( -z | -y ) = 1$
+
+- Guaranteed X and Z independent given Y?
+	-  $P(z|x,y) = \dfrac{P(x,y,z)}{P(x,y)}$
+	- $= \dfrac{P(y)P(x|y)P(z|y)}{P(y)P(x|y)}$
+	- $= P(z|y)$
+	- So **YES**
+
+- **Observing the cause blocks influence between effects.**
+### Common Effect
+- Last configuration: two causes of one effect (v-structures)
+	![[Pasted image 20240122160334.png]]
+
+- Are X and Y independent?
+	- **YES**: the ballgame and the rain cause traffic, but they are not correlated
+		- $P(X,Y,Z) = P(X)P(Y)P(Z∣X,Y)$
+		- and $P(X,Y | Z) = \dfrac{P(X,Y,Z)}{P(Z)}$
+		- Then if we combine them, $P(X,Y | Z) = \dfrac{P(X)P(Y)P(Z ∣ X,Y)}{P(Z)}$
+		- Z is conditionally independent of X and Y so $P(Z ∣ X,Y) = P(Z)$
+		- So $P(X,Y | Z) = \dfrac{P(X)P(Y)P(Z)}{P(Z)} = P(X)P(Z)$
+
+- Are X and Y independent given Z?
+	- **NO**: seeing traffic puts the rain and the ballgame in competition as explanation.
+
+- **This is backwards from the other cases**
+	- Observing an effect **activates** influence between possible causes.
+## The General Case
+	![[Pasted image 20240122161443.png]]
+- General question: in a given BN, are two variables independent (given evidence)?
+- Solution: analyse the graph
+- Any complex example can be broken into repetitions of the three canonical cases
+	![[Pasted image 20240122161525.png]]
+### Reachability
+- Recipe: shade evidence nodes, look for paths in the resulting graph
+- Attempt 1: if two nodes are connected by an undirected path not blocked by a shaded node, they are conditionally independent
+- Almost works, but not quite
+	- Where does it break?
+		- Answer: the v-structure at T doesn’t count as a link in a path unless “active
+	![[Pasted image 20240122161636.png]]
+### Active / Inactive Paths
+- Question: Are X and Y conditionally independent given evidence variables {Z}? 
+	- Yes, if X and Y "d-separated" by Z 
+	- Consider all (undirected) paths from X to Y 
+	- No active paths = independence!
+
+- A path is active if each triple is active:
+	- Causal chain A -> B -> C where B is unobserved (either direction)
+	- Common cause A <- B -> C where B is unobserved 
+	- Common effect (aka v-structure) A -> B <- C where B or one of its *descendants* is observed
+
+- All it takes to block a path is a single inactive segment
+	![[Pasted image 20240122162025.png]]
+### D-Separation
+- Query: $X_i \mathrel{\unicode{x2AEB}} X_j | \{X_{k1}, \cdots, X_{kn}\}$?
+- Check all (undirected!) paths between $X_i$ and $X_j$
+	- If one or more active, then independence not guaranteed
+		- $X_i \not\!\perp\!\!\!\perp X_j | \{X_{k1}, \cdots, X_{kn}\}$
+	- Otherwise (i.e. if all paths are inactive), then independence is guaranteed
+		- $X_i \mathrel{\unicode{x2AEB}} X_j | \{X_{k1}, \cdots, X_{kn}\}$
+	![[Pasted image 20240122162628.png]]
+#### Example
+	![[Pasted image 20240122162915.png]]
+### Structure Implications
+	![[Pasted image 20240122163040.png]]
+- Given a Bayes net structure, can run d- separation algorithm to build a complete list of conditional independences that are necessarily true of the form
+	- $X_i \mathrel{\unicode{x2AEB}} X_j | \{X_{k1}, \cdots, X_{kn}\}$
 ---
 # Lecture 5
 ---
