@@ -1941,18 +1941,114 @@ What are we going to be doing? We are still going to be maximizing expected util
     - Lets us calculate the expected utility for each action
 - What will we do with a network like above ?
     - We'll look at every possible action we might take, compute the expected utility if we were to take that action and then pick the action that maximizes the expected utility.
-
+### Selection of Action
 - Action selection
     - Instantiate all evidence
     - Set action node(s) each possible way
         - loop over all possible choices for the actions
     - Calculate posterior for all **parents of utility node**, given the evidence
         - this case you would compute the conditional distribution of Weather, given the evidence.
-        - if weather itself is evidence it's very easy , if there's no evidence then it's just a prior for Weather
-        - if there is some forecase you will essentially apply Bayes rule to find out P(weather | forecase)
+        - if weather itself is evidence it's very easy, if there's no evidence then it's just a prior for Weather
+        - if there is some forecast you will essentially apply Bayes rule to find out P(weather | forecast)
     - Calculate expected utility for each action
     - Choose maximizing action
+### Example
+	![[Pasted image 20240122210452.png]]
+There are part of the problem specification of course. If you are designing a robot to be deployed somewhere, you would decide for that robot what the utilities are such that when the robot maximizes expected utility it does what you want it to try to achieve.
 
+- We need to loop over all possible actions, the Umbrella
+    - Umbrella = leave
+        - what is the expected utility? Sum over all possible outcomes for Weather
+        - EU(leave) = $∑_w$ P(w)U(leave, w) = 0.7 * 100 + 0.3 * 0 = 70
+    - Umbrella = take
+        - EU(take) =$∑_w$ P(w)U(take, w) = 0.7 * 20 + 0.3 * 70 = 35
+- Optimal decision = leave
+    - MEU(∅) = $max_a$ EU(a) = 70
+        - ∅ means no evidence.
+
+	![[Pasted image 20240122210723.png]]
+- Almost exactly like expectimax / MDPs
+- What’s changed?
+    - when we did expectimax, we have the probability
+    - when in DNs, here, when we say, what's the probability of weather given the forecast, we actually have to do computation to figure out the probabilities from that expectation node. We shall do that by running Bayes Net inference.
+	![[Pasted image 20240122212408.png]]
+We listened to the forecast and the forecast is bad.
+- So in this kind of computations we compute the conditional distribution of the parents given evidence.
+    - P(W|F=bad)
+    - Bayes net provides the CPT P(F|W), we need to compute P(W|F=bad).
+- loop
+    - Umbrella = leave
+        - EU(leave|bad) = ∑w P(w|bad)U(leave, w) = 0.34 * 100 + 0.66 * 0 = 34
+    - Umbrella = take
+        - EU(take|bad) = ∑w P(w|bad)U(take, w) = 0.34 * 20 + 0.66 * 70 = 53
+- Optimal decision = take
+    - MEU(F=bad) = maxₐ EU(a|bad) = 53
+	![[Pasted image 20240122212436.png]]
+## Value of Information
+	![[Pasted image 20240122212518.png]]
+- Idea: compute value of acquiring evidence
+    - Can be done directly from decision network
+    - What does that mean?
+        - _Well remember, if I put DNs in front of you and say, all right, decision time. Are you taking the umbrella or not? You can say, ok, hold on a second, calculate, calculate, calculate. I'm going to take the umbrella, and my MEU is going to be 53. We can then talk hypothetically about what would happen if I showed you a variable. You'd make better decisions, and you get higher utilities._
+
+- Example: buying oil drilling rights
+    - Two blocks A and B, exactly one has oil, worth k
+    - You can drill in one location
+    - Prior probabilities 0.5 each, & mutually exclusive
+    - Drilling in either A or B has EU = k/2, MEU = k/2
+	    ![[Pasted image 20240122212554.png]]
+
+- Question: what’s the **value of information** of O?
+    - Value of knowing which of A or B has oil.
+        - if you know the oil location (somebody tells you), then your MEU is k.
+        - before, your MEU is k/2
+        - the difference is k/2, so rationally you're willing to pay k/2 to get to know where the oil is.
+    - Value is expected gain in MEU from new info
+    - Survey may say “oil in a” or “oil in b,” prob 0.5 each
+    - If we know OilLoc, MEU is k (either way)
+    - Gain in MEU from knowing OilLoc?
+    - VPI(OilLoc) = k/2
+        - value of **perfect** information
+        - That is the difference between the MEU whether or not taking the action with the variable.
+    - Fair price of information: k/2
+### VPI Example: Weather
+We can observe only Forecast. Question is how valuable is it to observe the forecast.
+	![[Pasted image 20240122213048.png]]
+- MEU with no evidence
+    - MEU(∅) = 70
+- MEU if forecast is bad
+    - MEU(F=bad) = 53
+- MEU if forecast is good
+    - MEU(F=good) = 95
+- Forecast distribution
+    - P(F=good) = 0.59, P(F=bad) = 0.41
+        - P(F) is not in BNs. We can compute by running inference in BNs
+    - 0.59 · 95 + 0.41 · 53 - 70 = 7.8
+    - In this case 7.8 means that you would be willing to pay 7.8 to get to listen to the forecast.
+		![[Pasted image 20240122213036.png]]
+    - We have the VPI of a particular variable or set of variables E' given that you already observed another set of variables _e_ which could be the empty set.
+    - In our example _e_ was the empty set , E' was equal to forecast.
+
+- Assume we have evidence E=e. Value if we act now:
+	    ![[Pasted image 20240122213338.png]]
+	    ![[Pasted image 20240122213350.png]]
+	- you have initial evidence +e, so choose an action, that point the chance node kick in ,which will instantiate the parent variables of the utility node and then you have your utility nodes.
+- Assume we see that E’ = e’. Value if we act then:
+	    
+    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_graph2.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_graph2.png)
+        - after you observe both {+e,+e' }, you take an action, and then the chance nodes kick in and then the utility nodes.
+- BUT **E’ is a random variable whose value is unknown**, so we don’t know what e’ will be.
+    - So we need to have to prediction about what e' will be in order to compute how valuable that information is to us.
+- Expected value if E’ is revealed and then we act:
+    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_form3.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_form3.png)
+        - _the missing image part is `e'`_
+    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_graph3.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_graph3.png)
+        - now we have an extra chance node
+        - you were to get to observe evidence but you don't know yet what the evidence is going to be. You start with chance node.
+        - first thing that happens is the evidence e' will be observed. you don't know yet what it's going to be, could be +e' or -e'.
+        - after that get instantiated you get to choose your action, after that more chance nodes will kick in for the parent variables of the utility node after which utility nodes kick in.
+- Value of information: how much MEU goes up by revealing E’ first then acting, over acting now:
+    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_form4.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_form4.png)
 ---
 # Lecture 7
 ---
