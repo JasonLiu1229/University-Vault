@@ -1001,6 +1001,68 @@ Different things can emerge here, though these numbers are not just complementar
 
 	![[Pasted image 20240122002334.png]]
 ## Probabilistic Models
+- Models describe how (a portion of) the world works
+- **Models are always simplifications**
+    - May not account for every variable
+    - May not account for all interactions between variables
+    - “All models are wrong; but some are useful.”  – George E. P. Box
+- What do we do with probabilistic models?
+    - We (or our agents) need to reason about unknown variables, given evidence
+    - Example: explanation (diagnostic reasoning)
+    - Example: prediction (causal reasoning)
+    - Example: value of information
+## Independence
+	![[Pasted image 20240122123030.png]]
+- Two variables are independent if:
+	- $\forall x,y : P(x,y) = P(x)P(y)$.
+	- This says that their joint distribution factors into a product two simpler distributions.
+	- Another form:
+		- $\forall x,y : P(x|y) = P(x)$
+		- This implies: the probability of x knowing y, is the probability of x. So knowing y doesn't change what the probability is over x.
+	- We write this as:
+		- $X \mathrel{\unicode{x2AEB}} Y$ 
+- Independence is a simplifying modelling assumption
+	- Empirical joint distributions: at best “close” to independent
+### Conditional Independence
+	![[Pasted image 20240122123814.png]]
+- P(Toothache, Cavity, Catch)
+- If I have a cavity, the probability that the probe catches in it doesn't depend on whether I have a toothache: 
+	- P(+catch | +toothache, +cavity) = P(+catch | +cavity)
+- The same independence holds if I don’t have a cavity:
+	- P(+catch | +toothache, -cavity) = P(+catch| -cavity)
+- Catch is conditionally independent of Toothache given Cavity: 
+	- P(Catch | Toothache, Cavity) = P(Catch | Cavity)
+- Equivalent statements: 
+	- P(Toothache | Catch , Cavity) = P(Toothache | Cavity) 
+	- P(Toothache, Catch | Cavity) = P(Toothache | Cavity) P(Catch | Cavity) 
+	- One can be derived from the other easily
+
+- Unconditional (absolute) independence very rare (why?)
+	- Unconditional independence is rare because most systems are complex with interrelated events. Conditional independence is more common because it allows for the possibility of relationships among events under certain conditions. It’s important to note that independence does not imply conditional independence, and vice versa.
+- Conditional independence is our most basic and robust form of knowledge about uncertain environments.
+- X is conditionally independent of Y given Z: $X \mathrel{\unicode{x2AEB}} Y  | Z$.
+	- if and only if: 
+		- $\forall x, y, z : P(x,y|z) = P(x|z) P(y|z)$
+	- or, equivalent, if and only if:
+		- $\forall x, y, z : P(x|z, y) = P(x|z)$
+
+#### Examples
+- What about this domain:
+	- Traffic 
+	- Umbrella 
+	- Raining
+	![[Pasted image 20240122125529.png]]
+We can see clearly from the graphic that rain causes both traffic and umbrellas. Therefore, traffic must be conditionally independent from umbrellas given that it's raining. More intuitively speaking, once we know it's raining the probability that there is traffic does not depend on whether people are walking around with umbrellas.
+
+- What about this domain:
+	- Fire
+	- Smoke
+	- Alarm
+	![[Pasted image 20240122125602.png]]
+In this, we see that fire causes smoke which triggers the alarm. We can say that the alarm going off is conditionally independent of the fire given that there is smoke. In other words, if we know that there is smoke, whether or not that the smoke came from the fire does not affect the probability that the alarm will go off.
+
+#### Chain rule
+- Chain rule: $P(X_1, X_2, \cdots , X_n) = P(X_1)P(X_)
 
 ---
 # Lecture 5

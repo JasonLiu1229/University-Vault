@@ -6,6 +6,7 @@
       {
         "id": "00dd5f3715220203",
         "type": "tabs",
+        "dimension": 50,
         "children": [
           {
             "id": "fbee8a7cab072e4b",
@@ -34,6 +35,7 @@
       {
         "id": "1312c62ec67e5d8e",
         "type": "tabs",
+        "dimension": 50,
         "children": [
           {
             "id": "a17cdc916b02ea4e",
@@ -194,8 +196,13 @@
   },
   "active": "fbee8a7cab072e4b",
   "lastOpenFiles": [
+    "Pasted image 20240122125602.png",
     "AI/Leerstof/Slides 4-1.pdf",
     "AI/Examen/Examen samenvatting.md",
+    "Pasted image 20240122125529.png",
+    "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
+    "Pasted image 20240122123814.png",
+    "Pasted image 20240122123030.png",
     "Pasted image 20240122002334.png",
     "AI/Examen/Images/Pasted image 20240122002039.png",
     "AI/Examen/Images/Pasted image 20240122001857.png",
@@ -203,9 +210,6 @@
     "AI/Examen/Images/Pasted image 20240122001718.png",
     "AI/Examen/Images/Pasted image 20240122001608.png",
     "AI/Examen/Images/Pasted image 20240122001540.png",
-    "AI/Examen/Images/Pasted image 20240122001500.png",
-    "AI/Examen/Images/Pasted image 20240122001000.png",
-    "AI/Examen/Images/Pasted image 20240122000842.png",
     "AI/Leerstof/Slides 3.pdf",
     "AI/Examen/online_samenvatting.pdf",
     "AI/Leerstof/Slides 2-2.pdf",
