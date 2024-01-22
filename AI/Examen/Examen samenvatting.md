@@ -1657,6 +1657,147 @@ There are special graph structures of BNs, where inference can be done efficient
 
 ## Approximate Inference: Sampling
 	![[Pasted image 20240122184207.png]]
+### Sampling
+- Sampling is a lot like repeated simulation
+    - Predicting the weather, basketball games, …
+
+- Why sample?
+    - Learning: get samples from a distribution you don’t know
+    - Inference: getting a sample is faster than computing the right answer (e.g. with variable elimination)
+        - We're going to go to our Bayes net, in which we know all of the probabilities. But we're going to sample anyway.
+        - When you sample in a network that you already know, it looks like simulation. You walk along the network, and you say, hmm if this happened, let's see what would happen at this variable. And you slip some coins. And you get a sample out that is a sort of probabilistic simulation.
+        - And in this case, the reason you're getting a sample is not because you don't actually know or are not able to compute the underlying probabilities. It's because sampling turns out to be faster than computing the right answer through brute force.
+
+- Basic idea
+    - Draw N samples from a sampling distribution S
+        - we get to define the sampling distribution.
+    - Compute an approximate posterior probability
+        - Inside those samples, which are all events that look like outcomes of S, and you're going to compute an approximate posterior probability. Whatever query you're trying to answer, you'll compute it over your samples.
+    - Show this converges to the true probability P
+
+- Sampling from given distribution
+    - Step 1: Get sample _u_ from uniform distribution over \[0, 1)
+        - E.g. random() in python
+    - Step 2: Convert this sample _u_ that lies in \[0,1) interval into an outcome from the distribution that we want a sample from
+
+- Example:
+	![[Pasted image 20240122191509.png]]
+## Sampling in Bayes’ Nets
+### Prior Sampling
+	![[Pasted image 20240122191714.png]]
+We have a BNs, and we want to generate samples of the full joint distribution, but without building full joint distribution.
+	![[Pasted image 20240122191819.png]]
+Given time, I know how to create the whole joint distribution. So I could do that right now. I could ask you, hey, what's the probability that it's cloudy, there's a sprinkler, it's rainy, but the grass is dry? We can compute that right now by multiplying a bunch of conditional probabilities together.
+
+We're going to do something similar to that. Instead of computing an entry of the joint distribution, we are going to create an event which is an assignment to these 4 variables. But we're going to create it by walking along the Bayes net.
+
+- Ordering: C → S → R → W , or C → R → S → W
+- We start with the 1st variable in the ordering **C**
+    - we generate the number in `[0,1)` , then map it to +c , or -c.
+    - this case , we got +c
+- Then we pick up next variable , this case _S_
+    - C is already sampled as +c, so we just consider the highlighted part of this table.
+    - again we generate a number, and map it into either +s , or -s
+    - this case , we got -s
+- Next we have to proceed with R
+    - we can not proceed W yet, because W depends on both S and R
+    - this case , we got +r
+- Now we can sample W
+    - this case , we got +w
+    - this generated our first sample from this BNs. +c,-s,+r,+w
+- Repeat this process , and build up a set of samples from this BNs distribution here.
+- What's the probability that I'll get the sample +c,-s,+r,+w
+    - 0.5 * 0.9 * 0.8 * 0.9
+    - If I multiply those together, I can determine the probability of the sample, which is just the probability of this event in the distribution described by the Bayes net.
+#### Pseudocode
+```c++
+// single sample
+For i=1,2,...,n
+    Sample xᵢ from P(Xᵢ| Parents(Xᵢ))
+return (x₁,x₂,...,xn)
+```
+- This process generates samples with probability:
+     ![[Pasted image 20240122192418.png]]
+    - $S_{PS}$: sampling distribution _S_ using prior sampling
+    - i.e. the BN’s joint probability
+- Let the number of samples of an event be
+    - $N_{PS} (x₁,x₂,...,xn)$
+- If the number of samples goes to infinity then the number of samples you get for a particular event divided by N will converge to the actual probability for that event.
+    ![[Pasted image 20240122192438.png]]
+- I.e., the sampling procedure is _**consistent**_.
+#### Example
+	![[Pasted image 20240122192641.png]]
+- We’ll get a bunch of samples from the BN: (let's say we ended up with following samples)
+    - +c, -s, +r, +w
+    - +c, +s, +r, +w
+    - -c, +s, +r, -w
+    - +c, -s, +r, +w
+    - -c, -s, -r, +w
+- If we want to know P(W)
+    - We have counts : <+w:4 , -w:1>
+    - Normalize to get P(W) = <+w:0.8, -w:0.2>
+    - This will get closer to the true distribution with more samples
+    - Can estimate anything else, too
+    - What about P(C| +w)? P(C| +r, +w)? P(C| -r, -w)?
+        - P(+c|+w) = 3/4 , P(-c|+w) = 1/4
+        - P(+c|+r,+w) = 1
+        - P(-c|-r,-w) : not computable from the samples we have.
+    - Fast: can use fewer samples if less time
+        - what’s the drawback? the accuracy of course.
+### Rejection Sampling
+	![[Pasted image 20240122192851.png]]
+As the samples come off our conveyor belt, we take a look at them. And if they're the samples we can use, meaning they match our evidence, we keep them. And if they're samples we can't use, we reject them.
+
+- Let’s say we want P(C)
+    - No point keeping all samples around
+    - Just tally counts of C as we go
+        - we know we sampled top down through BNs, so we know once we sampled C and if later all interesting is counting how often we have +c/-c
+        - there's no need to still sample S, R and W.
+        - we just stop sampling after we got C.
+
+- Let’s say we want P(C| +s)
+    - Same thing: tally C outcomes, but ignore (reject) samples which don’t have S=+s
+        - when you sampled -s , there is no point in continuing.
+        - that sample is going to be going unused when you answer your query
+    - This is called rejection sampling
+    - It is also consistent for conditional probabilities (i.e., correct in the limit)
+#### Pseudocode
+```c++
+// single sample 
+IN: evidence instantiation
+For i=1, 2, …, n
+    Sample xᵢ from P(Xᵢ| Parents(Xᵢ))
+    If xᵢ not consistent with evidence
+        Reject: Return, and no sample is generated in this cycle
+Return (x1, x2, …, xn)
+```
+### Likelihood Weighting
+	![[Pasted image 20240122193211.png]]
+Again, we know the query ahead of time, and see if we can further improve the procedure beyond what we did for a rejection sampling.
+
+- Problem with rejection sampling:
+    
+    - If evidence is unlikely, rejects lots of samples
+    - Evidence not exploited as you sample
+        - if the evidence variable are very deep in your BNs, you might have done all that work
+        - reach all the way to the bottom of you BNs, you sample your evidence variable , you sample it the wrong way , now you reject -- that sample can not use .
+    - Consider P(Shape|blue)
+        - Shape → Color
+            - ~~pyramid, green~~
+            - ~~pyramid, red~~
+            - sphere , blue
+            - ~~cube, red~~
+            - ~~sphere, green~~
+- Idea: fix evidence variables and sample the rest
+    
+    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_BNs_Sampling_LW_fix_evidence.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_BNs_Sampling_LW_fix_evidence.png)
+    - Now we don't have the problem of throwing out samples, because we make them all blue. That is when we're drawing samples from the network, we don't risk the sample not matching the evidence. We fix it to equal the evidence.
+    - Problem: sample distribution not consistent!
+    - Solution: weight by probability of evidence given parents
+        - you instantiated some shape to be blue, and the probability for blue was 0.2 for that shape
+        - you now weight that particular sample by a factor 0.2.
+        - **No dropping samples, but adding a weight to each sample**. Instead of being rejected, you get a small weight.
+### Gibbs Sampling
 ---
 # Lecture 6
 ---
