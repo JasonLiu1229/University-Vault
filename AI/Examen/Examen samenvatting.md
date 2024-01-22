@@ -2108,6 +2108,91 @@ We can observe only Forecast. Question is how valuable is it to observe the fore
 ---
 # Lecture 7 Hidden Markov Models
 ## Reasoning over Time or Space
+- Often, we want to reason about a sequence of observations
+    - Speech recognition
+    - Robot localization
+    - User attention
+    - Medical monitoring
+- Need to introduce time ( or space ) into our models
+## Markov Models
+- A **Markov Model** is a chain-structured Bayes' net (BN)
+    - Each node is identically distributed (stationarity)
+    - Value of X at a given time is called the **state**
+	        ![[Pasted image 20240122223913.png]]
+        - **So you have some variable X that replicates at every time step**
+    - As a Bayes' net
+        - $P(X_1)$
+        - $P(X_t | X_{t-1})$
+    - Parameters: called **transition probability** or dynamics, specify how the state evolves over time (also, initial state probabilities)
+        - This is the model how the world changes
+    - Stationarity assumption: transition probabilities the same at all times
+        - This means transition probabilities $P(X_t | X_{t-1})$ don't depend on time, they are always the same.
+    - Same as MDP transition model, but no choice of action
+        - Here is no action, you are just interested in watching how its value evolves probabilistically over time, for example, what's the probability of rain 5 days after it was sunny?
+### Conditional Independence
+- Basic conditional independence:
+    - Past and future independent given the present
+        - Bayes Net D-separation
+    - Each time step only depends on the previous
+        - To predict what happens at the next time, just knowing the current time is the best thing. Knowing more things about the past is not going to help you.
+    - This is called the (first order) Markov property
+        - You might say, well, what if it doesn't apply in my situation? What if my situation, the state of the next time, depends on the state of the current time and the state of the previous time?
+        - Well, to still be able to fit in this format and to really fit the notion of state, you should then combine the state of the current time and the state of the previous time in one bigger state variable that you now call your state.
+
+- Note that the chain is just a (growable) BN
+    - We can always use generic BN reasoning on it if we truncate the chain at a fixed length. 
+### Example
+	![[Pasted image 20240122224843.png]]
+- States: X = {rain, sun}
+- Initial distribution: 1.0 sun
+- CPT $P(X_t | X_{t-1}$):
+	![[Pasted image 20240122224921.png]]
+- What is the probability distribution after one step?
+	![[Pasted image 20240122225056.png]]
+## Mini-Forward Algorithm
+- Question: What’s P(X) on some day t?
+	![[Pasted image 20240122225130.png]]
+	![[Pasted image 20240122225228.png]]
+- What is actually going on here, think about the Markov model.
+	- You have X₁, X₂. It's a Bayes net with two variables. You have all the distributions, all the tables. You have instantiated a distribution for the initial time X₁ and now you're running variable elimination to get the distribution for X₂. So you're trying to compute P(X₂) in this Bayes net.
+### Example
+	![[Pasted image 20240122225402.png]]
+	Running it long enough will make it converge to some value, this is what we call the stationary distribution. 
+### Stationary Distributions
+- For most chains:
+    - Influence of the initial distribution gets less and less over time.
+    - The distribution we end up in is independent of the initial distribution
+- Stationary distribution:
+    - The distribution we end up with is called the **stationary distribution P∞** of the chain
+    - It satisfies ![[Pasted image 20240122225612.png]]
+- As the property of Markov matrix , it will converge to 0.94868/0.31623 = 3:1, that means:
+    - P∞(sun) = 3/4
+    - P∞(rain) = 1/4
+#### Example
+	![[Pasted image 20240122225906.png]]
+#### Applications of Stationary Distributions
+##### Web Link Analysis
+- PageRank over a web graph 
+	- Each web page is a state 
+	- Initial distribution: uniform over pages 
+	- Transitions: 
+		- With prob. c, uniform jump to a random page (dotted lines, not all shown) 
+		- With prob. 1-c, follow a random outlink (solid lines)
+	![[Pasted image 20240122230236.png]]
+
+- Stationary distribution 
+	- Will spend more time on highly reachable pages 
+	- E.g. many ways to get to the Acrobat Reader download page 
+	- Somewhat robust to link spam 
+	- Google 1.0 returned the set of pages containing all your keywords in decreasing rank, now all search engines use link analysis along with many other factors (rank actually getting less important over time
+##### Gibbs Sampling*
+- Each joint instantiation over all hidden and query variables is a state: ${X_1, \cdots, X_n}$ = H U Q
+
+- Transitions: 
+	- With probability 1/n resample variable $X_j$ according to $P(X_j | x_1, x_2, …, x_{j-1}, x_{j+1}, \cdots, x_n, e_1, \cdots, e_m)$
+
+- Stationary distribution: 
+	- Conditional distribution P(X1, X2 , … , Xn|e1, …, em) § Means that when running Gibbs sampling long enough we get a sample from the desired distribution § Requires some proof to show this is true!
 ---
 # Lecture 8
 ---
