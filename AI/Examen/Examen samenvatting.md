@@ -1915,6 +1915,43 @@ This is just giving you the very basic idea of how Gibbs Sampling works and you 
 # Lecture 6 Decision Networks and Value of Information
 	![[Pasted image 20240122195523.png]]
 ## Decision Networks
+	![[Pasted image 20240122205131.png]]
+- New node types:
+    - ![[Pasted image 20240122205846.png]] Chance nodes (just like BNs)
+    - ![[Pasted image 20240122205904.png]] Actions (rectangles, cannot have parents, act as observed evidence)
+        - You have a choice here
+        - You can either take your umbrella with you, or you can leave it at home
+        - So this is something you get to set
+    - ![[Pasted image 20240122205923.png]] Utility node (diamond, depends on **action** and **chance** nodes)
+        - Unlike the utility we met before, this node is not a number, but a function, a table
+        - It tells you for every possible combination of its parent values, what is the utility for experiencing that combination of parent values.
+        - Over there, there are 2 parents: umbrella and weather. It could be that
+            - It's sunny, you left your umbrella at home, now you get to play with the beach ball, probably have high utility
+            - It's sunny, but you brought your umbrella, and now you don't get to play the beach ball, we get to carry umbrella around, you are not so happy
+            - It's rainy, you didn't bring an umbrella, that's the worst case
+            - It's rainy, but you brought your umbrella, at least you have a way to protect yourself from the rain.
+        - All 4 of these will have a number associated with them, the utility for that particular outcome.
+        - **If there is only 1 agent, where will only be one utility node, if there's more than 1 agent there could be more than 1 utility node.**
+
+What are we going to be doing? We are still going to be maximizing expected utility.
+
+- **MEU: choose the action which maximizes the expected utility given the evidence**
+- Can directly operationalize this with decision networks
+    - Bayes nets with nodes for utility and actions
+    - Lets us calculate the expected utility for each action
+- What will we do with a network like above ?
+    - We'll look at every possible action we might take, compute the expected utility if we were to take that action and then pick the action that maximizes the expected utility.
+
+- Action selection
+    - Instantiate all evidence
+    - Set action node(s) each possible way
+        - loop over all possible choices for the actions
+    - Calculate posterior for all **parents of utility node**, given the evidence
+        - this case you would compute the conditional distribution of Weather, given the evidence.
+        - if weather itself is evidence it's very easy , if there's no evidence then it's just a prior for Weather
+        - if there is some forecase you will essentially apply Bayes rule to find out P(weather | forecase)
+    - Calculate expected utility for each action
+    - Choose maximizing action
 
 ---
 # Lecture 7
