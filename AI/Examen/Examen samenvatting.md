@@ -2032,25 +2032,82 @@ We can observe only Forecast. Question is how valuable is it to observe the fore
 - Assume we have evidence E=e. Value if we act now:
 	    ![[Pasted image 20240122213338.png]]
 	    ![[Pasted image 20240122213350.png]]
-	- you have initial evidence +e, so choose an action, that point the chance node kick in ,which will instantiate the parent variables of the utility node and then you have your utility nodes.
+	- You have initial evidence +e, so choose an action, that point the chance node kick in, which will instantiate the parent variables of the utility node and then you have your utility nodes.
 - Assume we see that E’ = e’. Value if we act then:
-	    
-    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_graph2.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_graph2.png)
-        - after you observe both {+e,+e' }, you take an action, and then the chance nodes kick in and then the utility nodes.
+	    ![[Pasted image 20240122213418.png]]
+	    ![[Pasted image 20240122213435.png]]
+	- After you observe both {+e, +e'}, you take an action, and then the chance nodes kick in and then the utility nodes.
 - BUT **E’ is a random variable whose value is unknown**, so we don’t know what e’ will be.
     - So we need to have to prediction about what e' will be in order to compute how valuable that information is to us.
 - Expected value if E’ is revealed and then we act:
-    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_form3.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_form3.png)
-        - _the missing image part is `e'`_
-    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_graph3.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_graph3.png)
-        - now we have an extra chance node
-        - you were to get to observe evidence but you don't know yet what the evidence is going to be. You start with chance node.
-        - first thing that happens is the evidence e' will be observed. you don't know yet what it's going to be, could be +e' or -e'.
-        - after that get instantiated you get to choose your action, after that more chance nodes will kick in for the parent variables of the utility node after which utility nodes kick in.
+	    ![[Pasted image 20240122213452.png]]
+	- _the missing image part is `e'`_
+	    ![[Pasted image 20240122213504.png]]
+	- now we have an extra chance node
+	- you were to get to observe evidence but you don't know yet what the evidence is going to be. You start with chance node.
+	- first thing that happens is the evidence e' will be observed. you don't know yet what it's going to be, could be +e' or -e'.
+	- after that get instantiated you get to choose your action, after that more chance nodes will kick in for the parent variables of the utility node after which utility nodes kick in.
 - Value of information: how much MEU goes up by revealing E’ first then acting, over acting now:
-    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_DM_voi_form4.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_DM_voi_form4.png)
+	    ![[Pasted image 20240122213520.png]]
+### Properties
+- Nonnegative
+    - ∀E',e : VPI(E'|e) ≥ 0
+    - More information will always help you. **on the average**, when you don't know yet what the information is going to be, it is good to get information. 
+
+- Nonadditive (think of observing $E_j$ twice)
+    - $VPI(E_j,E_k |e)$ ≠ $VPI(E_j |e)$ + $VPI(E_k |e)$
+    - that $VPI(E_j,E_k |e)$ is not the same as the sum of the individual VPI.
+
+- Order-independent
+    - $VPI(E_j,E_k |e)$ = $VPI(E_j |e)$ + $VPI(E_k |e , E_j )$
+    - = $VPI(E_k |e)$ + $VPI( E_j |e , E_k )$
+    - a lot like the chain rule
+
+- The following statements are true:
+    - VPI is guaranteed to be nonnegative (≥0).
+    - The MEU after observing a node could potentially be less than the MEU before observing that node.
+    - VPI is guaranteed to be exactly zero for any node that is conditionally independent (given the evidence so far) of all parents of the utility node.
+### Quick VPI Questions
+- The soup of the day is either clam chowder or split pea, but you wouldn’t order either one. What’s the value of knowing which it is?
+    - 0
+- There are two kinds of plastic forks at a picnic. One kind is slightly sturdier. What’s the value of knowing which?
+    - somewhat positive. can not really put a number on it this.
+- You’re playing the lottery. The prize will be $0 or $100. You can play any number between 1 and 100 (chance of winning is 1%). What is the value of knowing the winning number?
+    - 99$
+## Value of Imperfect Information?
+	![[Pasted image 20240122214440.png]]
+- No such thing (as we formulate it)
+    - _in our formulation, there is no imperfect information._
+- Information corresponds to the observation of a node in the decision network
+    - Information is revealing the value of a random variable in your network.
+    - observing means you know what the value is
+- If data is “noisy” that just means we don’t observe the original variable, but another variable which is a noisy version of the original one
+    - e.g. we observe forecast, not weather.
+## VPI Question
+	![[Pasted image 20240122214605.png]]
+- VPI(OilLoc)?
+    - saw that before, that is still k/2
+
+- VPI(ScoutingReport)?
+    - \[0,k/2]
+    - can not put the number on this.
+
+- VPI(Scout) ?
+    - for knowing what scout is doing the scouting report
+    - = 0
+    - if we observe evidence that does not change the distribution for the parent variables , it will not change our decision, it will not change our expected utility.
+    - Scout is independent of OilLoc with no other evidence. So knowing the Scout is not affecting the distribution of parent variables , hence not affecting our MEU.
+
+- VPI(Scout | ScoutingReport)?
+    - > 0
+
+- Generally:
+    - If Parents(U) ⊥ Z | CurrentEvidence
+	    - Then VPI( Z | CurrentEvidence) = 0
+    - that is, VPI is guaranteed to be exactly zero for any node that is conditionally independent (given the evidence so far) of all parents of the utility node.
 ---
-# Lecture 7
+# Lecture 7 Hidden Markov Models
+## Reasoning over Time or Space
 ---
 # Lecture 8
 ---
