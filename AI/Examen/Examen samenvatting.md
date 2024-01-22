@@ -1614,7 +1614,49 @@ Last two rows result in P(W|cold)
     - f₄(y₁,y₂,y₃, X₃) = p(y₃|X₃)·f₃(y₁,y₂,X₃)
 - Normalizing over X₃ gives P(X₃|y₁,y₂,y₃)
 ### Variable Elimination Ordering
+- For the query P(Xn|y₁,…,yn) work through the following two different orderings as done in previous slide: Z, X₁, …, Xn-1 and X₁, …, Xn-1, Z. What is the size of the maximum factor generated for each of the orderings?
+	![[Pasted image 20240122183357.png]]
+- Answer: 2ⁿ⁺¹ versus 2² (assuming binary)
+- In general: the ordering can greatly affect efficiency.
+#### VE: Computational and Space Complexity
+- The computational and space complexity of variable elimination is determined by the largest factor
+- The elimination ordering can greatly affect the size of the largest factor.
+    - E.g., previous slide’s example 2ⁿ vs. 2
+- Does there always exist an ordering that only results in small factors?
+    - **No!**
+    - There are BNs and we'll see one in next slides where no matter which ordering you pick it's going to generate large factors along the way.
+#### Worst Case Complexity?
+	![[Pasted image 20240122183616.png]]
+- CPS
+    - A 3-Sat problem, a special kind of CSP
+		![[Pasted image 20240122183644.png]]
+    - There are 7 variables , X₁ ... X₇, I want to find an assignment to these 7 variables , such that this clause is true
+        - The clause is saying : x₁ or x₂ or not x₃ has to be true , and not x₁ or x₃ or not x₄ has to be true , and ... so forth
+    - P(Xᵢ=0) = P(Xᵢ=1) = 0.5
+    - Y₁ = X₁ v X₂ v ¬V₃ , ... , Y₈ = ¬X₅ v X₆ v V₇
+    - Y₁‚₂ = Y₁ ∧ Y₂ , ... , Y₇‚₈ = Y₇ ∧ Y₈
+    - Y₁‚₂‚₃‚₄ = Y₁‚₂ ∧ Y₃‚₄ , Y₅‚₆‚₇‚₈ = Y₅‚₆ ∧ Y₇‚₈
+    - Z = Y₁‚₂‚₃‚₄ ∧ Y₅‚₆‚₇‚₈
+- Why we use so many Y variables here ?
+    - BNs where variable has many parents is a large BNs , it's not very compact
+    - Those Y variables gives us a BNs where every variables has at most 3 parents. So it's a very small BNs.
+- If we can answer P(z) equal to zero or not, we answered whether the 3-SAT problem has a solution.
+- Hence inference in Bayes’ nets is NP-hard. No known efficient probabilistic inference in general.
+### Polytrees
+There are special graph structures of BNs, where inference can be done efficiently. One example is Polytree.
+- A polytree is a directed graph with no undirected cycles
+    - so directed acyclic graph can have undirected cycles.
+    - but if you don't allow those undirected cycles, you have a polytree.
+- For polytrees you can always find an ordering that is efficient
+    - Try it!!
+- Cut-set conditioning for Bayes’ net inference
+    - Choose set of variables such that if removed only a polytree remains
+    - Exercise: Think about how the specifics would work out!
 
+> Start of part 2 Bayes’ Nets: Sampling
+
+## Approximate Inference: Sampling
+	![[Pasted image 20240122184207.png]]
 ---
 # Lecture 6
 ---
