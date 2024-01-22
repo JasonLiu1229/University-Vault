@@ -1327,8 +1327,56 @@ This network here, which does not match the causal process, encodes the exact sa
 	![[Pasted image 20240122163040.png]]
 - Given a Bayes net structure, can run d- separation algorithm to build a complete list of conditional independences that are necessarily true of the form
 	- $X_i \mathrel{\unicode{x2AEB}} X_j | \{X_{k1}, \cdots, X_{kn}\}$
+- This list determines the set of probability distributions that can be represented
+### Topology Limits Distributions
+- Given some graph topology G, only certain joint distributions can be encoded
+- The graph structure guarantees certain (conditional) independences
+- (There might be more independence)
+- Adding arcs increases the set of distributions, but has several costs
+- Full conditioning can encode any distribution
+	![[Pasted image 20240122163501.png]]
+## Summary 
+- Bayes nets compactly encode joint distributions
+- Guaranteed independencies of distributions can be deduced from BN graph structure
+- D-separation gives precise conditional independence guarantees from graph alone
+- A Bayes' net's joint distribution may have further (conditional) independence that is not detectable until you inspect its specific distribution
 ---
-# Lecture 5
+# Lecture 5 Bayes’ Nets: Inference
+	![[Pasted image 20240122163724.png]]
+## Representation
+- A directed, acyclic graph, one node per random variable
+- A conditional probability table (CPT) for each node
+	- A collection of distributions over X, one for each combination of parents’ values
+		- $P(X | a_1, \cdots, a_n)$
+- Bayes’ nets implicitly encode joint distributions
+	- As a product of local conditional distributions
+	- To see what probability a BN gives to a full assignment, multiply all the relevant conditionals together:
+		- $P(x_1, x_2, \cdots, x_n) = \prod_{i=1}^n P(x_i|parents(X_i))$
+## Inference
+- Inference: calculating some useful quantity from a joint probability distribution
+	- So you image the given is some collection of probabilities.
+	- Maybe it's the whole joint probability table in all its exponential size glory. More often, it's a bunch of conditional probabilities that define a Bayes' Net.
+	- Some examples of things you might calculate from those givens are the canonical thing is a posterior probability.
+	- Another classic canonical query you might do is a most likely explanation query, where you say, I have some evidence, I would like to know the most likely value of a one or more variables given that evidence.
+- Examples:
+	- Posterior probability
+		- $P( Q| E_1=e_1,\cdots,E_k=e_k )$
+			- I care about variable Q. There's a bunch of evidence variables whose values I know and unfortunately there's going to be a bunch of other variables called hidden variables that I don't care about, and I also don't observe. And we're going to have to sum them out, and that creates a lot of time complexity.
+	- Most likely explanation
+		- $argmax_q P( Q=q | E_1=e_1, \cdots)$
+			- Given some evidence has bee observed, what's the most likely association of some query variables.
+### Inference By Enumeration
+- General case:
+	- All variables: $X_1,X_2,\cdots,X_n$
+	    - Evidence variables: $E_1,\cdots,E_k = e_1,\cdots,e_k$
+	    - Query* variable: $Q$
+	    - Hidden variables: $H_1, \cdots, H_r$
+- We want:
+	- $P(Q | e_1, \cdots, e_k)$ 
+	![[Pasted image 20240122165956.png]]
+### Inference by Enumeration in Bayes’ Net
+
+
 ---
 # Lecture 6
 ---
