@@ -998,6 +998,7 @@ Different things can emerge here, though these numbers are not just complementar
 >The development of AI stop in 80s because the difficulty of uncertainty. You can not compute such a large joint probability table with thousands variable.
 >
 >Bayes' Nets wil give us a way to deal with distributions of our large sets of random variable in a meaningful way
+
 	![[Pasted image 20240122002334.png]]
 ## Probabilistic Models
 
