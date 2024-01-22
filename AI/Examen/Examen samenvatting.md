@@ -2189,10 +2189,13 @@ We can observe only Forecast. Question is how valuable is it to observe the fore
 - Each joint instantiation over all hidden and query variables is a state: ${X_1, \cdots, X_n}$ = H U Q
 
 - Transitions: 
-	- With probability 1/n resample variable $X_j$ according to $P(X_j | x_1, x_2, …, x_{j-1}, x_{j+1}, \cdots, x_n, e_1, \cdots, e_m)$
+	- With probability 1/n resample variable $X_j$ according to $P(X_j | x_1, x_2, \cdots, x_{j-1}, x_{j+1}, \cdots, x_n, e_1, \cdots, e_m)$
 
 - Stationary distribution: 
-	- Conditional distribution P(X1, X2 , … , Xn|e1, …, em) § Means that when running Gibbs sampling long enough we get a sample from the desired distribution § Requires some proof to show this is true!
+	- Conditional distribution $P(X_1, X_2,\cdots, X_n| e_1, \cdots, e_m)$
+	- Means that when running Gibbs sampling long enough we get a sample from the desired distribution 
+	- Requires some proof to show this is true!
+## Hidden Markov Models
 ---
 # Lecture 8
 ---
