@@ -1519,6 +1519,41 @@ Last two rows result in P(W|cold)
     - ![[Pasted image 20240122173007.png]]
 - Computation for each entry: pointwise products
     - ∀r,t : P(r,t) = P(r)·P(t|r)
+##### Example: Multiple Joins
+	![[Pasted image 20240122173201.png]]
+	![[Pasted image 20240122173212.png]]
+- We call "Join on R" means that you grab all tables that have `R` in them.
+#### Operation 2: Eliminate
+	![[Pasted image 20240122173650.png]]
+- Second basic operation: _**marginalization**_
+- Take a factor and sum out a variable
+    - Shrinks a factor to a smaller one
+    - A _**projection**_ operation
+        - Get rid of the variables that don't matter -- the hidden variables
+        - Why do we even have hidden variables ?
+            - The reason we have it because we started with a joint distribution that was over more than the variables that appear in our query.
+- Example:
+	![[Pasted image 20240122173639.png]]
+- We sum all columns with the same T, so P(+r, +t) + P(-r, +t) = P(+t)
+##### Example: Multiple Elimination
+	![[Pasted image 20240122173916.png]]
+#### Thus Far: Multiple Join, Multiple Eliminate (= Inference by Enumeration)
+	![[Pasted image 20240122173959.png]]
+### Marginalizing Early (= Variable Elimination)
+	![[Pasted image 20240122174047.png]]
+- Switch the some order of join/eliminate
+- Intuition
+    - if you want to eliminate a variable, you can not do this until you have joined on that variable.
+#### Traffic Domain
+	![[Pasted image 20240122174204.png]]
+- P(L) = ?
+- Inference by Enumeration
+	![[Pasted image 20240122174231.png]]
+- Variable Elimination
+	![[Pasted image 20240122174251.png]]
+#### Marginalizing Early! (aka VE)
+	![[Pasted image 20240122174439.png]]
+### Evidence
 
 ---
 # Lecture 6
