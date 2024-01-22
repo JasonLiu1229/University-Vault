@@ -1217,7 +1217,15 @@ This network here, which does not match the causal process, encodes the exact sa
 > Start of part two Bayes' Nets: Independence
 
 ## Size of a Bayes' Net
-
+- How big is a joint distribution over N Boolean variables?
+	- $2^N$
+- How big is an N-node net if nodes have up to k parents?
+	- $O(N * 2^{k+1})$
+- Both give you the power to calculate
+	- $P(X_1, X_2, \cdots, X_n)$
+- BNs: Huge space savings!
+- Also easier to elicit local CPTs
+- Also faster to answer queries (coming)
 ---
 # Lecture 5
 ---
