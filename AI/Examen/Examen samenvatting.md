@@ -1554,6 +1554,66 @@ Last two rows result in P(W|cold)
 #### Marginalizing Early! (aka VE)
 	![[Pasted image 20240122174439.png]]
 ### Evidence
+- If evidence, start with factors that select that evidence
+    - No evidence looks like this: uses these initial factors
+        ![[Pasted image 20240122180851.png]]
+    - with evidence looks like this: computing P(L|+r) the initial factors become:
+        ![[Pasted image 20240122180902.png]]
+- We eliminate all vars other than query + evidence
+- Result will be a selected joint of query and evidence
+    - E.g. for P(L | +r), we would end up with:
+    ![[Pasted image 20240122180913.png]]
+	    - So P(L | +r) = P(+r, L) / P(+r)
+- To get our answer, just normalize this!
+- That's it!
+### General Variable Elimination
+- Query: $P( Q| E_1=e_1,\cdots,E_k=e_k )$
+- Start with initial factors:
+    - Local CPTs (but instantiated by evidence)
+- While there are still hidden variables (not Q or evidence):
+    - Pick a hidden variable H
+        - any ordering of hidden variables is valid
+        - but some orderings will lead to very big factors being generated along the way
+        - and some orderings might be able to keep the factors generated along the way very small
+    - Join all factors mentioning H
+    - Eliminate (sum out) H
+- Join all remaining factors and normalize
+#### Example
+	![[Pasted image 20240122182030.png]]
+	![[Pasted image 20240122182428.png]]
+	![[Pasted image 20240122182435.png]]
+#### Example in Equations
+	![[Pasted image 20240122182142.png]]
+
+- Do not process the slide! Don't do it. The slide is simply saying that instead of working with these factors, I could have worked all that out using products, and sums, and laws of distribution, and all of that.
+- equations from top to bottom
+    1. marginal can be obtained from joint by summing out
+    2. use Bayes' net joint distribution expression
+    3. use `x*(y+z) = xy + xz`
+    4. joining on _a_ , and then summing out give f₁
+    5. use `x*(y+z) = xy + xz`
+    6. joining on _e_ , and then summing out give f₂
+- **All we are doing is exploiting uwy + uwz + uxy + uxz + vwy + vwz + vxy +vxz = (u+v)(w+x)(y+z) to improve computational efficiency** !
+    
+- how do you decide which variables to pick first ?
+    - Suggestion here was **a variable with very few connections** . Connections means that it is participating in a factor.
+#### Another Variable Elimination Example
+	![[Pasted image 20240122182917.png]]
+- Query: P(X₃|Y₁=y₁,Y₂=y₂,Y₃=y₃)
+- Start by inserting evidence , which gives the following initial factors:
+    - p(Z),p(X₁|Z),p(X₂|Z),p(X₃|Z),p(y₁|X₁),p(y₂|X₂),p(y₃|X₃)
+- Eliminate X₁, this introduce the factor $f_1(Z,y_1) = ∑_{x1} p(x_1|Z)p(y_1|x_1)$ , and we are left with
+    - p(Z),f₁(Z,y₁),p(X₂|Z),p(X₃|Z),p(y₂|X₂),p(y₃|X₃)
+- Eliminate X₂, this introduce the factor f₂(Z,y₂) = ∑ₓ₂ p(x₂|Z)p(y₂|x₂) , and we are left with
+    - p(Z),f₁(Z,y₁),f₂(Z,y₂),p(X₃|Z),p(y₃|X₃)
+- Eliminate Z, this introduces the factor f₃(y₁,y₂,X₃) = $∑_z$ p(z)f₁(Z,y₁)f₂(Z,y₂)p(X₃|z) , and we are left:
+    - p(y₃|X₃),f₃(y₁,y₂,X₃)
+    - quiz: why there is a factor p(X₃|z) ? why not the other ones , like p(X₃,z) or P(Z,y) ?
+        - X₃ is the query variable, the query variable doesn't go through the elimination process, the same way as a hidden variable
+- No hidden variables left. Join the remaining factors to get
+    - f₄(y₁,y₂,y₃, X₃) = p(y₃|X₃)·f₃(y₁,y₂,X₃)
+- Normalizing over X₃ gives P(X₃|y₁,y₂,y₃)
+### Variable Elimination Ordering
 
 ---
 # Lecture 6
