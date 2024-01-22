@@ -1144,7 +1144,80 @@ We've always talked about discrete random variables, and then a distribution can
     - B: Ballgame
     - C: Cavity
 	![[Pasted image 20240122132720.png]]
-	
+	![[Pasted image 20240122133013.png]]
+A model is a representation of some thought a person has depending on the variables, so a different model could be valid depending on the reasoning.
+## Bayes' Net Semantics
+	![[Pasted image 20240122133134.png]]
+For a given Bayes' Net, what does it mean? What joint probability distribution does it encode? How do we know that?
+
+- A set of nodes, one per variable X
+- A directed, acyclic graph
+- A conditional distribution for each node
+	![[Pasted image 20240122133221.png]]
+	- A collection of distributions over X, one for each combination of parents’ values
+	    - $P(X|a_1,\cdots,a_n)$
+	- CPT: conditional probability table
+	- Description of a noisy “causal” process
+	    - E.g. if it rains, then there's 90% probability of traffic, if it doesn't rain, there's a 30% probability of traffic.
+	    - This is not part of the definition
+- **A Bayes net = Topology (graph) + Local Conditional Probabilities**.
+	- A graph, plus all the little local conditional probabilities that live inside the node
+### Probabilities in BNs
+- Bayes’ nets _**implicitly**_ encode joint distributions
+    - As a product of local conditional distributions
+    - To see what probability a BN gives to a full assignment, multiply all the relevant conditionals together:
+        - $P(x_1, x_2, \cdots , x_n) = \prod_{i=1}^n P(x_i|parents(X_i))$
+    - Example
+        ![[Pasted image 20240122133555.png]]
+        -  P(+cavity, +catch, -toothache) = P(+cavity)·P(-toothache|+cavity)·P(+catch|+cavity)
+- Why are we guaranteed that setting $P(x_1, x_2, \cdots , x_n) = \prod_{i=1}^n P(x_i|parents(X_i))$ results in a proper joint distribution?
+	- Chain rule (valid for all distributions):  $P(x_1, x_2, \cdots , x_n) = \prod_{i=1}^n P(x_i|x_1, \cdots , x_{i-1})$ 
+	- Assume conditional independences: $P(x_i, \cdots , x_{i-1}) = P(x_i|parents(X_i))$ 
+		- Then consequence: $P(x_1, x_2, \cdots , x_n) = \prod_{i=1}^n P(x_i|parents(X_i))$
+- Not every BN can represent every joint distribution
+	- The topology enforces certain conditional independencies
+#### Examples
+##### Alarm Network
+	![[Pasted image 20240122134759.png]]
+##### Traffic
+	![[Pasted image 20240122134822.png]]
+##### Reverse Traffic
+	![[Pasted image 20240122134843.png]]
+This network here, which does not match the causal process, encodes the exact same joint distribution over those variables as the previous one. Now you might like the previous one better and there's a lot of advantages to drawing these things causally, but mathematically, it is just an expansion of the chain rule.
+### Causality?
+- When Bayes’ nets reflect the true causal patterns:
+	- Often simpler (nodes have fewer parents)
+		- OFTEN we choose them to be causal, and the reason we choose to be causal is that you'll end up with fewer parents.
+	- Often easier to think about
+	- Often easier to elicit from experts
+		- $P(Traffic|Rain)$ is easy to get rather than $P(Rain|Traffic)$
+	![[Pasted image 20240122135458.png]]
+
+- BNs need not actually be causal
+	- Sometimes no causal net exists over the domain (especially if variables are missing)
+	- E.g. consider the variables Traffic and Drips
+		- you don't care about Raining any more
+		- T→D may be a reasonable choice, also D→R may be a reasonable choice. but both of them are not causal.
+	- End up with arrows that reflect correlation, not causation
+
+- What do the arrows really mean?
+	- Topology may happen to encode causal structure
+	- **Topology really encodes conditional independence**
+		- $P(x_i, \cdots , x_{i-1}) = P(x_i|parents(X_i))$ 
+## Bayes' Nets
+- So far: how a Bayes’ net encodes a joint distribution
+- Next: how to answer queries about that distribution
+    - Today:
+        - First assembled BNs using an intuitive notion of conditional independence as causality
+        - Then saw that key property is conditional independence
+    - Main goal: answer queries about conditional independence and influence
+- After that: how to answer numerical queries (inference)
+	![[Pasted image 20240122135445.png]]
+
+> Start of part two Bayes' Nets: Independence
+
+## Size of a Bayes' Net
+
 ---
 # Lecture 5
 ---
