@@ -2196,6 +2196,192 @@ We can observe only Forecast. Question is how valuable is it to observe the fore
 	- Means that when running Gibbs sampling long enough we get a sample from the desired distribution 
 	- Requires some proof to show this is true!
 ## Hidden Markov Models
+- Markov chains not so useful for most agents 
+	- Need observations to update your beliefs
+- Hidden Markov models (HMMs) 
+	- Underlying Markov chain over states X 
+	- You observe outputs (effects) at each time step
+	![[Pasted image 20240122234047.png]]
+	- In HMM, we don't get to observe the hidden state -- X, but the hope is that by observing the evidence variables, we can somehow infer a posterior distribution over the hidden states that allows us to do something interesting.
+	- What we're going to have is that every time there's going to be a hidden variable. That structure like a Markov chain and each time the evidence depends only on the state unobserved but only on the state at that time (E | X) (Bayes net D-separation)
+### Example
+#### Weather
+	![[Pasted image 20240122234130.png]]
+The sad grad student HMM.
+
+There's a grad student. He is just in the basement at all times. They don't come out of that basement. But luck has it, every now and then Professor stops by and says hi to them and sometimes, professor has an umbrella, sometimes not. And that, for the grad student, is a way to extract information about whether today might be a sunny day or a rainy day.
+
+- Hidden variable: where or not it's raining -- True or False
+- Observed variable: an umbrella
+- Now, there's multiple distributions involved.
+    - the initial state distribution
+        - initially sunny or rainy
+    - a distribution of for next day
+        - like we saw in the Markov Model, the transition model.
+    - a distribution for evidence given current state
+        - the probability of various evidence values given the underlying stat , which we then used to predict the opposite -- something about X.
+- So an HMM is defined by:
+    - **Initial distribution: P(X₁)**
+    - **Transitions: $P(X_t|X_{t-1})**$
+    - **Emissions: $P(E_t|X_t)**$
+
+So what do we need to define the HMM ?
+- we need 1 function which says how rain on one day depends on the previous day.
+	    ![[Pasted image 20240122234653.png]]
+    - This is the rain to sun transition probability
+- we also need a function says given rain and separately given sun, what's probability of seeing an umbrella
+	    ![[Pasted image 20240122234707.png]]
+    - That is called emission model. This tells you what probability of seeing various evidences values is for each underlying state.
+    - In this case it says that when it's raining you see the umbrella 90% of time, but when it's not raining you still see it 20% of time.
+- equivalent to
+	    ![[Pasted image 20240122234717.png]]
+- We have HMM:
+	    ![[Pasted image 20240122234727.png]]
+
+So from a single observation of an umbrella you don't know very much, but if day after day you're seeing the umbrella you start to kind of gain some confidence.
+#### Ghostbusters
+- P(X₁) = uniform
+	    ![[Pasted image 20240122234859.png]]
+    - in the course demo, it is 0.02 that you see everywhere on map.
+
+- P(X|X') = usually move clockwise, but sometimes move in a random direction or stay in place
+	    ![[Pasted image 20240122234908.png]]
+		![[Pasted image 20240122234927.png]]
+	- For that red square, it's 50% precent probability of moving right , 1/6 probability that you'll stand, 1/6 probability to go in other direction.
+    - Where do these conditional probabilities come from?
+        - This is your assumptions about the world, you might learn them from data, for now that's just an input.
+    - That's what happens from that one state. **But you generally don't know what state you're in**, and you need to sum over all the options, that's the forward algorithm was about.
+
+- P(Rᵢⱼ|X) = same sensor model as before: red means close, green means far away.
+    - somewhere there has to be specified precisely the probability of reading at a certain position given the underlying state.
+	     ![[Pasted image 20240122234949.png]]
+    - so it might say if you read at (3,3) and the ghost is there , your probability of getting red is 0.9. Those facts live in the emission model, they say how the evidence directly relates to the state at that time.
+	    ![[Pasted image 20240122235001.png]]
+
+- The dynamics of HMM: alternation between _time passing_ and _measurement_, _time passing_ and _measurement_, ...
+    - Time passes
+        - Which tends to diffuse where the ghost probability mass is
+    - Measurement
+        - Which tends to help us concentrate where the ghosts might be.
+    - This is the HMM process in action.
+### Conditional Independence
+Let's think about the independence assumptions we make in this model.
+- HMMs have 2 import independence properties
+    - Markov hidden process: future depends on past via the present
+        - That is, knowing a state at a given time separates past from future.
+        - Same as MM.
+    - Current observation independent of all else given current state
+        - Given X₃ , E₃ is independent of all anything else we could find out once we know X₃. It's just X₃ directly influences our measurement, and nothing else has any influence anymore.
+- Quiz: does this mean that evidence variables are guaranteed to be independent ?
+    - If I don't observe anything I could say: Is the evidence I see at time₁ independent of the evidence I see at time₂?
+    - It is like the umbrella on thuesday is independent of the umbrella on Wednesday.
+    - So It seems like it shouldn't be. The evidence variables are absolutely not independent. They're only conditionally independent.
+    - for example, from E₁ to E₄, there is an active path, it consist of a common cause, and a causal chains. And nothing is observed in-between
+### Real HMM Examples
+- Speech recognition HMMs:
+    - Observations are acoustic signals (continuous valued)
+    - States are specific positions in specific words (so, tens of thousands)
+- Machine translation HMMs:
+    - Observations are words (tens of thousands)
+    - States are translation options
+- Robot tracking:
+    - Observations are range readings (continuous)
+    - States are positions on a map (continuous)
+## Filtering / Monitoring
+Now we are going to talk about how to keep track of what you believe about a variable X -- the state variable -- as evidence comes it and time passes, and from this we'll build up the full-forward algorithm.
+- Filtering, or monitoring, is the task of tracking the distribution $B_t(X) = P_t(X_t | e_1, \cdots, e_t)$ (the belief state) over time
+    - $B_t(X)$: belief state over state, which is a conditional of $X_t$ given all evidence up to time t.
+- We start with B₁(X) in an initial setting, usually uniform
+- As **time passes**, or we **get observations**, we update B(X)
+- The Kalman filter was invented in the 60’s and first implemented as a method of trajectory estimation for the Apollo program
+### Example Robot Localization
+The robot doesn't know where it is . It knows the map -- somebody gave blueprints .
+	![[Pasted image 20240122235831.png]]
+It is going down the corridor and all do is shoot out lasers in each direction and see how close they bounced off a wall.
+	![[Pasted image 20240122235844.png]]
+- Sensor model: can read in which directions there is a wall or not, it makes at most 1 error.
+- Motion model: may not execute action with small prob.
+
+So it knows there's a wall right here, but no wall in front of me. And if it gets a reading that says there's wall on my left and right but not in front or behind, then suddenly it shouldn't think it's anywhere in this building. Where should I think it is? It is kind of thinks it's in the corridors, corridors look like that. It's the sensor model, from is conditioned on my current position, I need to say a distribution over readings. Let's imagine that instead of the continuous readings, the readings are wall or not in each direction.
+
+We first do a sensor reading.
+
+So if I sense that is a wall above and below I should have pretty high probability of my belief distribution of being in the dark gray squares. I should have some smaller probability of being in the lighter grey square.
+
+	![[Pasted image 20240123000142.png]]
+- Lighter grey: was possible to get the reading, but less likely b/c required 1 mistake
+
+Then the robot will move to the right. We'll have a transition model for that. It'll not guarantee to move one to the right, but with high probability, it will.
+
+Then we get another sensor reading.
+	![[Pasted image 20240123000245.png]]
+
+Then moves again, also does a sensory update,
+
+Time passes.
+
+As I continue reading north and south walls , what will happen is there will be fewer and fewer places which are consistent with my history of readings.
+
+	![[Pasted image 20240123000315.png]]
+
+	![[Pasted image 20240123000327.png]]
+
+	![[Pasted image 20240123000336.png]]
+## Inference: Base Cases
+So, what are the base cases?
+Inference in Markov model is actually the approximate inference.
+
+Let's do the base cases. There's really 2 things that happen in HMMs.
+1. One is time passes.
+    - You go from $X_t$ to $X_{t+1}$ to.
+2. The other thing happens you see evidence.
+
+![[Pasted image 20240123000614.png]]
+
+But if all you had was a single time slice, you had X₁ and you saw evidence at time₁ E₁, and you want to compute what's probability over my hidden state X₁ given my evidence E₁. So you just want to compute this conditional probability : P(X₁|e₁).
+
+- I know P(X₁), this is what before I see the evidence.
+- I also know a distribution that tells me how the evidence relates to X₁ : P( E₁|X₁ ).
+
+That's not quite what I want. What I want is P(X₁|e₁).
+
+```shell
+P(X₁|e₁) = P(X₁,e₁)/P(e₁)
+         = P(e₁|X₁)·P(X₁) /P(e₁) 
+```
+
+We're interested over X₁. e₁ is not a variable. Anything that does not involve X₁ we can just remove if it's just multiplied in, because this constant _e₁_ is present for each value of x₁. It say it's proportional to this.
+
+And I can do the computation being off by that constant and then renormalize at the end.
+
+```shell
+P(x₁|e₁) = P(x₁,e₁)/P(e₁)
+         ∝ P(x₁,e₁)
+         = P(x₁)·P(e₁|x₁)
+```
+
+That says for each value X, they get weighted by the probability of the evidence given that underlying state.
+
+What would be the result of this calculation ?
+
+|x₁|∝ P(x₁,e₁)A|P(x₁)|
+|---|---|---|
+|0|0.2|0.4|
+|1|0.3|0.6|
+
+I'm instead going to compute P( X₁,e₁ ) and normalize in the end. I know how to compute it -- `P(X₁,e₁) = P(e₁|X₁)·P(X₁)`. So I compute all of these products: current probability times evidence probability. And then once I have that whole vector of those I re-normalize and now I have the conditional distribution of P(X₁|e₁). That is what happens when you incorporate evidence: you take your current vector of probabilities P(X₁) ,you multiply each one by the appropriate evidence factor and then you **renormalize** it.
+
+[![](https://github.com/mebusy/notes/raw/master/imgs/cs188_hmm_base_case2.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_hmm_base_case2.png)
+
+The other base case is transition over time. This is the markov model update.
+
+You have a distribution over X₁ and rather than seeing evidence , time passes by one step. Well in this case I know P(X₁) , and I know P(X₂|X₁) . But I want is P(X₂).
+
+[![](https://github.com/mebusy/notes/raw/master/imgs/cs188_hmm_base_case_2_formulation.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_hmm_base_case_2_formulation.png)
+
+That's exactly what we've been doing in the first half of lecture
+There things are interleaved.
+
 ---
 # Lecture 8
 ---
