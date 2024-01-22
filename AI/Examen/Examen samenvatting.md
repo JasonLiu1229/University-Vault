@@ -1776,30 +1776,146 @@ Return (x1, x2, …, xn)
 Again, we know the query ahead of time, and see if we can further improve the procedure beyond what we did for a rejection sampling.
 
 - Problem with rejection sampling:
-    
     - If evidence is unlikely, rejects lots of samples
     - Evidence not exploited as you sample
         - if the evidence variable are very deep in your BNs, you might have done all that work
-        - reach all the way to the bottom of you BNs, you sample your evidence variable , you sample it the wrong way , now you reject -- that sample can not use .
-    - Consider P(Shape|blue)
-        - Shape → Color
+        - reach all the way to the bottom of you BNs, you sample your evidence variable , you sample it the wrong way, now you reject -- that sample can not be used.
+    - Consider P(Shape | blue)
+        - Shape → Colour
             - ~~pyramid, green~~
             - ~~pyramid, red~~
             - sphere , blue
             - ~~cube, red~~
             - ~~sphere, green~~
 - Idea: fix evidence variables and sample the rest
-    
-    - [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_BNs_Sampling_LW_fix_evidence.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_BNs_Sampling_LW_fix_evidence.png)
+     ![[Pasted image 20240122193450.png]]
     - Now we don't have the problem of throwing out samples, because we make them all blue. That is when we're drawing samples from the network, we don't risk the sample not matching the evidence. We fix it to equal the evidence.
     - Problem: sample distribution not consistent!
     - Solution: weight by probability of evidence given parents
-        - you instantiated some shape to be blue, and the probability for blue was 0.2 for that shape
+        - You instantiated some shape to be blue, and the probability for blue was 0.2 for that shape
         - you now weight that particular sample by a factor 0.2.
         - **No dropping samples, but adding a weight to each sample**. Instead of being rejected, you get a small weight.
+#### Example
+	![[Pasted image 20240122193556.png]]
+- Evidence is +s , +w
+- We start with Cloudy , we got +c
+    - Weight is 1.0
+- Next we go to Sprinkler, it is instantiated to be +s, we have weight P(+s|+c) = 0.1
+    - Now weight is 1.0 * 0.1
+    - _Here, instead of flipping a coin and risking a 90% chance of getting minus sprinkler, I'm going to take the universes where I actually get +s and I pretend I'm going into those universes, which means this sample only really represents 10% of the sample that make it to this point_.
+- Next we look at rain, we sample, we got +r
+    - Weight is still 1.0 * 0.1
+- Last is WetGrass , it is instantiated to be +w , we weight it P(+w|+s,+r) = 0.99
+    - now the weight is 1.0 * 0.1* 0.99 = 0.099
+- So this sample +c,+s,+r,+w has weight 0.099
+#### Pseudocode 
+```c++
+// single sample
+IN: evidence instantiation
+w = 1.0
+for i=1, 2, …, n
+    if Xᵢ is an evidence variable
+        Xᵢ = observation xᵢ for X
+        Set w = w * P(xᵢ | Parents(Xᵢ))
+    else
+        Sample xᵢ from P(Xᵢ | Parents(Xi))
+Return (x1, x2, …, xn) , w
+```
+-  Sampling distribution if z sampled and e fixed evidence
+	![[Pasted image 20240122194220.png]]
+- Now, samples have weights
+	![[Pasted image 20240122194309.png]]![[Pasted image 20240122194336.png]]
+- Together, weighted sampling distribution is consistent
+	![[Pasted image 20240122194327.png]]
+
+- Likelihood weighting is good
+    - We have taken evidence into account as we generate the sample
+    - E.g. here, W’s value will get picked based on the evidence values of S, R
+    - More of our samples will reflect the state of the world suggested by the evidence
+
+- _BUT_, Likelihood weighting doesn’t solve all our problems
+    - Evidence influences the choice of downstream variables, but not upstream ones (C isn’t more likely to get a value matching the evidence)
+        - _Likelihood works really well when your evidence is at the top because then everything else that falls out of the network after that, conditions on that evidence naturally._
+        - but things that came before an evidence variable are not influenced by the evidence variable.
+        - so things have to come before the evidence variable are still samples from a prior that doesn't involve the evidence
+        - **so it's possible that you are sampling things at the top of your BNs that end up being very inconsistent with what happens at the bottom in terms of evidence.**
+        - so if you always encounter this evidence variable at the very end and it's very unlikely, then you will get samples that are not informative yet. e.g. no burglary no earthquake no alarm, but mary called, john called, this sample comes with a very low weight.
+        - You'll have to wait a really long time till you finally sample this really unlikely cause of this really unlikely observation. When you finally sample that really unlikely cause, finally we'll have a sample with a high weight and that'll give you a good estimate of the distribution.
+
+- We would like to consider evidence when we sample every variable
+    - leads to Gibbs sampling, which has its own issues, but fixes this problem of wanting your samples to take into account the evidence, regardless of where the evidence is placed in the network.
 ### Gibbs Sampling
+	![[Pasted image 20240122194406.png]]
+In Gibbs Sampling, we don't walk through the network from top to bottom, get a sample, and reset. Instead, we're going to do sort of like iterative improvement for CSP. We're going to start with a complete assignment, and we're going to tweak it a little bit. The end result is going to be what we take into account evidence upstream and downstream, but there's going to be a price.
+
+- _Procedure_:
+    - keep track of a full instantiation $x_1, x_2, \cdots, x_n$.
+    - Start with an arbitrary instantiation consistent with the evidence.
+        - _we already account for the evidence, the other variables are arbitrarily instantiated._
+    - Sample one variable at a time, conditioned on all the rest, but keep evidence fixed.
+        - _You're then going to walk to the variables one at a time, round robin, and leave the evidence fixed. But for every non-evidence variable, you will resample just that variable, conditioned on all the reset staying fixed._
+        - _we have a distribution, a conditional distribution , compute that distribution and then sample from that conditional distribution._
+        - _we haven't yet looked at what it takes to compute that conditional distribution but in principle you could compute a conditional distribution for one variable given all other variables being instantiated , and then sample from that._
+    - Keep repeating this for a long time.
+
+- _Property_: in the limit of repeating this infinitely many times the resulting sample is coming from the correct distribution
+    - P( unobserved variables | evidence variables )
+    - so we're not going to have to weight samples anymore. We're going to directly get samples from the conditional distribution.
+
+- _Rationale_: both upstream and downstream variables condition on evidence.
+
+- In contrast: likelihood weighting only conditions on upstream evidence, and hence weights obtained in likelihood weighting can sometimes be very small. Sum of weights over all samples is indicative of how many “effective” samples were obtained, so want high weight.
+#### Example
+We're going to generate one sample from our BNs, Cloudy, Sprinkler, Rain, WetGrass. Our evidence is +r.
+- Step 1: Fix evidence
+    - R = +r
+	    ![[Pasted image 20240122194834.png]]
+- Step 2: Initialize other variables
+    - Randomly
+        - say we pick +c, -s, -w
+	    ![[Pasted image 20240122194844.png]]
+- Steps 3: Repeat
+    - Choose a non-evidence variable X
+        - this choice here is also supposed to be random
+        - so you randomly pick one of your non-evidence variables as your current variable, that you're going to update
+    - Resample X from P( X | all other variables)
+        - Note: **It is not your Bayes Net**. Your Bayes Net has P( X | it's parents )
+	    ![[Pasted image 20240122194859.png]]
+        - we picked , we uninstantiated it
+            - so we compute the conditional distribution for S : P(S|+c,+r,-w)
+                - this distribution can answer some query very efficiently
+            - sample from that distribution, and we happen to sample +s
+        - again, we randomly pick C
+            - we compute the conditional distribution for C : P(C|+s,+r,-w)
+            - sample from that distribution, this case we got +c
+        - now we uninstantiate W
+            - we compute the conditional distribution for W : P(W|+s,+c,+r)
+            - sample from that distribution, this case we got -w
+        - keep going
+            - we can look at properties of your BNs, you can infer how long -- how many steps -- you might need to sample
+            - Unlike Prior Sampling, here every sample you get looks exactly the same as the previous one. The samples are now highly correlated.
+            - If we grab a sample, and we do this thing for a long time, and we grab another sample, and then we rotate around robin for a while, and grap another sample ... If we wait long enough between samples, then the correlations reduce, and we're grabbing samples from the joint distribution over all non-evidence variables conditioned on the evidence.
+
+This is just giving you the very basic idea of how Gibbs Sampling works and you can make it work this way, but if you used it in practice, you'd want to use a lot of methods to make it more efficient.
+#### Efficient Resampling of One Variable
+	![[Pasted image 20240122195304.png]]
+- Sample from P(S | +c, +r, -w)
+    ![[Pasted image 20240122195319.png]]
+    - a) The numerator came from the Bayes net formula. And the denominator is the exact same thing, but summed over S.
+- Many things cancel out – only CPTs with S remain!
+- More generally: only CPTs that have resampled variable need to be considered, and joined together
+    - b) You take all the terms that mention S, you assign them, and then you normalize over all the different values of S. The whole reset of the network doesn't matter.
+- It's not so bad.
+## Further Reading on Gibbs Sampling*
+- Gibbs sampling produces sample from the query distribution P( Q | e ) in limit of re-sampling infinitely often
+- Gibbs sampling is a special case of more general methods called Markov chain Monte Carlo (MCMC) methods
+    - Metropolis-Hastings is one of the more famous MCMC methods (in fact, Gibbs sampling is a special case of Metropolis-Hastings)
+- You may read about Monte Carlo methods – they’re just sampling
 ---
-# Lecture 6
+# Lecture 6 Decision Networks and Value of Information
+	![[Pasted image 20240122195523.png]]
+## Decision Networks
+
 ---
 # Lecture 7
 ---
