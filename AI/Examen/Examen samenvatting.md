@@ -1375,7 +1375,150 @@ This network here, which does not match the causal process, encodes the exact sa
 	- $P(Q | e_1, \cdots, e_k)$ 
 	![[Pasted image 20240122165956.png]]
 ### Inference by Enumeration in Bayes’ Net
+	![[Pasted image 20240122170122.png]]
+- Given unlimited time, inference in BNs is easy
+- Reminder of inference by enumeration by example
+	- $P(B|+j,+m)$
+	    - $∝_B P(B,+j,+m)$
+	        - proportional to
+	        - this says these 2 things are almost equal, not actually equal.
+	        - but they'd be equal if we summed up the values over b, and multiply by the inverse.
+	        - And so what this says if you want a conditional probability, you compute the equivalent joint probability, and then normalize.
+	    - = $∑_{e,a} P(B,e,a,+j,+m)$
+	        - now we can use the definition if the joint distribution as its specified through the Bayes net :
+	    - = $∑_{e,a} P(B)P(e)P(a|B,e)P(+j|a)P(+m|a)$
+	    - = $P(B)P(+e)P(+a|B,+e)P(+j|+a)P(+m|+a)$ + $P(B)P(+e)P(-a|B,+e)P(+j|-a)P(+m|-a)$ + $P(B)P(-e)P(+a|B,-e)P(+j|+a)P(+m|+a)$ + $P(B)P(-e)P(-a|B,-e)P(+j|-a)P(+m|-a)$
+- f we have 100 variables in the BNs , 50 of them are evidence variables, means 50 of them not evidence variables that will look at 2⁵⁰ entries
+    - it gets very expensive, exponential in a number of non-evidence variables , unless almost everything is evidence
+- It's not ideal to do it this way
+### Inference by Enumeration vs. Variable Elimination
+- Why is inference by enumeration so slow?
+	- You join up the whole joint distribution before you sum out the hidden variables.
+	![[Pasted image 20240122170644.png]]
 
+- Idea: interleave joining and marginalizing!
+	- Called “Variable Elimination”
+	- Still NP-hard, but usually much faster than inference by enumeration
+	![[Pasted image 20240122170729.png]]
+	- First we’ll need some new notation: factors
+### Factor Zoo
+	![[Pasted image 20240122170854.png]]
+#### Factor Zoo 1
+- Joint distribution: P(X,Y)
+    - Entries P(x,y) for all x, y
+    - Sums to 1
+
+	- Example: 
+		- P (T,W)
+
+| T | W | P |
+| ---- | ---- | ---- |
+| hot | sun | 0.4 |
+| hot | rain | 0.1 |
+| cold | sun | 0.2 |
+| cold | rain | 0.3 |
+
+- Selected joint: P(x,Y)
+    - A slice of the joint distribution
+    - Entries P(x,y) for fixed x, all y
+    - Sums to P(x)
+        - factors don't have to sum to 1
+
+	- Example: 
+		- P( cold , W)
+
+|T|W|P|
+|---|---|---|
+|cold|sun|0.2|
+|cold|rain|0.3|
+
+- **Number of capitals = dimensionality of the table**
+    - P(T,W) is a 2D array
+    - P(cold,W) is a 1D array
+    - p(cold, sun), it's still a joint probability, but now it's a 1D object as a scalar.
+    - That's important. We can reduce the size of data structure without changing the semantics of what's in it.
+- So as we work in this variable elimination process, the game will be one of trying to keep the number of capitalized variables small in our factor.
+#### Factor Zoo 2
+- Single conditional: P(Y | x)
+    - Entries P(y | x) for fixed x, all y
+    - Sums to 1
+
+	- Example: 
+		- P(W|cold)
+
+|T|W|P|
+|---|---|---|
+|cold|sun|0.4|
+|cold|rain|0.6|
+
+- Family of conditionals: P(X |Y)
+    - Multiple conditionals
+    - Entries P(x | y) for all x, y
+    - Sums to |Y|
+    - A little weird. This is distributions over Y, but it's one for every value of x , not a fixed x. It's got a value for every value of x and every value for y, If you add them up, each little distribution over Y adds up to 1, and there are many of x. So this whole thing together sums to more than 1.
+	- Example: 
+		- P(W|T)
+
+|T|W|P|
+|---|---|---|
+|hot|sun|0.8|
+|hot|rain|0.2|
+|cold|sun|0.4|
+|cold|rain|0.6|
+First two rows result in P(W|hot)
+Last two rows result in P(W|cold)
+#### Factor Zoo 3
+- Specified family: P( y | X )
+    - Entries P(y | x) for fixed y, but for all x
+    - Sums to … who knows!
+
+	- Example: 
+		- P(rain | T)
+
+|T|W|P|
+|---|---|---|
+|hot|rain|0.2|
+|cold|rain|0.6|
+
+- It's not a distribution over rain and sun, it's a bunch of probability of rains.
+    - This is no longer a distribution. It's no longer a family of distributions. It's a 1D array, each of those entries is the conditional probability of some particular value for Y, which is usually an evidence value.
+- How do we get these things. We get these things because somebody hands us little pieces of Bayes' Net. We're going to selecting the value of the evidence, and then we're going to start multiplying things together. So we're going to get all kinds of stuff.
+#### Summary
+- In general, when we write $P(Y_1, \cdots, Y_N | X_1, \cdots, X_M)$
+    - It is a “factor,” a multi-dimensional array
+    - Its values are P(y₁ … yN | x₁ … xM)
+    - Any assigned (=lower-case) X or Y is a dimension missing (selected) from the array
+	![[Pasted image 20240122171912.png]]
+#### Example: Traffic Domain
+- Random Variables
+    - R: Raining
+    - T: Traffic
+    - L: Late for class!
+	![[Pasted image 20240122172051.png]]
+	![[Pasted image 20240122172112.png]]
+- query: P(L) = ?
+    - for inference enumeration:
+    - $P(L) = ∑_{r,t} P(r,t,L)$
+    - $= ∑_{r,t} P(r)P(t|r)P(L|t)$
+### Inference by Enumeration: Procedural Outline
+- Track objects called factors
+- Initial factors are local CPTs (one per node)
+    - ![[Pasted image 20240122172557.png]]
+- Any known values are selected
+    - E.g. if we know L = +l , the initial factors are
+    - ![[Pasted image 20240122172607.png]]
+- Procedure: Join all factors, then eliminate all hidden variables
+#### Operation 1: Join Factors
+	![[Pasted image 20240122172935.png]]
+- First basic operation: _**joining factors**_
+- Combining factors:
+    - Just like a _**database join**_
+    - Get all factors over the joining variable
+    - Build a new factor over the union of the variables involved
+- Example: Join on R
+    - ![[Pasted image 20240122173007.png]]
+- Computation for each entry: pointwise products
+    - ∀r,t : P(r,t) = P(r)·P(t|r)
 
 ---
 # Lecture 6
