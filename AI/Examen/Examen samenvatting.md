@@ -2327,7 +2327,8 @@ As I continue reading north and south walls , what will happen is there will be 
 	![[Pasted image 20240123000327.png]]
 
 	![[Pasted image 20240123000336.png]]
-## Inference: Base Cases
+## Inference: 
+### Base cases
 So, what are the base cases?
 Inference in Markov model is actually the approximate inference.
 
@@ -2353,7 +2354,6 @@ P(X₁|e₁) = P(X₁,e₁)/P(e₁)
 We're interested over X₁. e₁ is not a variable. Anything that does not involve X₁ we can just remove if it's just multiplied in, because this constant _e₁_ is present for each value of x₁. It say it's proportional to this.
 
 And I can do the computation being off by that constant and then renormalize at the end.
-
 ```shell
 P(x₁|e₁) = P(x₁,e₁)/P(e₁)
          ∝ P(x₁,e₁)
@@ -2364,24 +2364,89 @@ That says for each value X, they get weighted by the probability of the evidence
 
 What would be the result of this calculation ?
 
-|x₁|∝ P(x₁,e₁)A|P(x₁)|
+|x₁|∝ P(x₁,e₁) |P(x₁)|
 |---|---|---|
 |0|0.2|0.4|
 |1|0.3|0.6|
 
-I'm instead going to compute P( X₁,e₁ ) and normalize in the end. I know how to compute it -- `P(X₁,e₁) = P(e₁|X₁)·P(X₁)`. So I compute all of these products: current probability times evidence probability. And then once I have that whole vector of those I re-normalize and now I have the conditional distribution of P(X₁|e₁). That is what happens when you incorporate evidence: you take your current vector of probabilities P(X₁) ,you multiply each one by the appropriate evidence factor and then you **renormalize** it.
+I'm instead going to compute P( X₁,e₁ ) and normalize in the end. I know how to compute it -- `P(X₁,e₁) = P(e₁|X₁)·P(X₁)`. So I compute all of these products: current probability times evidence probability. And then once I have that whole vector of those I renormalize and now I have the conditional distribution of P(X₁|e₁). That is what happens when you incorporate evidence: you take your current vector of probabilities P(X₁), you multiply each one by the appropriate evidence factor and then you **renormalize** it.
 
-[![](https://github.com/mebusy/notes/raw/master/imgs/cs188_hmm_base_case2.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_hmm_base_case2.png)
+![[Pasted image 20240123001001.png]]
 
-The other base case is transition over time. This is the markov model update.
-
-You have a distribution over X₁ and rather than seeing evidence , time passes by one step. Well in this case I know P(X₁) , and I know P(X₂|X₁) . But I want is P(X₂).
+The other base case is transition over time. This is the Markov model update.
+You have a distribution over X₁ and rather than seeing evidence, time passes by one step. Well in this case I know P(X₁) , and I know P(X₂|X₁) . But I want is P(X₂).
 
 [![](https://github.com/mebusy/notes/raw/master/imgs/cs188_hmm_base_case_2_formulation.png)](https://github.com/mebusy/notes/blob/master/imgs/cs188_hmm_base_case_2_formulation.png)
 
 That's exactly what we've been doing in the first half of lecture
-There things are interleaved.
+These things are interleaved.
 
+### Base Case 2: Passage of Time
+- Assume we have current belief P(X | evidence to date)
+	![[Pasted image 20240123001331.png]]
+	![[Pasted image 20240123001337.png]]
+- Then, after one time step passes:
+	![[Pasted image 20240123001246.png]]
+	- Or compactly 
+		![[Pasted image 20240123001316.png]]
+- Basic idea: beliefs get “pushed” through the transitions 
+	- With the “B” notation, we have to be careful about what time step t the belief is about, and what evidence it includes
+#### Example
+	![[Pasted image 20240123001541.png]]
+### Base Case 1: Observation
+	![[Pasted image 20240123001705.png]]
+- Assume we have current belief before the evidence P(X | previous evidence):
+    - $B'(X_{t+1}) = P(X_{t+1}|e_{1:t})$
+    - I have a belief vector that says here's my probability distribution over what's going on at a certain time BEFORE I see my evidence.
+- Then, after the evidence tomorrow comes in:
+	    ![[Pasted image 20240123001837.png]]
+    - step1: conditional probability rule
+    - step3: chain rule
+    - step4: conditional independent
+    - the evidence $e_{t+1}$ does not depend on any past evidence if we know $X_{t+1}$. That's an assumption.
+    - so the blue thing is your probability before you saw your evidence, your current belief
+        - the black thing is our measurement model
+        - you weighted by the evidence, and then this vector doesn't add to 1 anymore. So you renormalized it now, it adds up to 1 again, now the red thing is including the evidence you just saw.
+- Or compactly:
+	    ![[Pasted image 20240123002050.png]]
+    - if the evidence is very compatible with the next state, then the probability mass will go up for that next state, otherwise it goes down.
+    - you take your vector (blue) , you do point product with the evidence vector, and you normalize them. Now you have your new beliefs.
+- Basic idea: beliefs “reweighted” by likelihood of evidence
+- **Unlike passage of time, we have to renormalize**
+#### Example
+	![[Pasted image 20240123002152.png]]
+#### Example: Weather HMM
+	![[Pasted image 20240123002300.png]]
+## The Forward Algorithm
+Rather than doing a time update and doing an evidence update, I'm going to just do one update.
+- We are given evidence at each time and want to know
+    - $B_t (X) = P(X_t|e_{1:t})$
+- We can derive the following updates:
+	    ![[Pasted image 20240123002404.png]]
+    - step1: get rid of _/ P($e_{1:t}$)_
+    - step2: bring in $x_{t-1}$ and sum out. because we want a recursive update equation as a function of what we had at the previous time.
+    - step3: decompose into transition model and measurement model.
+        - P($x_{t-1}$, $x_t$, $e_{1:t}$ )
+        - = P($x_{t-1}$, $e_{1:t-1}$ )P( $x_t$, $e_t$ | $x_{t-1}$, $e_{1:t-1}$ ) = P( $x_{t-1}$, $e_{1:t-1}$ )P( $x_t$, $e_t$ | $x_{t-1}$ )
+        - = P( $x_{t-1}$, $e_{1:t-1}$ )P( $e_t$ | $x_{t-1}$, $x_t$ )P( $x_t$ | $x_{t-1}$ )
+        - = P($x_{t-1}$, $e_{1:t-1}$ )P( $e_t$ | $x_t$ )P( $x_t$ | $x_{t-1}$ )
+    - step4: reorganize a little bit
+- This is exactly variable elimination with order X₁,X₂,...
+
+The forward algorithm is a dynamic program for computing at each time slice, the distribution over the state at that time given all the evidence to date.
+### Online Belief Updates
+Online belief update, which is most common, is where you would essentially just do these thing.
+- Every time step, we start with current P(X | evidence)
+- We update for time:
+    ![[Pasted image 20240123002929.png]]![[Pasted image 20240123002940.png]]
+- We update for evidence:
+    ![[Pasted image 20240123002955.png]]![[Pasted image 20240123003003.png]]
+- The forward algorithm does both at once (and doesn’t normalize)
+
+> Start of part 2 HMMs, Particle Filters, and Applications
+## Particle Filtering
+	![[Pasted image 20240123003401.png]]
+- 
 ---
 # Lecture 8
 ---

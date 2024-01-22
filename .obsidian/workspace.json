@@ -9,7 +9,7 @@
         "dimension": 50.380710659898476,
         "children": [
           {
-            "id": "fbee8a7cab072e4b",
+            "id": "92931e9069611e71",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -17,16 +17,6 @@
                 "file": "AI/Examen/Examen samenvatting.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "0349a13f7290f746",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AI/Examen/online_samenvatting.pdf"
               }
             }
           }
@@ -43,7 +33,7 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "AI/Leerstof/Slides 7-1.pdf"
+                "file": "AI/Leerstof/Slides 7-2.pdf"
               }
             }
           }
@@ -194,31 +184,31 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "fbee8a7cab072e4b",
+  "active": "92931e9069611e71",
   "lastOpenFiles": [
-    "Pasted image 20240123000614.png",
-    "AI/Leerstof/Slides 7-1.pdf",
+    "Pasted image 20240123003401.png",
+    "AI/Leerstof/Slides 7-2.pdf",
     "AI/Examen/Examen samenvatting.md",
-    "Pasted image 20240123000336.png",
-    "Pasted image 20240123000327.png",
-    "Pasted image 20240123000315.png",
-    "Pasted image 20240123000245.png",
-    "Pasted image 20240123000142.png",
-    "Pasted image 20240122235844.png",
-    "Pasted image 20240122235831.png",
-    "Pasted image 20240122235001.png",
-    "Pasted image 20240122234949.png",
-    "Pasted image 20240122234927.png",
+    "AI/Leerstof/Slides 7-1.pdf",
+    "AI/Examen/online_samenvatting.pdf",
+    "Pasted image 20240122234707.png",
+    "AI/Examen/Images/Pasted image 20240123003003.png",
+    "AI/Examen/Images/Pasted image 20240123002955.png",
+    "AI/Examen/Images/Pasted image 20240123002940.png",
+    "AI/Examen/Images/Pasted image 20240123002929.png",
+    "AI/Examen/Images/Pasted image 20240123002404.png",
+    "AI/Examen/Images/Pasted image 20240123002300.png",
+    "AI/Examen/Images/Pasted image 20240123002152.png",
+    "AI/Examen/Images/Pasted image 20240123002050.png",
+    "AI/Examen/Images/Pasted image 20240123001837.png",
     "AI/Leerstof/Slides 8.pdf",
     "AI/Leerstof/Slides 6.pdf",
     "AI/Leerstof/Slides 5-2.pdf",
     "AI/Leerstof/Slides 5-1.pdf",
-    "AI/Leerstof/Slides 7-2.pdf",
     "AI/Leerstof/Slides 4-2.pdf",
     "AI/Leerstof/Slides 4-1.pdf",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Leerstof/Slides 3.pdf",
-    "AI/Examen/online_samenvatting.pdf",
     "AI/Examen/Untitled.md",
     "README.md",
     "SE/Examen/SE Questions for every chapter.md",
