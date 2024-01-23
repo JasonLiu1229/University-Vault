@@ -3005,6 +3005,43 @@ Because in case we train based on our training data, our tuning will most likely
 In this lecture we look at optimization
 	![[Pasted image 20240123184615.png]]
 ## Hill climbing
+- Recall from CSPs lecture: simple, general idea 
+	- Start wherever 
+	- Repeat: move to the best neighbouring state 
+	- If no neighbours better than current, quit
+
+- What’s particularly tricky when hill-climbing for multiclass logistic regression? 
+	- Optimization over a continuous space 
+	- Infinitely many neighbours! 
+	- How to do this efficiently?
+## Optimization
+### 1-D Optimization
+	![[Pasted image 20240123191459.png]]
+- Could evaluate $g(w_0 + h)$ and $g(w_0 - h)$
+	- Then step in best direction
+- Or, evaluate derivative: $\dfrac{\partial g(w_0)}{\partial w} = lim_{h\rightarrow 0} \dfrac{g(w_0 +h) - g(w_0 -h)}{2h}$ 
+	- Tells which direction to step into
+	- This computes the linear approximations to our functions locally
+		- Not hard to compute
+### 2-D optimization
+	![[Pasted image 20240123192257.png]]
+	At the bottom of the graph, shows height contours. So the closer we go to the middle, the higher the value.
+### Gradient Ascent (Descent, to find the bottom)
+- Perform update in uphill direction for each coordinate
+- The steeper the slope (i.e. the higher the derivative) the bigger the step for that coordinate (this is just a choice). 
+- E.g., consider: $g(w_1, w_2)$
+	![[Pasted image 20240123192752.png]]
+- Idea:
+	- Start somewhere
+	- Repeat: Take a step in the gradient direction
+		![[Pasted image 20240123192919.png]]
+### What is the Steepest Direction?
+	![[Pasted image 20240123193053.png]]
+### Gradient in n dimensions
+	![[Pasted image 20240123193131.png]]
+#### Optimization Procedure: Gradient Ascent
+	![[Pasted image 20240123193417.png]]
+	
 ---
 # Lecture 10
 ---
