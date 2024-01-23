@@ -2520,6 +2520,24 @@ So we get new samples weighted from the old samples.
     - procedurally the idea is when you see evidence in your particle filter , you line up your particles , you weight them by the evidence and then you clone new particles through your old particles , and now the weights are all gone.
 
 - Now the update is complete for this time step, continue with the next one
+### Summary
+	![[Pasted image 20240123012712.png]]
+## Robot Localization
+	![[Pasted image 20240123012949.png]]
+- In robot localization:
+	- We know the map, but not the robot’s position 
+	- Observations may be vectors of range finder readings 
+	- State space and readings are typically continuous (works basically like a very fine grid) and so we cannot store B(X) 
+	- Particle filtering is a main technique
+## Robot Mapping
+	![[Pasted image 20240123012937.png]]
+- SLAM: Simultaneous Localization And Mapping
+	- We do not know the map or our location 
+	- State consists of position AND map! 
+	- Main techniques: Kalman filtering (Gaussian HMMs) and particle methods
+## Dynamic Bayes Nets
+	![[Pasted image 20240123013011.png]]
+- We want to track multiple variables over time, using multiple sources of evidence
 ---
 # Lecture 8
 ---
