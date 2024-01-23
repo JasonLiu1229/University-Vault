@@ -2600,6 +2600,11 @@ So we get new samples weighted from the old samples.
 #### Digit Recognition
 	![[Pasted image 20240123130121.png]]
 ### Other Classification Tasks
+- Classification: given input x, predict labels (classes) y
+- Classification is an important commercial technique.
+## Model-Based Classification
+	![[Pasted image 20240123140112.png]]
+-
 ---
 # Lecture 9
 ---
