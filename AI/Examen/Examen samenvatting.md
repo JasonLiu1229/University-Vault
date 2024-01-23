@@ -2940,6 +2940,10 @@ Because in case we train based on our training data, our tuning will most likely
 - Convergence: if the training is separable, perceptron will eventually converge (binary case)
 - Mistake Bound: the maximum number of mistakes (binary case) related to the margin or degree of separability
 	- mistakes $\lt \dfrac{k}{\delta^2}$
+		- Where k is number of features
+		- $\delta$ separability measure
+			![[Pasted image 20240123182611.png]]
+		- So in other words, how further the classes are separated from each other the lower the chance is that we make a mistake.
 ### Problems with the Perceptron
 - Noise: if the data isn’t separable, weights might thrash 
 	- Averaging weight vectors over time can help (averaged perceptron)
@@ -2958,7 +2962,36 @@ Because in case we train based on our training data, our tuning will most likely
 	![[Pasted image 20240123175103.png]]
 	To avoid this we can separate our data in probabilities, saying if it's between these two probabilities, it's likely to be blue instead of red.
 ### How to get probabilistic decisions?
+- Perceptron scoring: $z = w \cdot f(x)$
+- If $z = w \cdot f(x)$ very positive -> want probability going to 1
+- If $z = w \cdot f(x)$ very negative -> want probability going to 0
 
+- Sigmoid function (could be any other function that behave in the same manner)
+	- $\phi(z) = \dfrac{1}{1+e^{-z}}$
+		![[Pasted image 20240123182106.png]]
+		In case z is positive, it will slowly go to one and if it's negative, it will slowly go to zero.
+### Best w?
+- Maximum likelihood estimation:
+	![[Pasted image 20240123182302.png]]
+- with:
+	![[Pasted image 20240123182316.png]]
+	= Logistic Regression
+### Separable Cases
+#### Deterministic Decision – Many Options
+	![[Pasted image 20240123182812.png]]
+#### Probabilistic Decision – Clear Preference
+	![[Pasted image 20240123182838.png]]
+### Multiclass Logistic Regression
+- Recall Perceptron
+	- A weight vector for each class:
+		- $w_y$
+	- Score (activation) of a class y:
+		- $w_y \cdot f(x)$
+	- Prediction highest score wins
+		- $y = argmax_y w_y \cdot f(x)$
+	![[Pasted image 20240123183218.png]]
+- How to make the scores into probabilities?
+	![[Pasted image 20240123183311.png]]
 ---
 # Lecture 10
 ---
