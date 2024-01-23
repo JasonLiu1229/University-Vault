@@ -2940,6 +2940,25 @@ Because in case we train based on our training data, our tuning will most likely
 - Convergence: if the training is separable, perceptron will eventually converge (binary case)
 - Mistake Bound: the maximum number of mistakes (binary case) related to the margin or degree of separability
 	- mistakes $\lt \dfrac{k}{\delta^2}$
+### Problems with the Perceptron
+- Noise: if the data isn’t separable, weights might thrash 
+	- Averaging weight vectors over time can help (averaged perceptron)
+	![[Pasted image 20240123174809.png]]
+- Mediocre generalization: finds a “barely” separating solution
+	![[Pasted image 20240123174820.png]]
+- Overtraining: test / held-out accuracy usually rises, then falls 
+	- Overtraining is a kind of overfitting
+	![[Pasted image 20240123174833.png]]
+## Improving the Perceptron
+### Non-Separable Case: 
+#### Deterministic Decision
+	![[Pasted image 20240123174930.png]]
+	In case data is not fully separable, there will always be adjustments that have to be made. This cause the function vector to move a lot and is not something we want.
+#### Probabilistic Decision
+	![[Pasted image 20240123175103.png]]
+	To avoid this we can separate our data in probabilities, saying if it's between these two probabilities, it's likely to be blue instead of red.
+### How to get probabilistic decisions?
+
 ---
 # Lecture 10
 ---
