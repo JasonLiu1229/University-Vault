@@ -2537,9 +2537,66 @@ So we get new samples weighted from the old samples.
 	- Main techniques: Kalman filtering (Gaussian HMMs) and particle methods
 ## Dynamic Bayes Nets
 	![[Pasted image 20240123013011.png]]
+
 - We want to track multiple variables over time, using multiple sources of evidence
+- Idea: Repeat a fixed Bayes net structure at each time
+- Variables from time t can condition on those from t‐1
+	![[Pasted image 20240123014548.png]]
+- Dynamic Bayes nets are a generalization of HMMs
+### Exact Inference in DBNs
+- Variable elimination applies to dynamic Bayes nets
+- Procedure: “unroll” the network for T time steps, then eliminate variables until P(XT|e1:T) is computed
+	![[Pasted image 20240123014702.png]]
+- Online belief updates: Eliminate all variables from the previous time step; store factors for current time only
+### DBN Particle Filters
+- A particle is a complete sample for a time step
+- **Initialize:** Generate prior samples for the t=1 Bayes net
+	- Example particle: $G_1^a$ = (3,3) $G_1^b$ = (5,3) 
+- **Elapse time:** Sample a successor for each particle 
+	- Example successor: $G_2^a$ = (2,3) $G_2^b$ = (6,3) 
+- **Observe:** Weight each entire sample by the likelihood of the evidence conditioned on the sample  
+	- Likelihood: P($E_1^a$ |$G_1^a$) * P($E_1^b$ |$G_1^b$ ) 
+- **Resample:** Select prior samples (tuples of values) in proportion to their likelihood
+## Most Likely Explanation
+	![[Pasted image 20240123015115.png]]
+### HMMs: MLE Queries
+	![[Pasted image 20240123015501.png]]
+- HMMs defined by
+	- States X 
+	- Observations E 
+	- Initial distribution: $P(X_1)$
+	- Transitions: $P(X|X_{-1})$
+	- Emissions: $P(E|X)$
+- New query: most likely explanation: $argmax_{x_{1:t}} P(x_{1:t}|e_{1:t})$
+- New method: the Viterbi algorithm
+### State Trellis
+- State trellis: graph of states and transitions over time
+	![[Pasted image 20240123015735.png]]
+- Each arc represents some transition $x_{t-1} \rightarrow x_t$
+- Each arc has weight $P(x_t | x_{t-1})P(e_t|x_t)$
+- Each path is a sequence of states 
+- The product of weights on a path is that sequence’s probability along with the evidence 
+- Forward algorithm computes sums of paths, Viterbi computes best paths
+### Forward / Viterbi Algorithms
+	![[Pasted image 20240123015935.png]]
+- Forward Algorithm (Sum)
+	![[Pasted image 20240123015957.png]]
+- Viterbi Algorithm (Max)
+	![[Pasted image 20240123020011.png]]
 ---
-# Lecture 8
+# Lecture 8 Naïve Bayes
+## Machine Learning
+- Up until now: how use a model to make optimal decisions
+- Machine learning: how to acquire a model from data / experience
+    - Learning parameters (e.g. probabilities)
+    - Learning structure (e.g. BN graphs)
+    - Learning hidden concepts (e.g. clustering)
+- Today: model-based classification with Naïve Bayes
+## Classification
+	![[Pasted image 20240123020304.png]]
+### Examples
+#### Spam Filter
+#### Digit Recognition
 ---
 # Lecture 9
 ---
