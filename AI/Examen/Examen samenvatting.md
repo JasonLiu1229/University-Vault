@@ -2863,6 +2863,7 @@ Because in case we train based on our training data, our tuning will most likely
 	![[Pasted image 20240123155356.png]]
 ### Feature Vectors
 	![[Pasted image 20240123155416.png]]
+	
 ---
 # Lecture 10
 ---
