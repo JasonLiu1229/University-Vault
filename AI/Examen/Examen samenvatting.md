@@ -2704,8 +2704,88 @@ So we get new samples weighted from the old samples.
 	- Better with more training data (less sampling variance, training more like test) 
 	- Better if we limit the complexity of our hypotheses (regularization and/or small hypothesis spaces)
 		- In case we train our model too much, it will be too specific and model will be useless. So overfitting is a big issue in training. 
-		- Training more does not result in better model.
+		- Training more does not result in better model, train based on the patterns we want to find.
 ### Important concepts
+- Data: labelled instances, e.g. emails marked spam/ham
+    - Training set
+    - Held out set 
+    - Test set (data not in training data, to check if the model is accurate)
+- Features: attribute-value pairs which characterize each x
+- Experimentation cycle
+    - Learn parameters (e.g. model probabilities) on training set
+    - (Tune hyperparameters on held-out set)
+    - Compute accuracy of test set
+    - Very important: never “peek” at the test set!
+- Evaluation
+    - Accuracy: fraction of instances predicted correctly
+- Overfitting and generalization
+    - Want a classifier which does well on test data
+    - Overfitting: fitting the training data very closely, but not generalizing well
+    - We’ll investigate overfitting and generalization formally in a few lectures
+## Generalization and Overfitting
+	![[Pasted image 20240123143438.png]]
+### Overfitting
+	![[Pasted image 20240123143501.png]]
+#### Example
+##### Digits
+	![[Pasted image 20240123143518.png]]
+##### Spam and ham
+	![[Pasted image 20240123143545.png]]
+South-west maybe occurs only once in ham but zero times in spam, this doesn't imply that it never occurs but it just didn't occur in our training data. Dangerous to give probabilities zero.
+### Generalization and Overfitting
+- Relative frequency parameters will **overfit** the training data! 
+	- Just because we never saw a 3 with pixel (15,15) on during training doesn’t mean we won’t see it at test time 
+	- Unlikely that every occurrence of “minute” is 100% spam 
+	- Unlikely that every occurrence of “seriously” is 100% ham 
+	- What about all the words that don’t occur in the training set at all?
+	- In general, we can’t go around giving unseen events zero probability
+- As an extreme case, imagine using the entire email as the only feature (e.g. document ID) 
+	- Would get the training data perfect (if deterministic labeling) 
+	- Wouldn’t generalize at all 
+	- Just making the bag-of-words assumption gives us some generalization, but isn’t enough
+- To generalize better: we need to **smooth** or **regularize** the estimates
+## Parameter Estimation
+	![[Pasted image 20240123144415.png]]
+- Estimating the distribution of a random variable
+- Elicitation: ask a human (why is this hard?)
+	- In person
+	- Sample size might be inaccurate
+- Empirically: use training data (learning!)
+	![[Pasted image 20240123144409.png]]
+## Smoothing
+	![[Pasted image 20240123144715.png]]
+### Maximum Likelihood?
+- Relative frequencies are the maximum likelihood estimates
+	![[Pasted image 20240123145022.png]]
+- Another option is to consider the most likely parameter value given the data
+	![[Pasted image 20240123145040.png]]
+### Unseen Events
+	![[Pasted image 20240123145339.png]]
+	How do I estimate if the sun is going to rise, for now it always has rissen so probability one, but we all know that is not right. This is because we all know that for in the future the sun might die or it will fade away, so the actual probability will not be one.
+### Laplace Smoothing
+So what Laplace said, is for every measurement we make, hold out an extra one for unseen events.
+- Laplace’s estimate:
+    - Pretend you saw **every** outcome once more than you actually did
+	    ![[Pasted image 20240123145558.png]]
+- Can derive this estimate with Dirichlet priors (see cs281a)
+- for some purpose like zero is not allowed.
+- example
+    - samples: red, red, blue
+    - $P_{ML}(X) = ( 2/3, 1/3 )$
+    - $P_{LAP}(X) = ( 3/5, 2/5 )$
+        - adding 1 red, 1 blue
+- Laplace’s estimate (extended):
+    - Pretend you saw **every** outcome **k extra** time
+	    ![[Pasted image 20240123145821.png]]
+    - What’s Laplace with k = 0?
+    - k is the **strength** of the prior
+    - $P_{LAP,0}(X) = (2/3, 1/3)$
+    - $P_{LAP,1}(X) = (3/5, 2/5)$
+    - $P_{LAP,100}(X) = (102/203, 101/203)$ almost 50/50
+		- So increasing k, 
+- Laplace for conditionals:
+    - Smooth each condition independently:
+	    ![[Pasted image 20240123145831.png]]
 ---
 # Lecture 9
 ---

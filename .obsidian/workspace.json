@@ -162,9 +162,17 @@
               "type": "calendar",
               "state": {}
             }
+          },
+          {
+            "id": "c3994d7a108de6fb",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -186,19 +194,20 @@
   },
   "active": "92931e9069611e71",
   "lastOpenFiles": [
+    "Pasted image 20240123145831.png",
+    "Pasted image 20240123145821.png",
+    "Pasted image 20240123145558.png",
+    "Pasted image 20240123145339.png",
+    "Pasted image 20240123145040.png",
     "AI/Leerstof/Slides 8.pdf",
     "AI/Examen/Examen samenvatting.md",
-    "Pasted image 20240123142841.png",
-    "Pasted image 20240123142437.png",
+    "Pasted image 20240123145022.png",
+    "Pasted image 20240123144715.png",
+    "Pasted image 20240123144415.png",
+    "Pasted image 20240123144409.png",
+    "Pasted image 20240123143545.png",
+    "Pasted image 20240123143518.png",
     "Untitled.canvas",
-    "Pasted image 20240123141452.png",
-    "Pasted image 20240123141115.png",
-    "Pasted image 20240123140818.png",
-    "Pasted image 20240123140811.png",
-    "Pasted image 20240123140240.png",
-    "Pasted image 20240123140112.png",
-    "Pasted image 20240123130121.png",
-    "Pasted image 20240123130110.png",
     "AI/Leerstof/Slides 7-2.pdf",
     "AI/Leerstof/Slides 7-1.pdf",
     "AI/Examen/online_samenvatting.pdf",
