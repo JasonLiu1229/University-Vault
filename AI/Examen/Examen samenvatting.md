@@ -2596,7 +2596,9 @@ So we get new samples weighted from the old samples.
 	![[Pasted image 20240123020304.png]]
 ### Examples
 #### Spam Filter
+	![[Pasted image 20240123130110.png]]
 #### Digit Recognition
+
 ---
 # Lecture 9
 ---
