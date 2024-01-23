@@ -2604,7 +2604,108 @@ So we get new samples weighted from the old samples.
 - Classification is an important commercial technique.
 ## Model-Based Classification
 	![[Pasted image 20240123140112.png]]
--
+- Model-based approach
+	- Build a model (e.g. Bayes’ net) where both the output label and input features are random variables
+	- Instantiate any observed features
+	- Query for the distribution of the label conditioned on the features
+
+- Challenges
+	- What structure should the BN have?
+	- How should we learn its parameters?
+### Naïve Bayes for Digits
+- Naïve Bayes: Assume all features are independent effects of the label
+	    ![[Pasted image 20240123140240.png]]
+    - What we will do is, we will assume that there is one special node, it's going to be the label. Here, that's written out as Y and that label his domain will be various digits 0-9.
+- Simple digit recognition version:
+    - One feature (variable) Fᵢⱼ for each grid position `<i,j>`
+    - Feature values are on / off, based on whether intensity is more or less than 0.5 in underlying image
+    - Each input maps to a feature vector, e.g.
+        - 1 $\rightarrow$ < $F_{0,0}=0, F_{0,1}=1, \cdots , F_{15,15} =0$ >
+    - Here: lots of features, each is binary valued
+- Naïve Bayes model:
+    - $P(Y|F_{0,0} \cdots F_{15,15}) ∝ P(Y)·∏_{i,j} P(F_{i,j}|Y)$
+- What do we need to learn?
+### General Naïve Bayes
+- A general Naïve Bayes model:
+	![[Pasted image 20240123140811.png]]![[Pasted image 20240123140818.png]]
+- We only have to specify how each feature depends on the class 
+- Total number of parameters is **linear** in n 
+- Model is very simplistic, but often works anyway
+### Inference for Naïve Bayes
+- Goal: compute posterior distribution over label variable Y
+    - Step 1: get joint probability of label and evidence for each label
+    - Step 2: sum to get probability of evidence
+    - Step 3: normalize by dividing Step 1 by Step 2
+    ![[Pasted image 20240123141115.png]]
+### General Naïve Bayes Continued
+- What do we need in order to use Naïve Bayes?
+    - Inference method (we just saw this part)
+        - Start with a bunch of probabilities: P(Y) and the P(Fᵢ|Y) tables
+        - Use standard inference to compute P(Y|F₁…Fn)
+        - Nothing new here
+    - Estimates of local conditional probability tables
+        - P(Y), the prior over labels
+        - P(Fᵢ|Y) for each feature (evidence variable)
+        - These probabilities are collectively called **the parameter**s of the model and denoted by **θ**
+        - Up until now, we assumed these appeared by magic, but…
+        - …they typically come from training data counts: we’ll look at this soon
+#### Example: Conditional Probabilities
+	![[Pasted image 20240123141452.png]]
+	Where every grid is mapped with a probability of how likely this square is marked when we have digit 3.
+### Naïve Bayes for Text
+- Bag-of-words Naïve Bayes:
+    - Features: Wᵢ is the word at position i
+    - As before: predict label conditioned on feature variables (spam vs. ham)
+    - As before: assume features are conditionally independent given label
+    - New: each Wᵢ is identically distributed
+
+- Generative model:
+    - $P(Y,W_1 \cdots W_n) = P(Y) ∏_i P(W_i|Y)$
+	    - $P(W_i|Y)$ = Word at position i, not $i^{th}$ word in dictionary!
+
+- “Tied” distributions and bag-of-words
+    - Usually, each variable gets its own conditional probability distribution P(F|Y)
+    - In a bag-of-words model
+        - Each position is identically distributed
+        - All positions share the same conditional probs P(W|Y)
+        - Why make this assumption?
+            - e.g. for the purposes of detecting spam versus ham, it doesn't really matter whether a word occurs at position 23 or 24.
+    - Called “bag-of-words” because model is insensitive to word order or reordering
+        - And that means for a naïve bayes model for text, the only thing you actually have to learn is for each class, what is the histogram of words. What is the probability distribution of words in that class?
+#### Example: Spam Filtering
+	![[Pasted image 20240123142437.png]]
+- example below
+
+- Tot field calculate the log value of total probability
+	- $log(P(Y,W_1, \cdots, W_n) ) = logP(Y) + ∑ log( P(W_i|Y) )$
+- (prior) is P(Y)
+- the first word is `Gray`
+
+|Word|P(w\|spam)|P(w\|ham)|Tot Spam|Tot Ham|
+|---|---|---|---|---|
+|(prior)|0.33333|0.66666|-1.1|-0.4|
+|Gray |0.00002|0.00021|-11.8|-8.9|
+|world|0.00069|0.00084|-19.1|-16.0|
+|...|...|...|...|...|
+|sleep|0.00006|0.00001|-76.0|-80.5|
+
+- P(spam | w) = 98.9
+    - $e^{-76.0} / ( e^{-76.0} + e^{-80.5} ) = 98.9$
+## Training and Testing
+	![[Pasted image 20240123142841.png]]
+### Empirical Risk Minimization
+- Empirical risk minimization 
+	- Basic principle of machine learning 
+	- We want the model (classifier, etc) that does best on the true test distribution 
+	- Don’t know the true distribution so pick the best model on our actual training set 
+	- Finding “the best” model on the training set is phrased as an optimization problem 
+
+- Main worry: overfitting to the training set 
+	- Better with more training data (less sampling variance, training more like test) 
+	- Better if we limit the complexity of our hypotheses (regularization and/or small hypothesis spaces)
+		- In case we train our model too much, it will be too specific and model will be useless. So overfitting is a big issue in training. 
+		- Training more does not result in better model.
+### Important concepts
 ---
 # Lecture 9
 ---
