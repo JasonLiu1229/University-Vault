@@ -2863,7 +2863,53 @@ Because in case we train based on our training data, our tuning will most likely
 	![[Pasted image 20240123155356.png]]
 ### Feature Vectors
 	![[Pasted image 20240123155416.png]]
-	
+	input -> feature vector -> decision 
+### Some (Simplified) Biology
+	![[Pasted image 20240123163318.png]]
+	Different parts of the "brain" will help decide what decisions to make. A neuron has different inputs and with these signals we make a decision.
+### Linear Classifiers
+- Inputs are feature values
+- Each feature has a weight
+- Sum is the activation
+	![[Pasted image 20240123163513.png]]
+- If the activation is:
+	- Positive, output +1
+	- Negative, output -1
+	![[Pasted image 20240123163556.png]]
+### Weights
+- Binary case: compare features to a weight vector
+- Learning: figure out the weight vector from examples
+	![[Pasted image 20240123163640.png]]
+	Positive when it's spam, and negative when it's not.
+	More features means, higher dimensions.
+	$f(x_1)$ will be in the positive class, because it's more aligned with the feature vector. While $f(x_2)$ is in the negative class, because it's more pointed in the opposite direction compared to the feature vector.
+## Decision Rules
+	![[Pasted image 20240123163701.png]]
+### Binary Decision Rule
+- In the space of feature vectors
+- Any weight vector is a hyperplane
+- One side corresponds to Y=+1
+- Other corresponds to Y=-1
+	![[Pasted image 20240123164233.png]]![[Pasted image 20240123164240.png]]
+	If we look at the weight vector, we can see that the vector is more pointed to free and a little to money.
+	![[Pasted image 20240123164819.png]]
+## Weight Updates
+	![[Pasted image 20240123164938.png]]
+### Learning: Binary Perceptron
+- Start with weights = 0
+- For each training instance:
+	- Classify with current weights
+		![[Pasted image 20240123165257.png]]
+	- If correct (i.e., y=y*), no change!
+		- So in case, our true label is positive. So we predicted true and it is true.
+	- If wrong: adjust the weight vector by adding or subtracting the feature vector. Subtract if y* is -1.
+		- So our true label is negative.
+		![[Pasted image 20240123165340.png]]
+	![[Pasted image 20240123165351.png]]
+	This new w, will be less aligned with f.
+	Let's say $w^{'} = w + y^{*} \cdot f$, then $w^{'} \cdot f = (w + y^{*} \cdot f) \cdot f$
+	So 
+###
 ---
 # Lecture 10
 ---

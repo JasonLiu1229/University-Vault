@@ -19,6 +19,16 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "e40f8c015f894863",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "AI/Examen/Binary decision rule.md"
+              }
+            }
           }
         ]
       },
@@ -194,19 +204,21 @@
   },
   "active": "92931e9069611e71",
   "lastOpenFiles": [
-    "Pasted image 20240123155416.png",
-    "Pasted image 20240123155356.png",
+    "Pasted image 20240123165351.png",
+    "Pasted image 20240123165340.png",
+    "Pasted image 20240123165332.png",
     "AI/Leerstof/Slides 9-1.pdf",
     "AI/Examen/Examen samenvatting.md",
-    "AI/Examen/Images/Pasted image 20240123140811.png",
-    "AI/Examen/Images/Pasted image 20240123140240.png",
-    "AI/Examen/Images/Pasted image 20240123140112.png",
-    "AI/Examen/Images/Pasted image 20240123130121.png",
-    "AI/Examen/Images/Pasted image 20240123130110.png",
-    "AI/Examen/Images/Pasted image 20240123020304.png",
-    "AI/Examen/Images/Pasted image 20240123155258.png",
-    "AI/Examen/Images/Pasted image 20240123155142.png",
-    "AI/Examen/Images/Pasted image 20240123154824.png",
+    "Pasted image 20240123165257.png",
+    "Pasted image 20240123164938.png",
+    "Pasted image 20240123164819.png",
+    "AI/Examen/Binary decision rule.md",
+    "Pasted Image 20240123164440_262.png",
+    "Excalidraw",
+    "Pasted image 20240123164240.png",
+    "Pasted image 20240123164233.png",
+    "Pasted image 20240123163701.png",
+    "Pasted image 20240123163640.png",
     "AI/Leerstof/Slides 8.pdf",
     "Untitled.canvas",
     "AI/Leerstof/Slides 7-2.pdf",
@@ -216,7 +228,6 @@
     "AI/Leerstof/Slides 5-2.pdf",
     "AI/Leerstof/Slides 5-1.pdf",
     "AI/Leerstof/Slides 4-2.pdf",
-    "AI/Leerstof/Slides 4-1.pdf",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
     "README.md",
