@@ -2782,10 +2782,40 @@ So what Laplace said, is for every measurement we make, hold out an extra one fo
     - $P_{LAP,0}(X) = (2/3, 1/3)$
     - $P_{LAP,1}(X) = (3/5, 2/5)$
     - $P_{LAP,100}(X) = (102/203, 101/203)$ almost 50/50
-		- So increasing k, 
+		- So increasing k, we fit less
+		- Decreasing k, we fit more
 - Laplace for conditionals:
     - Smooth each condition independently:
-	    ![[Pasted image 20240123145831.png]]
+	    ![[Pasted image 20240123145831.png]]\
+### Estimation: Linear Interpolation*
+- In practice, Laplace often performs poorly for P(X|Y):
+    - When |X| is very large
+    - When |Y| is very large
+- Another option: linear interpolation
+    - Also get the empirical P(X) from the data
+    - Make sure the estimate of P(X|Y) isn’t too different from the empirical P(X)
+	    ![[Pasted image 20240123150249.png]]
+	- What if $\alpha$ is 0? 1?
+		- 0? Here our data will match more our empirical data then our estimate data.
+		- 1? Here our our data will match more our estimations than what we observe.
+### Real NB: Smoothing
+- For real classification problems, smoothing is critical
+- New odds ratios:
+	![[Pasted image 20240123150825.png]]
+	Data that didn't occur much will not be seen at the top, and will not overwhelm data that occurred more. So yes this makes more sense.
+## Tuning
+	![[Pasted image 20240123151200.png]]
+### Tuning on Held-Out Data
+- Now we’ve got two kinds of unknowns
+    - Parameters: the probabilities P(X|Y), P(Y)
+    - Hyperparameters: e.g. the amount / type of smoothing to do, k, α
+
+- What should we learn where?
+    - Learn parameters from training data
+    - Tune hyperparameters on different data
+	    - Why?
+    - For each value of the hyperparameters, train and test on the held-out data
+    - Choose the best value and do a final test on the test data
 ---
 # Lecture 9
 ---
