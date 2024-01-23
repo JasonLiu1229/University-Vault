@@ -6,7 +6,6 @@
       {
         "id": "00dd5f3715220203",
         "type": "tabs",
-        "dimension": 50.380710659898476,
         "children": [
           {
             "id": "92931e9069611e71",
@@ -15,25 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "AI/Examen/Examen samenvatting.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "1312c62ec67e5d8e",
-        "type": "tabs",
-        "dimension": 49.619289340101524,
-        "children": [
-          {
-            "id": "a17cdc916b02ea4e",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "AI/Leerstof/Slides 10-2.pdf"
               }
             }
           }
@@ -172,12 +154,11 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 318.5,
-    "collapsed": true
+    "width": 318.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,18 +175,19 @@
   },
   "active": "92931e9069611e71",
   "lastOpenFiles": [
+    "AI/Examen/Examen samenvatting.pdf",
+    "AI/Examen/Images/Pasted image 20240123230202.png",
+    "AI/Examen/Images/Pasted image 20240123225925.png",
+    "AI/Examen/Images/Pasted image 20240123225839.png",
+    "AI/Examen/Images/Pasted image 20240123225819.png",
+    "AI/Examen/Images/Pasted image 20240123225628.png",
+    "AI/Examen/Images/Pasted image 20240123225445.png",
+    "AI/Examen/Images/Pasted image 20240123225436.png",
+    "AI/Examen/Images/Pasted image 20240123225209.png",
+    "AI/Examen/Images/Pasted image 20240123225201.png",
+    "AI/Examen/Images/Pasted image 20240123225152.png",
     "AI/Leerstof/Slides 10-2.pdf",
     "AI/Examen/Examen samenvatting.md",
-    "Pasted image 20240123230202.png",
-    "Pasted image 20240123225925.png",
-    "Pasted image 20240123225839.png",
-    "Pasted image 20240123225819.png",
-    "Pasted image 20240123225628.png",
-    "Pasted image 20240123225445.png",
-    "Pasted image 20240123225436.png",
-    "Pasted image 20240123225209.png",
-    "Pasted image 20240123225201.png",
-    "Pasted image 20240123225152.png",
     "AI/Leerstof/Slides 10-1.pdf",
     "AI/Leerstof/Slides 9-2.pdf",
     "AI/Leerstof/Slides 9-1.pdf",

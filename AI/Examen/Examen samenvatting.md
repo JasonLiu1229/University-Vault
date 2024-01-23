@@ -3344,7 +3344,7 @@ This was how it used to be, to design these applications.
 - A chi-squared test can tell us how likely it is that deviations from a perfect split are due to chance*
 
 - Each split will have a significance value, $p_{CHANCE}$
-	- If this probab
+	- If this probability is too high, we don't do the split
 ### Keeping it General
 - Pruning:
 	- Build the full decision tree 
@@ -3364,8 +3364,9 @@ This was how it used to be, to design these applications.
 ### Two Ways of Controlling Overfitting
 - Limit the hypothesis space 
 	- E.g. limit the max depth of trees 
-	- Easier to analyse 
+	- Easier to analyze 
 - Regularize the hypothesis selection 
 	- E.g. chance cut-off 
-	- Disprefer most of the hypotheses unless data is clear § Usually done in practice
+	- Disprefer most of the hypotheses unless data is clear 
+	- Usually done in practice
 ---
