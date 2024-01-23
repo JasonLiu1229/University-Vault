@@ -2806,6 +2806,8 @@ So what Laplace said, is for every measurement we make, hold out an extra one fo
 ## Tuning
 	![[Pasted image 20240123151200.png]]
 ### Tuning on Held-Out Data
+Because in case we train based on our training data, our tuning will most likely result in best case scenario in case we do no tuning or almost none.
+	![[Pasted image 20240123154405.png]]
 - Now we’ve got two kinds of unknowns
     - Parameters: the probabilities P(X|Y), P(Y)
     - Hyperparameters: e.g. the amount / type of smoothing to do, k, α
@@ -2816,8 +2818,51 @@ So what Laplace said, is for every measurement we make, hold out an extra one fo
 	    - Why?
     - For each value of the hyperparameters, train and test on the held-out data
     - Choose the best value and do a final test on the test data
+## Features
+### Errors, and What to Do
+	![[Pasted image 20240123154824.png]]
+### What to Do About Errors?
+- Need more features– words aren’t enough!
+	- Have you emailed the sender before?
+	- Have 1K other people just gotten the same email?
+	- Is the sending information consistent?
+	- Is the email in ALL CAPS?
+	- Do inline URLs point where they say they point?
+	- Does the email address you by (your) name?
+- Can add these information sources as new variables in the NB model
+- Next class we’ll talk about classifiers which let you easily add arbitrary features more easily
+### Baselines
+- First step: get a baseline
+	- Baselines are very simple “straw man” procedures 
+	- Help determine how hard the task is 
+	- Help know what a “good” accuracy is
+
+- Weak baseline: most frequent label classifier
+	- Gives all test instances whatever label was most common in the training set 
+	- E.g. for spam filtering, might label everything as ham 
+	- Accuracy might be very high if the problem is skewed 
+	- E.g. calling everything “ham” gets 66%, so a classifier that gets 70% isn’t very good…
+
+- For real research, usually use previous work as a (strong) baseline
+### Confidences from a Classifier
+- The **confidence** of a probabilistic classifier
+	- Posterior probability of the top label 
+		![[Pasted image 20240123155142.png]]
+	- Represents how sure the classifier is of the classification 
+	- Any probabilistic model will have confidences 
+	- No guarantee confidence is correct
+
+- Calibration
+	- Weak calibration: higher confidences mean higher accuracy 
+	- Strong calibration: confidence predicts accuracy rate 
+	- What’s the value of calibration?
 ---
-# Lecture 9
+# Lecture 9 Perceptrons and Logistic Regression
+	![[Pasted image 20240123155258.png]]
+## Linear Classifiers
+	![[Pasted image 20240123155356.png]]
+### Feature Vectors
+	![[Pasted image 20240123155416.png]]
 ---
 # Lecture 10
 ---
