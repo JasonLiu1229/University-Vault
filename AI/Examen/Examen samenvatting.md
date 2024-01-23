@@ -3269,4 +3269,103 @@ This was how it used to be, to design these applications.
 		- Answer to 4-way question with prior <1/4, 1/4, 1/4, 1/4>? 
 		- Answer to 4-way question with prior <0, 0, 0, 1>? 
 		- Answer to 3-way question with prior <1/2, 1/4, 1/4>?
+			- 1/2 1 bit + 1/4 2 bits + 1/4 2 bits = 3/2 bits we need
+	- So depending on our distribution, the amount of information we need is different.
+
+- A probability p is typical of: 
+	- A uniform distribution of size 1/p 
+	- A code of length log 1/p
+#### Entropy
+	![[Pasted image 20240123223932.png]]
+- General answer: if prior is <$p_1,\cdots,p_n$>: 
+	- Information is the expected code length
+		![[Pasted image 20240123224118.png]]
+- Also called the entropy of the distribution 
+	- More uniform = higher entropy 
+	- More values = higher entropy 
+	- More peaked = lower entropy 
+	- Rare values almost “don’t count”
+#### Information Gain
+- Back to decision trees!
+- For each split, compare entropy before and after
+	- Difference is the **information gain** 
+	- Problem: there’s more than one distribution after split!
+	![[Pasted image 20240123224723.png]]
+
+- Solution: use expected entropy, weighted by the number of examples
+#### Next Step: Recurse
+	![[Pasted image 20240123224917.png]]
+- Now we need to keep growing the tree!
+- Two branches are done (why?)
+- What to do under “full”?
+	- See what examples are there…
+	![[Pasted image 20240123224929.png]]
+#### Examples
+##### Learned Tree
+	![[Pasted image 20240123224958.png]]
+##### Miles Per Gallon
+	![[Pasted image 20240123225035.png]]
+###### Find the First Split
+- Look at information gain for each attribute
+- Note that each attribute is correlated with the target!
+- What do we split on?
+	![[Pasted image 20240123230202.png]]
+###### Result: Decision Stump
+	![[Pasted image 20240123225152.png]]
+###### Second Level
+	![[Pasted image 20240123225201.png]]
+###### Final Tree
+	![[Pasted image 20240123225209.png]]
+### Reminder: Overfitting
+- **Overfitting:** 
+	- When you stop modelling the patterns in the training data (which generalize) 
+	- And start modelling the noise (which doesn’t)
+
+- We had this before: 
+	- Naïve Bayes: needed to smooth 
+	- Perceptron: early stopping
+### MPG Training Error
+	![[Pasted image 20240123225436.png]]
+	We overfitted, we fit every pattern in the training data.
+	![[Pasted image 20240123225445.png]]
+### Significance of a Split
+- Starting with: 
+	- Three cars with 4 cylinders, from Asia, with medium HP 
+	- 2 bad MPG 
+	- 1 good MPG
+	![[Pasted image 20240123225628.png]]
+
+- What do we expect from a three-way split? 
+	- Maybe each example in its own subset? 
+	- Maybe just what we saw in the last slide?
+
+- Probably shouldn’t split if the counts are so small they could be due to chance
+
+- A chi-squared test can tell us how likely it is that deviations from a perfect split are due to chance*
+
+- Each split will have a significance value, $p_{CHANCE}$
+	- If this probab
+### Keeping it General
+- Pruning:
+	- Build the full decision tree 
+	- Begin at the bottom of the tree 
+	- Delete splits in which 
+		**$p_{CHANCE} > MaxP_{CHANCE}$** 
+	- Continue working upward until there are no more prunable nodes 
+	- Note: some chance nodes may not get pruned because they were “redeemed” later
+
+	![[Pasted image 20240123225819.png]]
+#### Example: Pruning
+	![[Pasted image 20240123225839.png]]
+### Regularization
+- $MaxP_{CHANCE}$ is a regularization parameter 
+- Generally, set it using held-out data (as usual)
+	![[Pasted image 20240123225925.png]]
+### Two Ways of Controlling Overfitting
+- Limit the hypothesis space 
+	- E.g. limit the max depth of trees 
+	- Easier to analyse 
+- Regularize the hypothesis selection 
+	- E.g. chance cut-off 
+	- Disprefer most of the hypotheses unless data is clear § Usually done in practice
 ---
