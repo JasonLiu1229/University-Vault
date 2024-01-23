@@ -2446,7 +2446,80 @@ Online belief update, which is most common, is where you would essentially just 
 > Start of part 2 HMMs, Particle Filters, and Applications
 ## Particle Filtering
 	![[Pasted image 20240123003401.png]]
-- 
+- Filtering: approximate solution
+    - _Remember filtering is one name for the problem where I ask given all of my evidence, what is the current hidden variable $X_t$? Where is the robot now?_
+- Sometimes |X| is too big to use exact inference
+    - |X| may be too big to even store B(X)
+    - E.g. X is continuous
+- Solution: approximate inference
+    - Track samples of X, not all values
+        - I can't enumerate all the pairs or triples of real numbers. Instead of keeping track of a map from X to real numbers , I'm going to keep track of a list of samples.
+        - Here are 10 samples each red dot is a sample
+        - And in this case my samples live on some but not all of the location on the grid.
+    - Samples are called particles
+    - Time per step is linear in the number of samples
+        - I'm going to do operations on these samples to give me new samples, and I'm going to do it basically by scanning over the old samples.
+    - But: number needed may be large
+    - In memory: list of particles, not states
+- This is how robot localization works in practice
+	![[Pasted image 20240123005542.png]]
+- Particle is just new name for sample
+### Representation: Particles
+- Our representation of P(X) is now a list of N particles (samples)
+    - Generally, `N << |X|`
+	    - N is a lot smaller than |X|
+    - Storing map from X to counts would defeat the point
+	    ![[Pasted image 20240123005744.png]]
+	    - Here instead of writing 9 numbers which is 1 probability for each square I'm gonna have maybe 10 particles.
+	        - **Each particle has a specific value of X** , eg. green particle (3,3), and it's not the only particle that represents that hypothesis, we actually have 5 completely different particle that all predicting the same state.
+	        - so what's the probability of (3,3)? 50% ! It's probably wrong but that's what the particles say.
+- P(x) approximated by number of particles with value x
+    - So, many x may have P(x) = 0!
+    - More particles, more accuracy
+- For now, all particles have a weight of 1
+### Particle Filtering: Elapse Time
+Now what do I do? I might start with my particles uniform or I have some particular belief and when time passes I need to move these particles around to reflect that.
+
+So I pick up each particle -- let's pick up the green one, a hypothesis of (3,3) -- where will it be next time?
+
+Well I grab my transition model -- which might say counter-clockwise motion with high probability -- so I grap this particle and I say you're no longer a distribution, you're a single value of X, you maybe wrong but you're a single value of X and for that particular value of X.
+
+- Each particle is moved by sampling its next position from the transition model
+    - `x' = sample( P(X'|x) )`
+    - This is like prior sampling -- samples’ frequencies reflect the transition probabilities
+    - Here, most samples move clockwise, but some move in another direction or stay in place
+	     ![[Pasted image 20240123010202.png]]
+        - _I don't create particles, don't destroy particles, I picked them up 1 by 1 and I simulate what might happen to that particle in the next time step._
+        - _So there might be 5 particles on (3,3) but they might not all get the same future because I flip a coin for each one. They might spread out in this case they do_.
+- This captures the passage of time
+    - If enough samples, close to exact values before and after (consistent)
+    - _So someone gives me a HMM, that means they've given me the transition probabilities. I take my particles and each particle get simulated. That is like letting time pass in my model. That's how in particle filtering time passes._
+### Particle Filtering: Observe
+What happens when I get evidence? It's a little tricky.
+- Slightly trickier:
+    - Don’t sample observation, fix it
+    - Similar to likelihood weighting, down weight samples based on the evidence
+        - w(x) = P(e|x)
+        - B(X) ∝ P(e|X)B'(x)
+- As before, the probabilities don’t sum to one, since all have been downweighted (in fact they now sum to (N times) an approximation of P(e))
+
+	![[Pasted image 20240123010437.png]]
+
+Let's say here are my 10 particles. What happens when I get evidence that there's a reading of red meaning the ghost is close right here in this square (3,2). We'll remember how evidence works in that case: I take each of my probabilities and I down weighted by the probability of the evidence. In that analoge of that here is to take each of your particles and give it a weight that reflects how likely the evidence is from that location. So this green particle at (3,2) maybe the probability of seeing red if you actually are at (3,2) is 0.9. So this is a reasonable hypothesis. But this guy at top-left square has a very low probability of seeing this reading.
+
+So we get new samples weighted from the old samples.
+### Particle Filtering: Resample
+- Rather than tracking weighted samples, we resample
+    - We're not going to track these weighted samples, they are no good to me, because their weights are starting to shrink. And if I do this for too long, their weights will all go to zero.
+
+- N times, we choose from our weighted sample distribution (i.e. draw with replacement)
+    - So what I'll do is to create new particles. The new particles, I sample with replacement from the old weighted samples, are now equally weighted.
+    - (3,2) had a pretty high weight. So even though we get rid of all the old particles there going to be a lot of new ones which choose (3,2).
+
+- This is equivalent to renormalizing the distribution
+    - procedurally the idea is when you see evidence in your particle filter , you line up your particles , you weight them by the evidence and then you clone new particles through your old particles , and now the weights are all gone.
+
+- Now the update is complete for this time step, continue with the next one
 ---
 # Lecture 8
 ---
