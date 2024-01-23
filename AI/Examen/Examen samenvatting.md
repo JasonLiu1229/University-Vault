@@ -3041,7 +3041,25 @@ In this lecture we look at optimization
 	![[Pasted image 20240123193131.png]]
 #### Optimization Procedure: Gradient Ascent
 	![[Pasted image 20240123193417.png]]
-	
+- $\alpha$: learning rate --- tweaking parameter that needs to be chosen carefully
+- How? Try multiple choices
+	- Crude rule of thumb: update changes about 0.1 – 1%
+#### Batch Gradient Ascent on the Log Likelihood Objective
+	![[Pasted image 20240123194040.png]]
+	We do a bunch of updates and then sum it up and apply it on w.
+#### Stochastic Gradient Ascent on the Log Likelihood Objective
+	![[Pasted image 20240123194502.png]]
+	Instead of doing a bunch of updates and sum it up. What if we only do a single update, can't it be that we then already have enough information to make changes on w. So here we will apply every update immediately on w.
+	Computing a gradient on a better point, is what the concept we go for here.
+	This is a good idea, but no parallelism.
+#### Mini-Batch Gradient Ascent on the Log Likelihood Objective
+	![[Pasted image 20240123194747.png]]
+	This is a combination of both, where we take a batch of entries and make use of only that to train on w. So we train a batch and train it on a new point. This makes it that we can run it in parallel and update it on more of a recent w.
+
 ---
 # Lecture 10
+> Start of neural networks
+
+## Neural Networks
+	![[Pasted image 20240123195321.png]]
 ---
