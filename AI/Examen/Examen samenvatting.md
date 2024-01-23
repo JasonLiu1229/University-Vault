@@ -3159,7 +3159,8 @@ This was how it used to be, to design these applications.
 
 - Problem:
 	- Given a hypothesis space H 
-	- Given a training set of examples xi 
+		- These are the function we might want to consider. All the functions that can represent is our hypothesis space and we want to find a h that closely represents g.
+	- Given a training set of examples $x_i$
 	- Find a hypothesis h(x) such that h ~ g
 
 - Includes:
@@ -3170,14 +3171,21 @@ This was how it used to be, to design these applications.
 
 - Curve fitting (regression, function approximation):
 	![[Pasted image 20240123215851.png]]
+	So choosing from a wider hypothesis space might not be always the solution. It might better but like previously mentioned, it might be overfitted. 
 
 - **Consistency** vs. **simplicity**
+	- Consistency will give more consistent result
+	- Simple function will generalize to new data better
+	- Usually not achievable to gain both so we need to have a trade-off
 - Ockham’s razor
 
 ### Consistency vs. Simplicity
 - Fundamental trade-off: bias vs. variance
+	- bias -> to small hypothesis space -> we can't match the training data -> the results will be more consistent so small variance
+	- variance -> but if we have a complex system, we probably have a low bias or even zero but we choose a to specific one and could have high variance.
 
 - Usually algorithms prefer consistency by default (why?)
+	- We usually drive errors to zero in algorithms. So we are basically asking for it.
 
 - Several ways to operationalize “simplicity” 
 	- Reduce the **hypothesis space** 
@@ -3188,6 +3196,7 @@ This was how it used to be, to design these applications.
 		- Smoothing: cautious use of small counts 
 		- Many other generalization parameters (pruning cut-offs today) 
 		- Hypothesis space stays big, but harder to get to the outskirts
+			- Stopping early, or limiting amount of updates
 
 ## Decision Trees
 	![[Pasted image 20240123220414.png]]
@@ -3195,5 +3204,69 @@ This was how it used to be, to design these applications.
 - Features, aka attributes
 	- Sometimes: TYPE=French
 	- Sometimes: $f_{TYPE=French}(x) = 1$
-- 
+	![[Pasted image 20240123220722.png]]
+### Decision Trees
+- Compact representation of a function: 
+	- Truth table 
+	- Conditional probability table 
+	- Regression values
+
+- True function
+	- Realizable: in H
+		![[Pasted image 20240123220910.png]]
+### Expressiveness of DTs
+- Can express any function of the features
+	![[Pasted image 20240123222202.png]]
+	P(C | A, B)
+- However, we hope for compact trees
+### Comparison: Perceptrons
+- What is the expressiveness of a perceptron over these features?
+	![[Pasted image 20240123222255.png]]
+
+- For a perceptron, a feature’s contribution is either positive or negative
+	- If you want one feature’s effect to depend on another, you have to add a new conjunction feature 
+	- E.g. adding “PATRONS=full $\wedge$ WAIT = 60” allows a perceptron to model the interaction between the two atomic features
+		- Everything contributes independently
+
+- DTs automatically conjoin features / attributes
+	- Features can have different effects in different branches of the tree!
+	- So we invent features as we go on.
+
+- Difference between modelling relative evidence weighting (NB) and complex evidence interaction (DTs) 
+	- Though if the interactions are too complex, may not find the DT greedily
+### Hypothesis Spaces
+- How many distinct decision trees with n Boolean attributes? 
+	- = number of Boolean functions over n attributes 
+	- = number of distinct truth tables with 2n rows 
+	- = 2^(2n) 
+	- E.g., with 6 Boolean attributes, there are 18,446,744,073,709,551,616 trees
+
+- How many trees of depth 1 (decision stumps)? 
+	- = number of Boolean functions over 1 attribute 
+	- = number of truth tables with 2 rows, times n 
+	- = 4n 
+	- E.g. with 6 Boolean attributes, there are 24 decision stumps
+
+- More expressive hypothesis space: 
+	- Increases chance that target function can be expressed (good) 
+	- Increases number of hypotheses consistent with training set (bad, why?)
+		- We might overfit and not generalize for new data.
+	- Means we can get better predictions (lower bias) 
+	- But we may get worse predictions (higher variance)
+### Decision Tree Learning
+- Aim: find a small tree consistent with the training examples
+- Idea: (recursively) choose “most significant” attribute as root of (sub)tree
+	![[Pasted image 20240123223211.png]]
+### Choosing an Attribute
+- Idea: a good attribute splits the examples into subsets that are (ideally) “all positive” or “all negative”
+	![[Pasted image 20240123223325.png]]
+- So: we need a measure of how “good” a split is, even if the results aren’t perfectly separated out
+### Entropy and Information
+- Information answers questions 
+	- The more uncertain about the answer initially, the more information in the answer 
+	- Scale: bits 
+		- Answer to Boolean question with prior <1/2, 1/2>? 
+		- Answer to 4-way question with prior <1/4, 1/4, 1/4, 1/4>? 
+		- Answer to 4-way question with prior <0, 0, 0, 1>? 
+		- Answer to 3-way question with prior <1/2, 1/4, 1/4>?
 ---
