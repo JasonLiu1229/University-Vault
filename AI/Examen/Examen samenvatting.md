@@ -3138,4 +3138,62 @@ In this lecture we look at optimization
 > Part two Neural Nets (wrap-up) and Decision Trees
 
 ## How well does it work?
+### Computer vision
+	![[Pasted image 20240123215220.png]]
+### Object Detection
+	![[Pasted image 20240123215228.png]]
+### Manual Feature Design 
+This was how it used to be, to design these applications.
+	![[Pasted image 20240123215418.png]]
+### Features and Generalization
+	![[Pasted image 20240123215500.png]]
+## Inductive Learning
+	![[Pasted image 20240123215537.png]]
+
+- Simplest form: learn a function from examples
+	- A target function: g 
+	- Examples: input-output pairs (x, g(x)) 
+	- E.g. x is an email and g(x) is spam / ham 
+	- E.g. x is a house and g(x) is its selling price
+		![[Pasted image 20240123215636.png]]
+
+- Problem:
+	- Given a hypothesis space H 
+	- Given a training set of examples xi 
+	- Find a hypothesis h(x) such that h ~ g
+
+- Includes:
+	- Classification (outputs = class labels) 
+	- Regression (outputs = real numbers)
+
+- How do perceptron and naïve Bayes fit in? (H, h, g, etc.)
+
+- Curve fitting (regression, function approximation):
+	![[Pasted image 20240123215851.png]]
+
+- **Consistency** vs. **simplicity**
+- Ockham’s razor
+
+### Consistency vs. Simplicity
+- Fundamental trade-off: bias vs. variance
+
+- Usually algorithms prefer consistency by default (why?)
+
+- Several ways to operationalize “simplicity” 
+	- Reduce the **hypothesis space** 
+		- Assume more: e.g. independence assumptions, as in naïve Bayes 
+		- Have fewer, better features / attributes: feature selection 
+		- Other structural limitations (decision lists vs trees) 
+	- **Regularization** 
+		- Smoothing: cautious use of small counts 
+		- Many other generalization parameters (pruning cut-offs today) 
+		- Hypothesis space stays big, but harder to get to the outskirts
+
+## Decision Trees
+	![[Pasted image 20240123220414.png]]
+### Reminder: Features
+- Features, aka attributes
+	- Sometimes: TYPE=French
+	- Sometimes: $f_{TYPE=French}(x) = 1$
+- 
 ---
