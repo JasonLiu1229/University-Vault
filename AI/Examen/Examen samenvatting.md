@@ -3135,7 +3135,7 @@ In this lecture we look at optimization
 		- But remember: need to avoid overfitting / memorizing the training data à early stopping! 
 	- Automatic differentiation gives the derivatives efficiently 
 
-> Part two
+> Part two Neural Nets (wrap-up) and Decision Trees
 
-
+## How well does it work?
 ---
