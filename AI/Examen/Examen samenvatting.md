@@ -2908,8 +2908,38 @@ Because in case we train based on our training data, our tuning will most likely
 	![[Pasted image 20240123165351.png]]
 	This new w, will be less aligned with f.
 	Let's say $w^{'} = w + y^{*} \cdot f$, then $w^{'} \cdot f = (w + y^{*} \cdot f) \cdot f$
-	So 
-###
+	$= w \cdot f + y^{*} \cdot f^2$, as you can see we have the original and the correction and $f^2 \gt 0$.
+	So if $y^{*}$ is negative, it moves away from f and if it's positive it will move closer to f.
+#### Example
+	![[Pasted image 20240123170535.png]]
+	In the beginning there might be many cases where we have adjustment, but eventually our model stagnates and most cases are as predicted.
+### Multiclass Decision Rule
+- If we have multiple classes:
+	- A weight vector for each class:
+		- $w_y$
+	- Score (activation) of a class y:
+		- $w_y \cdot f(x)$
+	- Prediction highest score wins
+		- $y = argmax_y w_y \cdot f(x)$
+	![[Pasted image 20240123170724.png]]
+-  Binary = multiclass where the negative class has weight zero
+#### Learning: Multiclass Perceptron
+- Start with all weights = 0
+- Pick up training examples one by one
+- Predict with current weights
+	- $y = argmax_y w_y \cdot f(x)$
+- If correct, no change!
+- If wrong: lower score of wrong answer, raise score of right answer
+	![[Pasted image 20240123171041.png]]
+	![[Pasted image 20240123171051.png]]
+#### Example
+	![[Pasted image 20240123171226.png]]
+### Properties of Perceptrons
+- Separability: true if some parameters get the training set perfectly correct
+	![[Pasted image 20240123171341.png]]
+- Convergence: if the training is separable, perceptron will eventually converge (binary case)
+- Mistake Bound: the maximum number of mistakes (binary case) related to the margin or degree of separability
+	- mistakes $\lt \dfrac{k}{\delta^2}$
 ---
 # Lecture 10
 ---
