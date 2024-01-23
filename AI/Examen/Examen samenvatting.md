@@ -2970,7 +2970,7 @@ Because in case we train based on our training data, our tuning will most likely
 	- $\phi(z) = \dfrac{1}{1+e^{-z}}$
 		![[Pasted image 20240123182106.png]]
 		In case z is positive, it will slowly go to one and if it's negative, it will slowly go to zero.
-### Best w?
+#### Best w?
 - Maximum likelihood estimation:
 	![[Pasted image 20240123182302.png]]
 - with:
@@ -2992,6 +2992,19 @@ Because in case we train based on our training data, our tuning will most likely
 	![[Pasted image 20240123183218.png]]
 - How to make the scores into probabilities?
 	![[Pasted image 20240123183311.png]]
+	$z_1, z_2$ and $z_3$ are numbers element of \[$-\inf, \inf$]. While if we look at $e^{z_i}$, we can see that this will always be a positive number.  
+#### Best w?
+- Maximum likelihood estimation:
+	![[Pasted image 20240123183438.png]]
+- with: 
+	![[Pasted image 20240123183454.png]]
+	= Multi-Class Logistic Regression
+
+> part two Optimization and Neural Nets
+
+In this lecture we look at optimization
+	![[Pasted image 20240123184615.png]]
+## Hill climbing
 ---
 # Lecture 10
 ---
