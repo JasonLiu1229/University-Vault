@@ -3059,7 +3059,83 @@ In this lecture we look at optimization
 ---
 # Lecture 10
 > Start of neural networks
-
 ## Neural Networks
 	![[Pasted image 20240123195321.png]]
+### Multi-class Logistic Regression
+- = Special case of neural network
+	![[Pasted image 20240123203720.png]]
+	This is a good representation but knowing what our features are, is also really important. Because essentially that's what we will use to make our decisions.
+	But what if we want to learn the features to.
+### Deep Neural Network = Also learn the features!
+	![[Pasted image 20240123204120.png]]
+	We make use of mass amount computations to let it decide what features we want. They will be flexible, so we can get more flexible features.
+
+- Is this good?
+	- Just taking weighted sum wouldn't work
+	- Adding the g will make it nonlinear. 
+		- This is because we don't get anything new if we work with linear values and adding this g will do.
+
+	![[Pasted image 20240123204722.png]]
+#### Common Activation Functions
+	![[Pasted image 20240123204539.png]]
+	These are commonly used Activation functions for 
+	The yellow curve is the derivative, we need to use this too. So in case we use a different one, they also need to have a derivative.
+	Some problems have different needs, so using different Activation functions is might result in better results.
+	Not only that Hyperbolic Tangent centers more to zero, and this is also helpful for calculations.
+### Deep Neural Network: Also Learn the Features! Continued
+- Training the deep neural network is just like logistic regression:
+	![[Pasted image 20240123205320.png]]
+	Just w tends to be a much, much larger vector :)
+- Just run Gradient ascent
+- + Stop when log likelihood of hold-out data starts to decrease
+### Neural Networks Properties
+- Theorem (Universal Function Approximators). A two-layer neural network with a sufficient number of neurons can approximate any continuous function to any desired accuracy.
+	- If the network is big enough, we can learn the pattern.
+
+- Practical considerations
+	- Can be seen as learning the features
+	- Large number of neurons
+		- Danger for overfitting
+		- (hence early stopping!)
+#### Universal Function Approximation Theorem*
+	![[Pasted image 20240123205638.png]]
+- **In words:** Given any continuous function f(x), if a 2-layer neural network has enough hidden units, then there is a choice of weights that allow it to closely approximate f(x).
+### How about computing all the derivatives?
+- Derivatives tables:
+	![[Pasted image 20240123205737.png]]
+
+- But neural net f is never one of those?
+	- No problem: CHAIN RULE:
+		- If $f(x) = g(h(x))$
+		- Then $f'(x) = g'(h(x))h'(x)$
+### Automatic Differentiation
+- Automatic differentiation software
+	- e.g. Theano, TensorFlow, PyTorch, Chainer 
+	- Only need to program the function g(x,y,w) 
+	- Can automatically compute all derivatives w.r.t. all entries in w 
+	- This is typically done by caching info during forward computation pass of f, and then doing a backward pass = “backpropagation” 
+	- Autodiff / Backpropagation can often be done at computational cost comparable to the forward pass
+- Need to know this exists
+## Summary of Key Ideas
+- Optimize probability of label given input
+	![[Pasted image 20240123210433.png]]
+- Continuous optimization
+	- Gradient ascent:
+		- Compute steepest uphill direction = gradient (= just vector of partial derivatives) 
+		- Take step in the gradient direction 
+		- Repeat (until held-out data accuracy starts to drop = “early stopping”)
+- Deep neural nets
+	- Last layer = still logistic regression 
+	- Now also many more layers before this last layer 
+		- = computing the features 
+		- à the features are learned rather than hand-designed 
+	- Universal function approximation theorem 
+		- If neural net is large enough 
+		- Then neural net can represent any continuous mapping from input to output with arbitrary accuracy 
+		- But remember: need to avoid overfitting / memorizing the training data à early stopping! 
+	- Automatic differentiation gives the derivatives efficiently 
+
+> Part two
+
+
 ---
