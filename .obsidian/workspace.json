@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -173,8 +174,9 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "92931e9069611e71",
+  "active": "9ba2cc70e6a1d832",
   "lastOpenFiles": [
+    "AI/Examen/Images.zip",
     "AI/Examen/Examen samenvatting.pdf",
     "AI/Examen/Images/Pasted image 20240123230202.png",
     "AI/Examen/Images/Pasted image 20240123225925.png",
@@ -199,7 +201,6 @@
     "AI/Leerstof/Slides 7-2.pdf",
     "AI/Leerstof/Slides 7-1.pdf",
     "AI/Examen/online_samenvatting.pdf",
-    "AI/Leerstof/Slides 6.pdf",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
     "README.md",
