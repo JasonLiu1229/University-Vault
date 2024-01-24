@@ -600,7 +600,7 @@ Tree Decomposition is another approach :
 - _**Iterative min-conflicts is often effective in practice**_
     - though, you have almost no guarantees.
 ## Local search
-	![[Pasted image 20240121205239.png]]]
+	![[Pasted image_20240121205239.png]]
 - Tree search keeps unexplored alternatives on the fringe (ensures completeness)
 - Local search: improve a single option until you can’t make it better (no fringe!)
     - In local search you don't have the safety net. You got one position that you are currently at and you're trying to hill climb in some way.

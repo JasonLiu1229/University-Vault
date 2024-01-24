@@ -20,6 +20,22 @@
             }
           }
         ]
+      },
+      {
+        "id": "243e8a28a4ffbf15",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f09e6393fc918703",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "AI/Leerstof/Slides 2-2.pdf"
+              }
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -73,8 +89,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -159,7 +174,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5
+    "width": 318.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -174,8 +190,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "9ba2cc70e6a1d832",
+  "active": "92931e9069611e71",
   "lastOpenFiles": [
+    "AI/Examen/Images/Pasted image_20240121205239.png",
+    "AI/Examen/Images/Pasted image 20240121205239.png",
+    "AI/Examen/Examen samenvatting.md",
+    "AI/Leerstof/Slides 2-2.pdf",
     "AI/Examen/Images.zip",
     "AI/Examen/Examen samenvatting.pdf",
     "AI/Examen/Images/Pasted image 20240123230202.png",
@@ -187,9 +207,7 @@
     "AI/Examen/Images/Pasted image 20240123225436.png",
     "AI/Examen/Images/Pasted image 20240123225209.png",
     "AI/Examen/Images/Pasted image 20240123225201.png",
-    "AI/Examen/Images/Pasted image 20240123225152.png",
     "AI/Leerstof/Slides 10-2.pdf",
-    "AI/Examen/Examen samenvatting.md",
     "AI/Leerstof/Slides 10-1.pdf",
     "AI/Leerstof/Slides 9-2.pdf",
     "AI/Leerstof/Slides 9-1.pdf",
@@ -199,8 +217,6 @@
     "AI/Leerstof/Slides 8.pdf",
     "Untitled.canvas",
     "AI/Leerstof/Slides 7-2.pdf",
-    "AI/Leerstof/Slides 7-1.pdf",
-    "AI/Examen/online_samenvatting.pdf",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
     "README.md",
