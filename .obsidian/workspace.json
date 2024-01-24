@@ -18,8 +18,19 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "a87975b5440e042e",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -93,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md"
+                "file": "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md"
               }
             }
           },
@@ -173,12 +184,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "92931e9069611e71",
+  "active": "a87975b5440e042e",
   "lastOpenFiles": [
+    "AI/Examen/Examen samenvatting.md",
+    "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
     "AI/Leerstof/Slides 2-2.pdf",
     "AI/Leerstof/Slides 2-1.pdf",
     "AI/Leerstof/Slides 3.pdf",
-    "AI/Examen/Examen samenvatting.md",
     "AI/Leerstof/Slides 1-1.pdf",
     "AI/Examen/Images/Pasted image_20240121205239.png",
     "AI/Examen/Images/Pasted image 20240121205239.png",
@@ -198,7 +210,6 @@
     "AI/Leerstof/Slides 9-1.pdf",
     "AI/Examen/delta in separability.md",
     "AI/Examen/Binary decision rule.md",
-    "Excalidraw",
     "Untitled.canvas",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
