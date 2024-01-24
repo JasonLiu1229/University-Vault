@@ -11,27 +11,9 @@
             "id": "92931e9069611e71",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "243e8a28a4ffbf15",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "f09e6393fc918703",
-            "type": "leaf",
-            "state": {
               "type": "pdf",
               "state": {
-                "file": "AI/Leerstof/Slides 2-2.pdf"
+                "file": "AI/Leerstof/Slides 1-1.pdf"
               }
             }
           }
@@ -109,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Leerstof/Slides 1-1.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -126,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
+                "file": "AI/Leerstof/Slides 1-1.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Examen/Examen samenvatting.md"
+                "file": "AI/Leerstof/Slides 1-1.pdf"
               }
             }
           },
@@ -192,9 +174,9 @@
   },
   "active": "92931e9069611e71",
   "lastOpenFiles": [
+    "AI/Examen/Examen samenvatting.md",
     "AI/Examen/Images/Pasted image_20240121205239.png",
     "AI/Examen/Images/Pasted image 20240121205239.png",
-    "AI/Examen/Examen samenvatting.md",
     "AI/Leerstof/Slides 2-2.pdf",
     "AI/Examen/Images.zip",
     "AI/Examen/Examen samenvatting.pdf",
@@ -206,7 +188,6 @@
     "AI/Examen/Images/Pasted image 20240123225445.png",
     "AI/Examen/Images/Pasted image 20240123225436.png",
     "AI/Examen/Images/Pasted image 20240123225209.png",
-    "AI/Examen/Images/Pasted image 20240123225201.png",
     "AI/Leerstof/Slides 10-2.pdf",
     "AI/Leerstof/Slides 10-1.pdf",
     "AI/Leerstof/Slides 9-2.pdf",
