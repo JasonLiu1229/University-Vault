@@ -11,9 +11,11 @@
             "id": "92931e9069611e71",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "AI/Leerstof/Slides 1-1.pdf"
+                "file": "AI/Examen/Examen samenvatting.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -91,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "AI/Leerstof/Slides 1-1.pdf",
+                "file": "AI/Examen/Examen samenvatting.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "AI/Leerstof/Slides 1-1.pdf",
+                "file": "AI/Examen/Examen samenvatting.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Leerstof/Slides 1-1.pdf"
+                "file": "AI/Examen/Examen samenvatting.md"
               }
             }
           },
@@ -156,8 +158,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 318.5,
-    "collapsed": true
+    "width": 318.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -174,10 +175,13 @@
   },
   "active": "92931e9069611e71",
   "lastOpenFiles": [
+    "AI/Leerstof/Slides 2-2.pdf",
+    "AI/Leerstof/Slides 2-1.pdf",
+    "AI/Leerstof/Slides 3.pdf",
     "AI/Examen/Examen samenvatting.md",
+    "AI/Leerstof/Slides 1-1.pdf",
     "AI/Examen/Images/Pasted image_20240121205239.png",
     "AI/Examen/Images/Pasted image 20240121205239.png",
-    "AI/Leerstof/Slides 2-2.pdf",
     "AI/Examen/Images.zip",
     "AI/Examen/Examen samenvatting.pdf",
     "AI/Examen/Images/Pasted image 20240123230202.png",
@@ -195,9 +199,7 @@
     "AI/Examen/delta in separability.md",
     "AI/Examen/Binary decision rule.md",
     "Excalidraw",
-    "AI/Leerstof/Slides 8.pdf",
     "Untitled.canvas",
-    "AI/Leerstof/Slides 7-2.pdf",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
     "README.md",
