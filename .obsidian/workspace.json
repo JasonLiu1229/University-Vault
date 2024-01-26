@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "92931e9069611e71",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AI/Examen/Examen samenvatting.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "a87975b5440e042e",
             "type": "leaf",
             "state": {
@@ -29,8 +17,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -165,11 +152,12 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 318.5
+    "width": 318.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,8 +172,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "c3994d7a108de6fb",
   "lastOpenFiles": [
+    "LBW/Thoms hertog tekst.pdf",
+    "Thoms hertog tekst.pdf",
+    "Thoms hertog tekst.pdf.crdownload",
+    "LBW/ontstaan heelal.pdf",
+    "LBW/ontstaan heelal.pdf.crdownload",
     "AI/Examen/Examen samenvatting.md",
     "AI/Examen/Examen samenvatting.pdf",
     "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
@@ -204,10 +197,6 @@
     "AI/Examen/Images/Pasted image 20240123225445.png",
     "AI/Examen/Images/Pasted image 20240123225436.png",
     "AI/Examen/Images/Pasted image 20240123225209.png",
-    "AI/Leerstof/Slides 10-2.pdf",
-    "AI/Leerstof/Slides 10-1.pdf",
-    "AI/Leerstof/Slides 9-2.pdf",
-    "AI/Leerstof/Slides 9-1.pdf",
     "AI/Examen/delta in separability.md",
     "AI/Examen/Binary decision rule.md",
     "Untitled.canvas",
