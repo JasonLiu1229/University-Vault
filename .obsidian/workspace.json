@@ -11,9 +11,11 @@
             "id": "a87975b5440e042e",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -91,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -108,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf"
+                "file": "README.md"
               }
             }
           },
@@ -172,8 +174,9 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "c3994d7a108de6fb",
+  "active": "a87975b5440e042e",
   "lastOpenFiles": [
+    "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf",
     "LBW/Davidsfonds202002-syllabus.pdf",
     "LBW/Davidsfonds202002-syllabus.pdf.crdownload",
     "LBW/Thoms hertog tekst.pdf",
@@ -186,7 +189,6 @@
     "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
     "AI/Leerstof/Slides 2-2.pdf",
     "AI/Leerstof/Slides 2-1.pdf",
-    "AI/Leerstof/Slides 3.pdf",
     "AI/Examen/Images/Pasted image_20240121205239.png",
     "AI/Examen/Images/Pasted image 20240121205239.png",
     "AI/Examen/Images/Pasted image 20240123230202.png",

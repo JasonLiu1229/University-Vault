@@ -7,3 +7,6 @@
 
 ## AI (Artificial intelligence)
 > Samenvattingen en Leerstof
+
+## CNS (Computer network security)
+> Cheatsheet
