@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -174,21 +175,21 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "a87975b5440e042e",
+  "active": "9ba2cc70e6a1d832",
   "lastOpenFiles": [
+    "CNS/Leerstof/Security-2324-02-SymmetricEncryption-AllParts.pdf",
+    "CNS/Leerstof/Security-2324-03-HashFunctions-AllParts.pdf",
+    "CNS/Leerstof/Security-2324-04-AsymmetricEncryption-AllParts.pdf",
+    "CNS/Leerstof/Security-2324-05-MutualTrust-AllParts.pdf",
+    "CNS/Leerstof/Security-2324-06-NetworkSecurity-AllParts.pdf",
+    "CNS/Leerstof",
+    "CNS/New folder",
     "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf",
     "LBW/Davidsfonds202002-syllabus.pdf",
     "LBW/Davidsfonds202002-syllabus.pdf.crdownload",
     "LBW/Thoms hertog tekst.pdf",
-    "Thoms hertog tekst.pdf",
-    "Thoms hertog tekst.pdf.crdownload",
-    "LBW/ontstaan heelal.pdf",
-    "LBW/ontstaan heelal.pdf.crdownload",
     "AI/Examen/Examen samenvatting.md",
-    "AI/Examen/Examen samenvatting.pdf",
     "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
-    "AI/Leerstof/Slides 2-2.pdf",
-    "AI/Leerstof/Slides 2-1.pdf",
     "AI/Examen/Images/Pasted image_20240121205239.png",
     "AI/Examen/Images/Pasted image 20240121205239.png",
     "AI/Examen/Images/Pasted image 20240123230202.png",
