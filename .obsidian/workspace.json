@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
-                "mode": "source",
+                "file": "IP/Project details.md",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -73,8 +73,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -94,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "IP/Project details.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "IP/Project details.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "IP/Project details.md"
               }
             }
           },
@@ -175,8 +174,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "9ba2cc70e6a1d832",
+  "active": "a87975b5440e042e",
   "lastOpenFiles": [
+    "IP/Project details.pdf",
+    "README.md",
+    "IP/Project details.md",
+    "IP",
+    "IP/Mindmap.md",
+    "IP",
     "CNS/Leerstof/Security-2324-02-SymmetricEncryption-AllParts.pdf",
     "CNS/Leerstof/Security-2324-03-HashFunctions-AllParts.pdf",
     "CNS/Leerstof/Security-2324-04-AsymmetricEncryption-AllParts.pdf",
@@ -185,9 +190,6 @@
     "CNS/Leerstof",
     "CNS/New folder",
     "LBW/Stuvia-932906-levensbeschouwing-religie-atheisme-en-wetenschap.pdf",
-    "LBW/Davidsfonds202002-syllabus.pdf",
-    "LBW/Davidsfonds202002-syllabus.pdf.crdownload",
-    "LBW/Thoms hertog tekst.pdf",
     "AI/Examen/Examen samenvatting.md",
     "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
     "AI/Examen/Images/Pasted image_20240121205239.png",
@@ -205,7 +207,6 @@
     "Untitled.canvas",
     "AI/Examen/Drawing 2024-01-22 12.48.18.excalidraw.md",
     "AI/Examen/Untitled.md",
-    "README.md",
     "SE/Examen/SE Questions for every chapter.md",
     "Vault/README.md",
     "SE/Vault/README.md",
