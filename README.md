@@ -12,3 +12,10 @@
 > Cheatsheet
 
 ## IP (Individual Project)
+> Early version of project details
+
+## DGA (Data structures and graph algorithms)
+> Lessen samengevat
+
+## DS (Distributed systems)
+> Sessions in md
