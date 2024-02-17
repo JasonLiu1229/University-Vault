@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "8580186805d4e12d",
+        "id": "1480cedcdade2950",
         "type": "tabs",
         "children": [
           {
@@ -16,6 +16,16 @@
                 "file": "DGA/Lessen/Les 1.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "2230e5cd49c33b70",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "DGA/cursus materiaal/DataStr.pdf"
               }
             }
           }
@@ -176,10 +186,10 @@
   },
   "active": "bf52bbfd28b8d327",
   "lastOpenFiles": [
-    "Untitled.md",
-    "DGA/Lessen/Les 1.md",
-    "DGA/Lessen",
     "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 1.md",
+    "Untitled.md",
+    "DGA/Lessen",
     "DI/Session 1.md",
     "DGA/cursus materiaal",
     "README.md",
