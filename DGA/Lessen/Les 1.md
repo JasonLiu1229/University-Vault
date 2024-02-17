@@ -22,7 +22,6 @@ Runtime:
 - Init is O(|V|)
 - BFS is O(|E|) because we need to look at every edge
 - So O(|V| + |E|)
-
 ## Theorem 2.1 
 Given G = (V, E) a graph with s in V the source vertex, the BFS algorithm returns a tree containing all vertices reachable from s and d(u) = δ(s, u) upon termination, where δ(s, u) gives the length of the shortest simple path from s to u in G (that is, the number of edges needed to get from s to u).
 ### Proof
