@@ -29,8 +29,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -104,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
+                "file": "DS/Session/Session 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
+                "file": "DS/Session/Session 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf"
+                "file": "DS/Session/Session 1.md"
               }
             }
           },
@@ -185,10 +184,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "679cb2f4c6eec771",
+  "active": "1d52581d742ef906",
   "lastOpenFiles": [
-    "DS/Session/Session 1.md",
+    "DS/Session/Images/Pasted image 20240218180106.png",
     "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
+    "DS/Session/Session 1.md",
     "DS/Session/Images",
     "DS/Session/Images/Pasted image 20240218161030.png",
     "DGA/cursus materiaal/DataStr.pdf",
