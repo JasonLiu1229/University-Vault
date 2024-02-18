@@ -34,4 +34,8 @@ To prove this theorem we start by arguing that the following three statements ho
 2. The second holds by noting that Q = s at the start and whenever we add a vertex v to Q when u is at the head of the queue, we have d(v) $\le$ d(u) + 1. 
 3. The last one follows up on the second statement.
 
-The proof completes as follows. Assume the theorem does not hold and let v be a vertex for which d(v) $\gt$ δ(s, v) with δ(s, v) as small as possible. Note by statement 1, it is impossible to have d(v) < 
+The proof completes as follows. Assume the theorem does not hold and let v be a vertex for which d(v) $\gt$ δ(s, v) with δ(s, v) as small as possible. Note by statement 1, it is impossible to have d(v) < δ(s, v). Let u be the last vertex on a shortest path from s to v. As δ(s, v) was chosen as small as possible, we have d(u) = δ(s, u) =  δ(s, v) - 1.
+
+When u is dequeued, there are two options. Either v was dequeued earlier, and we have d(v) $\le$ d(u) (by statement 3). This yields d(v) $\le$ δ(s, u) $\le$ δ(s, v). Otherwise, as (u, v) in E, the vertex v must be in the queue when u is dequeued. 
+
+Hence, by statement 2 we have d(v) $\le$ d(u) + 1 = δ(s, v). Thus, in both cases we have d(v) $\le$ δ(s, v) which contradicts the assumption that the theorem does not hold. $\square$
