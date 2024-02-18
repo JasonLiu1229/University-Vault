@@ -29,8 +29,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -104,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DGA/Lessen/Les 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DGA/Lessen/Les 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf"
+                "file": "DGA/Lessen/Les 1.md"
               }
             }
           },
@@ -185,10 +184,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2230e5cd49c33b70",
+  "active": "bf52bbfd28b8d327",
   "lastOpenFiles": [
-    "DGA/Lessen/Les 1.md",
     "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 1.md",
     "README.md",
     "DS/Session/Session 1.md",
     "DS/Session",
