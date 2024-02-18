@@ -26,6 +26,12 @@ Runtime:
 Given G = (V, E) a graph with s in V the source vertex, the BFS algorithm returns a tree containing all vertices reachable from s and d(u) = δ(s, u) upon termination, where δ(s, u) gives the length of the shortest simple path from s to u in G (that is, the number of edges needed to get from s to u).
 ### Proof
 To prove this theorem we start by arguing that the following three statements hold:
-1. If du  k, vertex u is at level k of the BFS tree and δs, u & k  du. 
-2. If Q  v1v2 . . . vr during the algorithm, we have dv1 & dv2 & . . . & dvr & dv1  1. 
-3. If v is dequeued before u, we have dv & du
+1. If d(u) = k, vertex u is at level k of the BFS tree and δ(s, u) $\le$ k = d(u). 
+2. If Q = v1, v2, . . ., vr during the algorithm, we have d(v1) $\le$ d(v2) $\le$ . . . $\le$ d(vr) $\le$ d(v1) + 1. 
+3. If v is dequeued before u, we have d(v) $\le$ d(u)
+
+1. Trivial
+2. The second holds by noting that Q = s at the start and whenever we add a vertex v to Q when u is at the head of the queue, we have d(v) $\le$ d(u) + 1. 
+3. The last one follows up on the second statement.
+
+The proof completes as follows. 
