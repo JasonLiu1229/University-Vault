@@ -29,7 +29,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Session/Session 1.md",
+                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Session/Session 1.md",
+                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Session/Session 1.md"
+                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf"
               }
             }
           },
@@ -184,12 +185,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "679cb2f4c6eec771",
   "lastOpenFiles": [
+    "DS/Session/Session 1.md",
+    "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
     "DS/Session/Images",
     "DS/Session/Images/Pasted image 20240218161030.png",
-    "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
-    "DS/Session/Session 1.md",
     "DGA/cursus materiaal/DataStr.pdf",
     "DGA/Lessen/Les 1.md",
     "README.md",
@@ -202,7 +203,6 @@
     "DGA/Lessen",
     "DS/Session 1.md",
     "DGA/cursus materiaal",
-    "DGA",
     "IP/Project details.md",
     "IP/Mindmap.md",
     "AI/Examen/Examen samenvatting.md",
