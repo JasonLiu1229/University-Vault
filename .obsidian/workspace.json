@@ -11,12 +11,8 @@
             "id": "6501ab0db352e4a0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DS/Session/Session 1.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           },
           {
@@ -103,7 +99,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Session/Session 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +115,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Session/Session 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -142,9 +136,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "DS/Session/Session 1.md"
-              }
+              "state": {}
             }
           },
           {
@@ -184,13 +176,21 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "1d52581d742ef906",
+  "active": "6501ab0db352e4a0",
   "lastOpenFiles": [
-    "DS/Session/Images/Pasted image 20240218180106.png",
-    "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
     "DS/Session/Session 1.md",
+    "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
+    "DS/Session/Images/Pasted image 20240218182455.png",
+    "DS/Session/Images/Pasted image 20240218182343.png",
+    "DS/Session/Images/Pasted image 20240218182310.png",
+    "DS/Session/Images/Pasted image 20240218182218.png",
+    "DS/Session/Images/Pasted image 20240218182051.png",
+    "DS/Session/Images/Pasted image 20240218181943.png",
+    "DS/Session/Images/Pasted image 20240218181709.png",
+    "DS/Session/Images/Pasted image 20240218181442.png",
+    "DS/Session/Images/Pasted image 20240218180923.png",
+    "DS/Session/Images/Pasted image 20240218180551.png",
     "DS/Session/Images",
-    "DS/Session/Images/Pasted image 20240218161030.png",
     "DGA/cursus materiaal/DataStr.pdf",
     "DGA/Lessen/Les 1.md",
     "README.md",
@@ -207,15 +207,6 @@
     "IP/Mindmap.md",
     "AI/Examen/Examen samenvatting.md",
     "AI/Examen/Drawing 2024-01-24 20.54.12.excalidraw.md",
-    "AI/Examen/Images/Pasted image_20240121205239.png",
-    "AI/Examen/Images/Pasted image 20240121205239.png",
-    "AI/Examen/Images/Pasted image 20240123230202.png",
-    "AI/Examen/Images/Pasted image 20240123225925.png",
-    "AI/Examen/Images/Pasted image 20240123225839.png",
-    "AI/Examen/Images/Pasted image 20240123225819.png",
-    "AI/Examen/Images/Pasted image 20240123225628.png",
-    "AI/Examen/Images/Pasted image 20240123225445.png",
-    "AI/Examen/Images/Pasted image 20240123225436.png",
     "AI/Examen/delta in separability.md",
     "AI/Examen/Binary decision rule.md",
     "Untitled.canvas",
