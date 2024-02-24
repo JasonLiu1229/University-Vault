@@ -8,20 +8,24 @@
         "type": "tabs",
         "children": [
           {
-            "id": "6501ab0db352e4a0",
+            "id": "679cb2f4c6eec771",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "DS/Session/Session 2.md",
+                "mode": "source",
+                "source": false
+              }
             }
           },
           {
-            "id": "679cb2f4c6eec771",
+            "id": "6501ab0db352e4a0",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "DS/Slides/DS-1-CourseOverview_Introduction.pdf"
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf"
               }
             }
           }
@@ -99,6 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,6 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +142,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf"
+              }
             }
           },
           {
@@ -178,7 +186,9 @@
   },
   "active": "6501ab0db352e4a0",
   "lastOpenFiles": [
+    "DS/Session/Session 2.md",
     "DS/Session/Session 1.md",
+    "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
     "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
     "DS/Session/Images/Pasted image 20240218182455.png",
     "DS/Session/Images/Pasted image 20240218182343.png",
@@ -202,7 +212,6 @@
     "Untitled.md",
     "DGA/Lessen",
     "DS/Session 1.md",
-    "DGA/cursus materiaal",
     "IP/Project details.md",
     "IP/Mindmap.md",
     "AI/Examen/Examen samenvatting.md",
