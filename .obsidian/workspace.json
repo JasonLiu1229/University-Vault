@@ -29,7 +29,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Session/Session 2.md",
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Session/Session 2.md",
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Session/Session 2.md"
+                "file": "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf"
               }
             }
           },
@@ -184,22 +185,22 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "679cb2f4c6eec771",
+  "active": "6501ab0db352e4a0",
   "lastOpenFiles": [
-    "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
     "DS/Session/Session 2.md",
+    "Pasted image 20240225151132.png",
+    "DS/Slides/DS-2-Middleware and Communication_v20240223(1).pdf",
+    "Pasted image 20240225151100.png",
+    "Pasted image 20240225150750.png",
+    "Pasted image 20240225150538.png",
+    "Pasted image 20240225150324.png",
+    "Pasted image 20240225150053.png",
+    "Pasted image 20240225144948.png",
     "DS/Session/Session 1.md",
     "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
     "DS/Session/Images/Pasted image 20240218182455.png",
     "DS/Session/Images/Pasted image 20240218182343.png",
     "DS/Session/Images/Pasted image 20240218182310.png",
-    "DS/Session/Images/Pasted image 20240218182218.png",
-    "DS/Session/Images/Pasted image 20240218182051.png",
-    "DS/Session/Images/Pasted image 20240218181943.png",
-    "DS/Session/Images/Pasted image 20240218181709.png",
-    "DS/Session/Images/Pasted image 20240218181442.png",
-    "DS/Session/Images/Pasted image 20240218180923.png",
-    "DS/Session/Images/Pasted image 20240218180551.png",
     "DS/Session/Images",
     "DGA/cursus materiaal/DataStr.pdf",
     "DGA/Lessen/Les 1.md",
