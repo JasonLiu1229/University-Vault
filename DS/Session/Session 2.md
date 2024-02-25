@@ -121,3 +121,18 @@ Not everything should be hidden ...
 ### Proxy and Skeleton in Remote Method Invocation
 ![[Pasted image 20240225164835.png]]
 #### Proxy
+Is responsible for making RMI transparent to clients by behaving like a local object to the invoker. 
+
+The proxy implements (Java term, not literally) the methods in the interface of the remote object that it represents. But, …
+
+Instead of executing an invocation, the proxy forwards it to a remote object:
+1. Marshals a request message
+	- Target object reference
+	- Method ID
+	- Argument values
+1. Sends request message
+2. Unmarshals reply and returns to invoker
+![[Pasted image 20240225203415.png]]
+**Skeleton = reverse of proxy at server side**
+#### Marshalling
+= transform object in memory to bitstream
