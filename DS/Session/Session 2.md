@@ -103,3 +103,21 @@ These are some techniques to prevent this faults, they will determine the follow
 3. At most once
 #### ![[Pasted image 20240225163343.png]]
 ### Role of the middleware…
+**Hide all these underlying complexity: provide transparency**
+make invocation syntax similar to local invocation, hiding:
+- Locate/contact remote object
+- Marshalling: converting arguments to bit stream
+- Fault tolerance measures
+- Communication details (sockets)
+
+**BUT ...**
+Not everything should be hidden ...
+- Programmer should know object is remote (network latency, potential invocation semantics, additional failures) **!!!!**
+
+→ Typical approach:
+- same invocation syntax (but catch exceptions ...)
+- Use of remote interface reflects remoteness
+## Middleware Architecture
+### Proxy and Skeleton in Remote Method Invocation
+![[Pasted image 20240225164835.png]]
+#### Proxy
