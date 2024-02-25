@@ -26,3 +26,10 @@ Here is an example how it could be done in java.
 ![[Pasted image 20240225151100.png]]
 ###### Server
 ![[Pasted image 20240225151132.png]]
+#### Remote invocations requires ...
+![[Pasted image 20240225151306.png]]
+Here are some important points that we need to remember in case we want to invoke remotely. 
+### Why middleware?
+![[Pasted image 20240225151459.png]]
+#### Hardware and OS architecture
+![[Pasted image 20240225151536.png]]
