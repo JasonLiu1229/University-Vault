@@ -136,3 +136,32 @@ Instead of executing an invocation, the proxy forwards it to a remote object:
 **Skeleton = reverse of proxy at server side**
 #### Marshalling
 = transform object in memory to bitstream
+![[Pasted image 20240225205011.png]]
+**Options**
+- marshalling using external standard
+	= External Data Representation e.g. CORBA’s common data representation (CDR) Java serialization Google Protocol Buffer
+- marshalling using sender standard AND send this standard along
+#### Communication Module
+- Implements the invocation semantics
+- Runs a request-reply protocol
+- Ensures communication between proxy & server-side
+![[Pasted image 20240225205217.png]]
+#### Dispatcher
+- The dispatcher receives all request messages from the communication module.
+- For the request message, it uses the method id to select the appropriate method in the appropriate skeleton, passing on the request message.
+![[Pasted image 20240225205331.png]]
+#### Skeleton
+Is responsible for making RMI transparent to **servers** by behaving like a **local invoker** to the **object**.
+
+The **skeleton** ...
+1. Accepts a request message
+2. Unmarshals the request
+	- Target object reference
+	- Method ID
+	- Argument values
+3. Invokes the method on the server object
+4. Marshals reply and returns to proxy
+![[Pasted image 20240225205609.png]]
+#### Remote Reference Module
+Is responsible for translating between local and remote object references and for creating remote object references.
+

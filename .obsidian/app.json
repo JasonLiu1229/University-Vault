@@ -7,6 +7,7 @@
     "downscalePercent": 100
   },
   "spellcheckDictionary": [
-    "prunable"
+    "prunable",
+    "invoker"
   ]
 }
