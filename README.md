@@ -19,3 +19,6 @@
 
 ## DS (Distributed systems)
 > Sessions in md
+
+## Fysica
+> cursus
