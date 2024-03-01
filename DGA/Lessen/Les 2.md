@@ -39,7 +39,7 @@ Runtime:
 - Init: O(|V|)
 - DFS with not the secondary function: O(|V|)
 - Because the secondary function is only called when a vertex is WHITE, we can say it will run at most O(|Γ(u)|), this is because the secondary function itself runs the same check. This causes it to finish faster than expected.
-## Theorem 3.1
+## Theorem 3.1 Parenthesis theorem
 Given a graph G = (V, E) and u, v in V, then either of the two following cases holds after running DFS:
 1. The intervals \[d(u), f(u)] and \[d(v), f(v)] do not overlap, and v is not a descendant of u.
 2. The interval \[d(u), f(u)] completely engulfs interval \[d(v), f(v)], then v is a descendant of u in the DFS tree/forest (vice versa in case the roles are switched between u and v).
@@ -47,11 +47,26 @@ So, v is only a descendant if and only if $d(u) \lt d(v) \lt f(v) \lt f(u)$.
 ### Proof
 Without loss of generality assume $d(u) \lt d(v)$.
 
-1. If $f(u) \lt f(v)$ then we can clearly see that both intervals are disjoint, because $d(v) \lt f(v)$. This leads us then to that v is not a descendant of u, because u is already marked 
-2. 
-## Theorem 3.2
+1. If $f(u) \lt f(v)$ then we can clearly see that both intervals are disjoint, because $d(v) \lt f(v)$. This leads us then to that v is not a descendant of u, because u is marked GRAY when the descendants are found (finish time of u is greater than of v). 
+2. If $d(v) \lt f(u)$ then we know that v is discovered before u finishes, and so with the recursive nature of DFS v will finish first before u finishes and v is a descendant of u.
+## Theorem 3.2 White path theorem
+Given that we perform a DFS search on G = (V, E) with u, v in V, v will be a descendant of u in the DFS tree if and only if at time d(u) there exists a White path from u to v in G.
 ### Proof
-## Theorem 3.3
+$\Rightarrow$) Assume v is a descendant of u in the DFS tree and w is a vertex in the path going from u to v. So using the parenthesis theorem we know that the discovery time of w is less than u's discovery time, so by the time u is discovered w is still WHITE.
+
+$\Leftarrow$) Assume we have a white path from u to v at time d(u), but v is not a descendant of u. Further, we can select v such that w, the vertex just prior to v on this path, is a descendant of u in the DFS tree. Now, due to Parenthesis theorem, we have $f(w) \lt f(u)$ and v is WHITE at the time u is discovered, we have $d(u) \lt d(v)$.
+
+Now, either v is discovered before w explores the edge (w, v) or it is discovered at the time we visit the edge (w, v), then we have $d(v) \le f(w) \lt f(u)$. 
+
+Looking at both inequalities, we can make use of the parenthesis theorem to see that v is a descendant of u.
+## Theorem 3.3 
+A DFS search of an undirected graph G = (V, E) only encounters tree and back edges.
 ### Proof
+
 ## Theorem 3.4
 ### Proof
+## Extra terminology p13
+1. Tree edges are those edges (u, v) in E that are also part of the depth-first forest described by $E_π$. 
+2. Back edges (u, v) in E connect a vertex u with one of its ancestors in the DFS tree/forest (i.e., u is a descendant of v). 
+3. Forward edges (u, v) in E are those connecting a vertex u with one of its descendants v in the DFS tree. 
+4. Finally, cross edges are all the remaining edges. These can be edges in a single DFS tree or edges between different trees in the DFS forest.
