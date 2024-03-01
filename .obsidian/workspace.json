@@ -29,7 +29,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -104,7 +105,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DGA/Lessen/Les 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +122,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DGA/Lessen/Les 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +145,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf"
+                "file": "DGA/Lessen/Les 2.md"
               }
             }
           },
@@ -185,10 +186,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "679cb2f4c6eec771",
+  "active": "0c71f1f02bb90801",
   "lastOpenFiles": [
-    "DGA/Lessen/Les 2.md",
     "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 2.md",
     "DGA/Lessen/Les 1.md",
     "DS/Session/Session 3.md",
     "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",

@@ -43,9 +43,9 @@ Runtime:
 Given a graph G = (V, E) and u, v in V, then either of the two following cases holds after running DFS:
 1. The intervals \[d(u), f(u)] and \[d(v), f(v)] do not overlap, and v is not a descendant of u.
 2. The interval \[d(u), f(u)] completely engulfs interval \[d(v), f(v)], then v is a descendant of u in the DFS tree/forest (vice versa in case the roles are switched between u and v).
-So 
-
+So, v is only a descendant if and only if $d(u) \lt d(v) \lt f(v) \lt f(u)$.
 ### Proof
+
 ## Theorem 3.2
 ### Proof
 ## Theorem 3.3
