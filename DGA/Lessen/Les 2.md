@@ -62,9 +62,15 @@ Looking at both inequalities, we can make use of the parenthesis theorem to see 
 ## Theorem 3.3 
 A DFS search of an undirected graph G = (V, E) only encounters tree and back edges.
 ### Proof
+Let (u, v) be an arbitrary edge in E. 
 
+Suppose that v is Black when exploring the edge (u, v) from u. This implies that v has been discovered and all its outgoing edges have been explored. Thus, as (u, v) in E, so is the edge (v, u) and this edge must have been explored. 
+
+At this time u was either White or Gray (as it is still Gray) and hence the edge is either a tree or back edge.
 ## Theorem 3.4
+A directed graph G contains no cycles if a DFS traversal of the graph does not encounter a back edge.
 ### Proof
+
 ## Extra terminology p13
 1. Tree edges are those edges (u, v) in E that are also part of the depth-first forest described by $E_π$. 
 2. Back edges (u, v) in E connect a vertex u with one of its ancestors in the DFS tree/forest (i.e., u is a descendant of v). 
