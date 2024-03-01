@@ -40,6 +40,15 @@ Runtime:
 - DFS with not the secondary function: O(|V|)
 - Because the secondary function is only called when a vertex is WHITE, we can say it will run at most O(|Γ(u)|), this is because the secondary function itself runs the same check. This causes it to finish faster than expected.
 ## Theorem 3.1
+Given a graph G = (V, E) and u, v in V, then either of the two following cases holds after running DFS:
+1. The intervals \[d(u), f(u)] and \[d(v), f(v)] do not overlap, and v is not a descendant of u.
+2. The interval \[d(u), f(u)] completely engulfs interval \[d(v), f(v)], then v is a descendant of u in the DFS tree/forest (vice versa in case the roles are switched between u and v).
+So 
+
 ### Proof
 ## Theorem 3.2
+### Proof
+## Theorem 3.3
+### Proof
+## Theorem 3.4
 ### Proof

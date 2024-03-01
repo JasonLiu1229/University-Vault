@@ -29,8 +29,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,7 +87,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "133c0210b503cae3",
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DGA/Lessen/Les 2.md",
+                "file": "DGA/cursus materiaal/DataStr.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DGA/Lessen/Les 2.md",
+                "file": "DGA/cursus materiaal/DataStr.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DGA/Lessen/Les 2.md"
+                "file": "DGA/cursus materiaal/DataStr.pdf"
               }
             }
           },
@@ -185,11 +185,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "0c71f1f02bb90801",
+  "active": "679cb2f4c6eec771",
   "lastOpenFiles": [
-    "DGA/Lessen/Les 1.md",
     "DGA/Lessen/Les 2.md",
     "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 1.md",
     "DS/Session/Session 3.md",
     "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
     "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf",
