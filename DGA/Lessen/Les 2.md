@@ -45,7 +45,10 @@ Given a graph G = (V, E) and u, v in V, then either of the two following cases h
 2. The interval \[d(u), f(u)] completely engulfs interval \[d(v), f(v)], then v is a descendant of u in the DFS tree/forest (vice versa in case the roles are switched between u and v).
 So, v is only a descendant if and only if $d(u) \lt d(v) \lt f(v) \lt f(u)$.
 ### Proof
+Without loss of generality assume $d(u) \lt d(v)$.
 
+1. If $f(u) \lt f(v)$ then we can clearly see that both intervals are disjoint, because $d(v) \lt f(v)$. This leads us then to that v is not a descendant of u, because u is already marked 
+2. 
 ## Theorem 3.2
 ### Proof
 ## Theorem 3.3
