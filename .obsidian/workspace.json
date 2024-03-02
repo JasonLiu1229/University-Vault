@@ -8,16 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "679cb2f4c6eec771",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf"
-              }
-            }
-          },
-          {
             "id": "72058e4669859f49",
             "type": "leaf",
             "state": {
@@ -26,6 +16,16 @@
                 "file": "DS/Session/Session 3.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "679cb2f4c6eec771",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf"
               }
             }
           }
@@ -104,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Session/Session 3.md",
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Session/Session 3.md",
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Session/Session 3.md"
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf"
               }
             }
           },
@@ -185,11 +185,11 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "72058e4669859f49",
+  "active": "679cb2f4c6eec771",
   "lastOpenFiles": [
+    "DS/Session/Session 3.md",
     "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
     "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf",
-    "DS/Session/Session 3.md",
     "DS/Session/Session 2.md",
     "DGA/Lessen/Les 3.md",
     "DGA/Lessen/Les 2.md",
