@@ -13,11 +13,24 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf"
+                "file": "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf"
+              }
+            }
+          },
+          {
+            "id": "72058e4669859f49",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DS/Session/Session 3.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -71,13 +84,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "133c0210b503cae3",
@@ -93,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DS/Session/Session 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf",
+                "file": "DS/Session/Session 3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DGA/cursus materiaal/DataStr.pdf"
+                "file": "DS/Session/Session 3.md"
               }
             }
           },
@@ -174,19 +185,18 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "9ba2cc70e6a1d832",
+  "active": "72058e4669859f49",
   "lastOpenFiles": [
-    "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 3.md",
     "DGA/Lessen/Les 2.md",
-    "DGA/Lessen/Les 1.md",
     "DS/Session/Session 3.md",
+    "DS/Session/Session 2.md",
     "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
     "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf",
     "README.md",
     "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf.crdownload",
     "Fysica",
     "New folder",
-    "DS/Session/Session 2.md",
     "DS/Session/Images/Pasted image 20240225213235.png",
     "DS/Session/Images/Pasted image 20240225213219.png",
     "DS/Session/Images/Pasted image 20240225213147.png",
@@ -201,6 +211,8 @@
     "DS/Session/Session 1.md",
     "DS/Slides/DS-1-CourseOverview_Introduction.pdf",
     "DS/Session/Images",
+    "DGA/cursus materiaal/DataStr.pdf",
+    "DGA/Lessen/Les 1.md",
     "DS/Session",
     "Untitled.md",
     "DS/Session 1.md",
