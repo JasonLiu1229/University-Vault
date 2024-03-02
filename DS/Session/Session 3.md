@@ -26,5 +26,20 @@ They had several reasons, but one big reason is that if one service fails, the r
 - Components are **loosely** linked with each other
 - Removing/adding a component is easier and can happen frequently
 ![[Pasted image 20240302180313.png]]
-This is similar as OO-Design, where we instead of splits in component, we splits in objects that do things for us.
-## The old days
+This is similar as OO-Design, where we instead of splits in component, we split in objects that do things for us.
+## The old days (Distributed computing 1.0)
+A **HISTORICAL** distributed system in practice 
+A traditional Operating Support System = System for operating a communications network
+![[Pasted image 20240302181209.png]]
+But this resulted in a stovepipe system. (The Stovepipe System Anti-Pattern is **the single-system analogy of Stovepipe Enterprise, which involves a lack of coordination and planning across a set of systems**.)
+![[Pasted image 20240302181306.png]]
+Many things could go wrong at any stage.
+
+This lead to a new approach, involving software engineering.
+![[Pasted image 20240302181416.png]]
+Where we slowly evolved and slowly broke down more things in pieces. This lead to less coupling and fewer problems for others in case something went wrong on your end of the service.
+## Distributed computing 2.0
+Before we dive in, we need to ask ourselves 2 questions:
+- What is service orientation?
+- What is an architecture? Or what is not?
+### What is a service?
