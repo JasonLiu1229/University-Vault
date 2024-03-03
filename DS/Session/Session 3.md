@@ -43,3 +43,26 @@ Before we dive in, we need to ask ourselves 2 questions:
 - What is service orientation?
 - What is an architecture? Or what is not?
 ### What is a service?
+- Physical independent software program
+- Loosely coupled
+- Distinct design characteristics
+- Capabilities are often defined in terms of a contract
+**General idea: Service composition and inventory**
+![[Pasted image 20240303121347.png]]
+#### Coupling of services & value
+![[Pasted image 20240303122222.png]]
+As we can see on the graph that the value of the services differentiate depending on the amount of coupling we have in our system.
+
+But it is important that we have good "glue", otherwise it has no point that our services are loosely coupled if they can't or don't interact with each other.
+#### Example of a SOA application
+![[Pasted image 20240303122505.png]]
+### What is an architecture? What is it not?
+**Service oriented architecture**
+- Architecture = **style of design**
+	- Enterprise architectural style. Technology neutral!
+- Service-oriented: **the core unit of design is a service**
+	- Implementing a capability so that it can be easily consumed
+- An approach to designing systems, a set of design principles
+- A way of thinking about a problem, a mindset
+
+**From a technical perspective**
