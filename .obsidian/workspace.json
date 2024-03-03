@@ -29,8 +29,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -104,7 +103,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
+                "file": "DS/Session/Session 3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +120,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
+                "file": "DS/Session/Session 3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -144,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf"
+                "file": "DS/Session/Session 3.md"
               }
             }
           },
@@ -185,10 +184,10 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "679cb2f4c6eec771",
+  "active": "72058e4669859f49",
   "lastOpenFiles": [
-    "DS/Session/Session 3.md",
     "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
+    "DS/Session/Session 3.md",
     "Pasted image 20240303122505.png",
     "Pasted image 20240303122222.png",
     "Pasted image 20240303121347.png",

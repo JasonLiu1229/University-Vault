@@ -66,3 +66,13 @@ But it is important that we have good "glue", otherwise it has no point that our
 - A way of thinking about a problem, a mindset
 
 **From a technical perspective**
+- An architecture for designing systems
+	- A “service” **exposes a discrete capability**
+	- Any application that needs the capability uses the service
+- A service exposes its capability **via an interface**
+- Compared against an application-centric design perspective
+	- Monolithic application silos
+	- Duplication of functionality
+#### Definition
+“A **paradigm** for **organizing** and **utilizing distributed capabilities** that may be under the control of different ownership domains. It provides a uniform means to offer, discover, interact with and use capabilities to produce desired effects consistent with measurable preconditions and expectations.”
+## Technical aspects
