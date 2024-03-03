@@ -100,3 +100,79 @@ Same application + different conditions on the data
 #### Application multi-tenancy
 ![[Pasted image 20240303143330.png]]
 Tenant-configured applications
+## Is SOA dead?
+**Disclaimer**
+- Distributed computing is a fast evolving world
+- And very much sensitive to buzzwords
+![[Pasted image 20240303144520.png]]
+# Cloud computing
+## Definition of a cloud 
+The definition for the cloud can seem murky, but essentially, it's **a term used to describe a global network of servers, each with a unique function**.
+### Etymology
+The origin of the word came from the essence that multiple systems were connected over the internet, to interact with each other. Slowly expanded to a whole network or cloud of systems.
+![[Pasted image 20240303145028.png]]
+![[Pasted image 20240303145038.png]]
+## Definition
+“Cloud computing is a model for **enabling convenient, on demand network access to a shared pool of configurable computing resources** (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.”
+## IT services as a utility
+![[Pasted image 20240303145201.png]]
+![[Pasted image 20240303145255.png]]
+### Key differences
+![[Pasted image 20240303145323.png]]
+There are some differences between in-house IT and a service X that could be used by many. 
+
+They validate different purposes and different needs, so to say define one as better is hard to do without knowing the context.
+## Cloud service models
+…say aaS (as a service)
+### Service models
+![[Pasted image 20240303145628.png]]
+SaaS = Software as a service
+PaaS = Platform as a service
+IaaS = infrastructure as a service
+#### SaaS
+Platform as a Service **offers a high-level integrated environment to build, test and deploy custom applications.** Generally, developers will need to accept some restrictions to the type of software they a write in exchange for built-in application scalability
+
+**Application development environment**
+- Provider-constrained components and languages
+	- E.g. Database access, message buses, …
+- Specific use cases (e.g. Ruby web development)
+- Speedup development & deployment process
+- Automated application scaling
+
+**Increased efficiency at cost of lock-in**
+#### PaaS
+Platform as a Service (PaaS) is **a complete cloud environment that includes everything developers need to build, run, and manage applications**—from servers and operating systems to all the networking, storage, middleware, tools, and more.
+![[Pasted image 20240303145932.png]]
+#### IaaS
+Infrastructure as a Service **provisions hardware, software and equipment to deliver software application environments** with a resource usage-based pricing model. The resulting infrastructure can scale and down dynamically based on application resource needs
+
+Provider manages underlying infrastructure (**Multi-tenancy**)
+
+Unit of deployment : Virtual Machine (VM)
+![[Pasted image 20240303150104.png]]
+
+**These models are not orthogonal!** 
+SaaS can be built on top of PaaS, which can be built on top of IaaS.
+![[Pasted image 20240303150224.png]]
+### The 3 main enablers
+![[Pasted image 20240303150300.png]]
+### Deployment models
+![[Pasted image 20240303150345.png]]
+
+**Other deployment models**
+- Community clouds: hosted by several organizations 
+- Hybrid clouds: combinations of above
+### Payment models
+1. Per-Instance billing:
+	- Pay for every hour a VM is used
+	- You pay for idle machines
+2. Reserved usage:
+	- Up-front payment & reservation
+	- Lower rates
+1. Bidding:
+	- You define a maximum instance price
+	- Price varies on the load of the cloud
+1. Actual usage:
+	- Mostly in PaaS models
+## Wrap-up
+**Quick run-down of decades of distributed computing history**
