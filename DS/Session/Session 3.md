@@ -176,3 +176,7 @@ SaaS can be built on top of PaaS, which can be built on top of IaaS.
 	- Mostly in PaaS models
 ## Wrap-up
 **Quick run-down of decades of distributed computing history**
+1. Tightly coupled distributed systems
+2. Service Oriented Architectures
+	- Term is dead, but idea is not
+3. Introduction to cloud computing
