@@ -8,6 +8,7 @@
   },
   "spellcheckDictionary": [
     "prunable",
-    "invoker"
+    "invoker",
+    "Multitenancy"
   ]
 }

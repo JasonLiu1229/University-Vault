@@ -29,7 +29,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -103,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DS/Session/Session 3.md",
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DS/Session/Session 3.md",
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -143,7 +144,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DS/Session/Session 3.md"
+                "file": "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf"
               }
             }
           },
@@ -184,20 +185,20 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "72058e4669859f49",
+  "active": "679cb2f4c6eec771",
   "lastOpenFiles": [
-    "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
     "DS/Session/Session 3.md",
+    "DS/Slides/DS-3-ServiceOrientedArchitectures_cloudComputing.pdf",
+    "Pasted image 20240303143330.png",
+    "Pasted image 20240303143314.png",
+    "Pasted image 20240303142008.png",
+    "Pasted image 20240303141416.png",
     "Pasted image 20240303122505.png",
     "Pasted image 20240303122222.png",
     "Pasted image 20240303121347.png",
     "Pasted image 20240302181416.png",
     "Pasted image 20240302181306.png",
     "Pasted image 20240302181209.png",
-    "Pasted image 20240302180313.png",
-    "Pasted image 20240302180228.png",
-    "Pasted image 20240302180223.png",
-    "Pasted image 20240302175908.png",
     "Fysica/UniversityPhysicsVolume2-WEB_5eNhMSa.pdf",
     "DS/Session/Session 2.md",
     "DGA/Lessen/Les 3.md",

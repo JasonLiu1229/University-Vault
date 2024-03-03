@@ -76,3 +76,27 @@ But it is important that we have good "glue", otherwise it has no point that our
 #### Definition
 “A **paradigm** for **organizing** and **utilizing distributed capabilities** that may be under the control of different ownership domains. It provides a uniform means to offer, discover, interact with and use capabilities to produce desired effects consistent with measurable preconditions and expectations.”
 ## Technical aspects
+**Service Architecture != Product**
+Enterprise Java Beans: Powerful, but Java only
+
+CORBA
+- **C**ommon **O**bject **R**equest **B**roker **A**rchitecture
+- Independent of OS and language, but very complex
+- Limited amount of vendors
+- Historical
+
+Web Services
+![[Pasted image 20240303141416.png]]
+## Why do we need SOA?
+- …promotes reusability
+- …promotes exchangeability
+**Allows multi-tenancy: a single instance of the software runs on a server, serving multiple client-organizations (tenants)**
+![[Pasted image 20240303142008.png]]
+Multi-tenancy = is **a reference to the mode of operation of software where multiple independent instances of one or multiple applications operate in a shared environment**.
+### Types of multi-tenancy
+#### Data multi-tenancy
+![[Pasted image 20240303143314.png]]
+Same application + different conditions on the data
+#### Application multi-tenancy
+![[Pasted image 20240303143330.png]]
+Tenant-configured applications
