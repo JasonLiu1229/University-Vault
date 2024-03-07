@@ -30,4 +30,27 @@ We start by defining $f(C) = max_{u \in C} f(u)$ and $d(C) = min_{u \in C} d(u)$
 We first show that if (u, v) in E, u in C and v in C', where C and C' are two different SCCs, then f(C) $\gt$ f(C).
 
 We distinguish two cases:
-1. Assume d(C) $\lt$ d(C') and let x be the first node of C that is discovered. Thus, at time d(x) all the nodes in C and C' are still White. Further, as (u, v) in E, all the nodes in C and C' are reachable from x, thus, due to the white path theorem, all the nodes in C $C¬ are descendants of x.
+1. Assume d(C) $\lt$ d(C') and let x be the first node of C that is discovered. Thus, at time d(x) all the nodes in C and C' are still White. Further, as (u, v) in E, all the nodes in C and C' are reachable from x, thus, due to the white path theorem, all the nodes in C $\cup$ C' are descendants of x. This implies that f(x) = f(C) $\gt$ f(C').
+2. Assume now d(C') $\lt$ d(C) and by the white path theorem f(x) = f(C'), where x is the first node of C' that is discovered. Further, as (u, v) in E, none of the vertices in C are reachable from x as this would imply that all the nodes in C and C' belong to the same SCC. Hence, f(C) $\gt$ f(C') as required. This implies that if (u, v) in E', with u and v belonging to two different SCCs C and C', then f(C) $\lt$ f(C').
+
+Now, assume by induction that the first m trees produced by the second DFS search correspond to the first m SCCs $C_1$ to $C_m$ such that $f(C_1) \gt . . . \gt f(C_m)$.
+
+Denote x as the root node of the next tree produced by the second DFS, and denote C as its SCC. Clearly, all the nodes in C will be part of the tree rooted by x (as they do not belong to $C_1$ $\cup . . . \cup$ $C_m$ by induction). Further, as the vertices of G' in the main for-loop of the second DFS algorithm are ordered in decreasing value of f(u), we have f(x) = f(C). 
+
+Next, suppose there exists an edge (u, v) in E', with u in C and v not in $C_1$ $\cup . . . \cup$ $C_m$ $\cup$ C, but part of SCC C'. Let y in C' be the vertex with f(y) = f(C'). Then, f(x) = f(C) $\lt$ f(C') =  f(y) as shown earlier, but this is impossible as f(x) $\gt$ f(y) (as the nodes in the main for-loop of the second DFS were ordered in decreasing value of f(u)).
+
+As a result, tree m+1 will consist of the nodes of C only and therefore corresponds to the m+1-st SCC
+# Flow networks
+## Definition 1.1
+A flow network G = (V, E) is a directed graph in which each edge (u, v) in E has a capacity c(u, v) $\ge$ 0. Let s, t be two specific vertices in V called the **source** and **sink** of the network. If (u, v) not in E, we define c(u, v) = 0.
+
+To simplify our discussion, we assume that for each v in V, there exists a path from s via v to t. Nodes in V for which there is no such path have no use, as they cannot carry any flow from s to t.
+## Definition 2.1
+A flow f in a flow network G, is a real-valued function f from V x V to R satisfying:
+1. *Capacity constraint*: f(u, v) $\le$ c(u, v) for all u, v in V.
+2. *Skew symmetry*: f(u, v) = -f(v, u) for all u, v in V.
+3. *Flow conservation*: $\sum_{v \in V}$ f(u, v) = 0 for all u in V - {s, t}.
+
+The value of f(u, v) is the net flow from u to v and the value of f, denoted as |f|, equals $\sum_{v \in V}$ f(s, v), where s is the source vertex.
+## Lemma 1.1
+Let $f_1$ and f2 be two flows in G with f1u, vf2u, v & cu, v for all u, v " V , then f defined as f u, v  f1u, vf2u, v for all u, v " V , defines a flow in G with ¶f ¶  ¶f1¶  ¶f2¶.
