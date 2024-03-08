@@ -55,4 +55,4 @@ The value of f(u, v) is the net flow from u to v and the value of f, denoted as 
 ## Lemma 1.1
 Let $f_1$ and $f_2$ be two flows in G with $f_1(u, v)$ + $f_2(u, v)$ $\le$ c(u, v) for all u, v in V, then f defined as f(u, v) = $f_1(u, v)$ + $f_2(u, v)$ for all u, v in V, defines a flow in G with |f| = |$f_1$| + |$f_2$|.
 ### Proof
-Evidently, the capacity constraint is fulfilled as f1u, v  f2u, v & cu, v for all u, v " V .
+Evidently, the capacity constraint is fulfilled as $f1u, v  f2u, v & cu, v for all u, v " V .
