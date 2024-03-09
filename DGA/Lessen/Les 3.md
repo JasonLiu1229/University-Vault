@@ -55,4 +55,13 @@ The value of f(u, v) is the net flow from u to v and the value of f, denoted as 
 ## Lemma 1.1
 Let $f_1$ and $f_2$ be two flows in G with $f_1(u, v)$ + $f_2(u, v)$ $\le$ c(u, v) for all u, v in V, then f defined as f(u, v) = $f_1(u, v)$ + $f_2(u, v)$ for all u, v in V, defines a flow in G with |f| = |$f_1$| + |$f_2$|.
 ### Proof
-Evidently, the capacity constraint is fulfilled as $f1u, v  f2u, v & cu, v for all u, v " V .
+Evidently, the capacity constraint is fulfilled as$f_1(u, v)$ + $f_2(u, v)$ $\le$ c(u, v) for all (u, v) in V.
+	f(u, v) = $f_1(u, v)$ + $f_2(u, v)$ = $-f_1(v, u)$  $-f_2(v, u)$ = - f(v, u)
+and
+	$\sum_{v \in V}$ f(u, v) =  $\sum_{v \in V}f_1(u, v)$ + $\sum_{v \in V}f_2(u, v)$ = 0 + 0 = 0
+for u in V - {s, t}. Further we have:
+	|f| = $\sum_{v \in V}$ f(s, v) =  $\sum_{v \in V}f_1(s, v)$ + $\sum_{v \in V}f_2(s, v)$ = |$f_1$| + |$f_2$|
+
+Before we move on to residual networks, let us first focus on a network flow problem with multiple sources $s_1, . . . , s_k$ and multiple sinks $t_1, . . . , t_l$. 
+
+To determine the maximum flow of this graph we can add two extra nodes, one node s that connects to all other sources and one node t where every sink connects to.
