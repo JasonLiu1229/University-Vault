@@ -52,3 +52,9 @@ As a result, since V = S $\cup$ T and S $\cap$ T = $\varnothing$, we have
 2. The residual network $G_f$ contains no augmenting paths (that is, there is no simple path from s to t in $G_f$),
 3. |f| = c(S, T) for some cut (S, T) of G.
 ### Proof
+**(1) → (2):** If f is maximum then there cannot be an augmenting path with respect to G and f due to Corollary 2.1.
+**(2) → (3):** Assume there is no simple path from s to t in $G_f$. 
+Define the cut (S, T) as
+	S = {$v \in V$ | there is a path from s to v},
+and T = V - S. Notice, s in S and t in T. For each (u, v) with u in S and v in T, we have f(u, v) = c(u, v) as (u, v) not in $E_f$ (therefore 0 = $c_f(u, v)$ = c(u, v) - f(u, v)). Lemma 2.2 implies that |f| = f(S, T) and f(S, T) = c(S, T) as we just argued.
+**(3) → (1):** Lemma 2.2 indicates |f| & cS, T  for all cuts S, T  and flows f in G. Thus, f is a maximum flow.
