@@ -41,5 +41,14 @@ Let f be a flow in G and let (S, T) be any cut, then f(S, T) = |f| $\le$ c(S, T)
 Let X and Y be two subsets of V, then define
 	$f(X, Y) = \sum_{u \in X, v \in Y} f(u, v)$
 1. f(X, X) = 0, due to skew symmetry
-2. 
+2. f(X, $Y_1$, $Y_2$) = f(X, $Y_1$) + f(X, $Y_2$) and f($X_1$, $X_2$, Y) = f($X_1$, Y) + f($X_2$, Y) if $Y_1 \cap Y_2$ = $X_1 \cap X_2$ = $\varnothing$.
+As a result, since V = S $\cup$ T and S $\cap$ T = $\varnothing$, we have
+	f(S, T) = f(S, V) - f(S, S) = f(S, V) = f(s, V) + f(S - s, V) = f(S, V) = |f|,
+ where f(S - s, V) = 0. The inequality can be established as follows 
+	 |f| = f(S, T) = $\sum_{u \in S, v \in T} f(u,v) \le \sum_{u \in S, v \in T} c(u,v)$ = c(S, T).
 ## Theorem 2.1
+(Max-flow Min-cut theorem). Let f be a flow in a flow network G with source s and sink t, then the following three statements are equivalent:
+1. f is a maximum flow in G,
+2. The residual network $G_f$ contains no augmenting paths (that is, there is no simple path from s to t in $G_f$),
+3. |f| = c(S, T) for some cut (S, T) of G.
+### Proof
