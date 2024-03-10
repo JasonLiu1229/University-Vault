@@ -30,6 +30,16 @@ We need to introduce two more concepts before we can prove the max-flow min-cut 
 ## Definition 2.3
 A cut (S, T) in a flow network G = (V, E) is defined as a partitioning of V into S and T such that s in S, t in T (and S $\cap$ T as it is a partitioning).
 
-Given a flow f in G, we define the net flow f S, T  across the cut S, T  as
+Given a flow f in G, we define the net flow f(S, T) across the cut (S, T) as
+	$f(S,T) = \sum_{u \in S, v \in T} f(u,v)$
+The capacity c(S, T) of the cut (S, T) on the other hand, is defined as 
+	$c(S, T) = \sum_{u \in S, v \in T} c(u,v)$
+Notice some of the terms f(u, v) may be negative, which is never the case for the capacity c(u, v).
 ## Lemma 2.2
+Let f be a flow in G and let (S, T) be any cut, then f(S, T) = |f| $\le$ c(S, T)
+### Proof 
+Let X and Y be two subsets of V, then define
+	$f(X, Y) = \sum_{u \in X, v \in Y} f(u, v)$
+1. f(X, X) = 0, due to skew symmetry
+2. 
 ## Theorem 2.1
