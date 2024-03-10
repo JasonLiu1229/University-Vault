@@ -28,6 +28,8 @@ return f;
 
 We need to introduce two more concepts before we can prove the max-flow min-cut theorem and thus the correctness of the algorithm above.
 ## Definition 2.3
-A cut (S,T) in a flow network G  V, E is defined as a partitioning of V into S and T such that s " S, t " T (and S = T  o as it is a partitioning).
+A cut (S, T) in a flow network G = (V, E) is defined as a partitioning of V into S and T such that s in S, t in T (and S $\cap$ T as it is a partitioning).
+
+Given a flow f in G, we define the net flow f S, T  across the cut S, T  as
 ## Lemma 2.2
 ## Theorem 2.1
