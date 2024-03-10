@@ -26,6 +26,8 @@ while there exists an augmenting path p:
 return f;
 ```
 
+We need to introduce two more concepts before we can prove the max-flow min-cut theorem and thus the correctness of the algorithm above.
 ## Definition 2.3
+A cut (S,T) in a flow network G  V, E is defined as a partitioning of V into S and T such that s " S, t " T (and S = T  o as it is a partitioning).
 ## Lemma 2.2
 ## Theorem 2.1
