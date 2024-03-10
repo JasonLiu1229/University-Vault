@@ -11,9 +11,21 @@ Let f be a flow in G and f' in $G_f$, then f + f' defined as (f + f')(u, v) = f(
 The proof is completely analogue to Lemma 1.1, except that we also need to verify the capacity constraints:
 (f + f')(u, v) = f(u, v) + f'(u, v) $\le$ f(u, v) + $c_f(u, v)$ = c(u, v).
 ## Definition 2.2
+An augmenting path p with respect to a flow network G and a flow f is a simple path from s to t in $G_f$, meaning each vertex on the path is visited only once.
 
-## Corollary 2.1.
-## Algorithm 2.1
+Notice, all edges $E_f$ in $G_f$ have a positive capacity, meaning an augmenting path p has a positive residual capacity $c_f(p)$ defined as $min\{c_f(u, v) | (u, v) \in p\}$. An augmenting path p therefore immediately results in a flow $f_p$ in the residual network $G_f$, by defining $f_p(u, v)$ = $c_f(p)$ for the edges (u, v) on p and $f_p(u, v)$ = -$c_f(p)$ for (v, u) on p. Combining this with the previous two lemmas, we have the following corollary.
+## Corollary 2.1
+Let f be a flow in G and p an augmenting path with respect to G and f, then f' = f + $f_p$ defines a new flow in G with |f'| $\gt$ |f|.
+
+This gives cause to the Ford-Fulkerson method:
+## Algorithm 2.1 (Ford-Fulkerson)
+```python
+Initialize f(u, v) = 0 for all u, v;
+while there exists an augmenting path p:
+	augment flow f with $f_p$;
+return f;
+```
+
 ## Definition 2.3
 ## Lemma 2.2
 ## Theorem 2.1
