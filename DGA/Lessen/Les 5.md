@@ -13,4 +13,4 @@ Now consider what happens to the residual capacities $c_f(x_2, x_1), c_f(x_3, x_
 
 We denote $f_n$ as the flow obtained after using n paths. If we start with path $p_0$, with $c_{f_0}(p0)$ = 1, we get the following residual capacities: $c_{f_1}(x_2, x_1)$ = 1= $r^0$, $c_{f_1}(x_3, x_2)$ = 1 and $c_{f_1}(x_4, x_3)$ = r.
 
-Hence, cf1 p1  r and p1 decreases the capacity on x2, x1 such that cf2 x2, x1  1  r  r2. 
+Hence, $c_{f_1}(p_1)$ = r and $p_1$ decreases the capacity on $(x_2, x_1)$ such that $c_{f_2}(x_2, x_1)$ = 1 - r = $r^2$. The residual capacity on $(x_4, x_3)$ and ($x_3, x_2$) is also reduced by $p_1$, however, path $p_2$ will restore these capacities as $c_{f_2}(p_2)$ = r (due to cf2 x2, x3  r), meaning cf3 x2, x1  r2, cf3 x3, x2  1 and cf3 x4, x3  r
