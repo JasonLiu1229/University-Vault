@@ -29,6 +29,6 @@ Let f and f' be two successive flows obtained by the Edmonds-Karp algorithm and 
 ### Proof
 Suppose the lemma is false and choose:
 	v in V : $δ_f(s, v) \gt δ_{f'}(s, v)$
-such that 
+such that $δ_{f'}(s, v)$ is minimal (that is, if)
 
 
