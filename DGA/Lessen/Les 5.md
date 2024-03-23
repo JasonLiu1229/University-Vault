@@ -43,3 +43,11 @@ which contradicts the first statement.
 ## Theorem 4.1
 The Edmonds-Karp algorithm to determine the maximum flow of a flow network G requires at most O(|V||E|) augmentations.
 ### Proof
+An (u, v) edge on an augmenting path p in a residual graph $G_f$ is termed critical if it has the lowest capacity $c_f(u, v)$ along the path p, therefore $c_f(u, v) = c_f(p)$ and $δ_f(s, v) = δ_f(s, u) + 1$.
+
+Whenever an edge (u, v) becomes critical, the edge (u, v) disappears from the residual network. The edge (u, v) can only reappear in a residual network later on if the edge (v, u) becomes part of an augmenting path p' in some residual network $G_{f'}$.
+
+Thus at some later point in time we have $δ_{f'}(s, u) = δ_{f'}(s, v) + 1 \ge δ_f(s, v) + 1$, where the inequality stems from Lemma 4.1.
+
+Combining both, we see $δ_{f'}(s, u) \ge δ_f(s, u) + 2$.
+
