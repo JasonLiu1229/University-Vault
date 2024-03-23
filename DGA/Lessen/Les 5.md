@@ -32,6 +32,9 @@ Suppose the lemma is false and choose:
 such that $δ_{f'}(s, v)$ is minimal (that is, if $δ_{f'}(s, u) \lt δ_{f'}(s, v)$, then $δ_f(s, u) \le δ_{f'}(s, u)$). Let p be the shortest-path from s to v in $G_{f'}$ where the last edge is assumed to be edge (u, v).
 
 Then,
-	$
+	$δ_{f'}(s, u) = δ_{f'}(s, v) - 1$ 
+and by the minimality of v
+	$δ_f(s, v) \gt δ_{f'}(s, v) = δ_{f'}(s, u) + 1 \ge δ_f(s, u) + 1$ (1)
+
 
 
