@@ -39,3 +39,7 @@ and by the minimality of v
 Therefore, (u, v) cannot be an edge in $G_f$, otherwise $δ_f(s, v) \le δ_f(s, u) + 1$.
 If (u, v) in $G_{f'}$, while (u, v) not in $G_f$, then the shortest path from s to t in $G_f$ must contain the edge (v, u), otherwise (u, v) cannot be part of $G_{f'}$. As a consequence, as the path via v is also a shortest-path to u, we have
 	$δ_f(s, v) = δ_f(s, u) - 1$,
+which contradicts the first statement.
+## Theorem 4.1
+The Edmonds-Karp algorithm to determine the maximum flow of a flow network G requires at most O(|V||E|) augmentations.
+### Proof
