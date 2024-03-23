@@ -36,5 +36,6 @@ Then,
 and by the minimality of v
 	$δ_f(s, v) \gt δ_{f'}(s, v) = δ_{f'}(s, u) + 1 \ge δ_f(s, u) + 1$ (1)
 
-
-
+Therefore, (u, v) cannot be an edge in $G_f$, otherwise $δ_f(s, v) \le δ_f(s, u) + 1$.
+If (u, v) in $G_{f'}$, while (u, v) not in $G_f$, then the shortest path from s to t in $G_f$ must contain the edge (v, u), otherwise (u, v) cannot be part of $G_{f'}$. As a consequence, as the path via v is also a shortest-path to u, we have
+	$δ_f(s, v) = δ_f(s, u) - 1$,
