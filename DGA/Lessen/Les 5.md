@@ -23,3 +23,12 @@ As a result, the Ford-Fulkerson algorithm 3 Performance of the Ford-Fulkerson al
 
 To avoid such a slow convergence one may rely on the Edmonds-Karp algorithm that will select the augmenting path p in the residual network by applying a breadth-first search to determine the shortest path from s to t, in the next section we prove that the time complexity of such an approach is O(|V|$|E|^2$), with |V| the number of vertices and |E| the number of edges in the flow network, independent of the flow capacity.
 # The Edmonds-Karp algorithm (1969)
+The analysis of the Edmonds-Karp algorithm depends on the length of the shortest paths $δ_f(s, u)$ between the vertex s and u in V in the residual network $G_f$, where f is a flow in G. The next lemma proves that the shortest-path distances monotonically increase with each flow augmentation.
+## Lemma 4.1
+Let f and f' be two successive flows obtained by the Edmonds-Karp algorithm and $G_f$ and $G_{f'}$ their residual networks, respectively. Then, for all v in V : $δ_f(s, v) \le δ_{f'}(s, v)$
+### Proof
+Suppose the lemma is false and choose:
+	v in V : $δ_f(s, v) \gt δ_{f'}(s, v)$
+such that 
+
+
