@@ -82,4 +82,46 @@ Web Service API that adheres to the REST style, meaning
 ## It has an Internet media type for the data
 This can be everything: XML, Atom, images, etc.
 
-Often 
+Often used: JSON
+
+**JSON:** JavaScript Object Notation 
+- Open Standard • Human-Readable text 
+- Alternative to XML 
+- Language-independent 
+- Support in many programming languages
+
+JSON has...
+- The ability to define a schema for validation 
+- Its own RPC system (web service)
+## It uses standard HTTP methods
+REST uses HTTP methods GET, PUT, POST and DELETE to modify / access resources
+
+According to CRUD: all major functions that are implemented in databases
+- **C**reate HTTP PUT or HTTP POST 
+- **R**ead HTTP GET 
+- **U**pdate HTTP PUT 
+- **D**elete HTTP DELETE
+## REST architectural constraints
+1. **Interface uniformity between components**
+	They need to speak the same language and know what to expect in order to understand each other.
+2. **Client-server model (separation of concerns)**
+	Client and server are fully decoupled and can be developed independently
+3. **Stateless client-server communication**
+	Each request from client to server must contain all the information necessary to understand the request, and cannot take advantage of any stored session state on the server
+4. **Caching**
+	Clients can cache responses to requests, improving scalability and performance. The fact that responses are not cache-able should be implicitly or explicitly defined.
+5. **Layering**
+	A client cannot tell if it is directly connected to a server or to some intermediary (proxy, cache, tunnel, firewalls, …). This allows for load-balancing, fail-over and data transformation.
+6. **Code-on-demand (optional)**
+	Client functionality can be dynamically extended through the transfer of executable code (e.g. JavaScript)
+## REST vs RPC
+**RPC (and Distributed Object Systems, SOAP Web Services)**
+- Many operations, few URI
+- Address software components
+- Procedure name and parameters are transferred\
+
+**REST**
+- Few operations, many URI
+- Address resources
+- Resource representations are transferred
+# SOAP WEB SERVICES
