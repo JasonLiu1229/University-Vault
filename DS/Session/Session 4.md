@@ -79,3 +79,7 @@ Web Service API that adheres to the REST style, meaning
 - It uses standard HTTP methods 
 - It uses hypertext links to reference state 
 - It uses hypertext links to reference related resources
+## It has an Internet media type for the data
+This can be everything: XML, Atom, images, etc.
+
+Often 
