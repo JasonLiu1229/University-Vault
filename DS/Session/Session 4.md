@@ -32,3 +32,50 @@ Representational state transfer (REST) is a style of software architecture for d
 
 **It’s an architectural style not a protocol**
 
+**Resource is a central concept**
+= Any item of interest identified by some identifier
+- National Product of Belgium in 2012, Maximum Flow algorithm, Kill Bill 2
+- http://www.gambling.com/bets?horse=bigbrown&jockey=ken
+
+![[Pasted image 20240324193136.png]]
+
+**Identifier is a Uniform Resource Identifier (URI)**
+- Can be URL, URN or both
+- Uniform Resource Locator: 
+	The location where you can find the resource, method for finding it
+- Uniform Resource Name 
+	Defines an item identity
+## URI design
+- **Remember:** REST is an architectural principle – not a protocol
+- Anyone can claim that his API is RESTful
+- A few design principles you need to stick to
+
+**REST URI design: how are REST resources described?**
+- Describe resources, not applications 
+- Non-restful URIs: 
+	- /admin/updatebook.jsp?book=5 
+	- bookview.jsp?book=5 
+	- /bookandreviews.jsp?book=5 
+- Make it short: https://www.flickr.com/services/api/rest 
+- Hackable up the tree: 
+	- uantwerp/courses/computer-science/master/distributed-computing 
+	- Uantwerp/courses/ 
+- Meaningful: • http://ua.ac.be/main.aspx?c=jose.oramas https://www.uantwerpen.be/en/staff/jose-oramas/ 
+- Predictable, human-readable 
+- Nouns, not verbs 
+- Permanent 
+- Query arguments are only for parameters 
+- Avoid extensions
+## REST and RESTful and HTTP
+- REST principles were used for designing HTTP 1.1
+- REST was initially described with HTTP in mind 
+- REST is often linked with HTTP 
+- But REST on top of application layers is also possible
+
+**RESTful API:**
+Web Service API that adheres to the REST style, meaning
+- It has a base URI, such as http://example.com/resources/ 
+- It has an Internet media type for the data. 
+- It uses standard HTTP methods 
+- It uses hypertext links to reference state 
+- It uses hypertext links to reference related resources
