@@ -125,3 +125,46 @@ According to CRUD: all major functions that are implemented in databases
 - Address resources
 - Resource representations are transferred
 # SOAP WEB SERVICES
+**Requirements:**
+- Text protocol: needs to be readable on the wire 
+- Object oriented: needs to describe components of a service
+## The SOAP principle
+![[Pasted image 20240324212743.png]]
+## Interaction protocol = SOAP
+**Simple Object Access Protocol**
+- W3C Standard (originated from Microsoft)
+- Promoted as right style for Web Services
+- Rich feature set
+- Older than REST
+- Still very popular
+
+**Typical use**
+![[Pasted image 20240324213028.png]]
+## Unlike REST, SOAP is only linked with XML
+- Message **format** and **processing rules**
+- Stateless and one-way
+- Can be used to develop more complex “conversations” 
+- Significant overhead XML-is “human-readable” argument?
+
+**Why XML?**
+One level above XML RPC
+- Adds processing and extensibility models to the story 
+- Style for exchanging arbitrary data
+It was the de facto standard in human-readable text back then
+## SOAP Messages
+![[Pasted image 20240324213354.png]]
+**Envelope is root element of a SOAP message and contains**
+- An optional SOAP header: for extensions (see later) 
+- SOAP body: can be anything
+## WSDL
+**Web Services Description Language**
+- XML **grammar to specify collection of “access end points”** 
+	(1 URL specifies a single access end point) 
+- Designed to automate application-to-application interaction (or B2B interaction) 
+- Defines the communication protocol to be used at runtime 
+	- Message format 
+	- Methods to be invoked 
+	- Parameter lists, return types 
+	- … 
+- WSDL descriptions can be automatically generated for existing code 
+- Stub classes can be generated from WSDL descriptions
