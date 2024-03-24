@@ -51,3 +51,8 @@ Thus at some later point in time we have $δ_{f'}(s, u) = δ_{f'}(s, v) + 1 \ge 
 
 Combining both, we see $δ_{f'}(s, u) \ge δ_f(s, u) + 2$.
 
+As a result, the distance from s to u increases between two successive augmentations where $uv$ is critical by at least two. Given that this distance is always at most |V|, the edge $uv$ can be at most O(|V|) times critical.
+
+Also, the number of edges that can become critical is O(|E|)(because whenever (u, v) and (v, u) are not part of E, neither (u, v) nor (v, u) can become part of a residual network).
+
+Further, each augmentation requires some edge to be critical, which proves the statement.
