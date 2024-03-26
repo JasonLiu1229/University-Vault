@@ -169,4 +169,58 @@ It was the de facto standard in human-readable text back then
 - WSDL descriptions can be automatically generated for existing code 
 - Stub classes can be generated from WSDL descriptions
 ## SOAP Processing Model
+![[Pasted image 20240326204157.png]]
+**A SOAP app is made of communicating nodes**
+- Sender
+- Receiver 
+- Initial Sender (Originator)
+- Intermediary
+- Ultimate Receiver
+![[Pasted image 20240326204752.png]]
+**SOAP messages may target nodes in specific roles**
+- For example, to allow for load balancing
+## SOAP Extensibility Model
+SOAP Extensibility Model Suppose you want to add credentials to a SOAP message: two options Option 
+1. Add it in the SOAP body
+	- Credentials need to be encoded in every parameter
+2. Use the optional SOAP header
+	- Header blocks can be annotated with "mustUnderstand" attribute. This means that receiving body must be able interpret this header.
+## SOAP is much bigger!
+Soap has many extensions, all with particular use cases. 
+- WS-Negotiation 
+	- Negotiating about the SLAs
+- WS-Agreement 
+	- Defining an SLA (contract) on the performance of the web service
+- WS-Discovery 
+	- Automated search & detection of web services
+- WS-Security
+- WS-Transactions
+- WS-Addressing
+- ...
+## REST vs SOAP
+**Advantages of REST**
+- Uniform interface is immutable 
+- Conceptually simpler 
+- Lower protocol overhead (for stateless services) 
+- Can improve server scalability 
+- Inherent support for request caching 
+- Less reliant on tool support and heavyweight libraries 
+- No need for additional messaging layer
+- Complexity at the endpoints instead of the transport layer level
 
+**Disadvantages of REST**
+- Service model not always easily mappable to REST verbs, uniform interface tailored to large-grain hypermedia data transfer 
+- Looser in terms of defining the exposed service API and its semantics 
+- Does not cover all WS standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
+## When to use SOAP / REST?
+SOAP’s popularity is clearly decreasing 
+General rule of thumb: “Unless you have a definitive reason to use SOAP use REST”
+
+**Then, what’s a good reason to use SOAP?**
+SOAP exposes application logic as services 
+Need more formal ways of invoking services (e.g., WSDL) 
+Need stateful information If you need one of the WS-* extensions 
+- Security 
+- Transactional logic 
+- Load balancing 
+- Etc.
