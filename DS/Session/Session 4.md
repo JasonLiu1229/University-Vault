@@ -168,3 +168,5 @@ It was the de facto standard in human-readable text back then
 	- … 
 - WSDL descriptions can be automatically generated for existing code 
 - Stub classes can be generated from WSDL descriptions
+## SOAP Processing Model
+
