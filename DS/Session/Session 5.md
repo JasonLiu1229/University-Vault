@@ -27,3 +27,34 @@ A way of designing software applications as suites of **independently deployable
 ## From monolithic application to suites of services
 ![[Pasted image 20240401153458.png]]
 ### Definition
+**Microservice architectural style**
+- Approach to developing a single application as a suite of small services
+	- Each running in its own process
+	- Communicating with lightweight mechanisms (e.g. REST or message queues)
+**Micro-Services**
+- Built around business capabilities
+- Independently deployable by fully automated deployment machinery
+- Bare minimum of centralized management
+- Written in different programming languages
+- Using different data storage technologies
+## Componentization via services
+- Component
+	- Unit of software that is independently replaceable or upgradeable
+		- Libraries = linked into a program
+		- Services = out-of-process component
+- So why choose services over libraries?
+	- Services are independently deployable
+	- Changes in libraries = redeploying entire application
+	- Explicit (remote) component interface when using services
+- Services require more coarse-grained interfaces
+	- remote calls more expensive than in-process calls
+## Smart services, dumb pipes
+- Enterprise Service Bus (ESB)
+	- Sophisticated message routing, choreography, transformation and business rule application
+- Microservices
+	- Act more as filters: receive request, apply logic, produce response
+- Most commonly used protocols
+	- REST (versus WS-Choreography, BPEL)
+	- Reliable messaging over lightweight bus (Kafka, RabbitMQ, ZeroMQ, …)
+## Decentralized governance
+- 
