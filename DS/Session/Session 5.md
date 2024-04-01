@@ -181,4 +181,75 @@ $\rightarrow$ Focus on Linux Containers (LXC) to explain the basics
 ### Subsystems
 ![[Pasted image 20240401192607.png]]
 ### CPU control
-- 
+- Use CPU shares (and other controls) to prioritize jobs / containers
+- Carry out complex scheduling schemes 
+- Segment host resources 
+- Adhere to SLAs (service level agreements)
+	- It refers to a document that outlines a commitment between a service provider and a client, including details of the service, the standards the provider must adhere to, and the metrics to measure the performance.
+- Pin containers / jobs to CPU cores 
+	- Reduce core switching cost
+### Device access
+- Limit device visibility
+	- isolation 
+- Implement device access controls 
+- Secure sharing 
+- Segment device access 
+- Device whitelist / blacklist
+### Container enabler: cgroups
+![[Pasted image 20240401194408.png]]
+## Linux namespaces
+- Problem
+	- How do I provide an isolated view of global resources to a group of tasks (processes)?
+- Solution 
+	- Namespaces
+		- Create abstraction of a system resource and make it appear as a separated instance to processes within a namespace
+
+- MNT; mount points, files systems, etc. 
+- PID; processes 
+- NET; NICs, routing, etc. 
+- IPC; System V IPC 
+- UTS; host and domain name 
+- USER; UID and GID
+	![[Pasted image 20240401194533.png]]
+### Conceptual overview
+![[Pasted image 20240401194558.png]]
+### Container enabler: namespaces
+![[Pasted image 20240401194619.png]]
+## Changing root
+- Problem
+	- Give each process the illusion that it is mounted from the root directory
+- Solution
+	- pivot_root command duplicates entire root directory in MNT namespace
+### Container enabler: separate filesystem from root
+![[Pasted image 20240401194725.png]]
+## Secure containers
+- Problem
+	- Hostile process can break out of container since entire system is not in a namespace or is containerized 
+	- Some namespaces have leaks 
+		- If kernel has exploits, the container can exploit these too
+- Solution
+	- Linux Security Modules (LSM)
+		- Mandatory access control
+		- Define capabilities per process (system call access)
+### Container enabler: Linux security modules
+![[Pasted image 20240401194914.png]]
+# Related technologies
+![[Pasted image 20240401194929.png]]
+## Lightweight OS
+- Lightweight OS's being developed focused on container-usage, some popular ones:
+	- CoreOS (focused on server containers) 
+	- Red Hat Project Atomic (focused on server containers) 
+	- Ubuntu Core / Snappy (focused on IoT) 
+	- Microsoft Nano Server (focused on server containers)
+## Container management
+There are many management applications to help manage containers, a popular one is Kubernetes.
+# Bringing it all together…. How do you build a future proof distributed architecture?
+## Architectural view
+![[Pasted image 20240401195240.png]]
+## Deployment view
+- Step 1: Choose which technology & platform is most suited for each microservice 
+- Step 2: Package each service in a container 
+- Step 3: Let Kubernetes manage the containers 
+	\+ setup scaling rules 
+- Step 4: Deploy them on your cloud or infrastructure
+	![[Pasted image 20240401195322.png]]
