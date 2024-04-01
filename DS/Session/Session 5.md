@@ -57,4 +57,11 @@ A way of designing software applications as suites of **independently deployable
 	- REST (versus WS-Choreography, BPEL)
 	- Reliable messaging over lightweight bus (Kafka, RabbitMQ, ZeroMQ, …)
 ## Decentralized governance
-- 
+- Each service picks the right technology
+- Service contracts define the interfaces
+- Allows for different conceptual models, even of the same entity
+	- e.g. “customer” is different for sales than it is for support department
+- Polyglot persistence
+- Transaction-less so cope with eventual consistency
+![[Pasted image 20240401170546.png]]
+## O
