@@ -64,4 +64,8 @@ A way of designing software applications as suites of **independently deployable
 - Polyglot persistence
 - Transaction-less so cope with eventual consistency
 ![[Pasted image 20240401170546.png]]
-## O
+## Organized around business capabilities
+![[Pasted image 20240401170706.png]]
+Identifying business capabilities and hence services requires an understanding of the business. An organization’s business capabilities are identified by analyzing the organization’s purpose, structure, business processes, and areas of expertise. Bounded contexts are best identified using an iterative process. 
+## Continuous delivery automation
+- 
