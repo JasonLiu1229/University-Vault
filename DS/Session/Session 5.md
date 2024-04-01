@@ -25,3 +25,5 @@ Designing our application as loosely-coupled microservices:
 ## Definition
 A way of designing software applications as suites of **independently deployable services**.
 ## From monolithic application to suites of services
+![[Pasted image 20240401153458.png]]
+### Definition
