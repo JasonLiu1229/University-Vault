@@ -68,4 +68,19 @@ A way of designing software applications as suites of **independently deployable
 ![[Pasted image 20240401170706.png]]
 Identifying business capabilities and hence services requires an understanding of the business. An organization’s business capabilities are identified by analyzing the organization’s purpose, structure, business processes, and areas of expertise. Bounded contexts are best identified using an iterative process. 
 ## Continuous delivery automation
-- 
+- Continuous integration
+	- Integrating, building and testing code within the development environment
+- Continuous delivery
+	- Software can be released to production at any time
+- Continuous deployment ~
+	- Software is automatically pushed into production
+
+- Automated tests ran at each stage of delivery.
+- Deployment pipeline tools near-mandatory.
+![[Pasted image 20240401183120.png]]
+## Products, not projects (aka DevOps)
+“The traditional model is that you take your software to the wall that separates development and operations, throw it over and then forget about it. Not at Amazon. You build it, you run it.”
+# [Reactive manifesto]( www.reactivemanifesto.org)
+- Aims to condense knowledge on how to design highly scalable and reliable applications
+	- Set of required architecture traits
+	- Common vocabulary, technology-agnostic
