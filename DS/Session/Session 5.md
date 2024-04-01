@@ -144,3 +144,41 @@ There are many different frameworks for different languages and different use ca
 	- Lightweight 
 	- Better use of resources (sharing host OS and potentially binaries/libraies)
 ### Pros and cons of containers
+- Pros
+	- No performance hit due to emulation of instructions
+	- Flexibility
+		- containerize a “system”
+		- containerize “application(s)”
+	- Lightweight
+		- no entire OS in each container
+		- sharing of bins and libraries 
+		- provisioned/instantiated in milliseconds to seconds 
+		- minimal per-container penalty 
+		- “Just Enough OS” on the server (e.g. CoreOS)
+- Cons
+	- Cannot host a guest OS different from the host one*
+	- Weaker isolation and thus security
+### Container checklist
+- Processes 
+- Throttling/limits 
+- Prioritization 
+- Resource isolation 
+- Root file system 
+- Security
+$\rightarrow$ Focus on Linux Containers (LXC) to explain the basics
+## Linux Control Groups (cgroups)
+- Problem
+	- How do I throttle, prioritize, control and obtain metrics for a group of tasks (processes)?
+- Solution: Linux control groups (cgroups)
+	- cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for, and isolates the resource usage (CPU, memory, disk I/O, etc.) of a collection of processes.
+
+- Device Access 
+- Resource limiting: memory, CPU, devices, block I/O, etc.. 
+- Prioritization: who gets more of the CPU, memory 
+- Accounting: resource usage per group 
+- Control: freezing and check pointing 
+- Injection: packet tagging
+### Subsystems
+![[Pasted image 20240401192607.png]]
+### CPU control
+- 
