@@ -84,3 +84,63 @@ Identifying business capabilities and hence services requires an understanding o
 - Aims to condense knowledge on how to design highly scalable and reliable applications
 	- Set of required architecture traits
 	- Common vocabulary, technology-agnostic
+- Why? 
+	- Because today's demands are simply not met by yesterday’s software architectures
+		- Large applications a few years ago
+			- >10 servers, response time: seconds, hours of offline maintenance, gigabytes of data
+		- Today
+			- Deployed on everything from mobile devices to cloud-based clusters running thousands of multi-core processors, response time: milliseconds. Petabytes of data.
+![[Pasted image 20240401184935.png]]
+## Architectural trait: message driven
+- Asynchronous message-passing between components
+	- Addressable recipients await the arrival of messages and react to them
+	- Establishes a boundary that enables
+		- Loose coupling
+		- Isolation
+		- Location transparency
+- Enables load management, elasticity and flow control by monitoring and shaping the message queues in the system
+	![[Pasted image 20240401185101.png]]
+## Architectural trait: responsive
+- The system responds in a timely manner (aim: 0.1 seconds)
+	- Client side lazy loading: first load important stuff and show it ASAP
+	- Show progress
+	- Individual slow performing service should not slow down others
+
+As far as users know, when the response time exceeds their expectation, the system is down
+## Architectural trait: elastic
+- System stays responsive under varying workload
+	- Changes in input rate lead to increased or decreased resource allocations
+	- No contention points or central bottlenecks
+	- Distribution of input amongst components
+- An elastic system can allocate / deallocate resources for every individual component dynamically to match demand
+- Predictive and reactive elastic scaling
+## Architectural trait: resilient
+- Any service call can fail
+- Detect failures quickly by monitoring
+	- Service metrics (e.g. requests per second)
+	- Business metrics (e.g. orders per minute received) and automatically restore services when issues are detected
+- Provide fallback services
+	- E.g. Netflix graceful degradation
+		- If recommendation service is down, revert to most popular movies instead of personalized picks
+## Resilient to failure: Netflix’s Simian Army
+- Chaos Monkey
+	- Introducing random failures in their production AWS services
+	- Team of engineers ready to intervene
+- Latency Monkey
+	- Introducing artificial delays
+- Janitor Monkey
+	- Seeks unused resources and disposes of them
+- Security Monkey
+	- Seek misconfigured services / security issues
+
+The best defense against failures is to fail often, forcing your services to be built in a resilient way.
+# Microservice frameworks
+There are many different frameworks for different languages and different use cases.
+## Containers as a microservice enabler
+- Virtual machines (VMs)
+	- Virtualization of hardware.
+	- Flexible, robust and safe, but big performance hit
+- Containers
+	- Lightweight 
+	- Better use of resources (sharing host OS and potentially binaries/libraies)
+### Pros and cons of containers
