@@ -59,4 +59,13 @@ The preflow algorithm is initialized as follows:
 
 Note, h is a height function, because f(s, u) = c(s, u) implies (s, u) not in $E_f$, while all other vertices have a height of 0; hence, following an edge (u, v) in $E_f$ we cannot decrease in height (and thus certainly not decrease by more than one).
 
-The lift operation may increase the height h(u) of a vertrex u. Thus, for h to remain a height function we must have that $h(v) \ge h(u) - 1$ for $(u, v) \in E_f$. As h(u) is increased to one plus the height of the lowest neighbor in $G_f$, this remains valid. A push operation does not alter the height of any vertex, but it may delete or add a new edge from or to $G_f$. 
+The lift operation may increase the height h(u) of a vertex u. Thus, for h to remain a height function we must have that $h(v) \ge h(u) - 1$ for $(u, v) \in E_f$. As h(u) is increased to one plus the height of the lowest neighbor in $G_f$, this remains valid. A push operation does not alter the height of any vertex, but it may delete or add a new edge from or to $G_f$. If the push operation saturates (u, v), the edge (u, v) is removed, which causes no problem.
+The push operation may also add the edge (v, u) to $E_f$ (as $c_f(v,u) = c(v,u) +f(u,v)$). Following the edge from v to u increases the height by one, clearly fulfilling the height constraint, which forbids decreasing the height by more than one along such an edge. Therefore, we have proven that: Whenever a vertex is overflowing, i.e., $e(u) \gt 0$, we can perform a push or a lift operation. 
+
+Assuming that at some point there are no overflowing vertices left, we can easily prove that f is a maximum flow as follows.
+## Theorem 5.1
+If the preflow-push algo terminates, because e(u) = 0 for all $u \in V - \{s,t\}$, it produces a max flow f for the flow network G = (V, E).
+### Proof
+We first prove that at any stage during the execution of the algorithm, there is no simple path from s to t in $G_f$. Then, this path is composed of at most |V| - 1 edges (as it is simple). It must start in s with h(s) = |V| and follow a sequence of |V| -1 edges in $E_f$. While following each of these edges, the height can decrease by at most one (due to the height constraint), meaning while reaching t, the height must still be at least one. However, h(t) = 0. **Contradiction**
+
+When the algorithm terminates, there is no excess flow and thus f is a flow. Moreover, there is no path from s to t  in $G_f$, meaning
