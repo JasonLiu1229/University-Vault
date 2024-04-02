@@ -45,3 +45,18 @@ Lift(u):
 ```
 
 If such a neighbor v is not available, we lift u such that its height is one above the lowest neighbor (in $G_f$). It is important to notice that a vertex u, with $e(u) \gt 0$, always has at least one neighbor in $G_f$. Indeed, $e(u) = \sum_{v\in V}f(v, u) \gt 0$, thus there is at least a $v \in V$ with $f(v, u) \gt 0$. 
+
+Hence,
+	$c_f(u, v) = c(u, v) - f(u, v) = c(u, v) + f(v, u) \gt 0$
+and $(u, v) \in E_f$. 
+
+Thus, whenever a vertex u is overflowing, we can either perform a push or a lift operation if h is a height function.
+
+The preflow algorithm is initialized as follows:
+1. $u \in V - \{s\} : h(u) = 0, h(s) = |V|$
+2. $(u, v) \in E, u, v \ne s : f(u, v) = 0$
+3. $(s, u) \in E : f(s, u) = c(s, u), f(u, s) = -c(s,u) and e(u) = c(s,u)$
+
+Note, h is a height function, because f(s, u) = c(s, u) implies (s, u) not in $E_f$, while all other vertices have a height of 0; hence, following an edge (u, v) in $E_f$ we cannot decrease in height (and thus certainly not decrease by more than one).
+
+The lift operation may increase the height h(u) of a vertrex u. Thus, for h remain a height
