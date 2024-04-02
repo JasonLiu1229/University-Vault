@@ -59,4 +59,4 @@ The preflow algorithm is initialized as follows:
 
 Note, h is a height function, because f(s, u) = c(s, u) implies (s, u) not in $E_f$, while all other vertices have a height of 0; hence, following an edge (u, v) in $E_f$ we cannot decrease in height (and thus certainly not decrease by more than one).
 
-The lift operation may increase the height h(u) of a vertrex u. Thus, for h remain a height
+The lift operation may increase the height h(u) of a vertrex u. Thus, for h to remain a height function we must have that $h(v) \ge h(u) - 1$ for $(u, v) \in E_f$. As h(u) is increased to one plus the height of the lowest neighbor in $G_f$, this remains valid. A push operation does not alter the height of any vertex, but it may delete or add a new edge from or to $G_f$. 
