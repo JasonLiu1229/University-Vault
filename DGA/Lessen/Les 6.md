@@ -75,3 +75,12 @@ As a result, the miun-cut max flow theorem proves the statement.
 # Performance of the Preflow-push algorithm
 In this section we will place an upper bound on the number of lift, saturated and unsaturated push operations. Recall, a push on (u, v) is saturating if $d_f(u,v) = c_f(u,v)$, causing the removal of the edge (u, v) from $E_f$
 ## Lemma 6.1
+When performing the preflow-push algorithm on G = (V, E) a flow network, there is a simple path from any overflowing vertex u to s in $E_f$ and the height h(u) of any vertex is at most 2|V| - 1.
+### Proof
+Assume u in V is overflowing, that is, excess $e(u) \gt 0$.
+
+Let U be the set of vertices reachable via a simple path from u in $E_f$. Let also $\bar{U}$ = V - U and assume s not in U. 
+
+If v in U and w not in $\bar{U}$ then (v, w) not in $E_f$, meaning $f(v, w) = c(v, w) \ge 0$, and by skew symmetry we find $f(w, v) \le 0$. Hence, $f(\bar{U}, U) \le 0$. Now, $e(U) = f(V,U) = f(\bar{U}, U) + f(U, U) = f(\bar{U}, U) \le 0$, where the flow to its own set f(U, U) = 0 due to the skew symmetry. Notice, e(U) is well-defined as s not in U. But, $e(v) \ge 0$ for all v in V meaning e(u) must be zero, contradicting $e(u) \gt 0$.
+
+As this simple path has a length of at most |V| - 1, h(s) = |V| and the height can only decrease by one along an edge in $E_f$, we find h()
