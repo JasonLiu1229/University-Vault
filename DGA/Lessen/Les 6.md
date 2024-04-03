@@ -90,4 +90,11 @@ When performing the preflow-push algorithm on G = (V, E) a flow network, at most
 ### Proof
 Only vertices u in V - {s, t} van be lifted.
 
-Each lift increases h(u) by at least one with h(u) = 0 initially. 
+Each lift increases h(u) by at least one, with h(u) = 0 initially. Hence, at most (2|V| - 1)(|V| - 2) lifts occur.
+
+A push operation that saturates an edge (u, v) removes this edge from $E_f$. During this operation, h(v) = h(u) - 1. To recreate this edge there has to be a push from v to u, which requires that h(v) = h(u) + 1, thus h(v) has to increase by two. Meaning, h(h) + h(v) increases by at least two between any two saturated pushes on either (u, v) or (v, u).
+
+Now, during the very first push between u and v, we must have $h(u) + h(v) \ge 1$. Due to Lemma 6.1, we know that during the last such push, we have $h(u) + h(v) \ge (2|V| -1) + (2|V| -2) = 2(2|V| - 1) - 2$.
+
+This implies there can be at most $\dfrac{h(u) + h(v) + 1}{2} \le 2|V| - 1$ saturated pushes along (u, v) or (v, u), as thus sum increases by 2 in between two such pushes. In total we therfore havce at most $(2|V| - 1)|E| \lt 2 |V||E|$ saturated pushes.
+## Lemma 6.3
