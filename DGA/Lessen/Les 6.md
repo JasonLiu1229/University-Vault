@@ -68,4 +68,10 @@ If the preflow-push algo terminates, because e(u) = 0 for all $u \in V - \{s,t\}
 ### Proof
 We first prove that at any stage during the execution of the algorithm, there is no simple path from s to t in $G_f$. Then, this path is composed of at most |V| - 1 edges (as it is simple). It must start in s with h(s) = |V| and follow a sequence of |V| -1 edges in $E_f$. While following each of these edges, the height can decrease by at most one (due to the height constraint), meaning while reaching t, the height must still be at least one. However, h(t) = 0. **Contradiction**
 
-When the algorithm terminates, there is no excess flow and thus f is a flow. Moreover, there is no path from s to t  in $G_f$, meaning
+When the algorithm terminates, there is no excess flow and thus f is a flow. Moreover, there is no path from s to t in $G_f$, meaning there is no augmenting path in the Ford and Fulkerson sense. 
+
+As a result, the miun-cut max flow theorem proves the statement. 
+
+# Performance of the Preflow-push algorithm
+In this section we will place an upper bound on the number of lift, saturated and unsaturated push operations. Recall, a push on (u, v) is saturating if $d_f(u,v) = c_f(u,v)$, causing the removal of the edge (u, v) from $E_f$
+## Lemma 6.1
