@@ -101,3 +101,9 @@ This implies there can be at most $\dfrac{h(u) + h(v) + 1}{2} \le 2|V| - 1$ satu
 When performing the preflow-push algorithm on G = (V, E) a flow network, at most $4|V|^2 (|V| + |E|)$ non-saturating pushes are performed.
 ![[Pasted image 20240403152933.png]]
 ### Proof
+Define $\psi = \sum_{v \in X} h(v)$, where X is the set of overflowing vertices. 
+
+Initially $\psi = 0$. Due to lemma 6.1, each lift operation can increase $\psi$ by at most 2|V| (minus one) as X remains the same. A saturated push along (u, v) may turn v into an overflowing vertex. Thus, v might be added to X, potentially increasing $\psi$ by 2|V| (minus one). Thus, due to the previous bounds on the number of lifts and saturating pushes, $\psi$ increases by at most $(2|V|)(2|V|^2) + (2|V|)(2|V||E|) = 4|V|^2 (|V| + |E|)$. 
+
+A non-saturating push along (u, v) implies that e(u) becomes 0, i.e., u is no longer overflowing. The vertex v may become an overflowing vertex due to this push, but h(v) = h(u) - 1; hence, an desaturating push decreases $\psi$ by at least 1 and $\psi \ge 0$ at all times. This allows us to conclude that at most $4|V|^2 (|V| + |E|)$ non-saturating pushes can occur.
+## Theorem 6.1
