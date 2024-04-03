@@ -96,5 +96,8 @@ A push operation that saturates an edge (u, v) removes this edge from $E_f$. Dur
 
 Now, during the very first push between u and v, we must have $h(u) + h(v) \ge 1$. Due to Lemma 6.1, we know that during the last such push, we have $h(u) + h(v) \ge (2|V| -1) + (2|V| -2) = 2(2|V| - 1) - 2$.
 
-This implies there can be at most $\dfrac{h(u) + h(v) + 1}{2} \le 2|V| - 1$ saturated pushes along (u, v) or (v, u), as thus sum increases by 2 in between two such pushes. In total we therfore havce at most $(2|V| - 1)|E| \lt 2 |V||E|$ saturated pushes.
+This implies there can be at most $\dfrac{h(u) + h(v) + 1}{2} \le 2|V| - 1$ saturated pushes along (u, v) or (v, u), as thus sum increases by 2 in between two such pushes. In total, we therefore have at most $(2|V| - 1)|E| \lt 2 |V||E|$ saturated pushes.
 ## Lemma 6.3
+When performing the preflow-push algorithm on G = (V, E) a flow network, at most $4|V|^2 (|V| + |E|)$ non-saturating pushes are performed.
+![[Pasted image 20240403152933.png]]
+### Proof
