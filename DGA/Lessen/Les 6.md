@@ -71,7 +71,6 @@ We first prove that at any stage during the execution of the algorithm, there is
 When the algorithm terminates, there is no excess flow and thus f is a flow. Moreover, there is no path from s to t in $G_f$, meaning there is no augmenting path in the Ford and Fulkerson sense. 
 
 As a result, the miun-cut max flow theorem proves the statement. 
-
 # Performance of the Preflow-push algorithm
 In this section we will place an upper bound on the number of lift, saturated and unsaturated push operations. Recall, a push on (u, v) is saturating if $d_f(u,v) = c_f(u,v)$, causing the removal of the edge (u, v) from $E_f$
 ## Lemma 6.1
@@ -83,4 +82,12 @@ Let U be the set of vertices reachable via a simple path from u in $E_f$. Let al
 
 If v in U and w not in $\bar{U}$ then (v, w) not in $E_f$, meaning $f(v, w) = c(v, w) \ge 0$, and by skew symmetry we find $f(w, v) \le 0$. Hence, $f(\bar{U}, U) \le 0$. Now, $e(U) = f(V,U) = f(\bar{U}, U) + f(U, U) = f(\bar{U}, U) \le 0$, where the flow to its own set f(U, U) = 0 due to the skew symmetry. Notice, e(U) is well-defined as s not in U. But, $e(v) \ge 0$ for all v in V meaning e(u) must be zero, contradicting $e(u) \gt 0$.
 
-As this simple path has a length of at most |V| - 1, h(s) = |V| and the height can only decrease by one along an edge in $E_f$, we find h()
+As this simple path has a length of at most |V| - 1, h(s) = |V| and the height can only decrease by one along an edge in $E_f$, we find $h(u) \le 2|V| - 1$ for u overflowing. 
+
+Moreover, any vertex is still overflowing immediately after a lift. 
+## Lemma 6.2
+When performing the preflow-push algorithm on G = (V, E) a flow network, at most (2|V| - 1)(|V| - 2) lifts and 2|V| |E| saturated pushes are performed.
+### Proof
+Only vertices u in V - {s, t} van be lifted.
+
+Each lift increases h(u) by at least one with h(u) = 0 initially. 
