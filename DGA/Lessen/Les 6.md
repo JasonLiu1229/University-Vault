@@ -107,3 +107,6 @@ Initially $\psi = 0$. Due to lemma 6.1, each lift operation can increase $\psi$ 
 
 A non-saturating push along (u, v) implies that e(u) becomes 0, i.e., u is no longer overflowing. The vertex v may become an overflowing vertex due to this push, but h(v) = h(u) - 1; hence, an desaturating push decreases $\psi$ by at least 1 and $\psi \ge 0$ at all times. This allows us to conclude that at most $4|V|^2 (|V| + |E|)$ non-saturating pushes can occur.
 ## Theorem 6.1
+The preflow-push algorithm by Goldberg requires at most $O(|V|^2|E|)$ basic operations (pushes and lifts).
+
+As a push can be implemented in O(1) and a lift in O(|V|), then the overall complexity equals $O(|V|^2|E|)$ as well. 
