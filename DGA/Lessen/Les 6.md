@@ -28,3 +28,15 @@ Some functions we define beforehand before diving in to the chapter. These funct
 1. MakeSet(x): This operation creates a set holding exactly one item x.
 2. FindSet(x): Searches the set in which item x is located.
 3. Union(x, y): takes two sets as input, being the set holding x and y respectively, and creates a single set by taking all items of both sets as its contents.
+Each set is also said to have a representative (typically called the root item). A MakeSet(x) operation automatically makes x the representative, while a Union operation typically selects one of the two representatives to become the new representative. The FindSet does not alter the representative.
+
+A first implementation of the disjoint-sets data structure is to maintain a linked-list per set $S_i$: this list links all items by placing a pointer from item i to i - 1, where item 0 is the representative. Further, all items also carry a pointer to the representative. This pointer, called the root pointer, allows us to perform the FindSet operation in time O(1) as the root item (representative) carries the identifier of the set. The Union operation is somewhat more involving as we need to append one linked list, say holding x, to the back of the other list, holding y, (which can be done in O(1) time by keeping a pointer to the last element) and to update the root pointers of all the entries in the list of x.
+
+In order to reduce the amount of updates required by the Union operation, it is best to append the shorter list to the longer one. This leads to the following theorem:
+## Theorem 1.1
+The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m + n\log n)$ using a linked list representation.
+### Proof
+The only operation that costs more than O(1) is the Union operation which requires us to adapt multiple root pointers. Consider an item x. Its root pointer is adapted whenever its list is appended to a list holding y that contains at least as many items as the list of x.
+
+As the list of x is initially size 1, it is at least size 2 after the first adaptation of the root pointer of x, size 4 after the second and eventually size 2k after the $k_{th}$ adaptation. Thus, as there are only n elements, the root pointer of x can be adapted at most log n times (as after log2 n adaptations, the list has a size of n or more). Hence, the total cost of all the Union operations is at most n log n.
+# Disjoint-sets forest
