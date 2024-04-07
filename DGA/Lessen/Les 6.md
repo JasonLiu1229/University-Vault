@@ -24,3 +24,7 @@ Recall, the number of augmenting paths for an integer valued flow network that c
 
 The overall performance of matching a bipartite graph via a flow network therefore equals O(|V||E|).
 # Disjoint-sets operations and the linked-list representation
+Some functions we define beforehand before diving in to the chapter. These functions are needed for future algorithms like Kruskal's algorithm. 
+1. MakeSet(x): This operation creates a set holding exactly one item x.
+2. FindSet(x): Searches the set in which item x is located.
+3. Union(x, y): takes two sets as input, being the set holding x and y respectively, and creates a single set by taking all items of both sets as its contents.
