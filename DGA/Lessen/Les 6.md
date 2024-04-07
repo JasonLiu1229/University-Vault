@@ -23,3 +23,4 @@ Due to the Ford and Fulkerson algorithm we know that an integer valued maximum f
 Recall, the number of augmenting paths for an integer valued flow network that can be generated via the Ford and Fulkerson method was bounded by $|f^*|$ where $f^*$ is a maximum flow. Clearly the size of the maximum matching $|M^*| \le |L| \le |V|$, meaning O(|V|) iterations suffice. To find an augmenting path, we can use the Edmonds-Karp algorithm, which determines the shortest augmenting path via a breath-first search in O(|E|) time.
 
 The overall performance of matching a bipartite graph via a flow network therefore equals O(|V||E|).
+# Disjoint-sets operations and the linked-list representation

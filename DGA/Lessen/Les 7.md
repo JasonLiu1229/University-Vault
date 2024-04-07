@@ -1,1 +1,2 @@
-# Disjoint-sets operations and the linked-list representation
+Start of spanning trees 
+# Basic properties and definitions
