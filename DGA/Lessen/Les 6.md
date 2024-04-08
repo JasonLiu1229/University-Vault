@@ -86,7 +86,12 @@ Thus, by induction, if x gets rank k it is the root of a tree with at least $2^k
 Moreover, by induction, we easily see that the length of the longest path from the root x to a descendant equals rank(x) (as there is no path compression). Meaning, any FindSet operation takes at most log n time. Resulting in a total cost of $O(m \log n)$. $\square$
 
 Let us now analyze the performance when the **path compression** is combined with union by rank. First, we observe the following properties:
-1.  
+1.  If $p(x) \ne x \Rightarrow rank(p(x)) \gt rank(x)$ and if p(x) is updated, then rank(p(x)) only increases.
+2. The number of rank k elements is at most $\dfrac{n}{2^k}$.
+
+The first property is immediate from the algorithm.
+
+The second from repeating the argument of the previous proof to show that a rank k root item x requires at least $2^k - 1$ items each having a rank less than k (being its descendants). Notice, due to the path compression, the number of descendants of an arbitrary rank k item x may no longer be larger or equal to $2^k$. Finally, any two rank k items never share a descendent.
 ## Theorem 2.2
 The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m \log_* n)$ using a disjoint-set forest, the union by rank and the path compression heuristic. 
 ### Proof
