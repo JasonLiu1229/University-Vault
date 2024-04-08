@@ -99,4 +99,6 @@ Thus, even for n very large, $\log_* n$ is small. In practice, it is at most 5 a
 ## Theorem 2.2
 The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m \log_* n)$ using a disjoint-set forest, the union by rank and the path compression heuristic. 
 ### Proof
-We start by partitioning the set of all values a rank can have, being 0 to log n$, into a number of blocks by stating that rank k belongs to block r if log k  r
+We start by partitioning the set of all values a rank can have, being 0 to $\lfloor \log n \rfloor$, into a number of blocks by stating that rank k belongs to block r if $\log_* k = r$. Meaning there are at most $1 + \log_*(\log n) = \log_* n$ blocks (block 0 to $\log_*(\log n)$).
+
+Next, we determine the maximum cost of executing m FindSet operations. 
