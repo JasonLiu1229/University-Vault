@@ -109,4 +109,8 @@ Let us now determine the maximum path cost a rank k item x can experience. An it
 
 Assume rank k belongs to block r. Let B(r) be the largest rank $j \in \mathbb{N}$ such that j belongs to block r. By definition, $B(0) = 1$ and $B(r + 1) = 2^{B(r)}$. As the rank of p(x) increases by at least one each time a path cost occurs by visiting x (because x is NOT a child of the root $x_l$), the path cost of x is bounded by B(r) - B(r - 1).
 
-By property 2 we can have at most $\sum_{k = B(r-1) + 1}^{B(r)} \dfrac{n}{2^{B(r-1)+1}} \sum_{k=0}^{B(r) - B(r-1) - 1} \dfrac{1}{2^k} \lt \dfrac{n}{2^{B(r-1)}} = \dfrac{n}{B(r)}$ items with a rank belonging to block $r \gt 0$ and at most n items with a rank in block 0.
+By property 2 we can have at most $\sum_{k = B(r-1) + 1}^{B(r)} \dfrac{n}{2^{B(r-1)+1}} \sum_{k=0}^{B(r) - B(r-1) - 1} \dfrac{1}{2^k} \lt \dfrac{n}{2^{B(r-1)}} = \dfrac{n}{B(r)}$ items with a rank belonging to block $r \gt 0$ and at most n items with a rank in block 0. Thus, in general, we have at most $\dfrac{n}{B(r)}$ items in block r, each having a path cost bounded by B(r) - B(r - 1). Hence, the total path cost is bounded by $\sum_{r=0}^{\log_*n-1}\dfrac{n}{B(r)}(B(r) - B(r-1)) \lt n\log_*n$.
+
+This proves that all m FindSet operations have a total cost of at most $O(m \log_* n)$. As all other operations are either O(1) or require 2 FindSet operations, the proof is complete. $\square$
+
+It is possible to improve this bound slightly by showing that the runtime is at most $O(mα(m, n)$, where α(m, n) is the inverse Ackerman function. The inverse is defined as $\min \biggl \{i \biggl | A\biggl (i, \biggl \lfloor \dfrac{m}{n} \biggr\rfloor \biggl ) \gt \log n\biggr\}$. This function grows even more slowly than the $log_*$ function. In practice, one finds that $α(m, n) \le 4$ always applies.
