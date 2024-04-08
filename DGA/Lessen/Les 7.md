@@ -1,2 +1,2 @@
-Start of spanning trees 
+Start of spanning trees chapter
 # Basic properties and definitions
