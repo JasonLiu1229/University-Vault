@@ -91,7 +91,12 @@ Let us now analyze the performance when the **path compression** is combined wit
 
 The first property is immediate from the algorithm.
 
-The second from repeating the argument of the previous proof to show that a rank k root item x requires at least $2^k - 1$ items each having a rank less than k (being its descendants). Notice, due to the path compression, the number of descendants of an arbitrary rank k item x may no longer be larger or equal to $2^k$. Finally, any two rank k items never share a descendent.
+The second from repeating the argument of the previous proof to show that a rank k root item x requires at least $2^k - 1$ items each having a rank less than k (being its descendants). Notice, due to the path compression, the number of descendants of an arbitrary rank k item x may no longer be larger or equal to $2^k$. Finally, any two rank k items never share a descendant.
+
+To express an upper bound on the efficiency, we define the $\log_*$ function. The result of $\log_* n$ equals the number of times we need to apply $\log_2$ to n in order to get a value equal to or below 1. For instance, $\log_* 2 = 1, \log_* 2^2 = \log_* 4 = 2, \log_* 2^4 = \log_* 16 = 3, \log_* 2^{16} = log_* 65536 = 4, log_* 2^{65536} = 5$, etc. 
+
+Thus, even for n very large, $\log_* n$ is small. In practice, it is at most 5 as $n \le 2^{65536}$ always applies.
 ## Theorem 2.2
 The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m \log_* n)$ using a disjoint-set forest, the union by rank and the path compression heuristic. 
 ### Proof
+We start by partitioning the set of all values a rank can have, being 0 to log n$, into a number of blocks by stating that rank k belongs to block r if log k  r
