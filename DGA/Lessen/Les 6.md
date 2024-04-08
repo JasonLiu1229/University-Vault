@@ -36,7 +36,57 @@ In order to reduce the amount of updates required by the Union operation, it is 
 ## Theorem 1.1
 The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m + n\log n)$ using a linked list representation.
 ### Proof
-The only operation that costs more than O(1) is the Union operation which requires us to adapt multiple root pointers. Consider an item x. Its root pointer is adapted whenever its list is appended to a list holding y that contains at least as many items as the list of x.
+The only operation that costs more than O(1) is the Union operation, which requires us to adapt multiple root pointers. Consider an item x. Its root pointer is adapted whenever its list is appended to a list holding y that contains at least as many items as the list of x.
 
 As the list of x is initially size 1, it is at least size 2 after the first adaptation of the root pointer of x, size 4 after the second and eventually size 2k after the $k_{th}$ adaptation. Thus, as there are only n elements, the root pointer of x can be adapted at most log n times (as after log2 n adaptations, the list has a size of n or more). Hence, the total cost of all the Union operations is at most n log n.
 # Disjoint-sets forest
+Instead of storing each disjoint set as a linked-list, one can also store them as a tree, creating a disjoint-set forest. In this case, the representative will be the root of the tree and each item x holds a pointer p(x) to its parent in the tree, where the representative has x = p(x).
+
+The advantage is that we can now perform a Union operation by simply making the root of one tree a child of the root of the other tree. However, a FindSet(x) operation requires us to follow the p(x) pointers until we reach the root item that carries the set identifier. Notice, each item does not carry the set identifier, as all these values would require an update when performing a Union operation.
+
+To achieve a good overall performance, **two heuristics** are used to improve the performance of a disjoint-set forest. First, all items keep track of their rank, which is initially 0 and may increase due to a Union operation. The variable rank(x) will hold the length of the longest path from x to one of its descendants in the tree (or an upper bound in case it is combined with path compression). Whenever we link two trees, the tree whose root item has the lowest rank is appended to the one with the larger rank. This heuristic is called **the union by rank heuristic**.
+
+Second, while traversing the path from an item x to the root, we could afterward also adapt all the pointers p(x) on this path such that they directly point to the root item. Hence, any future FindSet operation on one of these items will be performed more efficiently. We will refer to this improvement by **path compression**.
+## Pseudocode
+```
+MakeSet(x):
+	p(x) = x; 
+	rank(x)=0;
+```
+
+```
+FindSet(x):
+	if p(x) != x:
+		then p(x) = FindSet(p(x))
+	return p(x)
+```
+
+```
+Link(x, y):
+	if rank(x) > rank(y)
+		then p(y) = x
+		else p(x) = y
+	if rank(x) = rank(y)
+		then rank(y) = rank(y) + 1
+
+Union(x, y):
+	Link(FindSet(x), FindSet(y))
+```
+
+FindSet uses a two-pass method as we first track down the root element by following the p(x) pointers, while upon return we set all the p(x) pointers equal to the root element.
+## Theorem 2.1
+The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m \log n)$ using a disjoint-set forest and the union by rank heuristic.
+### Proof
+The only operation that costs more than O(1) is the FindSet operation where we need to traverse multiple p(x) pointers to find the root (and the FindSet calls needed by the Union calls).
+
+Consider an item x, whose rank is initially equal to 0. In order for x to increase its rank from k to k + 1, a link between two rank k trees is required. 
+
+Thus, by induction, if x gets rank k it is the root of a tree with at least $2^k$ items. As there are n items in total, $2^{rank(x)} \le n$ or $rank(x) \le \log n$.
+
+Moreover, by induction, we easily see that the length of the longest path from the root x to a descendant equals rank(x) (as there is no path compression). Meaning, any FindSet operation takes at most log n time. Resulting in a total cost of $O(m \log n)$. $\square$
+
+Let us now analyze the performance when the **path compression** is combined with union by rank. First, we observe the following properties:
+1.  
+## Theorem 2.2
+The worst-case overall cost of a sequence of m operations, including exactly n MakeSet operations, is $O(m \log_* n)$ using a disjoint-set forest, the union by rank and the path compression heuristic. 
+### Proof
