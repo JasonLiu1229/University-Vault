@@ -13,7 +13,7 @@ The following statements are equivalent:
 4. G is connected and contains no closed path. 
 5. G does not contain a closed path and e = n - 1. 
 6. G is connected and e = n - 1.
-## Kruskal’s algorithm (1956)
+# Kruskal’s algorithm (1956)
 ## Algorithm 2.1
 (Kruskal’s algorithm (1956)). For a connected and weighted graph $G^α$ of order n:
 1. Order the set of edges E(G) by non-decreasing weight, set i = 1.
@@ -22,4 +22,11 @@ The final outcome $T = (V(G)), E(T) = \{e_1, ..., e_{n-1}\})$ is a spanning tree
 
 Notice, E(T) need not be connected during the execution of the algorithm.
 ### Complexity
-Step 1 orders the edges, which can be done in $O(|E| \log |E|)$ time. For Step 2, we can rely on the disjoint-sets data structure. 
+Step 1 orders the edges, which can be done in $O(|E| \log |E|)$ time. 
+
+For Step 2, we can rely on the disjoint-sets data structure.  Indeed, initially we perform n = |V(G)| MakeSet operations, one for each node $v \in V(G)$. This creates n trees, each having 1 vertex. Next, each time we need to determine whether there is a closed path by adding an edge (u, v) to E(T), we test whether FindSet(u) = FindSet(v). If not, we perform a Union(u, v) to merge the component of u with the component of v. If u and v did belong to the same set, this implies that there already existed a path from u to v; hence, adding (u, v) creates a closed path.
+
+Thus, using a disjoint-sets forest structure, we can implement Step 2 in time $O|E| \log_* |V|)$ as we perform at most |V| MakeSet operations, 2|E| FindSet operations and |V| - 1 Union operations.
+## Theorem 2.1
+Kruskal’s algorithm when applied on a connected weighted graph $G^α$ returns a minimum spanning tree T .
+### Proof
