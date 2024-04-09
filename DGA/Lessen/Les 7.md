@@ -28,8 +28,14 @@ For Step 2, we can rely on the disjoint-sets data structure.  Indeed, initially 
 
 Thus, using a disjoint-sets forest structure, we can implement Step 2 in time $O|E| \log_* |V|)$ as we perform at most |V| MakeSet operations, 2|E| FindSet operations and |V| - 1 Union operations.
 ## Theorem 2.1
-Kruskal’s algorithm when applied on a connected weighted graph $G^α$ returns a minimum spanning tree T .
+Kruskal’s algorithm when applied on a connected weighted graph $G^α$ returns a minimum spanning tree T.
 ### Proof
 We first argue that T = (V(G), E(T)) is a spanning tree of G. By construction it contains no cycles. Further, T must be connected, otherwise T has components $C_1$ and $C_2$. Any edge (u, v) with $u \in C_1$ and $v \in C_2$, should have been added to T as it does not create a closed path (such an edge exists as G is connected). 
 
-Next, we show that T has the minimum total weight among all spanning trees of G. Suppose $T_1$ is a spanning tree of G.
+Next, we show that T has the minimum total weight among all spanning trees of G. Suppose $T_1$ is a spanning tree of G. Let $e_k$ be the first edge produced by the algorithm that is not in $T_1$, meaning $\{e_1, . . . , e_{k-1}\} \in E(T_1)$. If we add $e_k$ to $T_1$, then a cycle C containing $e_k$ is created. Also, C must contain an edge e that is not in T (as T is a tree and therefore has no cycles). Replace e by $e_k$ in $T_1$, to obtain a new spanning tree $T_2 = T_1 + e_k - e$ (as $T_2$ is still connected and has $|E(T_2)| = |V(T_2)| - 1$).
+
+However, by construction, $α(e_k) \le α(e)$, because $\{e_1, . . . , e_{k-1}, e\} \subseteq E(T_1)$ does not contain a cycle. Therefore, $α(T_2) \le α(T_1)$. Note that $T_2$ has more edges in common with T than $T_1$. Repeating the above procedure, we can transform $T_1$ to T by replacing edges, one by one, such that the total weight does not increase. We deduce that $α(T) \le α(T_1)$. 
+
+So we have a minimum spanning tree T. $\square$
+# Prim’s algorithm (1957)
+## Algorithm 3.1
