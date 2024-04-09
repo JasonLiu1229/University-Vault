@@ -30,3 +30,6 @@ Thus, using a disjoint-sets forest structure, we can implement Step 2 in time $O
 ## Theorem 2.1
 Kruskal’s algorithm when applied on a connected weighted graph $G^α$ returns a minimum spanning tree T .
 ### Proof
+We first argue that T = (V(G), E(T)) is a spanning tree of G. By construction it contains no cycles. Further, T must be connected, otherwise T has components $C_1$ and $C_2$. Any edge (u, v) with $u \in C_1$ and $v \in C_2$, should have been added to T as it does not create a closed path (such an edge exists as G is connected). 
+
+Next, we show that T has the minimum total weight among all spanning trees of G. Suppose $T_1$ is a spanning tree of G.
