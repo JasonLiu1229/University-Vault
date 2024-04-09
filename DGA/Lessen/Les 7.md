@@ -5,7 +5,6 @@ A connected graph is called a **tree** if the removal of its edges makes the gra
 Whenever we wish to build a network connecting n nodes (towns, computers, chips in a computer) it is desirable to decrease the cost of construction of the links to the minimum. In graph theoretical terms, we wish to find an a spanning tree T of a weighted graph G, with α(T) minimal.
 
 Minimum weight spanning trees are useful in a variety of disciplines. For instance, minimum spanning trees are useful in constructing networks, by describing the way to connect a set of sites using the smallest total amount of wire. Much of the work on minimum spanning (and related Steiner) trees has been conducted by the phone company. They also provide a reasonable way for clustering points in space into natural groups. When the cities are points in the Euclidean plane, the minimum spanning tree provides a good heuristic for traveling salesman problems. The optimum traveling salesman tour is at most twice the length of the minimum spanning tree.
-
 ## Theorem 1.1
 The following statements are equivalent:
 1. G is a connected graph, where the removal of any edge of G makes G disconnected. 
@@ -20,3 +19,7 @@ The following statements are equivalent:
 1. Order the set of edges E(G) by non-decreasing weight, set i = 1.
 2. Set $E(T) = \varnothing$ and for each edge $(u, v) \in E(G)$ in order by non-decreasing weight, check whether $E(T) + (u, v)$ contains a closed path. If there is no closed path, set $E(T) =  E(T) + (u, v)$, $e_i = (u, v)$ and i = i + 1.
 The final outcome $T = (V(G)), E(T) = \{e_1, ..., e_{n-1}\})$ is a spanning tree with minimum weight.
+
+Notice, E(T) need not be connected during the execution of the algorithm.
+### Complexity
+Step 1 orders the edges, which can be done in $O(|E| \log |E|)$ time. For Step 2, we can rely on the disjoint-sets data structure. 
