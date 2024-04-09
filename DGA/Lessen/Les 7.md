@@ -39,3 +39,9 @@ However, by construction, $α(e_k) \le α(e)$, because $\{e_1, . . . , e_{k-1}, 
 So we have a minimum spanning tree T. $\square$
 # Prim’s algorithm (1957)
 ## Algorithm 3.1
+For a connected and weighted graph $G^α$ of order n with V(G) = $\{v_1, . . . , v_n\}$.
+1. Define $f(v_1) = 0$ and $f(v_i) = α((v_1, v_i)$ if $(v_1, v_i) \in E(G)$ and $f(v_i) = \infty$ otherwise (for $i \gt 1$). Let $E(T) =  \varnothing$ and set $U = \{v_1\}$.
+2. Choose $w \in V(G) - U$ with f(w) minimal. Replace E(T) by $E(T) \cup \{e\}$, where e is an edge incident to w and U for which α(e) = f(w) and set $U = U \cup \{w\}$. If U = V(G) stop.
+3. For each $v \not\in U$ for which $wv \in E(G): f(v)  \min \{f(v), \alpha(w, v)\}$. Return to Step 2.
+The final outcome T  = (V(G), E(T)) is a spanning tree with minimum weight.
+
