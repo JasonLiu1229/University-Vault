@@ -43,5 +43,20 @@ For a connected and weighted graph $G^α$ of order n with V(G) = $\{v_1, . . . ,
 1. Define $f(v_1) = 0$ and $f(v_i) = α((v_1, v_i)$ if $(v_1, v_i) \in E(G)$ and $f(v_i) = \infty$ otherwise (for $i \gt 1$). Let $E(T) =  \varnothing$ and set $U = \{v_1\}$.
 2. Choose $w \in V(G) - U$ with f(w) minimal. Replace E(T) by $E(T) \cup \{e\}$, where e is an edge incident to w and U for which α(e) = f(w) and set $U = U \cup \{w\}$. If U = V(G) stop.
 3. For each $v \not\in U$ for which $wv \in E(G): f(v)  \min \{f(v), \alpha(w, v)\}$. Return to Step 2.
-The final outcome T  = (V(G), E(T)) is a spanning tree with minimum weight.
+The final outcome T = (V(G), E(T)) is a spanning tree with minimum weight.
 
+Notice, f(v) equals the minimal weight of any edge connecting v with U (f(v) equals if there is no such edge). Thus, at each iteration, we simply add a new edge e to T with a weight α(e) as small as possible.
+
+A straightforward implementation of Prim’s algorithm has a runtime complexity of $O(|V|^2)$. Making use of a binary heap can improve this complexity to $O(|E| \log |V|)$ (making use of Fibonacci heaps it can be improved to $O(|E| + |V| \log |V|)$). Thus, Prim’s algorithm is faster on dense graphs, while Kruskal’s is faster on sparse graphs.
+## Theorem 3.1
+Prim’s algorithm when applied on a connected weighted graph $G^α$ returns a minimum spanning tree T.
+### Proof
+Let $G^α$ be a connected, weighted graph. By induction, we can show that T = (U, E(T)) is a spanning tree on the vertices of U during each iteration.
+
+Indeed, at step 1 we have |U| = 1, |E(T)|0, hence, it is a spanning tree on U = $\{v_1\}$.
+
+At every other iteration, we augment |U| and |E(T)| by one, meaning |U| = |E(T)| + 1 and T is connected. As a result, T is a spanning tree.
+
+Let $T_1$ be a spanning tree for G. Let e = (u, v) be the first edge not belonging to $T_1$ that was added when T = (U, E(T)) was constructed. Then, by construction, one endpoint u of e = (u, v) was in U and the other v was not. Since $T_1$ is a spanning tree of G, there is a path in $T_1$ joining the two endpoints u and v of e. As one travels along this path, one must encounter an edge $f = (u', v')$ joining a vertex $u' \in U$ to $v' \not\in U$ (note, it could be that $v' = v$ or $u' = u$, but not both). Now, at the iteration when e = (u, v) was added to E(T), $f = (u', v')$ could also have been added, and it would be added instead of e = (u, v) if $α(f) \lt  α(e)$. Let $T_2 = T_1 + e - f$, then $α(T_2) \le α(T_1)$ and $T_2$ is a spanning tree as $T_2$ is connected and the number of vertices still matches the number of edges plus one.
+
+Repeating the above procedure, we can transform $T_1$ to T by replacing edges, one by one, such that the total weight does not increase. We deduce that $α(T) \le α(T_1)$. $\square$
