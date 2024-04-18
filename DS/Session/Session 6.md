@@ -104,3 +104,122 @@ Sort: group input from different mappers by key
 **Reducer: application code**
 ![[Pasted image 20240418142712.png]]
 ### Hadoop Architecture Overview
+![[Pasted image 20240418143810.png]]
+
+**Components:**
+- **MapReduce Framework**: implement MapReduce paradigm 
+- **Cluster**: host machines (nodes).
+- **HDFS federation**: provides logical distributed storage. 
+- **YARN Infrastructure**: assign resources (CPU, memory, etc.=
+### YARN 
+#### Infrastructure
+**Yet Another Resource Negotiator**
+- Resource Manager (1/cluster): assign cluster resources to applications 
+- Node Manager (many/cluster): monitor node 
+- App Master: app (MapReduce) 
+- Container: task (map, reduce, …)
+#### Application lifecycle
+1. Client submits app 
+2. RM allocates AM container 
+3. AM registers with NM 
+4. AM requests containers from RM 
+5. AM tells NM to launch containers 
+6. Application code is executed 
+7. Monitor app status in RM/AM 
+8. AM unregisters with RM
+
+![[Pasted image 20240418144326.png]]
+
+Application developers only need to write code for 6.
+### Multithreading
+In theory it sounds nice, but in practice this is not always perfect.
+### Shotcoming of MapReduce 
+Forces your data processing into **MAP** and **REDUCE** 
+- Other workflows missing include join, filter, flatMap, groupByKey, union, intersection, … 
+
+Based on “Acyclic Data Flow” from Disk to Disk (HDFS) 
+- Not efficient for iterative tasks, i.e. Machine Learning 
+
+Only for Batch processing 
+- Interactivity, streaming data
+### Hadoop and disks
+Hard drive access is killing performance and blocking functionality
+#### Solution
+**Apache Spark**
+
+**Works on top of Hadoop**, HDFS, ……
+
+**Has many other workflows**, i.e. join, filter, flatMapdistinct, groupByKey, reduceByKey, sortByKey, collect, count, first… (around 30 efficient **distributed operations**)
+
+**In-memory caching of data** (for iterative, graph, and machine learning algorithms, etc.)
+
+Spark makes use of memory instead of disk.
+![[Pasted image 20240418150939.png]]
+#### Sort competition
+Spark is 3x times faster with 1/10 the nodes.
+#### Logistic regression performance
+![[Pasted image 20240418151109.png]]
+Spark needs less time.
+### Apache Spark
+Apache Spark supports data analysis, machine learning, graphs, streaming data, etc. 
+
+It can read/write from a **range of data types** and allows **development in multiple languages.**
+![[Pasted image 20240418151243.png]]
+### Resilient Distributed Datasets (RDDs)
+Immutable distributed collection of objects 
+
+All Spark components use RDDs 
+
+Use transformations to create new RDDs 
+- From storage 
+- From other RDDs 
+
+Fault tolerant
+### DataFrames & SparkSQL
+Organize the data in named columns 
+Similar to a relational database… 
+- Immutable once constructed 
+- Enable distributed computations
+
+How to construct Dataframes 
+- Read from file(s) 
+- Transforming an existing DFs
+- Parallelizing a python collection list 
+- Apply transformations and actions
+### RDDs vs. DataFrames
+- RDDs provide a **low level interface** into Spark 
+- DataFrames **have a schema** 
+- DataFrames are **cached and optimized by Spark** 
+- DataFrames are **built on top of the RDDs and the core Spark API**
+### Directed Acyclic Graphs (DAG)
+DAGs track dependencies (also known as Lineage ) 
+- nodes are RDDs 
+- arrows are Transformations
+
+**Why?**
+- Program resonates with humans and computers 
+- Improvement via: 
+	- Sequential access to data 
+	- Predictive processing
+### Narrow Vs. Wide transformation
+![[Pasted image 20240418152351.png]]
+#### Spark workflow
+![[Pasted image 20240418152422.png]]
+#### Main usecases
+- Streaming Data 
+- Machine Learning 
+- Interactive Analysis 
+- Data Warehousing 
+- Batch Processing 
+- Exploratory Data Analysis 
+- Graph Data Analysis 
+- Spatial (GIS) Data Analysis 
+- And many more
+#### When not to use
+Even though Spark is versatile, that doesn’t mean Spark’s in-memory capabilities are the best fit for all use cases: 
+- For many simple use cases Apache MapReduce and Hive might be a more appropriate choice 
+- Spark was not designed as a multi-user environment 
+- Spark users are required to know that memory they have is sufficient for a dataset 
+- Adding more users adds complications, since the users will have to coordinate memory usage to run code
+
+![[Pasted image 20240418152631.png]]
