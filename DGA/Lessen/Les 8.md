@@ -43,4 +43,3 @@ def Preprocess(G, T):
 	construct teh adjacency list Γ(u) for G'
 	return G' and T
 ```
-# Fibonacci Heaps
