@@ -1793,7 +1793,7 @@ Dropout ^bpVZmEnx
 		}
 	],
 	"appState": {
-		"theme": "dark",
+		"theme": "light",
 		"viewBackgroundColor": "#ffffff",
 		"currentItemStrokeColor": "#1e1e1e",
 		"currentItemBackgroundColor": "transparent",
@@ -1807,10 +1807,10 @@ Dropout ^bpVZmEnx
 		"currentItemTextAlign": "left",
 		"currentItemStartArrowhead": null,
 		"currentItemEndArrowhead": "arrow",
-		"scrollX": 707.4545454545454,
-		"scrollY": 466.15838068181813,
+		"scrollX": 918.9556698139844,
+		"scrollY": 630.7882621774036,
 		"zoom": {
-			"value": 1.1
+			"value": 0.8548852013221511
 		},
 		"currentItemRoundness": "round",
 		"gridSize": null,
