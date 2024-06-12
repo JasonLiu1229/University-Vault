@@ -72,8 +72,8 @@ Where our applications are distributed over systems.
 The remote objects can interact with other remote object making use of the remote interface. 
 #### Remote object references
 **Purpose : unique ID for objects in distributed system**
-- uniqueness over time
-- uniqueness over space
+- uniqueness over time, so it stays unique over time and will be unique over a long time interval.
+- uniqueness over space, it will stay unique across the entire distributed system.
 ![[Pasted image 20240225162549.png]]
 ![[Pasted image 20240225162618.png]]
 #### Local and remote invocations
@@ -88,7 +88,7 @@ Remote invocation
 - Limited access, remote interface
 - Invocation: ???
 
-The amount of invocations is determined by the situation, in case there is a failure during the invocation, could lead to multiple or less invocations then intended.
+The amount of invocations is determined by the situation, in case there is a failure during the invocation, could lead to multiple or less invocations than intended.
 ### Failure Modes of RMI/RPC
 ![[Pasted image 20240225162814.png]]
 Some example of what could go wrong during remote method invocations or remote procedure call. 
