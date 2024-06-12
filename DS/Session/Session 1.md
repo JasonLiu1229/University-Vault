@@ -68,7 +68,12 @@ There can also be multiple invocation in series.
 ![[Pasted image 20240218181943.png]]
 **Event based interaction**
 	“publish-subscribe” style
-	\+ loose coupling of components related: message based interaction (also decoupling in time) often used to integrate legacy systems
+	\+ Loose coupling of components related: message based interaction (also decoupling in time) often used to integrate legacy systems
+	\+ Fault tolerance: because it is decoupled, services that fail causes the others not a big hassle or at least lessens the hassle.
+	\+Fan Out and Less Technical Debt: event-driven architecture is push-based, so if multiple downstream systems need to act based on the occurrence of the event, then the event can be fanned out to these systems in parallel without the need for custom code. This also saves the downstream systems from continuous polling to check for an event occurrence, resulting in **less resource utilization** in terms of network bandwidth, CPU, etc.
+	\- Increased complexity
+	\- Debugging and troubleshooting more of a problem
+	\- Difficulties with monitoring
 #### Data-centric
 ![[Pasted image 20240218182051.png]]
 **Data centric architecture**
