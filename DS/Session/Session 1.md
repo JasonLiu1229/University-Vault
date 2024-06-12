@@ -32,7 +32,8 @@ There can also be multiple invocation in series.
 - Capability
 	- Many computational problems are too large for any single system because of memory, data storage, computational requirements
 - Concurrency
-	- Many ‘large’ problems have inherent options for parallelism Era of horizontal versus vertical scaling
+	- Many ‘large’ problems have inherent options for parallelism 
+		- Era of horizontal versus vertical scaling
 - Reliability
 	- Distributing redundant components minimizes the probability faults impact the user
 - Integration
@@ -47,7 +48,7 @@ There can also be multiple invocation in series.
 ## Logical architecture styles
 ### Coupled architectures
 - Components are **tightly** linked with each other
-- removing/adding a component is **non-trivial**
+- Removing/adding a component is **non-trivial**
 #### Layered
 ![[Pasted image 20240218181442.png]]
 **Layer only interacts with neighbor**
