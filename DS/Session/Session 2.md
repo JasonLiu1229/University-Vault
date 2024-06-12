@@ -17,11 +17,11 @@ Instead of broadcasting to everyone and asking where is file ...? We make use of
 ### Establishing communication
 ![[Pasted image 20240225150538.png]]
 To establish a communication between two devices, we make use of sockets. Where we call API services to communicate the necessary functionalities between each other. 
-
-A socket is an endpoint of a distributed communicating machine that uses sockets to implement the client-server model and solve different network applications. The distributed communication requires two sockets provided as two endpoints: one in the client and one in the server.
 #### Sockets
 ![[Pasted image 20240225150750.png]]
 This is a variant of sockets that you might find online. The first three functions of the server is to open his communication to the client. 
+
+A socket is an endpoint of a distributed communicating machine that uses sockets to implement the client-server model and solve different network applications. The distributed communication requires two sockets provided as two endpoints: one in the client and one in the server.
 ##### Sockets in java
 Here is an example how it could be done in java.
 ###### Client
@@ -33,6 +33,7 @@ Here is an example how it could be done in java.
 Here are some important points that we need to remember in case we want to invoke remotely. 
 ### Why middleware? 
 ![[Pasted image 20240225151459.png]]
+It provides functionality to connect applications intelligently and efficiently so that you can innovate faster. Middleware acts as a bridge between diverse technologies, tools, and databases so that you can integrate them seamlessly into a single system.
 #### Hardware and OS architecture
 ![[Pasted image 20240225151536.png]]
 Where the OS architecture of the multi-computer model might look like this:
