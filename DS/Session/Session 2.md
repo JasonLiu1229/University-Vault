@@ -17,6 +17,8 @@ Instead of broadcasting to everyone and asking where is file ...? We make use of
 ### Establishing communication
 ![[Pasted image 20240225150538.png]]
 To establish a communication between two devices, we make use of sockets. Where we call API services to communicate the necessary functionalities between each other. 
+
+A socket is an endpoint of a distributed communicating machine that uses sockets to implement the client-server model and solve different network applications. The distributed communication requires two sockets provided as two endpoints: one in the client and one in the server.
 #### Sockets
 ![[Pasted image 20240225150750.png]]
 This is a variant of sockets that you might find online. The first three functions of the server is to open his communication to the client. 
