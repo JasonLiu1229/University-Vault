@@ -105,6 +105,9 @@ These are some techniques to prevent this faults, they will determine the follow
 2. At least once
 3. At most once
 #### ![[Pasted image 20240225163343.png]]
+1. When no fault tolerance measures are applied, the system does not guarantee the execution of the remote method. The invocation might succeed or fail depending on the state of the network and the remote server.
+2. The system ensures that the remote method is executed at least once. If an acknowledgment is not received, the request is retransmitted. However, without duplicate filtering, this can result in the method being executed multiple times if the retransmitted requests are processed again.
+3. The system ensures that the remote method is executed at most once. Retransmissions are used if no acknowledgment is received, but duplicate filtering ensures that the method is not executed more than once. Instead of re-executing the procedure, the old reply is retransmitted, providing a strong guarantee against multiple executions.
 ### Role of the middleware…
 **Hide all these underlying complexity: provide transparency**
 make invocation syntax similar to local invocation, hiding:
