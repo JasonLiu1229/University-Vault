@@ -47,6 +47,7 @@ Before we dive in, we need to ask ourselves 2 questions:
 - Loosely coupled
 - Distinct design characteristics
 - Capabilities are often defined in terms of a contract
+
 **General idea: Service composition and inventory**
 ![[Pasted image 20240303121347.png]]
 #### Coupling of services & value
