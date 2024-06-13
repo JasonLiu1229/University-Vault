@@ -47,8 +47,9 @@ A way of designing software applications as suites of **independently deployable
 	- Changes in libraries = redeploying entire application
 	- Explicit (remote) component interface when using services
 - Services require more coarse-grained interfaces
-	- remote calls more expensive than in-process calls
+	- Remote calls more expensive than in-process calls
 ## Smart services, dumb pipes
+This means designing systems where the services are intelligent, handling complex logic and processing, while the communication channels between them are simple and efficient.
 - Enterprise Service Bus (ESB)
 	- Sophisticated message routing, choreography, transformation and business rule application
 - Microservices
@@ -58,11 +59,15 @@ A way of designing software applications as suites of **independently deployable
 	- Reliable messaging over lightweight bus (Kafka, RabbitMQ, ZeroMQ, …)
 ## Decentralized governance
 - Each service picks the right technology
+	- In a decentralized approach, each microservice can choose the most suitable technology stack (programming languages, frameworks, databases) that best fits its specific needs. This flexibility allows for optimizing performance, scalability, and development speed.
 - Service contracts define the interfaces
+	- Microservices communicate with each other through well-defined interfaces, known as service contracts. These contracts ensure that the services can interact seamlessly, even if they are built with different technologies.
 - Allows for different conceptual models, even of the same entity
 	- e.g. “customer” is different for sales than it is for support department
 - Polyglot persistence
+	- This means using different types of databases for different services based on their specific needs. For instance, some services might use relational databases, others might use NoSQL databases, and others might use in-memory databases.
 - Transaction-less so cope with eventual consistency
+	- Unlike monolithic systems that rely on ACID transactions for consistency, microservices often use eventual consistency. This means updates propagate over time, and the system will become consistent eventually, rather than immediately. This approach suits the distributed nature of microservices, enhancing performance and availability.
 ![[Pasted image 20240401170546.png]]
 ## Organized around business capabilities
 ![[Pasted image 20240401170706.png]]
