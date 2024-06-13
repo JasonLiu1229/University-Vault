@@ -168,13 +168,16 @@ It was the de facto standard in human-readable text back then
 - XML **grammar to specify collection of “access end points”** 
 	(1 URL specifies a single access end point) 
 - Designed to automate application-to-application interaction (or B2B interaction) 
+	- **Application-to-Application Interaction**: WSDL is designed to facilitate communication between different applications over the internet. This is often referred to as web services. Applications can be written in different programming languages and run on different platforms.
+	- **B2B Interaction (Business-to-Business)**: WSDL is commonly used in business-to-business (B2B) integrations where different businesses need to share data and services seamlessly.
 - Defines the communication protocol to be used at runtime 
 	- Message format 
 	- Methods to be invoked 
 	- Parameter lists, return types 
 	- … 
-- WSDL descriptions can be automatically generated for existing code 
+- WSDL descriptions can be automatically generated from existing code 
 - Stub classes can be generated from WSDL descriptions
+	- Stub classes can be generated from WSDL descriptions. A stub class acts as a client-side proxy for the web service, allowing the client application to interact with the web service as if it were a local object. Tools can automatically generate these classes based on the WSDL file, simplifying the process of integrating web services into client applications.
 ## SOAP Processing Model
 ![[Pasted image 20240326204157.png]]
 **A SOAP app is made of communicating nodes**
@@ -191,7 +194,7 @@ SOAP Extensibility Model Suppose you want to add credentials to a SOAP message: 
 1. Add it in the SOAP body
 	- Credentials need to be encoded in every parameter
 2. Use the optional SOAP header
-	- Header blocks can be annotated with "mustUnderstand" attribute. This means that receiving body must be able interpret this header.
+	- Header blocks can be annotated with "mustUnderstand" attribute. This means that the receiving body must be able to interpret this header.
 ## SOAP is much bigger!
 Soap has many extensions, all with particular use cases. 
 - WS-Negotiation 
