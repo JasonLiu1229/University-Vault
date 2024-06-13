@@ -50,6 +50,7 @@ Before we dive in, we need to ask ourselves 2 questions:
 
 **General idea: Service composition and inventory**
 ![[Pasted image 20240303121347.png]]
+The image depicts how SOA facilitates the organization of distributed systems. It shows a service inventory layer where individual, reusable services are maintained and a service composition layer where these services are combined to create comprehensive business processes. The connections between the layers highlight the orchestration and integration of services to form a coherent and flexible distributed system architecture.
 #### Coupling of services & value
 ![[Pasted image 20240303122222.png]]
 As we can see on the graph that the value of the services differentiate depending on the amount of coupling we have in our system.
@@ -85,6 +86,8 @@ CORBA
 - Independent of OS and language, but very complex
 - Limited amount of vendors
 - Historical
+
+COBRA is a middleware design framework that enables pieces of programs, written in different languages and running on different computers, to communicate with each other. This architecture is particularly important in distributed systems where the goal is to ensure seamless interaction between disparate software components.
 
 Web Services
 ![[Pasted image 20240303141416.png]]
