@@ -174,6 +174,11 @@ SaaS can be built on top of PaaS, which can be built on top of IaaS.
 ![[Pasted image 20240303150224.png]]
 ### The 3 main enablers
 ![[Pasted image 20240303150300.png]]
+**Virtualization technology** allows multiple virtual instances of operating systems, servers, or storage to run on a single physical hardware. This decouples the hardware from the software, providing flexibility, scalability, and efficient resource utilization.
+
+**Web services** enable communication and data exchange between different applications over the internet using standardized protocols such as HTTP, SOAP, and REST.
+
+**Significant financial investments from major technology companies** (like Google, Amazon, Microsoft) lead to the development of advanced infrastructure and technologies. Economies of scale refer to the cost advantages that enterprises obtain due to their scale of operation, with cost per unit of output decreasing with increasing scale.
 ### Deployment models
 ![[Pasted image 20240303150345.png]]
 
