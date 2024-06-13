@@ -101,9 +101,13 @@ Multi-tenancy = is **a reference to the mode of operation of software where mul
 #### Data multi-tenancy
 ![[Pasted image 20240303143314.png]]
 Same application + different conditions on the data
+
+**Data multi-tenancy** involves sharing a single instance of a database across multiple tenants. Each tenant's data is logically isolated to ensure privacy and security.
 #### Application multi-tenancy
 ![[Pasted image 20240303143330.png]]
 Tenant-configured applications
+
+**Application multi-tenancy** involves a single instance of an application serving multiple tenants. The application is designed to handle requests from different tenants and provide a customized experience based on the tenant.
 ## Is SOA dead?
 **Disclaimer**
 - Distributed computing is a fast evolving world
@@ -118,6 +122,8 @@ The origin of the word came from the essence that multiple systems were connecte
 ![[Pasted image 20240303145038.png]]
 ## Definition
 “Cloud computing is a model for **enabling convenient, on demand network access to a shared pool of configurable computing resources** (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.”
+
+Simply put, cloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the internet (“the cloud”) to offer faster innovation, flexible resources, and economies of scale.
 ## IT services as a utility
 ![[Pasted image 20240303145201.png]]
 ![[Pasted image 20240303145255.png]]
@@ -134,7 +140,9 @@ SaaS = Software as a service
 PaaS = Platform as a service
 IaaS = infrastructure as a service
 #### SaaS
-Platform as a Service **offers a high-level integrated environment to build, test and deploy custom applications.** Generally, developers will need to accept some restrictions to the type of software they a write in exchange for built-in application scalability
+Software as a Service **offers a high-level integrated environment to build, test and deploy custom applications.** Generally, developers will need to accept some restrictions to the type of software they write in exchange for built-in application scalability
+
+SaaS is a cloud computing service model where software applications are delivered over the internet. Users can access these applications through a web browser without needing to install, manage, or maintain the software on their own devices. Examples include Google Workspace (formerly G Suite), Salesforce, and Microsoft Office 365.
 
 **Application development environment**
 - Provider-constrained components and languages
@@ -146,14 +154,20 @@ Platform as a Service **offers a high-level integrated environment to build, tes
 **Increased efficiency at cost of lock-in**
 #### PaaS
 Platform as a Service (PaaS) is **a complete cloud environment that includes everything developers need to build, run, and manage applications**—from servers and operating systems to all the networking, storage, middleware, tools, and more.
+
+PaaS provides a platform that allows developers to build, deploy, and manage applications without worrying about the underlying infrastructure. It includes tools and services for development, testing, deployment, and maintenance of software applications. Examples include Google App Engine, Microsoft Azure App Service, and Heroku.
+
 ![[Pasted image 20240303145932.png]]
 #### IaaS
-Infrastructure as a Service **provisions hardware, software and equipment to deliver software application environments** with a resource usage-based pricing model. The resulting infrastructure can scale and down dynamically based on application resource needs
+Infrastructure as a Service **provisions hardware, software and equipment to deliver software application environments** with a resource usage-based pricing model. The resulting infrastructure can scale up and down dynamically based on application resource needs.
+
+IaaS offers virtualized computing resources over the internet. It provides fundamental IT resources such as virtual machines, storage, and networks, allowing users to rent these resources on a pay-as-you-go basis. This model gives users high flexibility and control over the infrastructure. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
 
 Provider manages underlying infrastructure (**Multi-tenancy**)
 
 Unit of deployment : Virtual Machine (VM)
 ![[Pasted image 20240303150104.png]]
+A virtual machine is **a computer file, typically called an image, that behaves like an actual computer**. It can run in a window as a separate computing environment, often to run a different operating system—or even to function as the user's entire computer experience—as is common on many people's work computers.
 
 **These models are not orthogonal!** 
 SaaS can be built on top of PaaS, which can be built on top of IaaS.
