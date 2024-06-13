@@ -65,6 +65,7 @@ Representational state transfer (REST) is a style of software architecture for d
 - Nouns, not verbs 
 - Permanent 
 - Query arguments are only for parameters 
+	- Can be used to filter out specific data from a resource
 - Avoid extensions
 ## REST and RESTful and HTTP
 - REST principles were used for designing HTTP 1.1
@@ -104,26 +105,32 @@ According to CRUD: all major functions that are implemented in databases
 ## REST architectural constraints
 1. **Interface uniformity between components**
 	They need to speak the same language and know what to expect in order to understand each other.
-2. **Client-server model (separation of concerns)**
-	Client and server are fully decoupled and can be developed independently
-3. **Stateless client-server communication**
-	Each request from client to server must contain all the information necessary to understand the request, and cannot take advantage of any stored session state on the server
-4. **Caching**
-	Clients can cache responses to requests, improving scalability and performance. The fact that responses are not cache-able should be implicitly or explicitly defined.
-5. **Layering**
-	A client cannot tell if it is directly connected to a server or to some intermediary (proxy, cache, tunnel, firewalls, …). This allows for load-balancing, fail-over and data transformation.
+	- This principle ensures that all components in the system communicate in a consistent manner. By having a uniform interface, components can interact without needing to understand the internal details of each other. This uniformity simplifies the architecture and increases the visibility of interactions within the system.
+1. **Client-server model (separation of concerns)**
+	Client and server are fully decoupled and can be developed independently.
+	- The client-server model separates the user interface concerns (client) from data storage concerns (server). This separation allows for the independent development, operation, and scaling of client and server components.
+1. **Stateless client-server communication**
+	Each request from client to server must contain all the information necessary to understand the request, and cannot take advantage of any stored session state on the server.
+1. **Caching**
+	Clients can cache responses to requests, improving scalability and performance. The fact that **responses** are **not cache-able** should be implicitly or explicitly defined.
+	- Responses must be explicitly defined as cacheable or non-cacheable to prevent clients from storing and reusing stale or inappropriate data. Caching can improve the efficiency and scalability of a system.
+1. **Layering**
+	A client cannot tell if it is directly connected to a server or to some intermediary (proxy, cache, tunnel, firewalls, …). **This allows for load-balancing, fail-over and data transformation.**
 6. **Code-on-demand (optional)**
 	Client functionality can be dynamically extended through the transfer of executable code (e.g. JavaScript)
+	- Servers can extend the functionality of a client by transferring executable code (such as JavaScript). This constraint is optional and can be used to reduce client complexity and improve scalability.
 ## REST vs RPC
 **RPC (and Distributed Object Systems, SOAP Web Services)**
 - Many operations, few URI
 - Address software components
-- Procedure name and parameters are transferred\
-
+- Procedure name and parameters are transferred
 **REST**
 - Few operations, many URI
 - Address resources
 - Resource representations are transferred
+**Summary**
+- **RPC** focuses on calling specific procedures on the server, with the emphasis on the actions performed and the parameters passed.
+- **REST** focuses on accessing and manipulating resources using a standardized set of operations, with an emphasis on the resources themselves and their representations.
 # SOAP WEB SERVICES
 **Requirements:**
 - Text protocol: needs to be readable on the wire 
