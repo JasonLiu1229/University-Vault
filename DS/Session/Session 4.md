@@ -211,8 +211,11 @@ Soap has many extensions, all with particular use cases.
 **Advantages of REST**
 - Uniform interface is immutable 
 - Conceptually simpler 
+	- REST is designed to be straightforward and easy to understand. Its simplicity makes it easier for developers to learn and implement compared to SOAP.
 - Lower protocol overhead (for stateless services) 
+	- REST typically uses standard HTTP, which has less overhead compared to the SOAP protocol that involves more complex messaging standards. This makes REST more efficient, especially for stateless services.
 - Can improve server scalability 
+	- Because REST is stateless (each request from a client contains all the information the server needs), it can help improve server scalability. Servers don't need to maintain client state between requests.
 - Inherent support for request caching 
 - Less reliant on tool support and heavyweight libraries 
 - No need for additional messaging layer
@@ -220,7 +223,9 @@ Soap has many extensions, all with particular use cases.
 
 **Disadvantages of REST**
 - Service model not always easily mappable to REST verbs, uniform interface tailored to large-grain hypermedia data transfer 
+	- Some services or operations may not fit neatly into the standard REST verbs (GET, POST, PUT, DELETE). This can make designing a RESTful API challenging for certain types of operations, especially those requiring complex transactions or stateful interactions.
 - Looser in terms of defining the exposed service API and its semantics 
+	- REST does not enforce strict standards for defining APIs. This flexibility can lead to inconsistencies and ambiguities in how APIs are designed and used, potentially causing integration challenges.
 - Does not cover all WS standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
 ## When to use SOAP / REST?
 SOAP’s popularity is clearly decreasing 
