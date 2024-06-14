@@ -59,3 +59,38 @@ Different applications, provide different consistency guarantees.
 	- How? Through consistency models
 ![[Pasted image 20240614172408.png]]
 ### Data-centric consistency model
+![[Pasted image 20240614173111.png]]
+Consistency model = contract between client processes (C) and datastore of replicas (R)
+- If client processes follow rules in the contract…
+- …the datastore will work correctly & results will be predictable
+- Rules deal with how parallel updates are received by other client processes
+### Strict consistency 
+**Identical to single machine execution**
+
+Strongest consistency guarantees 
+**Immediate propagation** of all content updates 
+Absolute **time ordering** of all shared access operations (global clock) 
+A **read returns the last write** given that time ordering
+![[Pasted image 20240614173325.png]]
+### Sequential consistency
+**Relaxation: delay can exist in content updates**
+Weaker consistency guarantees than strict consistency
+Operations are interleaved in some fixed **order** 
+All processes see the **same order**
+![[Pasted image 20240614173505.png]]
+
+**Some notation**
+![[Pasted image 20240614173659.png]]
+#### Exercise
+![[Pasted image 20240614173847.png]]
+**Answer:** Strict consistency
+
+![[Pasted image 20240614173928.png]]
+**Answer:**\
+![[Pasted image 20240614173943.png]]
+
+![[Pasted image 20240614174601.png]]
+**Answer:**
+Let's first look at P3 first. Print x → 12 is done first, that means P2 happened before P3 to set x to 12. Next, we have Print y → 16, this means y is set to 16, so before P3 print, P1 happened. Now, y is set to 10, that could only mean that P2 happened after the previous process. Now the next value is print x → 3, meaning we executed P1 again before this print, because print x → 8, we can assume that P1 finished his process and x remained 8.
+
+Let's look at P4, first we have print x -> 12, meaning that P2 happened before P4. After the print y -> ???, we have print -
