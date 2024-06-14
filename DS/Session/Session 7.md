@@ -181,3 +181,14 @@ Different products, with different consistency models
 ### Client-centric consistency models
 **Focus on how the users see the data**
 #### Why?
+- Number of reads >> number of writes
+- No write-write conflicts or easy to resolve 
+- Data items have an **owner** 
+- Suitable for environments with unreliable network connectivity and limited network performance
+![[Pasted image 20240614221719.png]]
+
+**Example:** Facebook
+![[Pasted image 20240614221818.png]]
+#### Notation
+![[Pasted image 20240614222026.png]]
+#### Monotonic-Read Consistency 
