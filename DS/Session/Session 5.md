@@ -85,6 +85,8 @@ Identifying business capabilities and hence services requires an understanding o
 ![[Pasted image 20240401183120.png]]
 ## Products, not projects (aka DevOps)
 “The traditional model is that you take your software to the wall that separates development and operations, throw it over and then forget about it. Not at Amazon. You build it, you run it.”
+
+The quote advocate for a DevOps culture where developers are accountable for the operational aspects of their software, leading to better quality, faster delivery, and a more collaborative environment. This approach shifts the mindset from treating software development as a series of isolated projects to managing it as a continuous product lifecycle.
 # [Reactive manifesto]( www.reactivemanifesto.org)
 - Aims to condense knowledge on how to design highly scalable and reliable applications
 	- Set of required architecture traits
@@ -94,7 +96,7 @@ Identifying business capabilities and hence services requires an understanding o
 		- Large applications a few years ago
 			- >10 servers, response time: seconds, hours of offline maintenance, gigabytes of data
 		- Today
-			- Deployed on everything from mobile devices to cloud-based clusters running thousands of multi-core processors, response time: milliseconds. Petabytes of data.
+			- Deployed on everything from mobile devices to cloud-based clusters running thousands of multicore processors, response time: milliseconds. Petabytes of data.
 ![[Pasted image 20240401184935.png]]
 ## Architectural trait: message driven
 - Asynchronous message-passing between components
