@@ -31,3 +31,31 @@ Consistency Availability Partition-tolerance
 #### Impact in practice
 - Optimize consistency at the cost of availability
 - Or optimize availability at the cost of consistency
+![[Pasted image 20240614171218.png]]
+#### Can we loosen consistency?
+Different applications, provide different consistency guarantees.
+![[Pasted image 20240614171602.png]]
+- **Financial Application (e.g., Online Banking)**:
+    - **Consistency Requirements**: Strong consistency guarantees.
+    - **Reason**: In financial transactions, it’s essential that all operations reflect the most recent data to prevent errors such as overdrafts or double spending. Consistency is critical to ensure the integrity and correctness of transactions.
+    - **Characteristics**:
+        - Immediate reflection of changes.
+        - Ensures atomicity and durability.
+        - Higher complexity and potential latency due to synchronization overhead.
+    - **Examples**: Account balance updates, fund transfers, transaction histories.
+- **Train Information Application**:
+    - **Consistency Requirements**: Weak consistency guarantees.
+    - **Reason**: Train information applications can tolerate slight delays in updating information such as schedules, delays, or platform changes. The system prioritizes availability and responsiveness over immediate consistency.
+    - **Characteristics**:
+        - Eventual consistency is acceptable.
+        - Updates might not be immediately visible across all nodes.
+        - Enhanced performance and availability.
+    - **Examples**: Real-time train schedules, platform changes, delay notifications.
+
+- **Strong Consistency**: Ensures that once a write is completed, any subsequent reads will reflect that write. This is crucial in applications where accurate and up-to-date information is critical.
+- **Weak Consistency**: Accepts that not all reads reflect the most recent write immediately. Some delay is permissible, which can improve system performance and availability.
+## Consistency Models
+- Clear need for loosening the consistency guarantees
+	- How? Through consistency models
+![[Pasted image 20240614172408.png]]
+### Data-centric consistency model
