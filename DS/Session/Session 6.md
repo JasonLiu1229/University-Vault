@@ -49,26 +49,26 @@ Steps:
 - We have a certain file
 - It splits it into blocks of certain size
 - It will store 3 copies of each block
-- Stores these blocks on datanodes
+- Stores these blocks on data nodes
 - It distributes the blocks to the DNs
 
-In case a datanodes dies, this will not result in to a problem because the blocks are stored over several datanodes.
+In case a data nodes dies, this will not result in to a problem because the blocks are stored over several data nodes.
 
-Now the Namenode will let the other datanodes know that a datanode died, now it needs to copy the lost data so we have 3 copies again of every block.
+Now the Namenode will let the other data nodes know that a data node died, now it needs to copy the lost data so we have 3 copies again of every block.
 
 ![[Pasted image 20240418141522.png]]
 ### MapReduce
-Model for distributed processing
+Model for distributed processing.
+![[Pasted image 20240614131601.png]]
 
 Mantra:
 	Move the computation to the data
 In practice this means running the processing on a machine whose HDFS Datanode holds the data.
 ### Hadoop Architecture 
 ![[Pasted image 20240418141646.png]]
-
 We have a backup of the monitory node (secondary NN), just in case the main one fails. 
 
-Client contacts the Job Tracker. It will check if the racks has the data, if so it will contact the task tracker and check if it can process this data. If not it will contact his neighbor Datanodes until it succeeds. If it still fails, it will contact the other racks until it succeeds.
+Client contacts the Job Tracker. It will check if the racks has the data, if so it will contact the task tracker and check if it can process this data. If not, it will contact his neighbor Datanodes until it succeeds. If it still fails, it will contact the other racks until it succeeds.
 ### Hadoop MapReduce
 Data in the form of a <key, value> pair
 - <byte, text> 
@@ -77,15 +77,17 @@ Data in the form of a <key, value> pair
 - <user id, list of user id’s of friends> 
 - …
 
-Inspired by list processing (Lisp) , functional programming:
-- immutable data 
-- pure functions (no side effects): map, reduce
+Inspired by list processing (Lisp), functional programming:
+- Immutable data 
+	- Data is not changed but rather transformed into new data structures. This property ensures consistency and makes it easier to parallelize tasks since there are no side effects.
+- Pure functions (no side effects): map, reduce
+	- Functions in MapReduce are pure, meaning they do not have side effects outside their scope. This leads to more predictable and testable code.
 
 Simple model = easy to reason about
 ### Google MapReduce
 **Map**: map each <key, value> of input list onto 0, 1, or more pairs of type <key2, value2> of output list
 ![[Pasted image 20240418142344.png]]
-**Behaviour**: 
+**Behavior**: 
 - Map to 0 elements in the output → filtering 
 - Map to +1 elements in the output → distribution
 
