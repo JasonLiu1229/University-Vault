@@ -81,7 +81,7 @@ All processes see the **same order**
 
 **Some notation**
 ![[Pasted image 20240614173659.png]]
-#### Exercise
+#### Exercises
 ![[Pasted image 20240614173847.png]]
 **Answer:** Strict consistency
 
@@ -91,6 +91,21 @@ All processes see the **same order**
 
 ![[Pasted image 20240614174601.png]]
 **Answer:**
-Let's first look at P3 first. Print x → 12 is done first, that means P2 happened before P3 to set x to 12. Next, we have Print y → 16, this means y is set to 16, so before P3 print, P1 happened. Now, y is set to 10, that could only mean that P2 happened after the previous process. Now the next value is print x → 3, meaning we executed P1 again before this print, because print x → 8, we can assume that P1 finished his process and x remained 8.
+We can't put a definite value on y, because the operation can happen between y = 16 and print y → 10, this means that if y is set to 16 and this print happens afterward but before y is set to 10, it is 16. But, it could also happen after y is set to 10 meaning it could also be 10. 
 
-Let's look at P4, first we have print x -> 12, meaning that P2 happened before P4. After the print y -> ???, we have print -
+For x there is an answer, because we print x is 8 we can deduce that process one already happened, and it could not be 3. We print 12 before the second print, meaning P2 also already happened, so it can only stay 8. 
+
+![[Pasted image 20240614181935.png]]
+**Answer:**
+![[Pasted image 20240614181946.png]]
+Because we read "b" first, meaning we wrote "b" before this read. Next, we read "a", meaning that "a" we wrote a before the read, at last we see b again, but no write happened before this, so no order can be given.
+### Causal consistency
+Causal relatedness 
+	Does the operation potentially depend on another operation? If not, causally related otherwise concurrent.
+
+Causally related?
+![[Pasted image 20240614182334.png]]
+**Causal consistent** writes are seen by all processes in the **same order**
+**Concurrent** writes can be seen in **any order**
+#### Exercises
+![[Pasted image 20240614182633.png]]
