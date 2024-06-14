@@ -64,7 +64,7 @@ Consistency model = contract between client processes (C) and datastore of repli
 - If client processes follow rules in the contract…
 - …the datastore will work correctly & results will be predictable
 - Rules deal with how parallel updates are received by other client processes
-### Strict consistency 
+#### Strict consistency 
 **Identical to single machine execution**
 
 Strongest consistency guarantees 
@@ -72,7 +72,7 @@ Strongest consistency guarantees
 Absolute **time ordering** of all shared access operations (global clock) 
 A **read returns the last write** given that time ordering
 ![[Pasted image 20240614173325.png]]
-### Sequential consistency
+#### Sequential consistency
 **Relaxation: delay can exist in content updates**
 Weaker consistency guarantees than strict consistency
 Operations are interleaved in some fixed **order** 
@@ -81,7 +81,7 @@ All processes see the **same order**
 
 **Some notation**
 ![[Pasted image 20240614173659.png]]
-#### Exercises
+##### Exercises
 ![[Pasted image 20240614173847.png]]
 **Answer:** Strict consistency
 
@@ -99,7 +99,7 @@ For x there is an answer, because we print x is 8 we can deduce that process one
 **Answer:**
 ![[Pasted image 20240614181946.png]]
 Because we read "b" first, meaning we wrote "b" before this read. Next, we read "a", meaning that "a" we wrote a before the read, at last we see b again, but no write happened before this, so no order can be given.
-### Causal consistency
+#### Causal consistency
 Causal relatedness 
 	Does the operation potentially depend on another operation? If not, causally related otherwise concurrent.
 
@@ -107,16 +107,50 @@ Causally related?
 ![[Pasted image 20240614182334.png]]
 **Causal consistent** writes are seen by all processes in the **same order**
 **Concurrent** writes can be seen in **any order**
-#### Exercise
+##### Exercise
 ![[Pasted image 20240614182633.png]]
 **Answer:**
 ![[Pasted image 20240614182753.png]]\
 The last two operations for P3 and P4 contradict each other leading it to no consistency. The relationship between W(x)a and W(x)b is because W(x)b happens after a read of x that outputs "a", for it to output "a" it needs to have been written that it was "a" at some time, that can only happen during P1 and so it is causally related.
 
 For W(x)c there is no read that happened before, it can happen any time after "b" was written on x. You can especially tell that it could happen concurrent because P3 and P4 have contradictory outputs, because these two write could have happened at the same time.
-### PRAM / FIFO Consistency
+#### PRAM / FIFO Consistency
 Pipelined Random Access Memory consistency
 - Writes from a single process arrive in the same order
 - Writes from multiple processes can arrive in any order
 ![[Pasted image 20240614193111.png]]
-### Consistency & critical sections
+#### Consistency & critical sections
+![[Pasted image 20240614201034.png]]
+#### Weak consistency
+**Group operations to increase granularity of synchronization**
+- Use of global synchronization variable S and synchronize operation
+- Properties
+	1. **Synchronize** cannot be performed until all previous writes have completed everywhere
+	2. **Read** or **write** operations cannot be performed until all previous synchronize operations have completed
+	3. **The order of synchronize operations is sequentially consistent**
+![[Pasted image 20240614201231.png]]
+#### Release Consistency
+**Explicit synchronization operations defining critical section**
+- **acquire(S)**: bring local state up to date (local updates can be propagated later) 
+- **release(S)**: propagate local updates (remote updates can be propagated later) 
+- **Properties** 
+	1. release cannot be performed until previous **reads and writes** done by the process have **completed**. 
+	2. Read or write operations cannot be performed **until all previous acquire operations** done by the process have performed.
+	3. The order of synchronization operations is **FIFO consistent**.
+**Lazy Release Consistency**
+- Acquire fetches newest state
+- Do not send updates on release
+- Efficiency gain if acquire/release done by same client
+![[Pasted image 20240614201915.png]]
+- **Reduced Synchronization Overhead**: By delaying the propagation of updates, lazy release consistency reduces the immediate synchronization overhead, which can improve performance.
+- **Efficiency in Local Operations**: Particularly efficient when multiple acquire and release operations are performed by the same client, reducing unnecessary network communication.
+#### Entry Consistency
+**Associate specific data items (guarded data) to synchronization variables**
+- **acquire(S)**
+	- Obtain **exclusive** (write) or **non-exclusive** (read) access to the associated data 
+	- **Synchronize** by fetching associated data from the variables owner (the last client that obtained exclusive access). 
+	- Does not complete until guarded data is made up to date locally 
+	- Exclusive access of a client precludes any other client from accessing guarded data (no process may hold synchronization variable even in non-excl. mode)
+- **release(S)**
+	- Relinquish exclusive access
+![[Pasted image 20240614202556.png]]
