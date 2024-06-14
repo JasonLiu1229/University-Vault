@@ -115,3 +115,8 @@ The last two operations for P3 and P4 contradict each other leading it to no con
 
 For W(x)c there is no read that happened before, it can happen any time after "b" was written on x. You can especially tell that it could happen concurrent because P3 and P4 have contradictory outputs, because these two write could have happened at the same time.
 ### PRAM / FIFO Consistency
+Pipelined Random Access Memory consistency
+- Writes from a single process arrive in the same order
+- Writes from multiple processes can arrive in any order
+![[Pasted image 20240614193111.png]]
+### Consistency & critical sections
