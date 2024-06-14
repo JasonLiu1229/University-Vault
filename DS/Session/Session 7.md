@@ -151,6 +151,33 @@ Pipelined Random Access Memory consistency
 	- **Synchronize** by fetching associated data from the variables owner (the last client that obtained exclusive access). 
 	- Does not complete until guarded data is made up to date locally 
 	- Exclusive access of a client precludes any other client from accessing guarded data (no process may hold synchronization variable even in non-excl. mode)
+		- **Exclusive Access**:
+		    - When a client (or process) acquires a synchronization variable (lock) in **exclusive mode**, it gains the sole right to read and write the associated guarded data.
+		    - No other client can access the guarded data in any capacity (neither read nor write) until the lock is released.
+		- **Preclusion of Other Access**:
+		    - During the period when a client has exclusive access, other clients are completely blocked from accessing the guarded data. This ensures that no conflicting operations can occur on the data, maintaining consistency.
+		- **Non-Exclusive Mode**:
+		    - Typically, a synchronization variable might allow non-exclusive (read) access, where multiple clients can read the data simultaneously but cannot write to it.
+		    - However, in the context of entry consistency with exclusive access:
+		        - Even non-exclusive (read) access is prohibited if another client holds the lock exclusively.
+		        - This means that while a client has exclusive access, no other client can even read the guarded data.
 - **release(S)**
 	- Relinquish exclusive access
 ![[Pasted image 20240614202556.png]]
+#### Type of consistency models
+![[Pasted image 20240614203049.png]]
+### Use cases
+**NoSQL**: Not-Only SQL or Non-Relational SQL
+- New generation of databases 
+- Increasing availability 
+- Often distributed 
+- Looser consistency models
+
+Different products, with different consistency models
+- Strict consistency
+	![[Pasted image 20240614203209.png]]
+- Sequential consistency
+	![[Pasted image 20240614203223.png]]
+### Client-centric consistency models
+**Focus on how the users see the data**
+#### Why?
