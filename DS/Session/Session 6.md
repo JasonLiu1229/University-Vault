@@ -99,7 +99,7 @@ Simple model = easy to reason about
 ### What you need to write
 **Mapper: application code** 
 
-Partitioner: send data to correct Reducer machine 
+Partitioned: send data to correct Reducer machine 
 
 Sort: group input from different mappers by key 
 
@@ -112,7 +112,7 @@ Sort: group input from different mappers by key
 - **MapReduce Framework**: implement MapReduce paradigm 
 - **Cluster**: host machines (nodes).
 - **HDFS federation**: provides logical distributed storage. 
-- **YARN Infrastructure**: assign resources (CPU, memory, etc.=
+- **YARN Infrastructure**: assign resources (CPU, memory, etc.)
 ### YARN 
 #### Infrastructure
 **Yet Another Resource Negotiator**
@@ -122,6 +122,7 @@ Sort: group input from different mappers by key
 - Container: task (map, reduce, …)
 #### Application lifecycle
 1. Client submits app 
+	- The client (user or program) submits an application to the YARN Resource Manager (RM).
 2. RM allocates AM container 
 3. AM registers with NM 
 4. AM requests containers from RM 
@@ -129,21 +130,29 @@ Sort: group input from different mappers by key
 6. Application code is executed 
 7. Monitor app status in RM/AM 
 8. AM unregisters with RM
+	- This step signals the RM that the application has finished, and the RM can free up resources allocated to the application.
 
 ![[Pasted image 20240418144326.png]]
+- **Client**: Initiates the application by submitting it to the RM.
+- **Resource Manager (RM)**: Manages the overall resource allocation in the cluster and orchestrates the launching of the AM.
+- **Node Manager (NM)**: Manages the lifecycle of containers on each node, including resource monitoring and reporting to the RM.
+- **Application Master (AM)**: Manages the lifecycle of the application, including resource requests, task execution, and progress monitoring.
 
 Application developers only need to write code for 6.
 ### Multithreading
 In theory it sounds nice, but in practice this is not always perfect.
-### Shotcoming of MapReduce 
+### Shortcoming of MapReduce 
 Forces your data processing into **MAP** and **REDUCE** 
 - Other workflows missing include join, filter, flatMap, groupByKey, union, intersection, … 
+- MapReduce's simplicity in providing only map and reduce operations means that implementing more complex workflows requires additional effort and often results in less efficient solutions.
 
 Based on “Acyclic Data Flow” from Disk to Disk (HDFS) 
+	Each stage of a MapReduce job reads from and writes to disk (HDFS).
 - Not efficient for iterative tasks, i.e. Machine Learning 
 
-Only for Batch processing 
-- Interactivity, streaming data
+Only for batch processing, not for:
+- **Interactivity**: Real-time or near-real-time data processing, where users expect immediate feedback.
+- **Streaming Data**: Continuous data streams that need to be processed in real-time or with minimal latency.
 ### Hadoop and disks
 Hard drive access is killing performance and blocking functionality
 #### Solution
@@ -176,7 +185,7 @@ Use transformations to create new RDDs
 - From storage 
 - From other RDDs 
 
-Fault tolerant
+Fault-tolerant
 ### DataFrames & SparkSQL
 Organize the data in named columns 
 Similar to a relational database… 
