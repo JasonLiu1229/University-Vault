@@ -107,5 +107,11 @@ Causally related?
 ![[Pasted image 20240614182334.png]]
 **Causal consistent** writes are seen by all processes in the **same order**
 **Concurrent** writes can be seen in **any order**
-#### Exercises
+#### Exercise
 ![[Pasted image 20240614182633.png]]
+**Answer:**
+![[Pasted image 20240614182753.png]]\
+The last two operations for P3 and P4 contradict each other leading it to no consistency. The relationship between W(x)a and W(x)b is because W(x)b happens after a read of x that outputs "a", for it to output "a" it needs to have been written that it was "a" at some time, that can only happen during P1 and so it is causally related.
+
+For W(x)c there is no read that happened before, it can happen any time after "b" was written on x. You can especially tell that it could happen concurrent because P3 and P4 have contradictory outputs, because these two write could have happened at the same time.
+### PRAM / FIFO Consistency
