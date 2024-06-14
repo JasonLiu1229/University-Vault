@@ -192,3 +192,60 @@ Different products, with different consistency models
 #### Notation
 ![[Pasted image 20240614222026.png]]
 #### Monotonic-Read Consistency 
+**Definition:** If a process reads the value of a data item x, any successive read operation on **x** by that process will always return that **same or a more recent value**.
+
+**Intuition**: Client “**sees**” only same or newer version of data.
+![[Pasted image 20240614223234.png]]
+- **Monotonic Reads**:
+    - Ensures a consistent and non-decreasing sequence of reads for a process.
+    - If a process reads a newer value, it will never read an older value afterward.
+- **No Monotonic Reads**:
+    - No such guarantees. A process can read older values even after having read newer values.
+    - This can lead to inconsistencies in the view of the data for the process.
+##### Examples
+1. Automatically reading your personal calendar updates from different servers.
+	- Monotonic Reads guarantees that the user sees all updates, no matter from which server the automatic reading takes place.
+2. Reading (not modifying) incoming e-mail while you are on the move.
+	- Each time you connect to a different e-mail server, that server fetches (at least) all the updates from the server you previously visited.
+3. DNS System
+	- Once you see the update of a DNS entry, you never see the old one.
+#### Monotonic-Write Consistency
+**Definition**: A write operation by a process on a data item x is completed before any successive write operation on x by the same process. In other words, once a process writes to a data item, it cannot write to that data item again until the first write has been completed and acknowledged.
+
+**Intuition**: Write happens on a copy only if it’s brought up to date with preceding write operations on same data (but possibly at different copies)
+![[Pasted image 20240614224108.png]]
+- **Monotonic Writes**: Ensures that a subsequent write on the same data item by the same process only happens after the previous write is completed. This maintains a consistent write order and avoids conflicts or inconsistencies.
+- **No Monotonic Writes**: Does not guarantee that the previous write is completed before initiating a new write. This can lead to inconsistencies or conflicts, as the newer write might overwrite or interfere with the previous one before it’s completed.
+
+**Examples**
+- Software version control: always update before committing changes.
+#### Read-Your-Writes Consistency
+**Definition**: The effect of a write operation by a process on data item x, will always be seen by a successive read operation on x by the same process. 
+
+**Intuition**: All previous writes are always completed before any successive read
+![[Pasted image 20240614224719.png]]
+
+**Examples**
+- Password databases 
+- Update of web page immediately pushes new version to caches
+#### Writes-Follow-Reads Consistency
+**Definition**: A write operation by a process on a data item x following a previous read operation on x by the same process, is guaranteed to take place on the same or a more recent value of x that was read. 
+
+**Intuition**: Any successive write operation on x will be performed on a copy of x that is same or more recent than the last read.
+![[Pasted image 20240614224823.png]]
+
+**Examples**
+- Comments on a web page, Forum…
+### Trade-offs in choosing a consistency model
+We can avoid system-wide consistency, by concentrating on what specific clients want, instead of what should be maintained by servers.
+1. Consistency and redundancy
+	- All copies must be strongly consistent 
+	- All copies must contain full state 
+	- Reduced consistency leads to reduced redundancy
+1. Consistency and performance
+	- Consistency induces extra computation and communication 
+	- Increased consistency leads to decreased performance
+1. Consistency and scalability
+	- Scalability depends on the implementation of a consistency model 
+		- Avoid centralized approaches 
+		- Avoid strong increase in communication
