@@ -171,6 +171,7 @@ There are many different frameworks for different languages and different use ca
 	- Cannot host a guest OS different from the host one*
 	- Weaker isolation and thus security
 ### Container checklist
+The "Container Checklist" refers to a set of considerations and configurations important for managing and deploying containers in distributed systems.
 - Processes 
 - Throttling/limits 
 - Prioritization 
