@@ -177,24 +177,32 @@ Apache Spark supports data analysis, machine learning, graphs, streaming data, e
 It can read/write from a **range of data types** and allows **development in multiple languages.**
 ![[Pasted image 20240418151243.png]]
 ### Resilient Distributed Datasets (RDDs)
-Immutable distributed collection of objects 
+Resilient Distributed Datasets (RDDs) are a fundamental concept in Apache Spark, designed to handle large-scale data processing in a distributed and fault-tolerant manner.
+
+Immutable distributed collection of objects.
+- Once created, RDDs cannot be modified. This immutability ensures consistency and makes it easier to reason about the data processing, as the original dataset remains unchanged.
+- RDDs are distributed across the nodes in a cluster, enabling parallel processing of data. This distribution allows Spark to handle very large datasets efficiently.
+- RDDs can contain objects of any type, including primitive data types, user-defined classes, and more complex data structures.
 
 All Spark components use RDDs 
 
 Use transformations to create new RDDs 
+	Transformations are operations that create a new RDD from an existing one. They are lazily evaluated, meaning they do not immediately compute their results but instead build up a lineage of transformations to be applied when an action is called.
 - From storage 
 - From other RDDs 
 
 Fault-tolerant
+- RDDs maintain information about how they were derived from other datasets (the lineage). This lineage information allows Spark to recompute lost partitions of the data in case of a node failure, ensuring fault tolerance.
+- Instead of replicating data, Spark uses the lineage information to recompute lost data from the original source or intermediate steps. This approach is more efficient in terms of storage and network usage compared to traditional data replication.
 ### DataFrames & SparkSQL
 Organize the data in named columns 
 Similar to a relational database… 
 - Immutable once constructed 
 - Enable distributed computations
 
-How to construct Dataframes 
+How to construct Dataframes:
 - Read from file(s) 
-- Transforming an existing DFs
+- Transforming existing DFs
 - Parallelizing a python collection list 
 - Apply transformations and actions
 ### RDDs vs. DataFrames
@@ -203,7 +211,7 @@ How to construct Dataframes
 - DataFrames are **cached and optimized by Spark** 
 - DataFrames are **built on top of the RDDs and the core Spark API**
 ### Directed Acyclic Graphs (DAG)
-DAGs track dependencies (also known as Lineage ) 
+DAGs track dependencies (also known as Lineage) 
 - nodes are RDDs 
 - arrows are Transformations
 
