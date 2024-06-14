@@ -88,6 +88,7 @@ Identifying business capabilities and hence services requires an understanding o
 
 The quote advocate for a DevOps culture where developers are accountable for the operational aspects of their software, leading to better quality, faster delivery, and a more collaborative environment. This approach shifts the mindset from treating software development as a series of isolated projects to managing it as a continuous product lifecycle.
 # [Reactive manifesto]( www.reactivemanifesto.org)
+The Reactive Manifesto outlines the principles of building responsive, resilient, elastic, and message-driven systems. It was created to address the challenges faced by traditional software architectures in the face of modern demands such as high concurrency, scalability, and resilience
 - Aims to condense knowledge on how to design highly scalable and reliable applications
 	- Set of required architecture traits
 	- Common vocabulary, technology-agnostic
@@ -98,6 +99,10 @@ The quote advocate for a DevOps culture where developers are accountable for the
 		- Today
 			- Deployed on everything from mobile devices to cloud-based clusters running thousands of multicore processors, response time: milliseconds. Petabytes of data.
 ![[Pasted image 20240401184935.png]]
+- **Responsiveness** is the cornerstone of usability. Systems should ensure low latency, quick responses, and maintain interactivity. This involves handling requests promptly and delivering timely feedback to users, which improves the overall user experience.
+- **Resilience** is achieved through replication, containment, isolation, and delegation. By isolating failures, the system can contain them and avoid cascading effects. Components can fail and recover without affecting the overall system’s responsiveness.
+- **Elasticity** involves the ability to scale up or down based on the current load. Systems can dynamically adjust resources to handle changes in traffic or data volume, ensuring consistent performance and responsiveness regardless of the load.
+- **Asynchronous communication** through messaging allows components to interact without being directly dependent on each other. This approach decouples system components, leading to more manageable, scalable, and resilient architectures. **Message-driven** systems often utilize techniques like event sourcing and CQRS (Command Query Responsibility Segregation).
 ## Architectural trait: message driven
 - Asynchronous message-passing between components
 	- Addressable recipients await the arrival of messages and react to them
