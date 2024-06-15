@@ -145,5 +145,76 @@ Voting set Vp = Ri $\cup$ Cj
 * N: number of processes
 * M: number of voting sets that each process belongs to
 * δ: cost of sending a message
-## Election Mechanisms
+## Election Mechanism's
 ### The Election Problem
+**Consider**
+-  N processes {$p_1, ... , p_N$}
+	- NO shared variables 
+	- Knowing each other (can communicate)
+- Select ONE process to play special role (e.g. coordinator) 
+- Every process pi should have same coordinator 
+- If elected process fails: do new election round
+![[Pasted image 20240615174540.png]]
+#### Some terms
+**Assumed environment**
+- Request election: a process “calls the election”
+	at most 1 election initiated per process
+	possibly N election running simultaneously
+- at any time, a process is either 
+	- participant: currently engaged in some election 
+	- non-participant: currently not engaged in any election
+![[Pasted image 20240615174816.png]]
+#### Good elections
+**Correctness**
+1. Safety (REQUIRED) 
+	each participant process pi has: 
+		electedi = ? OR electedi = P 
+		(P is elected process, non-crashed with largest ID)
+2. Liveness (REQUIRED)
+	all processes pi participate 
+	eventually set electedi ≠ ? or crash
+**Ecaluation metrics**
+- Bandwidth
+	\# messages needed to do election process
+- Turnaround time
+	time needed for election round
+#### Ring algorithm: Chang – Roberts
+- processes organized in ring
+- non-identical IDs (how to make IDs unique?)
+- processes know how to communicate
+![[Pasted image 20240615175312.png]]
+##### Algorithm
+**Each process p**
+**Initialization**
+	$participant_i$= FALSE for all i
+
+**Start election process pi**
+	$participant_i$ = TRUE
+	send messages Election(i, $ID_i$)
+
+**Receipt of Elected(i)-message at pj**
+```
+if (i != j) {
+	participantj = FALSE 
+	elected_j = i 
+	forward Elected(i)
+}
+```
+**Receipt of Election(i,ID)-message at pj** 
+```
+if(ID>ID_j) { 
+	forward Election(i,ID) 
+	participant_j = TRUE 
+} 
+if ((ID <= ID_j) and (i != j)) { 
+	if(participant_j == FALSE) { 
+		send Election(j,ID_j) 
+		participant_j=TRUE 
+	} 
+} 
+if (i == j) { 
+	participant_j=FALSE 
+	elected_j = j 
+	send Elected(j) 
+}
+```
