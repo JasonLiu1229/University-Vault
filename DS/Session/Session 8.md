@@ -95,4 +95,63 @@ We will cover two mechanism that will help fix these problems.
 - Server -> Client : **Grant** 
 - Client -> Server : **Leave**
 ##### Algorithm
-**![[Pasted image 20240615132755.png]]**
+![[Pasted image 20240615132759.png]]
+**Token variable**
+	== process ID currently active 
+	== -1 if critical section not taken
+**Message queue Q**
+	Stores pending requests
+![[Pasted image 20240615132913.png]]
+
+**Client side**
+1. enter() 
+	send Request message to server 
+	wait until Grant received
+2. accessResource() 
+	perform any application specific logic
+3. leave() 
+	send Leave message to server
+
+**Server side**
+When receiving request:
+```
+if (token == -1) { 
+	send Grant to requesting process token=sender(Request) 
+} 
+else {
+	enqueue Request in Q
+}
+```
+When receiving leave:
+```
+1. Dequeue oldest message m from Q
+2. Token = sender(m)
+3. send Grant to sender(m)
+```
+##### Algorithm OK ?
+1. Safety ✅
+	Guarded by tokens 
+2. Liveness ✅
+	1. Request to enter
+		- All processes eventually leave
+		- Each leave dequeues a message from Q
+		- If oldest request dequeued
+		- => every request eventually handled 
+	2. Request to leave
+		- No permission needed from server
+3. Fairness ✅
+	Order Q according to "happened-before"
+		They ordered based on their arrival times, ensuring they are processed based on when they are made.
+##### Algorithm efficient?
+1. **Bandwidth usage**
+	![[Pasted image 20240615133921.png]]
+	During every enter, two messages are needed. During every leave, only one message of the client is needed.
+	So, there is not much bandwidth needed.
+2. **Client delay (unloaded system)**
+	δ=time needed for 1 communication 
+	RTT = 2δ
+	![[Pasted image 20240615134055.png]]
+	It takes 1 delta for each request and one delta for each grant, so two deltas each enter. For the leave, it does not block any other request, so this will not take any delta time. 
+3. **Synchronization delay (loaded system)**
+	![[Pasted image 20240615134509.png]]
+	First 
