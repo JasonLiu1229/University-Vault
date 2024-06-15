@@ -311,6 +311,8 @@ if (no elections initiated by p_i) {
 		- Duplicate coordinator messages 
 			=> One from the replacing process
 			=> One from the largest-but-one ID
-2. **Liveness**
+2. **Liveness** ✅
 	Messages delivered reliably (no communication faults) either
-	- answer from L • process is coordinator itself • in any case coordinator identified !
+	- answer from L 
+	- process is coordinator itself 
+	- in any case coordinator identified!
