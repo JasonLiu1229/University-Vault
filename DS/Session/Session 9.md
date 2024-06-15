@@ -218,3 +218,99 @@ if (i == j) {
 	send Elected(j) 
 }
 ```
+###### Example
+![[Pasted image 20240615180013.png]]
+##### Algorithm OK?
+1. **Safety** ✅
+	Elected message only sent if Election-message with own ID received
+	Suppose p and q both elected
+	=> 
+		p received Elected(p) 
+		q received Elected(q)
+	BUT ID’s are unique
+		(IDp<IDq) => q will NOT forward Elected(p,IDp)
+		(IDp>IDq) => p will NOT forward Elected(q,IDq) 
+	=> impossible for BOTH messages to visit complete ring 
+	=> impossible p **AND** q to be elected at the same time
+2. **Liveness** ✅
+	No failures 
+	=> messages allowed to circulate 
+	=> circulation stops (through participant state variable)
+##### Algorithm efficient?
+3 phases 
+1. ID in Election message grows 
+2. do complete round with constant ID 
+3. let the Elected message circulate 
+
+**Worst case : process with max ID is last process visited**
+1. N messages
+2. (N-1) messages
+3. N messages
+	![[Pasted image 20240615181113.png]]
+
+**Best case : process with max ID is process calling election**
+1. 1 message 
+2. (N-1) messages 
+3. N messages
+![[Pasted image 20240615181208.png]]
+![[Pasted image 20240615181222.png]]
+#### Bully algorithm (Garcia – Molina)
+**Context** 
+- Failure mode: process crashes dealt with 
+- System model: Synchronous system (uses time-outs to detect failure) 
+- A-priori knowledge: process knows all processes with larger ID
+
+**Philosophy**
+- Election starts when current coordinator fails 
+- Failure discovery : 
+	- by timeouts 
+	- election possibly by several processes 
+- Each process has
+	- set L of candidate coordinators (set of processes with larger ID) 
+	- set S of other processes (smaller IDs) 
+- Upper bound for answering : T
+##### Communication
+**Messages involved**
+- **election** announce election round 
+- **answer** reply to election message 
+- **coordinator** announce ID of elected coordinator
+![[Pasted image 20240615181707.png]]
+##### Algorithm
+**Call the election process pi**
+```
+if {L == ∅} { 
+	elected=i 
+	send coordinator(i) to S 
+} else { 
+	send election(i) to all processes in L 
+	if (no answer-message in period T) { 
+		elected=i
+		send coordinator(i) to S 
+	} else { 
+		if (no coordinator-message in T’) { 
+			call election again
+		} 
+	} 
+}
+```
+**Receipt coordinator(j) at pi**
+	elected_i = j
+**Receipt coordinator(j) at pi electedi = j Receipt of election(j)-message at pi**
+```
+if (no elections initiated by p_i) { 
+	send answer-message to p_j 
+	p_i calls election 
+}
+```
+###### Example
+![[Pasted image 20240615182510.png]]
+##### Algorithm OK?
+1. **Safety**
+	- Ok, if no process replacement ✅
+	- If process replacement occurs & new process has the highest ID ❌
+		- Duplicate coordinator messages 
+			=> One from the replacing process
+			=> One from the largest-but-one ID
+2. **Liveness**
+	Messages delivered reliably (no communication faults) either
+	- answer from L • process is coordinator itself • in any case coordinator identified !
