@@ -56,4 +56,43 @@ We will cover two mechanism that will help fix these problems.
 
 ![[Pasted image 20240615125651.png]]
 #### A good solution should ...
-1. 
+1. Be safe, **REQUIRED**
+	- At most ONE process may execute in critical section at any time
+2. Ensure liveness, **REQUIRED** 
+	- Requests to enter/leave critical sections eventually succeed 
+	- Deadlock-free algorithm 
+	- No starvation
+3. Be fair, **Bones** 
+	- Access to critical section is granted using “happened-before” relation. Thus, use logical clock to order access requests.
+#### Critical section access API
+**Application level primitives**
+- **enter()**: enter critical section, block if necessary 
+- **resourceAccess()**: access the shared resource (in critical section) 
+- **exit()**: leave critical section – make free for other processes
+![[Pasted image 20240615130106.png]]
+### How to quantify solution quality?
+**Evaluation metrics**
+1. **Bandwidth consumption**
+	= number of messages sent to enter/leave critical section
+2. **Client delay**
+	- Time needed to enter/leave critical section 
+	- Measured in UNLOADED system 
+	- One-way network delay
+3. **System throughput**
+	- How many processes can access critical section in given time period? 
+	- depends on resourceAccess() time
+	- **derived measure**: synchronization delay = average (time process (i+1) enters – time process (i) leaves) 
+	- LOADED system
+![[Pasted image 20240615130511.png]]
+### How would you build such a system?
+#### Central server
+**Centralized algorithms (one server)**
+- Easy 
+- But typically poor scaling
+![[Pasted image 20240615132707.png]]
+**Messages**
+- Client -> Server : **Request** 
+- Server -> Client : **Grant** 
+- Client -> Server : **Leave**
+##### Algorithm
+**![[Pasted image 20240615132755.png]]**
