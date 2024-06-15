@@ -227,3 +227,73 @@ A Lamport clock is a logical clock algorithm used in distributed systems to orde
     - **Send Message**: When a process sends a message, it increments its logical clock by 1 and attaches this clock value to the message.
     - **Receive Message**: When a process receives a message, it sets its logical clock to be the maximum of its current clock value and the clock value in the received message, then increments by 1.
 #### Ricart-Agrawala algorithm
+**Messages**
+- Request(pi,Ti)
+- Reply
+
+**Each process pi**
+- Initialization
+	state = Released
+- enter()
+	state = Wanted 
+	multicast Request(pi,Ti) to all processes 
+	store T=Ti of Request message 
+	wait until (N-1) Reply messages received 
+	state = Held
+- leave()
+	 state = Released 
+	 send Reply to all pending Requests in Q
+
+**When receiving Request(pj, Tj) at pI (i != j)**
+```
+if ((state == Held) or ((state==Wanted) and (T,pi)<(Tj,pj))) { 
+	enqueue Request in Q 
+	// do NOT reply 
+} else {
+	send Reply to p
+}
+```
+##### Examples
+1.  Process p requests entry, all others in RELEASED-state
+	- all (N-1) other processes reply immediately 
+	- p can enter CS
+2. Process p requests entry, one process q in HELD-state, all others in RELEASED-state
+	- (N-2) other processes reply immediately 
+	- p waits until q has left CS 
+	- p can enter CS
+	![[Pasted image 20240615143647.png]]
+3. Processes p1 and p2 request entry, p3 not
+	![[Pasted image 20240615143724.png]]
+	Because p2 requested before p1, it will enter the critical section before p1 does.
+##### Algorithm OK ?
+1. **Safety: a proof** ✅
+	Suppose p and q simultaneously executing critical section
+	- both p and q received (N-1) Reply-messages
+	- p sent Reply to q AND q sent Reply to p
+	- condition (state(i) == Held) or ((state(i) == Wanted) and (Ti, pi) < (Tj, pj))
+		Does not hold for 
+			a. (pj = q), (pi = p)
+			b. And (pj=p),(pi=q) 
+	
+	Some logic for (a)
+	- => !\[(state(p) == Held) or ((state(p) == Wanted) and (Tp,p)<(Tq,q))]
+	- => (state(p)!=Held) AND \[(state(p)!=Wanted) or (Tq,q)<(Tp,p)]
+	- => \[ (state(p) != Held) and (state(p)!=Wanted)] or \[(state(p) != Held) and (Tq,q)<(Tp,p)]
+	- => (state(p) == Released) or \[(state(p) != Held) and (Tq,q)<(Tp,p)] 
+	- => p can NOT be in state Released (because now in CS) 
+	- => \[(state(p) != Held) and (Tq,q)<(Tp,p)]
+	  
+	Same logic for (b)
+	  
+	=> p and q can NOT be executing simultaneously in critical section
+2. Liveness ✅
+	Every Request eventually granted 
+	- immediately 
+	- after dequeueing from Q
+	
+	=> every process will eventually receive (N-1) answers
+3. Fairness ✅
+	Requests replied in happened-before order
+##### Algorithm efficient?
+1. Bandwidth
+	![[Pasted image 20240615145105.png]]
