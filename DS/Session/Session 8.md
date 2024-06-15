@@ -43,3 +43,17 @@ We will cover two mechanism that will help fix these problems.
 - No support from common coordinating OS kernel 
 - Only rely on message passing
 ### Problem statement
+**Consider**
+- N processes {$p_1, ... , p_N$}, NO shared variables 
+- Access common resources in a critical section 
+- Asynchronous system 
+- Processes CAN communicate (know each other)
+
+**Failure modes** 
+- Reliable channel (each message delivered, exactly once) 
+- No process failures 
+- Processes are well-behaved (leave critical section eventually)
+
+![[Pasted image 20240615125651.png]]
+#### A good solution should ...
+1. 
