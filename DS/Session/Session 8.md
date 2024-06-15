@@ -296,4 +296,18 @@ if ((state == Held) or ((state==Wanted) and (T,pi)<(Tj,pj))) {
 	Requests replied in happened-before order
 ##### Algorithm efficient?
 1. Bandwidth
-	![[Pasted image 20240615145105.png]]
+	![[Pasted image 20240615145105.png]]\
+2. Client delay
+	![[Pasted image 20240615150947.png]]
+3. Synchronization delay (loaded system)
+	![[Pasted image 20240615151147.png]]
+### Summary on efficiency
+| Algorithm            | Bandwidth enter() | Bandwidth leave() | Client delay enter() | Client delay leave() | Synchronization delay  |
+|----------------------|-------------------|-------------------|----------------------|----------------------|------------------------|
+| Central server       | 2M                | 1M                | 2δ                   | 0.5δ                 | 2δ                     |
+| Ring algorithm       | constant          | (N+1)/2           | Nδ/2                 | 0                    | (N+1)δ/2               |
+| Ricart-Agrawala      | (2N-1)M           | 0M                | 2δ                   | 0.5δ                 | 1δ                     |
+
+* N: number of processes
+* M: number of voting sets that each process belongs to
+* δ: cost of sending a message
