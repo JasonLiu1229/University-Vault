@@ -154,4 +154,76 @@ When receiving leave:
 	It takes 1 delta for each request and one delta for each grant, so two deltas each enter. For the leave, it does not block any other request, so this will not take any delta time. 
 3. **Synchronization delay (loaded system)**
 	![[Pasted image 20240615134509.png]]
-	First 
+	First p1 starts a request and enters the critical section (CS), when it leaves it sends a message to the server and the server has to grant the up following requests that might have entered when p1 was in the CS. P2 requested a request when p1 was in the CS, so we will grant the request after p1 leaves.
+	
+	The time it took for p1 to leave and p2 to start (so granting from server) is 2 deltas, and could be considered long.
+#### Ring-based algorithm
+- Processes {p0, ..., pN-1} arranged in logical ring 
+- Process pi has one unidirectional communication channel to p(i+1) 
+- Token = message passed along ring
+	![[Pasted image 20240615140156.png]]
+So token gets passed around for every interval t. When a process wants to enter the CS, it needs to wait until the token is passed to him.
+	![[Pasted image 20240615140348.png]]
+##### Algorithm Ok?
+**Each process p**
+When process p receives "Token":
+```
+if (p wants access) { 
+	execute logic in critical section leave() 
+} else { 
+	send(Token) to next process
+}
+```
+1. **Safety** ✅
+	- Process can only send Token if it has received Token
+2. **Liveness** ✅
+	- Process eventually leave 
+		=> Token circulates in the ring (p not allowed new access !) 
+		=> No starvation
+1. **Fairness** ❌
+	- Not guaranteed : processes need luck for early access 
+	- Access order not based on “happened-before” of requests
+##### Algorithm efficient?
+1. **Bandwidth**
+	![[Pasted image 20240615140850.png]]
+	**Worst case:**
+		The worst case would be when the process would request access right after his turn ended. This leads to N messages it needs to wait before it can access the CS.
+	**Best case:**
+		The best case would be that we ask permission right before we get access, this results in 1 message.
+	**Average:**
+		By average we have then (N+1)/2
+2. Client delay (unloaded system)
+	![[Pasted image 20240615140933.png]]
+	Same analogy can be used here. For the best case, we get it at the same time when we ask it for so zero delta instead of one.
+3. Synchronization delay (loaded system)
+	![[Pasted image 20240615141442.png]]
+	Synchronization delay could be rather long because we need to wait for N delta before we get the token at the worst case scenario. While best case scenario it takes one delta before it enters the CS. 
+	
+	So by average we say (N+1)$\delta$/2
+### Multicast: Ricart-Agrawala algorithm
+**Philosophy** 
+- Use multicast to reduce bandwidth 
+- Use logical clock (Lamport clock) to realize fairness 
+- Basic mechanism to enter CS: multicast request and enter if all others agree
+
+**Each process pi** 
+- Has state variable 
+	- Released : outside critical section 
+	- Wanted : wants to enter 
+	- Held : inside critical section 
+- Lamport clock T 
+- Queue Q to store pending Requests
+![[Pasted image 20240615142005.png]]
+**Organization of Q?**
+- Lamport-clock based happened-before 
+- Total ordering implemented to ensure consistency
+<p1,T1> < <p2,T2> ⬄ (T1<T2) or ((T1 == T2) and (p1 < p2))
+#### Lamport clock
+A Lamport clock is a logical clock algorithm used in distributed systems to order events in a system where no global clock exists. It was introduced by Leslie Lamport in 1978. The purpose of a Lamport clock is to provide a partial ordering of events in a distributed system, ensuring that the causality of events is respected.
+
+- **Initialization**: Each process initializes its logical clock to 0.
+- **Event Handling**:
+    - **Internal Event**: When a process performs an internal event, it increments its logical clock by 1.
+    - **Send Message**: When a process sends a message, it increments its logical clock by 1 and attaches this clock value to the message.
+    - **Receive Message**: When a process receives a message, it sets its logical clock to be the maximum of its current clock value and the clock value in the received message, then increments by 1.
+#### Ricart-Agrawala algorithm
