@@ -12,7 +12,6 @@ There were many algorithms that could be applied to have good storage, but these
 ## Moore's law
 It states how our hardware needs to grow over the years.
 ![[Pasted image 20240418140233.png]]
-
 Till 2005 we wanted faster execution of the programs, but after a while this was not possible anymore because of physical limits. Afterwards parallel execution was the main priority.
 
 **Why?**
