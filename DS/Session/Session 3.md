@@ -159,7 +159,7 @@ PaaS provides a platform that allows developers to build, deploy, and manage app
 
 ![[Pasted image 20240303145932.png]]
 #### IaaS
-Infrastructure as a Service **provisions hardware, software and equipment to deliver software application environments** with a resource usage-based pricing model. The resulting infrastructure can scale up and down dynamically based on application resource needs.
+Infrastructure as a Service **provisions hardware, software and equipment to deliver software application environments** with a resource usage-based pricing model. The resulting infrastructure can scale dynamically based on application resource needs.
 
 IaaS offers virtualized computing resources over the internet. It provides fundamental IT resources such as virtual machines, storage, and networks, allowing users to rent these resources on a pay-as-you-go basis. This model gives users high flexibility and control over the infrastructure. Examples include Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
 
@@ -192,10 +192,10 @@ SaaS can be built on top of PaaS, which can be built on top of IaaS.
 2. Reserved usage:
 	- Up-front payment & reservation
 	- Lower rates
-1. Bidding:
+3. Bidding:
 	- You define a maximum instance price
 	- Price varies on the load of the cloud
-1. Actual usage:
+4. Actual usage:
 	- Mostly in PaaS models
 ## Wrap-up
 **Quick run-down of decades of distributed computing history**
