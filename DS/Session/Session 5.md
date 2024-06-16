@@ -135,7 +135,7 @@ As far as users know, when the response time exceeds their expectation, the syst
 - Provide fallback services
 	- E.g. Netflix graceful degradation
 		- If recommendation service is down, revert to most popular movies instead of personalized picks
-## Resilient to failure: Netflix’s Simian Army
+### Resilient to failure: Netflix’s Simian Army
 - Chaos Monkey
 	- Introducing random failures in their production AWS services
 	- Team of engineers ready to intervene
