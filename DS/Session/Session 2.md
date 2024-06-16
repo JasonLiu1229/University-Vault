@@ -2,9 +2,13 @@
 ![[Pasted image 20240225144948.png]]
 **Middleware the plumbing of distributed systems:**
 1. It is mostly invisible
+	- **Middleware operates behind the scenes**. Users and even developers often do not directly interact with it. Instead, it functions transparently, handling the complex tasks necessary for different components of a distributed system to communicate and work together seamlessly.
 2. Provides a standard way of doing things
+	- **Middleware offers standardized interfaces and protocols**, which allow different applications and services to interact without needing to understand the underlying complexities of each other's implementations. This standardization simplifies development and integration across diverse systems.
 3. It ties parts together of complex systems
+	- Middleware **connects various parts of a distributed system**, ensuring that data and processes can flow smoothly between them. It handles communication, data exchange, and sometimes even transactions and security, effectively tying together the different parts of a distributed architecture.
 4. It lets u focus on the core task
+	- By **offloading the complexities of communication, data management, and other middleware functions**, developers can **concentrate on building the core functionalities** of their applications. Middleware handles the underlying infrastructure, allowing for more straightforward and efficient development of distributed applications.
 ### Search in chord
 ![[Pasted image 20240225150053.png]]
 Instead of broadcasting to everyone and asking where is file ...? We make use of a hash table and ask the entity with hash ... where the file is. In case the file is not in the first device, the device will redirect us to another, and this will repeat until the file is found. 

@@ -38,6 +38,7 @@ There can also be multiple invocation in series.
 	- Distributing redundant components minimizes the probability faults impact the user
 - Integration
 	- For organizations to interact, their systems need to interact Highly specialized infrastructures need to be integrated and shared (e.g. radio telescopes, mass storage facilities, experimental facilities)
+		- Overall, integration in distributed systems allows for a more connected and cooperative environment where resources and capabilities can be shared across different systems and organizations, leading to improved efficiency and effectiveness in achieving common goals.
 - Distribution
 	- E-mail, WWW, … are inherently distributed as users are geographically spread
 ### Many problems and challenges
@@ -95,6 +96,15 @@ Processes (nodes) organized in an overlay network (virtual network)
 - Each node fulfills **both** a **client** and a **server** role (**servant**)
 - Nodes and data item keys are assigned **Globally Unique Identifiers** (GUIDs)
 - Nodes have no or limited direct knowledge on other nodes
+	- Nodes typically have limited or no direct knowledge about the entire network. Instead, they know about a subset of nodes, which helps in scaling the network without overwhelming any single node.
 - Application-level message routing
+	- Messages and data requests are routed at the application level, meaning nodes handle the routing decisions themselves rather than relying on lower network layers.
 - Nodes are **volatile**
+	- Nodes in P2P networks are volatile, meaning they can join or leave the network at any time.
 - Structured or unstructured
+	- **Structured P2P Networks**: Use predefined rules to organize the nodes and manage data (e.g., Chord, CAN).
+	- **Unstructured P2P Networks**: Nodes randomly connect to each other without a predefined structure (e.g., Gnutella, BitTorrent).
+
+\+ **Scalability**: Can handle many nodes efficiently due to its decentralized nature.
+\+ **Fault Tolerance**: The absence of a central point of failure makes the network resilient to individual node failures.
+\+ **Resource Sharing**: Efficiently utilizes the resources of all nodes, distributing the load evenly.
