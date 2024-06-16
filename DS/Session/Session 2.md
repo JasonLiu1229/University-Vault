@@ -67,7 +67,7 @@ Where our applications are distributed over systems.
 ###### Remote objects 
 - Objects that can receive remote invocations. 
 ###### Remote object reference 
-- An identifier that can be used globally throughout a distributed system to refer to a particular unique remote object. 
+- An identifier that can be used globally throughout a distributed system to refer to a particular, unique remote object. 
 ###### Remote interface 
 - Every remote object has a remote interface that specifies which of its methods can be invoked remotely 
 - Interface Definition Language
@@ -92,7 +92,7 @@ Remote invocation
 - Limited access, remote interface
 - Invocation: ???
 
-The amount of invocations is determined by the situation, in case there is a failure during the invocation, could lead to multiple or less invocations than intended.
+The amount of invocations is determined by the situation, in case there is a failure during the invocation, could lead to multiple or fewer invocations than intended.
 ### Failure Modes of RMI/RPC
 ![[Pasted image 20240225162814.png]]
 Some example of what could go wrong during remote method invocations or remote procedure call. 
