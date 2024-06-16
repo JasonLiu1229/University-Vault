@@ -74,7 +74,7 @@ But it is important that we have good "glue", otherwise it has no point that our
 - A service exposes its capability **via an interface**
 - Compared against an application-centric design perspective
 	- Monolithic application silos
-	- Duplication of functionality
+		- Duplication of functionality, because each application is developed separately duplication of functionality is likely thing to happen.
 #### Definition
 “A **paradigm** for **organizing** and **utilizing distributed capabilities** that may be under the control of different ownership domains. It provides a uniform means to offer, discover, interact with and use capabilities to produce desired effects consistent with measurable preconditions and expectations.”
 ## Technical aspects
