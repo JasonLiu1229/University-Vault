@@ -59,7 +59,6 @@ Now the Namenode will let the other data nodes know that a data node died, now i
 ### MapReduce
 Model for distributed processing.
 ![[Pasted image 20240614131601.png]]
-
 Mantra:
 	Move the computation to the data
 In practice this means running the processing on a machine whose HDFS Datanode holds the data.
