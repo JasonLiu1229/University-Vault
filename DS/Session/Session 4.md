@@ -226,7 +226,7 @@ Soap has many extensions, all with particular use cases.
 	- Some services or operations may not fit neatly into the standard REST verbs (GET, POST, PUT, DELETE). This can make designing a RESTful API challenging for certain types of operations, especially those requiring complex transactions or stateful interactions.
 - Looser in terms of defining the exposed service API and its semantics 
 	- REST does not enforce strict standards for defining APIs. This flexibility can lead to inconsistencies and ambiguities in how APIs are designed and used, potentially causing integration challenges.
-- Does not cover all Webservices standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
+- Does not cover all Web Services (WS) standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
 ## When to use SOAP / REST?
 SOAP’s popularity is clearly decreasing 
 General rule of thumb: “Unless you have a definitive reason to use SOAP use REST”

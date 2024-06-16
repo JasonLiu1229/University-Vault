@@ -31,6 +31,7 @@ A way of designing software applications as suites of **independently deployable
 - Approach to developing a single application as a suite of small services
 	- Each running in its own process
 	- Communicating with lightweight mechanisms (e.g. REST or message queues)
+
 **Micro-Services**
 - Built around business capabilities
 - Independently deployable by fully automated deployment machinery
