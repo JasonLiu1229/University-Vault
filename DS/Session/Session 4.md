@@ -105,16 +105,16 @@ According to CRUD: all major functions that are implemented in databases
 ## REST architectural constraints
 1. **Interface uniformity between components**
 	They need to speak the same language and know what to expect in order to understand each other.
-	- This principle ensures that all components in the system communicate in a consistent manner. By having a uniform interface, components can interact without needing to understand the internal details of each other. This uniformity simplifies the architecture and increases the visibility of interactions within the system.
-1. **Client-server model (separation of concerns)**
+	- This principle ensures that all components in the system communicate consistently. By having a uniform interface, components can interact without needing to understand the internal details of each other. This uniformity simplifies the architecture and increases the visibility of interactions within the system.
+2. **Client-server model (separation of concerns)**
 	Client and server are fully decoupled and can be developed independently.
 	- The client-server model separates the user interface concerns (client) from data storage concerns (server). This separation allows for the independent development, operation, and scaling of client and server components.
-1. **Stateless client-server communication**
+3. **Stateless client-server communication**
 	Each request from client to server must contain all the information necessary to understand the request, and cannot take advantage of any stored session state on the server.
-1. **Caching**
+4. **Caching**
 	Clients can cache responses to requests, improving scalability and performance. The fact that **responses** are **not cache-able** should be implicitly or explicitly defined.
 	- Responses must be explicitly defined as cacheable or non-cacheable to prevent clients from storing and reusing stale or inappropriate data. Caching can improve the efficiency and scalability of a system.
-1. **Layering**
+5. **Layering**
 	A client cannot tell if it is directly connected to a server or to some intermediary (proxy, cache, tunnel, firewalls, …). **This allows for load-balancing, fail-over and data transformation.**
 6. **Code-on-demand (optional)**
 	Client functionality can be dynamically extended through the transfer of executable code (e.g. JavaScript)
@@ -177,7 +177,7 @@ It was the de facto standard in human-readable text back then
 	- … 
 - WSDL descriptions can be automatically generated from existing code 
 - Stub classes can be generated from WSDL descriptions
-	- Stub classes can be generated from WSDL descriptions. A stub class acts as a client-side proxy for the web service, allowing the client application to interact with the web service as if it were a local object. Tools can automatically generate these classes based on the WSDL file, simplifying the process of integrating web services into client applications.
+	- A stub class acts as a client-side proxy for the web service, allowing the client application to interact with the web service as if it were a local object. Tools can automatically generate these classes based on the WSDL file, simplifying the process of integrating web services into client applications.
 ## SOAP Processing Model
 ![[Pasted image 20240326204157.png]]
 **A SOAP app is made of communicating nodes**
@@ -190,7 +190,7 @@ It was the de facto standard in human-readable text back then
 **SOAP messages may target nodes in specific roles**
 - For example, to allow for load balancing
 ## SOAP Extensibility Model
-SOAP Extensibility Model Suppose you want to add credentials to a SOAP message: two options Option 
+SOAP Extensibility Model, suppose you want to add credentials to a SOAP message: two options
 1. Add it in the SOAP body
 	- Credentials need to be encoded in every parameter
 2. Use the optional SOAP header
@@ -226,7 +226,7 @@ Soap has many extensions, all with particular use cases.
 	- Some services or operations may not fit neatly into the standard REST verbs (GET, POST, PUT, DELETE). This can make designing a RESTful API challenging for certain types of operations, especially those requiring complex transactions or stateful interactions.
 - Looser in terms of defining the exposed service API and its semantics 
 	- REST does not enforce strict standards for defining APIs. This flexibility can lead to inconsistencies and ambiguities in how APIs are designed and used, potentially causing integration challenges.
-- Does not cover all WS standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
+- Does not cover all Webservices standards (security, transactions, addressing, coordination, policy, reliable messaging, ...)
 ## When to use SOAP / REST?
 SOAP’s popularity is clearly decreasing 
 General rule of thumb: “Unless you have a definitive reason to use SOAP use REST”
