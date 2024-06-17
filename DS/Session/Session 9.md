@@ -173,7 +173,7 @@ Voting set Vp = Ri $\cup$ Cj
 2. Liveness (REQUIRED)
 	all processes pi participate 
 	eventually set electedi ≠ ? or crash
-**Ecaluation metrics**
+**Evaluation metrics**
 - Bandwidth
 	\# messages needed to do election process
 - Turnaround time
@@ -200,7 +200,8 @@ if (i != j) {
 	forward Elected(i)
 }
 ```
-**Receipt of Election(i,ID)-message at pj** 
+
+**Receipt of Election(i, ID)-message at pj** 
 ```
 if(ID>ID_j) { 
 	forward Election(i,ID) 
