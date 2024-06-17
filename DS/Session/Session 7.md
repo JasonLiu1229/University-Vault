@@ -134,7 +134,7 @@ Pipelined Random Access Memory consistency
 - **acquire(S)**: bring local state up to date (local updates can be propagated later) 
 - **release(S)**: propagate local updates (remote updates can be propagated later) 
 - **Properties** 
-	1. release cannot be performed until previous **reads and writes** done by the process have **completed**. 
+	1. Release cannot be performed until previous **reads and writes** done by the process have **completed**. 
 	2. Read or write operations cannot be performed **until all previous acquire operations** done by the process have performed.
 	3. The order of synchronization operations is **FIFO consistent**.
 **Lazy Release Consistency**
