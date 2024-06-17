@@ -242,10 +242,10 @@ We can avoid system-wide consistency, by concentrating on what specific clients 
 	- All copies must be strongly consistent 
 	- All copies must contain full state 
 	- Reduced consistency leads to reduced redundancy
-1. Consistency and performance
+2. Consistency and performance
 	- Consistency induces extra computation and communication 
 	- Increased consistency leads to decreased performance
-1. Consistency and scalability
+3. Consistency and scalability
 	- Scalability depends on the implementation of a consistency model 
 		- Avoid centralized approaches 
 		- Avoid strong increase in communication
