@@ -294,9 +294,13 @@ if {L == ∅} {
 	} 
 }
 ```
+
 **Receipt coordinator(j) at pi**
-	elected_i = j
-**Receipt coordinator(j) at pi electedi = j Receipt of election(j)-message at pi**
+```
+elected_i = j
+```
+
+**Receipt of election(j)-message at pi**
 ```
 if (no elections initiated by p_i) { 
 	send answer-message to p_j 
