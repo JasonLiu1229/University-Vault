@@ -220,7 +220,6 @@ if (p wants access) {
 <p1,T1> < <p2,T2> ⬄ (T1<T2) or ((T1 == T2) and (p1 < p2))
 #### Lamport clock
 A Lamport clock is a logical clock algorithm used in distributed systems to order events in a system where no global clock exists. It was introduced by Leslie Lamport in 1978. The purpose of a Lamport clock is to provide a partial ordering of events in a distributed system, ensuring that the causality of events is respected.
-
 - **Initialization**: Each process initializes its logical clock to 0.
 - **Event Handling**:
     - **Internal Event**: When a process performs an internal event, it increments its logical clock by 1.
@@ -244,7 +243,7 @@ A Lamport clock is a logical clock algorithm used in distributed systems to orde
 	 state = Released 
 	 send Reply to all pending Requests in Q
 
-**When receiving Request(pj, Tj) at pI (i != j)**
+**When receiving Request(pj, Tj) at pi (i != j)**
 ```
 if ((state == Held) or ((state==Wanted) and (T,pi)<(Tj,pj))) { 
 	enqueue Request in Q 
@@ -273,7 +272,7 @@ if ((state == Held) or ((state==Wanted) and (T,pi)<(Tj,pj))) {
 	- condition (state(i) == Held) or ((state(i) == Wanted) and (Ti, pi) < (Tj, pj))
 		Does not hold for 
 			a. (pj = q), (pi = p)
-			b. And (pj=p),(pi=q) 
+			b. And (pj=p), (pi=q) 
 	
 	Some logic for (a)
 	- => !\[(state(p) == Held) or ((state(p) == Wanted) and (Tp,p)<(Tq,q))]

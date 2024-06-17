@@ -18,7 +18,7 @@
 
 **Basic idea**
 - process $q \in (V_i \cup V_j)$ 
-- —> q makes sure $p_i$ and $p_j$are not simultaneously executing critical section 
+- —> q makes sure $p_i$ and $p_j$ are not simultaneously executing critical section 
 - —> safety condition met 
 - q only votes for one process 
 - Additional state needed per process: **voted**
