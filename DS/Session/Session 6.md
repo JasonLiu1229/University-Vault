@@ -222,7 +222,7 @@ DAGs track dependencies (also known as Lineage)
 ![[Pasted image 20240418152351.png]]
 Narrow: required elements for computation in a single partition live in the single partition of parent RDD
 
-Wide: required elements for computation in a single partition may live in many partitions of parent RD
+Wide: required elements for computation in a single partition may live in many partitions of parent RDD
 #### Spark workflow
 ![[Pasted image 20240418152422.png]]
 #### Main use cases
