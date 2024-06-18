@@ -73,14 +73,14 @@ Representational state transfer (REST) is a style of software architecture for d
 - REST is often linked with HTTP 
 - But REST on top of application layers is also possible
 
-**RESTful API:**
+## RESTful API:
 Web Service API that adheres to the REST style, meaning
 - It has a base URI, such as http://example.com/resources/ 
 - It has an Internet media type for the data. 
 - It uses standard HTTP methods 
 - It uses hypertext links to reference state 
 - It uses hypertext links to reference related resources
-## It has an Internet media type for the data
+### It has an Internet media type for the data
 This can be everything: XML, Atom, images, etc.
 
 Often used: JSON
@@ -94,7 +94,7 @@ Often used: JSON
 JSON has...
 - The ability to define a schema for validation 
 - Its own RPC system (web service)
-## It uses standard HTTP methods
+### It uses standard HTTP methods
 REST uses HTTP methods GET, PUT, POST and DELETE to modify / access resources
 
 According to CRUD: all major functions that are implemented in databases
@@ -234,7 +234,8 @@ General rule of thumb: “Unless you have a definitive reason to use SOAP use RE
 **Then, what’s a good reason to use SOAP?**
 SOAP exposes application logic as services 
 Need more formal ways of invoking services (e.g., WSDL) 
-Need stateful information If you need one of the WS-* extensions 
+Need stateful information 
+If you need one of the WS-* extensions 
 - Security 
 - Transactional logic 
 - Load balancing 

@@ -56,12 +56,15 @@ There can also be multiple invocation in series.
 	\+ reduced number of interfaces, dependencies
 	\+ easy replacement of a layer
 	\- possible duplication of functionality
+	\- extra complexity for communication between layers
 #### Object-based
 ![[Pasted image 20240218181709.png]]
 **Interacting objects**
 	no predefined interaction pattern
 	\+ highly flexible
 	\- complex to manage and maintain
+	\- performance overhead in some cases
+	\- extra complexity regarding inheritance 
 ### Decoupled architectures
 - Components are **loosely** linked with each other
 - Removing/adding a component is **easier** and can happen **frequently**
