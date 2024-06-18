@@ -164,7 +164,7 @@ When receiving leave:
 	![[Pasted image 20240615140156.png]]
 So token gets passed around for every interval t. When a process wants to enter the CS, it needs to wait until the token is passed to him.
 	![[Pasted image 20240615140348.png]]
-##### Algorithm Ok?
+
 **Each process p**
 When process p receives "Token":
 ```
@@ -174,6 +174,7 @@ if (p wants access) {
 	send(Token) to next process
 }
 ```
+##### Algorithm Ok?
 1. **Safety** ✅
 	- Process can only send Token if it has received Token
 2. **Liveness** ✅
