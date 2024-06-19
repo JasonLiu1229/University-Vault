@@ -77,7 +77,7 @@ Differences w.r.t. Ricart-Agrawala
 	![[Pasted image 20240615165314.png]]
 
 **In general**
-	Construct SxS matrix A, consisting of all processes
+Construct SxS matrix A, consisting of all processes
 - i is row where p is found
 - j is column where p is found
 - Ri = i-th row of A
