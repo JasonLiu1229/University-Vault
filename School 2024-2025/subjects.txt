@@ -1,0 +1,44 @@
+Compulsory courses 18 creds:
+1E SEM:
+Model driven engineering 6
+Modelling of software-intensive systems 6
+
+2E SEM:
+Software Testing 6
+
+Software engineering +6 creds:
+1E SEM:
+Specification and verification
+
+2E SEM:
+
+Computer networks +6 creds:
+1E SEM:
+
+2E SEM:
+IOT 6
+
+Data science and AI +6 creds:
+1E SEM:
+
+2E SEM:
+Bioinformatics 6
+Artificial Neural Networks 6
+
+Management and entrepreneurship 18:
+1E SEM:
+Management and organisation 6
+Strategic Business Communication 6
+
+2E SEM:
+Financial management and legal aspects 6
+
+General
+1E SEM:
+Mathematical Logic 6
+
+2E SEM:
+
+Total creds:
+1E SEM: 30
+2E SEM: 30
