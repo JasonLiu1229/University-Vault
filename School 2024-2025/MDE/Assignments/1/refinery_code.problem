@@ -15,7 +15,8 @@ class Source extends Connectable.
 class Sink extends Connectable.
 
 class Machine extends Connectable {
-    Worker[0..*] worker
+    Worker[1..*] worker
+    % Shift[0..3] shifts
 }
 
 class Worker {
@@ -24,7 +25,6 @@ class Worker {
 }
 
 class Shift {
-
 }
 
 % There exists a 'morning', 'afternoon' and 'night' Shift
@@ -63,11 +63,33 @@ error hasAOutputSink(Sink t) <->
 pred hasAWorker(Machine m) <->
     worker(m, _).
 
+% pred hasShift(Worker w, Shift s) <->
+%     worksShift(w, s).
 
+atom morning.
+atom afternoon.
+atom night.
 
+% pred worksAtNight(Worker w) <-> 
+%     hasShift(w, night).
+
+% pred worksInTheMorning(Worker w) <->
+%     hasShift(w, morning).
+
+% pred worksInTheAfternoon(Worker w) <->
+%     hasShift(w, afternoon).
+
+% pred worksAllShift(Worker w1, Worker w2, Worker w3) <->
+%     worksAtNight(w1), worksInTheAfternoon(w2), worksInTheMorning(w3).
+
+% error allShiftsOccupied(Machine m, Worker w1, Worker w2, Worker w3) <->
+%     hasAWorker(m), !worksAllShift(w1, w2, w3).
+
+% Every worker has at least one shift 
+    
 % Factory Source and Sink have no direct connection
 error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), Provides(s, t).
 
 % Bounded exploration: find a model of at most 20 nodes,
 % and containing exactly one factory.
-scope node = 0..20, Factory=1, Machine=5.
+scope node = 0..20, Factory=1, Machine=1, Worker=3.
