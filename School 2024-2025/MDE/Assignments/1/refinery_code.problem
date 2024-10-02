@@ -7,24 +7,24 @@ class Factory {
 }
 
 abstract class Connectable {
-    Connectable[0..2] hasOutput opposite hasInput
-    Connectable[0..2] hasInput opposite hasOutput
+    Connectable[0..2] Provides opposite Receives
+    Connectable[0..2] Receives opposite Provides
 }
 
 class Source extends Connectable.
 class Sink extends Connectable.
 
 class Machine extends Connectable {
-    
+    Worker[0..*] worker
 }
 
 class Worker {
     % Every worker works at least one shift and at most 2
-    Shift[1..2] worksShift
+    Shift[1..2] worksShift 
 }
 
 class Shift {
-    
+
 }
 
 % There exists a 'morning', 'afternoon' and 'night' Shift
@@ -37,25 +37,36 @@ Shift(night).
 
 % At least one connects input
 error pred hasAInput(Machine m) <-> 
-    !hasInput(m, _).
+    !Receives(m, _).
 
 % At least one connects output
 error pred hasAOutput(Machine m) <-> 
-    !hasOutput(m, _).
+    !Provides(m, _).
 
 % Sink has at least one input
 error pred hasAInputSink(Sink t) <->
-    !hasInput(t, _).
+    !Receives(t, _).
 
 % Source has at least one output
 error pred hasAOutputSource(Source s) <->
-    !hasOutput(s, _).
+    !Provides(s, _).
 
 % Source has no input
-error pred 
+error hasAInputSource(Source s) <->
+    Receives(s, _).
+
+% Sink has no output
+error hasAOutputSink(Sink t) <->
+    Provides(t, _).
+
+% Every machine that has a worker needs a worker for every shift
+pred hasAWorker(Machine m) <->
+    worker(m, _).
+
+
 
 % Factory Source and Sink have no direct connection
-error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), hasOutput(s, t).
+error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), Provides(s, t).
 
 % Bounded exploration: find a model of at most 20 nodes,
 % and containing exactly one factory.
