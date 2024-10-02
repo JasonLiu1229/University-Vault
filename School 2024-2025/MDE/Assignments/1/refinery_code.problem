@@ -1,0 +1,62 @@
+class Factory {
+    contains Machine[1..*] hasMachine
+    contains Worker[1..*] hasWorker
+
+    contains Source[1] hasSource
+    contains Sink[1] hasSink
+}
+
+abstract class Connectable {
+    Connectable[0..2] hasOutput opposite hasInput
+    Connectable[0..2] hasInput opposite hasOutput
+}
+
+class Source extends Connectable.
+class Sink extends Connectable.
+
+class Machine extends Connectable {
+    
+}
+
+class Worker {
+    % Every worker works at least one shift and at most 2
+    Shift[1..2] worksShift
+}
+
+class Shift {
+    
+}
+
+% There exists a 'morning', 'afternoon' and 'night' Shift
+Shift(morning).
+Shift(afternoon).
+Shift(night).
+
+% There exist no extra shifts
+!Shift(Shift::new).
+
+% At least one connects input
+error pred hasAInput(Machine m) <-> 
+    !hasInput(m, _).
+
+% At least one connects output
+error pred hasAOutput(Machine m) <-> 
+    !hasOutput(m, _).
+
+% Sink has at least one input
+error pred hasAInputSink(Sink t) <->
+    !hasInput(t, _).
+
+% Source has at least one output
+error pred hasAOutputSource(Source s) <->
+    !hasOutput(s, _).
+
+% Source has no input
+error pred 
+
+% Factory Source and Sink have no direct connection
+error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), hasOutput(s, t).
+
+% Bounded exploration: find a model of at most 20 nodes,
+% and containing exactly one factory.
+scope node = 0..20, Factory=1, Machine=5.
