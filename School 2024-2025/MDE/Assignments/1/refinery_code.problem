@@ -85,4 +85,4 @@ error noSelfLoop(Machine m) <->
 
 % Bounded exploration: find a model of at most 20 nodes,
 % and containing exactly one factory.
-scope node = 0..20, Factory=1, Machine=2, Worker=2.
+scope node = 0..20, Factory=1.
