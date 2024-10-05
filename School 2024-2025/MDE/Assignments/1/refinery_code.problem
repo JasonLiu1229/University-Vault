@@ -15,16 +15,18 @@ class Source extends Connectable.
 class Sink extends Connectable.
 
 class Machine extends Connectable {
-    Worker[1..*] worker
-    % Shift[0..3] shifts
+    Worker[0..*] worker opposite operates
+    % Shift[0..3] workerShifts
 }
 
 class Worker {
     % Every worker works at least one shift and at most 2
-    Shift[1..2] worksShift 
+    Shift[1..2] worksShift opposite assignedWorkers
+    Machine[0..*] operates opposite worker
 }
 
 class Shift {
+    Worker[0..*] assignedWorkers opposite worksShift
 }
 
 % There exists a 'morning', 'afternoon' and 'night' Shift
@@ -59,37 +61,22 @@ error hasAInputSource(Source s) <->
 error hasAOutputSink(Sink t) <->
     Provides(t, _).
 
-% Every machine that has a worker needs a worker for every shift
-pred hasAWorker(Machine m) <->
-    worker(m, _).
+% Machine has no workers
+pred noWorkers(Machine m) <->
+    Machine::worker(m, _).
 
-% pred hasShift(Worker w, Shift s) <->
-%     worksShift(w, s).
+pred shiftExists(Machine m, Shift s) <->
+    Machine::worker(m,w),
+    Worker::worksShift(w, s).
 
-atom morning.
-atom afternoon.
-atom night.
-
-% pred worksAtNight(Worker w) <-> 
-%     hasShift(w, night).
-
-% pred worksInTheMorning(Worker w) <->
-%     hasShift(w, morning).
-
-% pred worksInTheAfternoon(Worker w) <->
-%     hasShift(w, afternoon).
-
-% pred worksAllShift(Worker w1, Worker w2, Worker w3) <->
-%     worksAtNight(w1), worksInTheAfternoon(w2), worksInTheMorning(w3).
-
-% error allShiftsOccupied(Machine m, Worker w1, Worker w2, Worker w3) <->
-%     hasAWorker(m), !worksAllShift(w1, w2, w3).
-
-% Every worker has at least one shift 
+% Constraint has a worker => all three shift or has no workers
+error autoMachine(Machine m, Shift s) <->
+    noWorkers(m),
+    !shiftExists(m, s).
     
 % Factory Source and Sink have no direct connection
 error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), Provides(s, t).
 
 % Bounded exploration: find a model of at most 20 nodes,
 % and containing exactly one factory.
-scope node = 0..20, Factory=1, Machine=1, Worker=3.
+scope node = 0..20, Factory=1, Machine=1, Worker=2.
