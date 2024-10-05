@@ -16,7 +16,6 @@ class Sink extends Connectable.
 
 class Machine extends Connectable {
     Worker[0..*] worker opposite operates
-    % Shift[0..3] workerShifts
 }
 
 class Worker {
@@ -77,6 +76,13 @@ error autoMachine(Machine m, Shift s) <->
 % Factory Source and Sink have no direct connection
 error pred disconnectSourceSink(s, t) <-> Source(s), Sink(t), Provides(s, t).
 
+% No self loops for a machine
+pred selfLoopMachine(Machine m) <->
+    Connectable::Provides(m, m).
+
+error noSelfLoop(Machine m) <->
+    selfLoopMachine(m).
+
 % Bounded exploration: find a model of at most 20 nodes,
 % and containing exactly one factory.
-scope node = 0..20, Factory=1, Machine=1, Worker=2.
+scope node = 0..20, Factory=1, Machine=2, Worker=2.
