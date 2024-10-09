@@ -1,0 +1,8 @@
+Target cardinality of type afraidOf (0) out of bounds (1..inf) in billy.
+- Needs to be afraid of at least one person
+Local constraint of "Man_weight" in "george_weight" not satisfied.
+- Gearge is to skinny; he needs to be 21 kg at least
+Local constraint of "Man" in "george" not satisfied.
+- Same as above
+Global constraint "total_weight_small_enough" not satisfied.
+- Sum of weight exceeded 85
