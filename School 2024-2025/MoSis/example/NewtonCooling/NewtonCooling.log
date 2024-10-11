@@ -1,0 +1,26 @@
+/home/rmittal/Documents/23-MoSIS/example/NewtonCooling/NewtonCooling -port=46507 -logFormat=xmltcp -override=startTime=0,stopTime=1,stepSize=0.002,tolerance=1e-6,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/rmittal/Documents/23-MoSIS/example/NewtonCooling/NewtonCooling_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/rmittal/Documents/23-MoSIS/example/NewtonCooling -outputPath=/home/rmittal/Documents/23-MoSIS/example/NewtonCooling
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+ 0.000334444s          reading init.xml
+  5.1064e-05s          reading info.xml
+ 0.000104633s [  5.3%] pre-initialization
+  3.8521e-05s [  2.0%] initialization
+   2.512e-06s [  0.1%] steps
+ 0.000112552s [  5.7%] solver (excl. callbacks)
+ 0.000116884s [  5.9%] creating output-file
+   3.205e-06s [  0.2%] event-handling
+  5.1505e-05s [  2.6%] overhead
+     0.00154s [ 78.2%] simulation
+  0.00196981s [100.0%] total
+events
+    0 state events
+    0 time events
+solver: dassl
+   65 steps taken
+   78 calls of functionODE
+   16 evaluations of jacobian
+    1 error test failures
+    0 convergence test failures
+4.935e-06s time of jacobian evaluation
+The simulation finished successfully.

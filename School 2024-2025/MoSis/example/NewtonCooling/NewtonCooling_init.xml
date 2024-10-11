@@ -1,0 +1,163 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "NewtonCooling"
+  modelIdentifier                     = "NewtonCooling"
+
+  OPENMODELICAHOME                    = "/usr/bin/.."
+
+  guid                                = "{4bec9f0c-550d-4309-acd1-ac32be20c4a1}"
+
+  description                         = "Cooling example with physical types"
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.22.0~dev.beta.6"
+  generationDateAndTime               = "2023-10-27T02:53:50Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "0"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "0"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "0"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "1"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "0"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "0"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "6"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "0"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "0"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "0"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "1"
+    stepSize       = "0.002"
+    tolerance      = "1e-06"
+    solver        = "dassl"
+    outputFormat      = "mat"
+    variableFilter      = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "T"
+    valueReference = "1000"
+    description = "Temperature"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rSta"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "18" startColumn = "3" endLine = "18" endColumn = "30" fileWritable = "true">
+    <Real fixed="false" useNominal="false" min="0.0" unit="K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(T)"
+    valueReference = "1001"
+    description = "der(Temperature)"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rDer"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "18" startColumn = "3" endLine = "18" endColumn = "30" fileWritable = "true">
+    <Real fixed="false" useNominal="false" unit="s-1.K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "A"
+    valueReference = "1002"
+    description = "Surface area"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "13" startColumn = "3" endLine = "13" endColumn = "38" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" min="0.0" unit="m2" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "T0"
+    valueReference = "1003"
+    description = "Initial temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "11" startColumn = "3" endLine = "11" endColumn = "56" fileWritable = "true">
+    <Real start="363.15" fixed="true" useNominal="false" min="0.0" unit="K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "T_inf"
+    valueReference = "1004"
+    description = "Ambient temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "10" startColumn = "3" endLine = "10" endColumn = "59" fileWritable = "true">
+    <Real start="298.15" fixed="true" useNominal="false" min="0.0" unit="K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "c_p"
+    valueReference = "1005"
+    description = "Specific heat"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "3" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "15" startColumn = "3" endLine = "15" endColumn = "49" fileWritable = "true">
+    <Real start="1.2" fixed="true" useNominal="false" min="0.0" unit="J/(K.kg)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "h"
+    valueReference = "1006"
+    description = "Convective cooling coefficient"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "12" startColumn = "3" endLine = "12" endColumn = "73" fileWritable = "true">
+    <Real start="0.7" fixed="true" useNominal="false" min="0.0" unit="W/(m2.K)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "m"
+    valueReference = "1007"
+    description = "Mass of thermal capacitance"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rPar"
+    isProtected = "false" hideResult = "" initNonlinear = "false"
+    fileName = "/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo" startLine = "14" startColumn = "3" endLine = "14" endColumn = "53" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" min="0.0" unit="kg" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

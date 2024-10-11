@@ -1,0 +1,27 @@
+{"format":"Transformational debugger info","version":1,
+"info":{"name":"NewtonCooling","description":"Cooling example with physical types"},
+"variables":{
+"T":{"comment":"Temperature","kind":"state","type":"Real","unit":"K","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":18,"lineEnd":18,"colStart":3,"colEnd":30}}},
+"der(T)":{"comment":"der(Temperature)","kind":"derivative","type":"Real","unit":"s-1.K","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":18,"lineEnd":18,"colStart":3,"colEnd":30}}},
+"A":{"comment":"Surface area","kind":"parameter","type":"Real","unit":"m2","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":13,"lineEnd":13,"colStart":3,"colEnd":38}}},
+"T0":{"comment":"Initial temperature","kind":"parameter","type":"Real","unit":"K","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":11,"lineEnd":11,"colStart":3,"colEnd":56}}},
+"T_inf":{"comment":"Ambient temperature","kind":"parameter","type":"Real","unit":"K","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":10,"lineEnd":10,"colStart":3,"colEnd":59}}},
+"c_p":{"comment":"Specific heat","kind":"parameter","type":"Real","unit":"J/(K.kg)","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":15,"lineEnd":15,"colStart":3,"colEnd":49}}},
+"h":{"comment":"Convective cooling coefficient","kind":"parameter","type":"Real","unit":"W/(m2.K)","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":12,"lineEnd":12,"colStart":3,"colEnd":73}}},
+"m":{"comment":"Mass of thermal capacitance","kind":"parameter","type":"Real","unit":"kg","displayUnit":"","source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":14,"lineEnd":14,"colStart":3,"colEnd":53}}}
+},
+"equations":[{"eqIndex":0,"tag":"dummy"},
+{"eqIndex":1,"section":"initial","tag":"assign","defines":["T"],"uses":["T0"],"equation":["T0"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":20,"lineEnd":20,"colStart":3,"colEnd":39}}},
+{"eqIndex":2,"tag":"alias","equation":[3],"section":"initial"},
+{"eqIndex":3,"section":"regular","tag":"assign","defines":["der(T)"],"uses":["c_p","m","T","T_inf","A","h"],"equation":["h * A * (T_inf - T) / (m * c_p)"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":22,"lineEnd":22,"colStart":3,"colEnd":57}}},
+{"eqIndex":4,"section":"parameter","tag":"algorithm","equation":["assert(c_p >= 0.0, \"Variable violating min constraint: 0.0 <= c_p, has value: \" + String(c_p, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":15,"lineEnd":15,"colStart":3,"colEnd":49}}},
+{"eqIndex":5,"section":"parameter","tag":"algorithm","equation":["assert(m >= 0.0, \"Variable violating min constraint: 0.0 <= m, has value: \" + String(m, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":14,"lineEnd":14,"colStart":3,"colEnd":53}}},
+{"eqIndex":6,"section":"parameter","tag":"algorithm","equation":["assert(A >= 0.0, \"Variable violating min constraint: 0.0 <= A, has value: \" + String(A, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":13,"lineEnd":13,"colStart":3,"colEnd":38}}},
+{"eqIndex":7,"section":"parameter","tag":"algorithm","equation":["assert(h >= 0.0, \"Variable violating min constraint: 0.0 <= h, has value: \" + String(h, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":12,"lineEnd":12,"colStart":3,"colEnd":73}}},
+{"eqIndex":8,"section":"parameter","tag":"algorithm","equation":["assert(T0 >= 0.0, \"Variable violating min constraint: 0.0 <= T0, has value: \" + String(T0, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":11,"lineEnd":11,"colStart":3,"colEnd":56}}},
+{"eqIndex":9,"section":"parameter","tag":"algorithm","equation":["assert(T_inf >= 0.0, \"Variable violating min constraint: 0.0 <= T_inf, has value: \" + String(T_inf, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":10,"lineEnd":10,"colStart":3,"colEnd":59}}},
+{"eqIndex":10,"section":"assertions","tag":"algorithm","equation":["assert(T >= 0.0, \"Variable violating min constraint: 0.0 <= T, has value: \" + String(T, \"g\"));"],"source":{"info":{"file":"/home/rmittal/Documents/23-MoSIS/example/NewtonCooling.mo","lineStart":18,"lineEnd":18,"colStart":3,"colEnd":30}}}
+],
+"functions":[
+]
+}
