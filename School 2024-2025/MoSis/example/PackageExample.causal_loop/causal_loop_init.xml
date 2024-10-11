@@ -1,0 +1,343 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+
+<!-- description of the model interface using an extention of the FMI standard -->
+<fmiModelDescription
+  fmiVersion                          = "1.0"
+
+  modelName                           = "PackageExample.causal_loop"
+  modelIdentifier                     = "PackageExample_causal_loop"
+
+  OPENMODELICAHOME                    = "/usr/bin/.."
+
+  guid                                = "{0858dd21-7fb6-485d-ad5d-15451013b6bd}"
+
+  description                         = ""
+  generationTool                      = "OpenModelica Compiler OpenModelica 1.24.0"
+  generationDateAndTime               = "2024-10-11T15:14:49Z"
+
+  variableNamingConvention            = "structured"
+
+  numberOfEventIndicators             = "0"  cmt_numberOfEventIndicators             = "NG:       number of zero crossings,                           FMI"
+  numberOfTimeEvents                  = "0"  cmt_numberOfTimeEvents                  = "NG_SAM:   number of zero crossings that are samples,          OMC"
+
+  numberOfInputVariables              = "0"  cmt_numberOfInputVariables              = "NI:       number of inputvar on topmodel,                     OMC"
+  numberOfOutputVariables             = "0"  cmt_numberOfOutputVariables             = "NO:       number of outputvar on topmodel,                    OMC"
+
+  numberOfExternalObjects             = "0"  cmt_numberOfExternalObjects             = "NEXT:     number of external objects,                         OMC"
+  numberOfFunctions                   = "0"  cmt_numberOfFunctions                   = "NFUNC:    number of functions used by the simulation,         OMC"
+
+  numberOfContinuousStates            = "2"  cmt_numberOfContinuousStates            = "NX:       number of states,                                   FMI"
+  numberOfRealAlgebraicVariables      = "1"  cmt_numberOfRealAlgebraicVariables      = "NY:       number of real variables,                           OMC"
+  numberOfRealAlgebraicAliasVariables = "4"  cmt_numberOfRealAlgebraicAliasVariables = "NA:       number of alias variables,                          OMC"
+  numberOfRealParameters              = "14"  cmt_numberOfRealParameters              = "NP:       number of parameters,                               OMC"
+
+  numberOfIntegerAlgebraicVariables   = "0"  cmt_numberOfIntegerAlgebraicVariables   = "NYINT:    number of alg. int variables,                       OMC"
+  numberOfIntegerAliasVariables       = "0"  cmt_numberOfIntegerAliasVariables       = "NAINT:    number of alias int variables,                      OMC"
+  numberOfIntegerParameters           = "0"  cmt_numberOfIntegerParameters           = "NPINT:    number of int parameters,                           OMC"
+
+  numberOfStringAlgebraicVariables    = "0"  cmt_numberOfStringAlgebraicVariables    = "NYSTR:    number of alg. string variables,                    OMC"
+  numberOfStringAliasVariables        = "0"  cmt_numberOfStringAliasVariables        = "NASTR:    number of alias string variables,                   OMC"
+  numberOfStringParameters            = "0"  cmt_numberOfStringParameters            = "NPSTR:    number of string parameters,                        OMC"
+
+  numberOfBooleanAlgebraicVariables   = "0"  cmt_numberOfBooleanAlgebraicVariables   = "NYBOOL:   number of alg. bool variables,                      OMC"
+  numberOfBooleanAliasVariables       = "0"  cmt_numberOfBooleanAliasVariables       = "NABOOL:   number of alias bool variables,                     OMC"
+  numberOfBooleanParameters           = "0"  cmt_numberOfBooleanParameters           = "NPBOOL:   number of bool parameters,                          OMC" >
+
+
+  <!-- startTime, stopTime, tolerance are FMI specific, all others are OMC specific -->
+  <DefaultExperiment
+    startTime      = "0"
+    stopTime       = "10"
+    stepSize       = "0.02"
+    tolerance      = "1e-06"
+    solver        = "dassl"
+    outputFormat      = "mat"
+    variableFilter      = ".*" />
+
+  <!-- variables in the model -->
+  <ModelVariables>
+
+  <ScalarVariable
+    name = "coolingBlock1.T"
+    valueReference = "1000"
+    description = "Temperature"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rSta"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "50" fileWritable = "true">
+    <Real start="288.15" fixed="false" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.T"
+    valueReference = "1001"
+    description = "Temperature"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rSta"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "50" fileWritable = "true">
+    <Real start="288.15" fixed="false" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(coolingBlock1.T)"
+    valueReference = "1002"
+    description = "der(Temperature)"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rDer"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "50" fileWritable = "true">
+    <Real fixed="false" useNominal="false" unit="s-1.K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "der(coolingBlock2.T)"
+    valueReference = "1003"
+    description = "der(Temperature)"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "1" classType = "rDer"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "14" startColumn = "5" endLine = "14" endColumn = "50" fileWritable = "true">
+    <Real fixed="false" useNominal="false" unit="s-1.K" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add.y"
+    valueReference = "1004"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "noAlias"
+    classIndex = "0" classType = "rAlg"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "346" startColumn = "5" endLine = "347" endColumn = "56" fileWritable = "true">
+    <Real start="576.3" fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add.k1"
+    valueReference = "1005"
+    description = "Gain of input signal 1"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "0" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "876" startColumn = "5" endLine = "876" endColumn = "50" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add.k2"
+    valueReference = "1006"
+    description = "Gain of input signal 2"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "1" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Math.mo" startLine = "877" startColumn = "5" endLine = "877" endColumn = "50" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.A"
+    valueReference = "1007"
+    description = "Surface area"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "2" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "60" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" unit="m2" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.T0"
+    valueReference = "1008"
+    description = "Initial temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "3" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "78" fileWritable = "true">
+    <Real start="363.15" fixed="true" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.T_inf"
+    valueReference = "1009"
+    description = "Ambient temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "4" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "81" fileWritable = "true">
+    <Real start="298.15" fixed="true" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.c_p"
+    valueReference = "1010"
+    description = "Specific heat"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "5" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "53" fileWritable = "true">
+    <Real start="1.2" fixed="true" useNominal="false" min="0.0" unit="J/(K.kg)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.h"
+    valueReference = "1011"
+    description = "Convective cooling coefficient"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "6" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "9" startColumn = "5" endLine = "9" endColumn = "77" fileWritable = "true">
+    <Real start="0.7" fixed="true" useNominal="false" min="0.0" unit="W/(m2.K)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.m"
+    valueReference = "1012"
+    description = "Mass of thermal capacitance"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "7" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "75" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" min="0.0" unit="kg" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.A"
+    valueReference = "1013"
+    description = "Surface area"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "8" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "10" startColumn = "5" endLine = "10" endColumn = "60" fileWritable = "true">
+    <Real start="1.0" fixed="true" useNominal="false" unit="m2" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.T0"
+    valueReference = "1014"
+    description = "Initial temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "9" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "8" startColumn = "5" endLine = "8" endColumn = "78" fileWritable = "true">
+    <Real start="363.15" fixed="true" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.T_inf"
+    valueReference = "1015"
+    description = "Ambient temperature"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "10" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "7" startColumn = "5" endLine = "7" endColumn = "81" fileWritable = "true">
+    <Real start="298.15" fixed="true" useNominal="true" nominal="300.0" min="0.0" unit="K" displayUnit="degC" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.c_p"
+    valueReference = "1016"
+    description = "Specific heat"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "11" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "12" startColumn = "5" endLine = "12" endColumn = "53" fileWritable = "true">
+    <Real start="1.2" fixed="true" useNominal="false" min="0.0" unit="J/(K.kg)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.h"
+    valueReference = "1017"
+    description = "Convective cooling coefficient"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "12" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "9" startColumn = "5" endLine = "9" endColumn = "77" fileWritable = "true">
+    <Real start="0.7" fixed="true" useNominal="false" min="0.0" unit="W/(m2.K)" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.m"
+    valueReference = "1018"
+    description = "Mass of thermal capacitance"
+    variability = "parameter" isDiscrete = "true"
+    causality = "parameter" isValueChangeable = "true"
+    alias = "noAlias"
+    classIndex = "13" classType = "rPar"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.mo" startLine = "11" startColumn = "5" endLine = "11" endColumn = "75" fileWritable = "true">
+    <Real start="0.1" fixed="true" useNominal="false" min="0.0" unit="kg" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add.u1"
+    valueReference = "1019"
+    description = "Connector of Real input signal 1"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="coolingBlock1.T" aliasVariableId="0"
+    classIndex = "0" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "342" startColumn = "5" endLine = "343" endColumn = "57" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "add.u2"
+    valueReference = "1020"
+    description = "Connector of Real input signal 2"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="coolingBlock2.T" aliasVariableId="1"
+    classIndex = "1" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "344" startColumn = "5" endLine = "345" endColumn = "59" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock1.y"
+    valueReference = "1021"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="coolingBlock1.T" aliasVariableId="0"
+    classIndex = "2" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+  <ScalarVariable
+    name = "coolingBlock2.y"
+    valueReference = "1022"
+    description = "Connector of Real output signal"
+    variability = "continuous" isDiscrete = "false"
+    causality = "local" isValueChangeable = "false"
+    alias = "alias" aliasVariable="coolingBlock2.T" aliasVariableId="1"
+    classIndex = "3" classType = "rAli"
+    isProtected = "false" hideResult = "" isEncrypted = "false" initNonlinear = "false"
+    fileName = "/home/jason/.openmodelica/libraries/Modelica 4.0.0+maint.om/Blocks/Interfaces.mo" startLine = "300" startColumn = "5" endLine = "301" endColumn = "56" fileWritable = "true">
+    <Real fixed="false" useNominal="false" />
+  </ScalarVariable>
+
+
+
+  </ModelVariables>
+
+
+</fmiModelDescription>
+

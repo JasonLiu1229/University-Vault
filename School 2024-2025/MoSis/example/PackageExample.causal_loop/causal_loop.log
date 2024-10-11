@@ -1,0 +1,26 @@
+/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.causal_loop/causal_loop -port=41879 -logFormat=xmltcp -override=startTime=0,stopTime=10,stepSize=0.02,tolerance=1e-06,solver=dassl,outputFormat=mat,variableFilter=.* -r=/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.causal_loop/causal_loop_res.mat -w -lv=LOG_STDOUT,LOG_ASSERT,LOG_STATS -inputPath=/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.causal_loop -outputPath=/home/jason/Documents/Vault/School 2024-2025/MoSis/example/PackageExample.causal_loop
+The initialization finished successfully without homotopy method.
+### STATISTICS ###
+timer
+  0.00113096s          reading init.xml
+ 0.000140317s          reading info.xml
+ 0.000201937s [  5.9%] pre-initialization
+  8.6901e-05s [  2.5%] initialization
+   3.639e-06s [  0.1%] steps
+ 0.000297235s [  8.7%] solver (excl. callbacks)
+ 0.000240249s [  7.0%] creating output-file
+  3.7479e-05s [  1.1%] event-handling
+  0.00010049s [  2.9%] overhead
+  0.00245475s [ 71.7%] simulation
+  0.00342268s [100.0%] total
+events
+    0 state events
+    0 time events
+solver: dassl
+   81 steps taken
+  101 calls of functionODE
+   23 evaluations of jacobian
+    1 error test failures
+    0 convergence test failures
+1.6473e-05s time of jacobian evaluation
+The simulation finished successfully.
