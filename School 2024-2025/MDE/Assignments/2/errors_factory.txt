@@ -1,0 +1,6 @@
+Local constraint of "Dollar_amount" in "salary1_amount" not satisfied.
+Global constraint "threeShifts" not satisfied.
+Global constraint "everyWorkerBelongsToFactory" not satisfied.
+Global constraint "oneAfternoonShift" not satisfied.
+Global constraint "oneNightShift" not satisfied.
+Global constraint "autonomousMachineCheck" not satisfied.
