@@ -1,0 +1,34 @@
+digraph G {
+	// Level 0
+	z1_0 [label="z1"];
+	// Level 1
+	z2_0 [label="z2"];
+	z2_1 [label="z2"];
+	// Level 2
+	z3_0 [label="z3"];
+	z3_1 [label="z3"];
+	z3_2 [label="z3"];
+	z3_3 [label="z3"];
+	leaf_0 [label="0", shape=box];
+	leaf_1 [label="0", shape=box];
+	leaf_2 [label="0", shape=box];
+	leaf_3 [label="0", shape=box];
+	leaf_4 [label="0", shape=box];
+	leaf_5 [label="0", shape=box];
+	leaf_6 [label="0", shape=box];
+	leaf_7 [label="0", shape=box];
+	z1_0 -> z2_0 [style=dashed, label="0"];
+	z1_0 -> z2_1 [style=solid, label="1"];
+	z2_0 -> z3_0 [style=dashed, label="0"];
+	z2_0 -> z3_1 [style=solid, label="1"];
+	z2_1 -> z3_2 [style=dashed, label="0"];
+	z2_1 -> z3_3 [style=solid, label="1"];
+	z3_0 -> leaf_0 [style=dashed, label="0"];
+	z3_0 -> leaf_1 [style=solid, label="1"];
+	z3_1 -> leaf_2 [style=dashed, label="0"];
+	z3_1 -> leaf_3 [style=solid, label="1"];
+	z3_2 -> leaf_4 [style=dashed, label="0"];
+	z3_2 -> leaf_5 [style=solid, label="1"];
+	z3_3 -> leaf_6 [style=dashed, label="0"];
+	z3_3 -> leaf_7 [style=solid, label="1"];
+}
