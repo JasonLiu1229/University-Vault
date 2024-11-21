@@ -1,0 +1,99 @@
+digraph G {
+    a0_0 [label="a0"]
+    
+    x0_0 [label="x0"]
+
+    a1_0 [label="a1"]
+    a1_1 [label="a1"]
+    a1_2 [label="a1"]
+
+    x1_0 [label="x1"]
+    x1_2 [label="x1"]
+
+    a2_1 [label="a2"]
+    a2_2 [label="a2"]
+    a2_4 [label="a2"]
+    a2_6 [label="a2"]
+    a2_8 [label="a2"]
+    a2_10 [label="a2"]
+
+    x2_4 [label="x2"]
+    x2_12 [label="x2"]
+
+    x3_0 [label="x3"]
+    x3_1 [label="x3"]
+    
+    x4_0 [label="x4"]
+    
+    x5_0 [label="x5"]
+    
+    x6_0 [label="x6"]
+    
+    x7_0 [label="x7"]
+
+
+    // Edges
+    a0_0 -> x0_0 [style=dashed, label="0"]
+    a0_0 -> a1_2 [style=solid, label="1"]
+
+    x0_0 -> a1_0 [style=dashed, label="0"]
+    x0_0 -> a1_1 [style=solid, label="1"]
+
+    a1_0 -> x1_0 [style=dashed, label="0"]
+    a1_0 -> a2_2 [style=solid, label="1"]
+    a1_1 -> x1_2 [style=dashed, label="0"]
+    a1_1 -> a2_6 [style=solid, label="1"]
+    a1_2 -> a2_8 [style=dashed, label="0"]
+    a1_2 -> a2_10 [style=solid, label="1"]
+
+    x1_0 -> 0 [style=dashed, label="0"]
+
+    x1_0 -> a2_1 [style=solid, label="1"]
+    x1_2 -> a2_4 [style=dashed, label="0"]
+    x1_2 -> 1 [style=solid, label="1"]
+    
+    
+    a2_1 -> 0 [style=dashed, label="0"]
+    a2_1 -> 1 [style=solid, label="1"]
+
+
+    a2_2 -> x2_4 [style=dashed, label="0"]
+    a2_2 -> x3_0 [style=solid, label="1"]
+    a2_4 -> 1 [style=dashed, label="0"]
+    a2_4 -> 0 [style=solid, label="1"]
+    
+    a2_6 -> x2_12 [style=dashed, label="0"]
+    a2_6 -> x3_1 [style=solid, label="1"]
+    a2_8 -> x4_0 [style=dashed, label="0"]
+    a2_8 -> x5_0 [style=solid, label="1"]
+    a2_10 -> x6_0 [style=dashed, label="0"]
+    a2_10 -> x7_0 [style=solid, label="1"]
+    
+    x2_4 -> 0 [style=dashed, label="0"]
+    x2_4 -> 1 [style=solid, label="1"]
+    
+    x2_12 -> 0 [style=dashed, label="0"]
+    x2_12 -> 1 [style=solid, label="1"]
+
+
+    x3_0 -> 0 [style=dashed, label="0"]
+    x3_0 -> 1 [style=solid, label="1"]
+    
+    x3_1 -> 0 [style=dashed, label="0"]
+    x3_1 -> 1 [style=solid, label="1"]
+    
+    x4_0 -> 0 [style=dashed, label="0"]
+    x4_0 -> 1 [style=solid, label="0"]
+    
+    x5_0 -> 0 [style=dashed, label="0"]
+    x5_0 -> 1 [style=solid, label="0"]
+    
+    x6_0 -> 0 [style=dashed, label="0"]
+    x6_0 -> 1 [style=solid, label="0"]
+    
+    x7_0 -> 0 [style=dashed, label="0"]
+    x7_0 -> 1 [style=solid, label="0"]
+}
+
+
+    
