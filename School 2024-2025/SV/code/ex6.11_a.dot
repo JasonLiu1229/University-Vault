@@ -37,12 +37,12 @@ digraph G {
     a1_1 -> a2_3 [style=solid, label="1"]
 
     a2_0 -> x0_0 [style=dashed, label="0"]
-    a2_0 -> x1_0 [style=solid, label="1"]
+    a2_0 -> x4_0 [style=solid, label="1"]
     a2_1 -> x2_0 [style=dashed, label="0"]
-    a2_1 -> x3_0 [style=solid, label="1"]
-    a2_2 -> x4_0 [style=dashed, label="0"]
+    a2_1 -> x6_0 [style=solid, label="1"]
+    a2_2 -> x1_0 [style=dashed, label="0"]
     a2_2 -> x5_0 [style=solid, label="1"]
-    a2_3 -> x6_0 [style=dashed, label="0"]
+    a2_3 -> x3_0 [style=dashed, label="0"]
     a2_3 -> x7_0 [style=solid, label="1"]
 
     x0_0 -> 0 [style=dashed, label="0"]
