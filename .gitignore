@@ -1,4 +1,4 @@
 .obsidian
 .venv
 *.zip
-.*~lock
+*.*~lock
