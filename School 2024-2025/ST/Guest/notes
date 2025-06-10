@@ -1,0 +1,259 @@
+Guest lecture:
+
+1 - BARCO
+
+What was it about?
+
+Projectors, conference room garbage (clickshare)
+
+They used large scale agile framework.
+
+Architecture: Base unit + sub modules
+
+Security vs Testing -> Security wants no access to things while testing does the opposite. So we want to have as much access to test.
+
+A company that started from manual and eventually went to automated. 
+
+They went from test team -> scrum teams with one tester. Feature and product owner for each team and mostly automated.
+
+Requirements are made based on software test not predefined requirements. So if changes need to happen in requirements, they happen through test instead of requirement list. 
+
+Went from reverse V-model to hourglass to vulcanic model. Now 95% is automated compared to before (where there was nothing).
+
+Two levels of testing: Machine mimicing and hardware test.
+
+What was good and what could go better?
++ Switch to agile dev, testers included in development. 
++ A lot of it is automated.
++ Test are split in stages.
++ Teams are responsible for there own product (product owner) 
+
+- Test are seen as requirements, not requirements as basis
+
+2 - OMP
+
+Supply chain management / planning
+
+System is based on c++ and QT. Frontend React / Typescript.
+
+Unit test made with C# XUnit. White box testing where we know the internal code.
+
+Unit test for frontend was made using Jest. They used snapchot testing, where they compare outputs of different versions. Downside of this, small changes could reflect change in output, and result in failure of test.
+
+Contract test: API testing using postman, automating api workflow. Easier for less code proficient tester.
+
+Selenium end to end test for webui. Testing ui based things could be flaky, because of the waiting concept. Where we need to wait for certain components to load or interact and could be different every time. Making the test fail at some times and pass at others.
+
+End to end testen, they used squish. 
+
+customer application testing, they provide an external rest api to test the additional features a customer adds. 
+
+Code reviews, tests are also reviewed by fellower coders, they act as an documentation for the code.
+
+test driven dev, it helps well by fixing bugs.
+
+What is good and bad?
+
++ They make use of many types of testing, not one fits all.
++ they make use of test driven dev, so regression testing is kinda already there
++ Customer can write their own tests
+
+- Snapchot tests are not perfect
+- Flaky test in selenium
+
+3 - mediagenix
+
+Streaming bs
+
+They made use of multiple platforms. They explained about how testing infrastructure looks like and what it ideally looks like compared to what actually is used in practice.
+
+They have one QA person for every squad. There are more teams for custommer application then base code. They made use of small talk to implement there test because there code was in small talk. QA makes the test in gherkin scripts while dev makes it in small talk.
+
+They have many manual tests. But are they all stil valid, is unknown.
+
+Custom implementations causes, many different versions, leading to increased maintenance. 
+
+The new customers cant add custom features anymore.
+
+What is good or bad?
++ They have CI
++ Went from custom features to no custom features anymore
+
+- Many different versions already exists, so still has to be maintained even if they dont allow custom features anymore. Also many platforms.
+- CI Is complicated
+- Custom features leads to failing test
+- Many manual decision and testing
+
+4 - Cypress
+
+Testing tool for frontend
+
+Human make mistakes, that is why we want to use a tool.
+
+Drag and drop, low code tool. 
+
+Modern, free
+
+Page object model -> define a page before hand instead of retyping every button or refetching the component. This makes the code more clear and more readable. -> Reusabillity. 
+
+Do everything or make rules on what to define as a component and what not.
+
+Mocking api respones: api will be actually be sent but cypress will make a mock response. (backend not tested with this)
+
+5 - M2Q
+
+Inventory managment, warehouse management.
+
+risk assesment with business value in mind, they looked at how fast new features were developed and how much risk with how much business value.
+
+It is a project that started from scratch.
+
+In early stages they could develop a lot of features with little risk. Later on this slowed down because the amount of test needed to be devloped increased, this is because the quality standards increased.
+
+In early stages there were barely any quality assurance, it was more of a feature than a must.
+
+Validations were done in real time because the development was on site. so fast feedback loop. 
+
+development happened for multiple services, that were stand alone and needed to be integrated.
+
+Integration slowed down because of erp, and http. 
+
+Multiple styles of testing:
+- e2e func test
+- user accepting testing
+- contract testing for integration
+
+They introduced staging, to slow down development so end users can verify the new features.
+
+Now they also have a release procedure, to garantue running production
+
+and new features needs to be planned over a bigger scale.
+
+Use what is there, so employees with existing knowledge. 
+
+6 - Cegeka
+
+Cegaka - consulted company
+
+look at existing knowledge and market to determine what is the best tool to use
+
+proof of concepts with chosen tool if it is actually good
+
+phase 1 - training
+phase 2 - test bs 
+
+Negative: team of test automation, make new back log but different teams runs the test and maintains it. INstead of one team doing both 
+
+C# testing framework
+- they make use of a common framework for all teams
+
+
+They went from little to no test to a lot of test
+
+Unique approach for unique customer
+
+7 - SQAI
+
+Using AI to write test
+
+many benifits:
+- time
+- less personal
+- cost
+
+Using multiple LLMs for different use cases, so the right tasks is asked to the right LLM
+
+Heavy lifting by AI, validated by human
+
+Humans for critical analysis
+
+Many real life use cases, this helps normal testers because it makes use things the tester should already understand.
+
+Mainly to complement humans not replace.
+
+8 - redwire
+
+satelite company, safety critical
+
+architecture is made of different components
+
+there designs need to comply to external standards (goverment)
+
+standards are mainly for engineering and product assurance
+
+They make use of different life cycle model, sequential models, iterative and multi level
+
+They also make use criticality analysis to determine severity if something fails
+
+sw validation will be done in multipe stages:
+- unit test
+- integration test
+- validation test
+
+Secure coding - coding so it is resistant to security vulnerability
+
+FDIR
+- How to detect failures
+- how to isolate failures
+- how to recover from these failures
+
+9 - fluvius
+
+Precise work because the network needs to be stable
+
+Pays others to use energy to stabilize network
+
+They write emergency scripts for in case something went wrong.
+
+Loose requirements
+
+Focus on reuse code, because code that is already considered safe is still safe. Only one chance to be right.
+
+Unit tests written in python, made with ai and tested auto
+
+system test are scenario driven. code as black box
+
+integration test, see how good sequences work and if they work right
+
+end to end testing, real life test with customers
+
+experts say 10 reductions, so we only do 2 to be safe
+
+10 - Siemens
+
+digital twin, to perform testing
+
+Safety critical 
+
+test types:
+System in the loop
+human in the loop
+Rapid control prototyping 
+hardware in the loop
+
+Digital twin itself is a form of testing
+
+Multiple interpretation of one design - that is why requirements need to be defined properly, so measurable requirements. Specify test setup, test execution and teardown for these requirements
+
+Unit testing - reviewed by other dev 
+Integration testing - also reviewed and runned
+end to end - also reviewed and runned, run in ci
+performance testing - when something might be wrong
+factory testing - before to customer - specific setup for customer (special case)
+customer integration testing - on site at the customer
+exploraty testing - manual test to find new errors - montly - using mutation testing and fuzzer for rest api
+
+11 - colruyt
+
+works really intern, so all the support for it mainly goes to them
+
+Colruyt killed people
+
+tells me about what quality is in a round a bout way
+
+quality is subjective
+
+makes use of standards
+
+Most useless guest lecture
+
