@@ -44,13 +44,20 @@ Contract test: API testing using postman, automating api workflow. Easier for le
 
 Selenium end to end test for webui. Testing ui based things could be flaky, because of the waiting concept. Where we need to wait for certain components to load or interact and could be different every time. Making the test fail at some times and pass at others.
 
-End to end testen, they used squish. 
+End to end testen, they used squish. easy to start, hard for complex shit
 
-customer application testing, they provide an external rest api to test the additional features a customer adds. 
+customer application testing, they provide an external rest api to test the additional features a customer adds. (only if the customer really uses it)
 
-Code reviews, tests are also reviewed by fellower coders, they act as an documentation for the code.
+Code reviews, tests are also reviewed by fellow coders, they act as an documentation for the code. manual test before merge.
+
+stage based deployment
 
 test driven dev, it helps well by fixing bugs.
+
+risk based testing better than the amount of tests written
+
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+Abstractions should not depend on details. Details should depend on abstractions. -> DIP
 
 What is good and bad?
 
@@ -67,9 +74,13 @@ Streaming bs
 
 They made use of multiple platforms. They explained about how testing infrastructure looks like and what it ideally looks like compared to what actually is used in practice.
 
-They have one QA person for every squad. There are more teams for custommer application then base code. They made use of small talk to implement there test because there code was in small talk. QA makes the test in gherkin scripts while dev makes it in small talk.
+release of product is different for every product, one releases multiple times a year while some other every so often.
 
-They have many manual tests. But are they all stil valid, is unknown.
+depending on what needs to be fixed/upgraded/added the code repo might change. some could affect the base and some might complement.
+
+They have one QA person for every squad. There are more teams for customer application then base code. They made use of small talk to implement there test because there code was in small talk. QA makes the test in gherkin scripts while dev makes it in small talk.
+
+They have many manual tests. But are they all still valid, is unknown. use gherkin scripts, a user stories based testing. there are several issues with manual testing.
 
 Custom implementations causes, many different versions, leading to increased maintenance. 
 
@@ -79,7 +90,7 @@ What is good or bad?
 + They have CI
 + Went from custom features to no custom features anymore
 
-- Many different versions already exists, so still has to be maintained even if they dont allow custom features anymore. Also many platforms.
+- Many different versions already exists, so still has to be maintained even if they don't allow custom features anymore. Also many platforms.
 - CI Is complicated
 - Custom features leads to failing test
 - Many manual decision and testing
@@ -93,6 +104,10 @@ Human make mistakes, that is why we want to use a tool.
 Drag and drop, low code tool. 
 
 Modern, free
+
+it is complex. slow to create test, because decent code takes time
+
+easy to get lost in the code, it might look jibberish after a while
 
 Page object model -> define a page before hand instead of retyping every button or refetching the component. This makes the code more clear and more readable. -> Reusabillity. 
 
@@ -116,7 +131,7 @@ Validations were done in real time because the development was on site. so fast 
 
 development happened for multiple services, that were stand alone and needed to be integrated.
 
-Integration slowed down because of erp, and http. 
+Integration slowed down because of erp, and http.
 
 Multiple styles of testing:
 - e2e func test
@@ -131,22 +146,68 @@ and new features needs to be planned over a bigger scale.
 
 Use what is there, so employees with existing knowledge. 
 
+QA is not set on stone, adapt if needed
+
 6 - Cegeka
 
 Cegaka - consulted company
 
+They also talked abt that bigger companies can not release a new product every sprint, this is mainly for startups. That small changes can impact many things.
+
+some teams worked in a weird agile concept but it was basically waterfall. 
+
+project management: 
+- jira
+- azure dev
+
+used 2 different apps
+
+Test cases were written everywhere, in notes, jira, even not physically (so in peoples head)
+
 look at existing knowledge and market to determine what is the best tool to use
+
+Merge everything to a singular tool
+
+Ideal world -> pyramid but what they had was more of a hourglass.
+
+choose tool and look at pros and cons between each
+
+4 questions?
+- who
+- what
+- infrastructure
+- extra
+
+Ranorex is code less tool, you create tests based on the recordings -> no technical background
 
 proof of concepts with chosen tool if it is actually good
 
-phase 1 - training
-phase 2 - test bs 
+the bigger the company, the longer it takes
 
-Negative: team of test automation, make new back log but different teams runs the test and maintains it. INstead of one team doing both 
+phase 1 - training - 1/2 days a week coaching - training new teams - coaching - ...
+
+looking at the test cases for regression test, it was really small amount of tests
+
+devs had too much work, so they could not make test in that amount of time
+
+phase 2 - accepot and adapt
+
+create a team: test automation experts -> support other teams
+-> create tests for them
+-> different tool -> test automators instead of no coders
+
+Negative: team of test automation, make new back log but different teams runs the test and maintains it. Instead of one team doing both 
+Negative: the seperate team now also needs to understand code they didnt work on
+
+workflow, how to work with other teams for test auto
+- backlog of scripts needed to autommate
+- estimate how long
+- when
+
+work in a iterative way
 
 C# testing framework
 - they make use of a common framework for all teams
-
 
 They went from little to no test to a lot of test
 
@@ -235,6 +296,8 @@ Digital twin itself is a form of testing
 
 Multiple interpretation of one design - that is why requirements need to be defined properly, so measurable requirements. Specify test setup, test execution and teardown for these requirements
 
+you need to start from some specifications to start testing
+
 Unit testing - reviewed by other dev 
 Integration testing - also reviewed and runned
 end to end - also reviewed and runned, run in ci
@@ -243,17 +306,23 @@ factory testing - before to customer - specific setup for customer (special case
 customer integration testing - on site at the customer
 exploraty testing - manual test to find new errors - montly - using mutation testing and fuzzer for rest api
 
+many things a tester should take in to account when testing. it is not just checking if the system works.
+
 11 - colruyt
 
 works really intern, so all the support for it mainly goes to them
 
-Colruyt killed people
-
 tells me about what quality is in a round a bout way
 
-quality is subjective
+quality is subjective, based on customer standards
 
-makes use of standards
+Quality is often defined by the promise we make to our customers -> business value
+
+makes use of standards to ensure quality 
+
+quality attributes with the expectations of the customer
+
+any test that exist, needs to have some business value
 
 Most useless guest lecture
 
